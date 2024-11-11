@@ -1,0 +1,1195 @@
+FrameWidgetClass rootFrame {
+ position -0.00147 -0.00209
+ size 1 1
+ hexactpos 0
+ vexactpos 0
+ hexactsize 0
+ vexactsize 0
+ {
+  PanelWidgetClass ContentPanel {
+   visible 1
+   clipchildren 0
+   ignorepointer 1
+   color 0 0 0 0
+   position 0 0
+   size 0.99859 1
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   style rover_sim_colorable
+   {
+    PanelWidgetClass PanelIconsOutline {
+     ignorepointer 1
+     position 0.0074 0.14
+     size 0.04559 0.8219
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     style Outline
+     {
+      PanelWidgetClass PanelIcons {
+       ignorepointer 1
+       color 0 0 0 0.6667
+       position 0.02469 0.00323
+       size 0.95104 0.99184
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       style rover_sim_colorable
+       {
+        GridSpacerWidgetClass GridIcons {
+         ignorepointer 1
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         Columns 1
+         Rows 5
+         {
+          ButtonWidgetClass BttnMarket {
+           position 0.079 0.054
+           size 0.534 0.088
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           {
+            ImageWidgetClass ImageMarket {
+             ignorepointer 1
+             position 0 -0.06228
+             size 64 64
+             halign center_ref
+             valign center_ref
+             hexactpos 0
+             vexactpos 0
+             hexactsize 1
+             vexactsize 1
+             imageTexture "{8451250ACCD03A86}TraderPlus/datasets/shopping-cart.edds"
+             mode blend
+             "src alpha" 1
+             stretch 1
+            }
+            TextWidgetClass MarketText {
+             ignorepointer 1
+             position 0.00705 0.68639
+             size 1.00952 0.13447
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             text "#tpm_market"
+             font "gui/fonts/Metron-Bold12"
+             "exact text" 1
+             "text halign" center
+             "text valign" center
+            }
+           }
+          }
+          ButtonWidgetClass BttnInventory {
+           position 0.079 0.054
+           size 0.534 0.088
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           {
+            ImageWidgetClass ImageBag {
+             ignorepointer 1
+             position 0 -0.06228
+             size 64 64
+             halign center_ref
+             valign center_ref
+             hexactpos 0
+             vexactpos 0
+             hexactsize 1
+             vexactsize 1
+             imageTexture "{866A317A30BC4F6F}TraderPlus/datasets/school-bag.edds"
+             mode blend
+             "src alpha" 1
+             stretch 1
+            }
+            TextWidgetClass InvText {
+             ignorepointer 1
+             position 0.01181 0.7237
+             size 1.0164 0.1285
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             text "#tpm_inventory"
+             font "gui/fonts/Metron-Bold12"
+             "exact text" 1
+             "text halign" center
+             "text valign" center
+            }
+           }
+          }
+          ButtonWidgetClass BttnCar {
+           position 0.079 0.054
+           size 0.534 0.088
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           {
+            ImageWidgetClass ImageCar {
+             ignorepointer 1
+             position 0 -0.08661
+             size 64 64
+             halign center_ref
+             valign center_ref
+             hexactpos 0
+             vexactpos 0
+             hexactsize 1
+             vexactsize 1
+             imageTexture "{9B109147F48FFFD2}TraderPlus/datasets/car.edds"
+             mode blend
+             "src alpha" 1
+             stretch 1
+            }
+            TextWidgetClass TextWidget3 {
+             ignorepointer 1
+             position -0.00229 0.69812
+             size 1.00952 0.13447
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             text "#tpm_vehicles"
+             font "gui/fonts/Metron-Bold12"
+             "exact text" 1
+             "text halign" center
+             "text valign" center
+            }
+           }
+          }
+          ButtonWidgetClass BttnLicence {
+           position 0.079 0.054
+           size 0.534 0.088
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           {
+            ImageWidgetClass ImageLicence {
+             ignorepointer 1
+             position 0.01417 -0.08985
+             size 64 64
+             halign center_ref
+             valign center_ref
+             hexactpos 0
+             vexactpos 0
+             hexactsize 1
+             vexactsize 1
+             imageTexture "{F72DC20B72C1AC9A}TraderPlus/datasets/driver-license.edds"
+             mode blend
+             "src alpha" 1
+             stretch 1
+            }
+            TextWidgetClass TextWidget4 {
+             ignorepointer 1
+             position 0.00705 0.68496
+             size 1.00952 0.13447
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             text "#tpm_licences"
+             font "gui/fonts/Metron-Bold12"
+             "exact text" 1
+             "text halign" center
+             "text valign" center
+            }
+           }
+          }
+          ButtonWidgetClass BttnInsurance {
+           position 0.079 0.054
+           size 0.14546 0.06505
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           {
+            ImageWidgetClass ImageInsurance {
+             ignorepointer 1
+             position 0.00708 -0.07948
+             size 64 64
+             halign center_ref
+             valign center_ref
+             hexactpos 0
+             vexactpos 0
+             hexactsize 1
+             vexactsize 1
+             imageTexture "{E962F2215EE877F4}TraderPlus/datasets/insurance.edds"
+             mode blend
+             "src alpha" 1
+             stretch 1
+            }
+            TextWidgetClass TextWidget5 {
+             ignorepointer 1
+             position 0.00705 0.70224
+             size 1.00952 0.13447
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             text "#tpm_insurances"
+             font "gui/fonts/Metron-Italic12"
+             "exact text" 1
+             "text halign" center
+             "text valign" center
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    PanelWidgetClass PanelStockOutline {
+     visible 1
+     ignorepointer 1
+     position 0.05907 0.14
+     size 0.64615 0.82173
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     draggable 1
+     style Outline
+     {
+      PanelWidgetClass PanelStock {
+       ignorepointer 1
+       color 0 0 0 0.6667
+       position 0.00172 0.00252
+       size 0.99579 0.99479
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       style rover_sim_colorable
+       {
+        GridSpacerWidgetClass GridLeft {
+         ignorepointer 1
+         position 0 0
+         size 1 1
+         halign center_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         style Colorable
+         Padding 5
+         Margin 10
+         "Size To Content V" 1
+         Columns 1
+         {
+          XComboBoxWidgetClass StockCategories {
+           color 1 1 1 0.7843
+           position 0 4.30092
+           size 1.0005 42.2904
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 1
+           style Default
+           font "gui/fonts/etelkatextpro22"
+           items "ALL"
+          }
+          GridSpacerWidgetClass GridSearchLeft {
+           ignorepointer 1
+           position 10 10
+           size 48 52
+           hexactpos 1
+           vexactpos 1
+           hexactsize 1
+           vexactsize 1
+           Padding 0
+           Margin 0
+           "Size To Content H" 1
+           "Size To Content V" 1
+           content_valign center
+           Columns 4
+           Rows 1
+           {
+            ImageWidgetClass SearchLeft {
+             ignorepointer 1
+             position 0 0
+             size 30 30
+             hexactpos 1
+             vexactpos 1
+             hexactsize 1
+             vexactsize 1
+             imageTexture "{F314F4772CEF6D8D}TraderPlus/gui/loupe.edds"
+             mode blend
+             "src alpha" 1
+             stretch 1
+            }
+            EditBoxWidgetClass SearchStockBox {
+             position 0.15635 -0.06361
+             size 0.84365 26.9461
+             halign right_ref
+             valign center_ref
+             hexactpos 0
+             vexactpos 1
+             hexactsize 0
+             vexactsize 1
+             style Default
+             text "#tpm_search"
+             "Use default text" 1
+             "exact text" 0
+             font "gui/fonts/etelkatextpro22"
+            }
+            GridSpacerWidgetClass ShowAllGrid {
+             ignorepointer 1
+             position 0 -0.42415
+             size 0.02192 1.32515
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             Padding 0
+             Margin 0
+             "Size To Content H" 1
+             content_halign center
+             content_valign center
+             Columns 2
+             Rows 1
+             {
+              TextWidgetClass TextWidget2 {
+               ignorepointer 1
+               position 0 0
+               size 0.19873 0.48041
+               hexactpos 0
+               vexactpos 0
+               hexactsize 0
+               vexactsize 0
+               text "#tpm_showall"
+               font "TraderPlus/gui/fonts/regular12"
+               "exact text" 1
+               "size to text h" 1
+               "size to text v" 1
+               "text valign" center
+              }
+              CheckBoxWidgetClass ShowAllCheckBox {
+               color 0.5255 0.549 0.5882 1
+               position -0.81421 -0.52574
+               size 1.28421 2.11674
+               hexactpos 0
+               vexactpos 0
+               hexactsize 0
+               vexactsize 0
+               style Default
+               font "gui/fonts/etelkatextpro22"
+               "text color" 0.5255 0.549 0.5882 1
+               "disabled text color" 0.5255 0.549 0.5882 1
+              }
+             }
+            }
+           }
+          }
+          PanelWidgetClass StockScrollPanel {
+           color 0 0 0 0.549
+           position 0 -0.00161
+           size 0.98 1.0016
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           style blank
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    PanelWidgetClass ProductInformationOutline {
+     visible 1
+     ignorepointer 1
+     position 0.7113 0.14
+     size 0.28053 0.82372
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     style Outline
+     {
+      PanelWidgetClass ProductInformation {
+       ignorepointer 1
+       color 0 0 0 0.6667
+       position 0.00661 0.0032
+       size 0.98457 0.99224
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       style rover_sim_colorable
+       {
+        GridSpacerWidgetClass GridCenter {
+         visible 1
+         ignorepointer 1
+         position 0.0087 0.00738
+         size 0.90141 1.55315
+         halign center_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         Padding 5
+         Margin 10
+         "Size To Content V" 1
+         Columns 1
+         Rows 4
+         {
+          TextWidgetClass ProductText {
+           ignorepointer 1
+           position -0.02464 0.007
+           size 0.85072 50
+           halign center_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 1
+           style Bold
+           text "#tpm_product_informations"
+           font "gui/fonts/etelkatextpro22"
+           "exact text" 1
+           "size to text h" 0
+           "size to text v" 0
+           "text halign" center
+           "text valign" center
+          }
+          GridSpacerWidgetClass GridBttn {
+           ignorepointer 1
+           position -0.00025 0.39387
+           size 0.90086 0.2639
+           halign center_ref
+           valign bottom_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           style Colorable
+           "Size To Content V" 1
+           Columns 10
+           Rows 1
+           {
+            ButtonWidgetClass BttnPlayerPreview {
+             position 0.86711 -0.00056
+             size 0.11307 0.11613
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             "no focus" 0
+             {
+              ImageWidgetClass ImagePlayerPreview {
+               visible 1
+               inheritalpha 0
+               ignorepointer 1
+               keepsafezone 0
+               position 0 0
+               size 32 32
+               halign center_ref
+               valign center_ref
+               hexactpos 0
+               vexactpos 0
+               hexactsize 1
+               vexactsize 1
+               fixaspect inside
+               imageTexture "{3AB296DDF7C5E618}TraderPlus/datasets/person.edds"
+               mode blend
+               "src alpha" 1
+               "no wrap" 0
+               stretch 1
+               "flip u" 0
+               "flip v" 0
+               filter 1
+               nocache 0
+              }
+             }
+            }
+            ButtonWidgetClass BttnKit {
+             position 0.86241 -0.00116
+             size 0.10867 0.12912
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             {
+              ImageWidgetClass ImageKit {
+               ignorepointer 1
+               position -0.01094 -0.00044
+               size 0.74054 0.73703
+               halign center_ref
+               valign center_ref
+               hexactpos 0
+               vexactpos 0
+               hexactsize 0
+               vexactsize 0
+               imageTexture "{F29C736EA962D80B}TraderPlus/datasets/switch.edds"
+               mode blend
+               "src alpha" 1
+               "no wrap" 0
+               stretch 1
+               filter 0
+              }
+             }
+            }
+            ButtonWidgetClass BttnRemove {
+             position 0.86966 0.09646
+             size 0.12716 0.10375
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             {
+              ImageWidgetClass ImageRemove {
+               ignorepointer 1
+               position -0.0136 0.0083
+               size 32 32
+               halign center_ref
+               valign center_ref
+               hexactpos 0
+               vexactpos 0
+               hexactsize 1
+               vexactsize 1
+               imageTexture "{6507E0193BADBDF2}TraderPlus/datasets/broom.edds"
+               mode blend
+               "src alpha" 1
+               stretch 1
+              }
+             }
+            }
+            ButtonWidgetClass BttnReset {
+             position 0.86711 -0.00056
+             size 0.13056 0.09564
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             "no focus" 0
+             {
+              ImageWidgetClass ImageReset {
+               ignorepointer 1
+               position 0 0
+               size 32 32
+               halign center_ref
+               valign center_ref
+               hexactpos 0
+               vexactpos 0
+               hexactsize 1
+               vexactsize 1
+               fixaspect inside
+               imageTexture "{B97B535E02359241}TraderPlus/datasets/refresh.edds"
+               mode blend
+               "src alpha" 1
+               "no wrap" 0
+               stretch 1
+               "flip u" 0
+               "flip v" 0
+               filter 1
+               nocache 0
+              }
+             }
+            }
+           }
+          }
+          MultilineTextWidgetClass ItemDescription {
+           visible 1
+           ignorepointer 1
+           position 0.982 0.56
+           size 0.15 0.09292
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           font "gui/fonts/etelkatextpro12"
+           "exact text" 1
+           wrap 0
+           "condense whitespace" 1
+          }
+          GridSpacerWidgetClass GridQuantity {
+           visible 1
+           ignorepointer 1
+           position -0.00025 -0.04724
+           size 0.90086 275.43799
+           halign center_ref
+           valign bottom_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 1
+           style Colorable
+           Padding 5
+           Margin 10
+           "Size To Content V" 1
+           Columns 2
+           Rows 6
+           {
+            TextWidgetClass QuantityTextCombo {
+             visible 1
+             ignorepointer 1
+             position 0 0
+             size 200 30
+             valign bottom_ref
+             hexactpos 1
+             vexactpos 1
+             hexactsize 1
+             vexactsize 1
+             style Normal
+             text "#tpm_tradeqty"
+             font "gui/fonts/etelkatextpro12"
+             "text color" 0.1569 0.2745 0.6235 1
+             "size to text h" 0
+             "text valign" center
+            }
+            XComboBoxWidgetClass QuantityMultiplier {
+             disabled 0
+             inheritalpha 0
+             ignorepointer 0
+             keepsafezone 0
+             size 100 30
+             halign right_ref
+             valign bottom_ref
+             hexactpos 1
+             vexactpos 1
+             hexactsize 1
+             vexactsize 1
+             style Default
+             "no focus" 0
+             font "gui/fonts/etelkatextpro22"
+             items "10;20;30;40;50;60;70;80;90;100"
+            }
+           }
+          }
+          GridSpacerWidgetClass GridInsurance {
+           visible 1
+           ignorepointer 1
+           position -0.00025 -0.04724
+           size 0.90086 275.43799
+           halign center_ref
+           valign bottom_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 1
+           Padding 5
+           Margin 10
+           "Size To Content V" 1
+           Columns 2
+           Rows 6
+           {
+            TextWidgetClass InsuranceText {
+             visible 1
+             ignorepointer 1
+             position 0 114.012
+             size 0.652 -1.32625
+             valign bottom_ref
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 0
+             style Normal
+             text "#tpm_insurance"
+             font "gui/fonts/etelkatextpro12"
+             "text color" 0.1569 0.2745 0.6235 1
+             "size to text h" 0
+             "text valign" center
+             {
+              CheckBoxWidgetClass InsuranceCheckBox {
+               color 0.0706 0.5608 0.1922 1
+               position 0.85542 0.03251
+               size 0.13586 0.91772
+               hexactpos 0
+               vexactpos 0
+               hexactsize 0
+               vexactsize 0
+               style Default
+               "no focus" 0
+               font "TraderPlus/gui/fonts/regular12"
+               checked 0
+              }
+             }
+            }
+            TextWidgetClass InsuranceTextOuput {
+             visible 1
+             ignorepointer 1
+             position 0 0
+             size 0.652 0.13
+             valign bottom_ref
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             style Normal
+             font "gui/fonts/etelkatextpro12"
+             "text color" 0.1569 0.2745 0.6235 1
+             "exact text" 0
+             "size to text h" 0
+             "text halign" center
+             "text valign" center
+            }
+           }
+          }
+          GridSpacerWidgetClass GridCargo {
+           ignorepointer 1
+           position -0.00025 0.01761
+           size 0.90086 222.74599
+           halign center_ref
+           valign bottom_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 1
+           style Colorable
+           Padding 5
+           Margin 10
+           "Size To Content V" 1
+           Columns 2
+           Rows 6
+           {
+            TextWidgetClass CargoCount {
+             ignorepointer 1
+             position 0 0
+             size 0.51275 0.16302
+             halign right_ref
+             valign bottom_ref
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             text "#tpm_slot"
+             font "gui/fonts/etelkatextpro14"
+             "size to text h" 0
+             "size to text v" 0
+             "text valign" center
+            }
+            TextWidgetClass SizeCount {
+             ignorepointer 1
+             position 0 0
+             size 0.51275 0.16302
+             halign right_ref
+             valign bottom_ref
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             text "#tpm_size"
+             font "gui/fonts/etelkatextpro14"
+             "size to text h" 0
+             "size to text v" 0
+             "text halign" right
+             "text valign" center
+            }
+           }
+          }
+         }
+        }
+        GridSpacerWidgetClass GridButtons {
+         ignorepointer 1
+         position 0.00741 0.00171
+         size 0.9 48
+         halign center_ref
+         valign bottom_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         Padding 5
+         Margin 10
+         "Size To Content V" 1
+         Columns 2
+         Rows 2
+         {
+          PanelWidgetClass BuyPanelWidget {
+           visible 1
+           ignorepointer 1
+           color 1 1 1 0.7843
+           position 0 0
+           size 1 64
+           hexactpos 1
+           vexactpos 1
+           hexactsize 1
+           vexactsize 1
+           style rover_sim_colorable
+           {
+            ButtonWidgetClass BttnBuy {
+             visible 1
+             color 0.7333 0.7333 0.7333 1
+             position 0 0
+             size 1 1
+             valign center_ref
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 0
+             style OldStyle
+             {
+              TextWidgetClass BttnBuy_label {
+               ignorepointer 1
+               color 0 0 0 1
+               position 0 0
+               size 1 1
+               halign center_ref
+               valign center_ref
+               hexactpos 0
+               vexactpos 0
+               hexactsize 0
+               vexactsize 0
+               text "BUY"
+               font "gui/fonts/etelkatextpro22"
+               "text halign" center
+               "text valign" center
+              }
+             }
+            }
+           }
+          }
+          PanelWidgetClass SellPanelWidget {
+           ignorepointer 1
+           color 1 1 1 0.7843
+           position 0 0
+           size 1 64
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 1
+           style rover_sim_colorable
+           {
+            ButtonWidgetClass BttnSell {
+             visible 1
+             color 0.7333 0.7333 0.7333 1
+             position 0 0
+             size 1 1
+             halign right_ref
+             valign center_ref
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 0
+             style OldStyle
+             {
+              TextWidgetClass BttnSell_label {
+               ignorepointer 1
+               color 0 0 0 1
+               position 0 0
+               size 1 1
+               halign center_ref
+               valign center_ref
+               hexactpos 0
+               vexactpos 0
+               hexactsize 0
+               vexactsize 0
+               text "SELL"
+               font "gui/fonts/etelkatextpro22"
+               "text halign" center
+               "text valign" center
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    PanelWidgetClass PanelInventoryOutline {
+     visible 0
+     ignorepointer 1
+     position 0.05907 0.14
+     size 0.64615 0.82173
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     style Outline
+     {
+      PanelWidgetClass PanelInventory {
+       ignorepointer 1
+       color 0 0 0 0.6667
+       position 0.00261 0.00283
+       size 0.99435 0.99266
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       style rover_sim_colorable
+       {
+        GridSpacerWidgetClass GridRight {
+         ignorepointer 1
+         position -0.00163 -0.00023
+         size 0.99694 0.99923
+         halign center_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         Padding 5
+         Margin 10
+         "Size To Content V" 1
+         Columns 1
+         {
+          XComboBoxWidgetClass InventoryCategories {
+           position 0 0.29267
+           size 1.01255 39.7073
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 1
+           style Default
+           font "gui/fonts/etelkatextpro22"
+           items "ALL"
+          }
+          GridSpacerWidgetClass GridSearchInventory {
+           ignorepointer 1
+           position 10 10
+           size 48 52
+           hexactpos 1
+           vexactpos 1
+           hexactsize 1
+           vexactsize 1
+           Padding 0
+           Margin 0
+           "Size To Content H" 1
+           "Size To Content V" 1
+           content_valign center
+           Columns 4
+           Rows 1
+           {
+            ImageWidgetClass SearchInventory {
+             ignorepointer 1
+             position 0 0
+             size 30 30
+             hexactpos 1
+             vexactpos 1
+             hexactsize 1
+             vexactsize 1
+             imageTexture "{F314F4772CEF6D8D}TraderPlus/gui/loupe.edds"
+             mode blend
+             "src alpha" 1
+             stretch 1
+            }
+            EditBoxWidgetClass SearchInventoryBox {
+             visible 1
+             position 0 0
+             size 1 30
+             hexactpos 0
+             vexactpos 1
+             hexactsize 0
+             vexactsize 1
+             style Default
+             text "#tpm_search"
+             "Use default text" 1
+             "exact text" 0
+             font "gui/fonts/etelkatextpro22"
+            }
+           }
+          }
+          PanelWidgetClass InventoryScrollPanel {
+           visible 1
+           color 0 0 0 0.549
+           position 0 -0.00161
+           size 0.98 1.0016
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           style blank
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GridSpacerWidgetClass GridMoney {
+     ignorepointer 1
+     position 0.00973 0.1032
+     size 300 48
+     hexactpos 0
+     vexactpos 0
+     hexactsize 1
+     vexactsize 1
+     Padding 0
+     Margin 0
+     "Size To Content H" 1
+     "Size To Content V" 1
+     Columns 2
+     Rows 1
+     {
+      TextWidgetClass PlayerMoneyText {
+       ignorepointer 1
+       color 0.2667 0.8667 0.051 1
+       position 5.00504 0.50465
+       size 165.77901 32.3668
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
+       vexactsize 1
+       text "$1,873,981"
+       font "gui/fonts/etelkatextpro22"
+       "text color" 1 0.6588 0 1
+       "exact text" 0
+       "size to text h" 1
+       "text halign" right
+       "text valign" center
+      }
+     }
+    }
+    PanelWidgetClass TraderPanel {
+     ignorepointer 1
+     position 20.1165 7.44891
+     size 362.50101 92.3713
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
+     vexactsize 1
+     {
+      GridSpacerWidgetClass GridTrader {
+       visible 1
+       ignorepointer 1
+       position 0.24118 -0.00526
+       size 0.75371 0.95282
+       valign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       style Colorable
+       Columns 1
+       Rows 2
+       {
+        TextWidgetClass TraderNameText {
+         ignorepointer 1
+         position 0.08073 0.4276
+         size 350 45
+         hexactpos 1
+         vexactpos 1
+         hexactsize 1
+         vexactsize 1
+         fixaspect inside
+         text "Keiko"
+         font "gui/fonts/etelkatextpro22"
+         "text valign" center
+        }
+        TextWidgetClass TraderDescriptionText {
+         ignorepointer 1
+         position 1.1623 42.8743
+         size 350 45
+         hexactpos 1
+         vexactpos 1
+         hexactsize 1
+         vexactsize 1
+         fixaspect inside
+         text "Weapon Seller"
+         font ""
+         "text valign" center
+        }
+       }
+      }
+      ImageWidgetClass ImageWidget5 {
+       ignorepointer 1
+       position 0.00421 0.02814
+       size 84.431 88.0957
+       hexactpos 0
+       vexactpos 0
+       hexactsize 1
+       vexactsize 1
+       imageTexture "{772EE0CB4B1643A7}TraderPlus/datasets/cashier.edds"
+       mode additive
+       stretch 1
+      }
+     }
+    }
+    RichTextWidgetClass InformationText {
+     visible 1
+     ignorepointer 1
+     position 0.35193 0.0233
+     size 0.28041 0.09651
+     halign center_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     "exact text" 1
+     "text halign" center
+     "text valign" center
+     wrap 1
+     "condense whitespace" 1
+     "strip newlines" 1
+    }
+   }
+  }
+  PanelWidgetClass LicenceWarningPanel {
+   visible 0
+   ignorepointer 1
+   size 0.497 377.11301
+   halign center_ref
+   valign center_ref
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 1
+   style rover_sim_black
+   {
+    ButtonWidgetClass LicenceCloseBttn {
+     color 1 0 0 1
+     position 0.45846 0.83616
+     size 0.05457 49.3874
+     halign center_ref
+     valign bottom_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 1
+     style Editor
+     text "x"
+     font "gui/fonts/Metron-Bold22"
+     "text color" 0.8745 0.8745 0.8745 1
+    }
+    ScrollWidgetClass ScrollText {
+     ignorepointer 1
+     position 0.00874 0.0502
+     size 0.94988 278.366
+     halign center_ref
+     valign center_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 1
+     "Scrollbar V" 1
+     {
+      MultilineTextWidgetClass LicenceWarningText {
+       ignorepointer 1
+       position 0 0
+       size 0.93985 240.43199
+       halign center_ref
+       valign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 1
+       font "TraderPlus/gui/fonts/regular14"
+       "exact text" 1
+       "text halign" center
+       "text valign" center
+       wrap 1
+       "condense whitespace" 1
+       "strip newlines" 1
+      }
+     }
+    }
+   }
+  }
+ }
+}

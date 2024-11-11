@@ -1,0 +1,2 @@
+#define GMDEBUG
+#define Garage

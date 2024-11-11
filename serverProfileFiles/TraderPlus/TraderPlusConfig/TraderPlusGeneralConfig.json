@@ -1,0 +1,476 @@
+{
+    "Version": "2.5",
+    "ConvertTraderConfigToTraderPlus": 0,
+    "ConvertTraderConfigToTraderPlusWithStockBasedOnCE": 0,
+    "UseGarageToTradeCar": 1,
+    "DisableHeightFailSafeForReceiptDeployment": 0,
+    "HideInsuranceBtn": 0,
+    "HideGarageBtn": 0,
+    "HideLicenceBtn": 0,
+    "EnableShowAllPrices": 0,
+    "EnableShowAllCheckBox": 1,
+    "IsReceiptTraderOnly": 1,
+    "IsReceiptSaveLock": 0,
+    "IsReceiptSaveAttachment": 0,
+    "IsReceiptSaveCargo": 0,
+    "LockPickChance": 0.30000001192092898,
+    "LicenceKeyWord": "Licence",
+    "Licences": [
+        "Car Licence",
+        "Admin Licence"
+    ],
+    "AcceptedStates": {
+        "AcceptWorn": 1,
+        "AcceptDamaged": 1,
+        "AcceptBadlyDamaged": 1,
+        "CoefficientWorn": 0.75,
+        "CoefficientDamaged": 0.5,
+        "CoefficientBadlyDamaged": 0.25
+    },
+    "StoreOnlyToPristineState": 0,
+    "Currencies": [
+        {
+            "ClassName": "TraderPlus_Money_Ruble5000",
+            "Value": 5000
+        },
+        {
+            "ClassName": "TraderPlus_Money_Ruble2000",
+            "Value": 2000
+        },
+        {
+            "ClassName": "TraderPlus_Money_Ruble1000",
+            "Value": 1000
+        },
+        {
+            "ClassName": "TraderPlus_Money_Ruble500,TraderPlus_Money_Euro500",
+            "Value": 500
+        },
+        {
+            "ClassName": "TraderPlus_Money_Ruble200,TraderPlus_Money_Euro200",
+            "Value": 200
+        },
+        {
+            "ClassName": "TraderPlus_Money_Ruble100,TraderPlus_Money_Euro100,TraderPlus_Money_Dollar100",
+            "Value": 100
+        },
+        {
+            "ClassName": "TraderPlus_Money_Ruble50,TraderPlus_Money_Euro50,TraderPlus_Money_Dollar50",
+            "Value": 50
+        },
+        {
+            "ClassName": "TraderPlus_Money_Ruble10,TraderPlus_Money_Euro10,TraderPlus_Money_Dollar10",
+            "Value": 10
+        },
+        {
+            "ClassName": "TraderPlus_Money_Ruble5,TraderPlus_Money_Euro5,TraderPlus_Money_Dollar5",
+            "Value": 5
+        },
+        {
+            "ClassName": "TraderPlus_Money_Ruble2_Coin,TraderPlus_Money_Euro2,TraderPlus_Money_Dollar2",
+            "Value": 2
+        },
+        {
+            "ClassName": "TraderPlus_Money_Ruble1_Coin,TraderPlus_Money_Euro1,TraderPlus_Money_Dollar1",
+            "Value": 1
+        }
+    ],
+    "Traders": [
+        {
+            "Id": 0,
+            "Name": "TraderPlusSign",
+            "GivenName": "Marie",
+            "Role": "Food Trader",
+            "Position": [
+                11622.5,
+                58.7400016784668,
+                14678.9501953125
+            ],
+            "Orientation": [
+                54.0,
+                0.0,
+                0.0
+            ],
+            "Clothes": []
+        },
+        {
+            "Id": 1,
+            "Name": "SurvivorM_Jose",
+            "GivenName": "Kevin",
+            "Role": "Weapon Trader",
+            "Position": [
+                11620.6298828125,
+                59.040000915527347,
+                14656.830078125
+            ],
+            "Orientation": [
+                325.0,
+                0.0,
+                0.0
+            ],
+            "Clothes": [
+                "FirefighterAxe",
+                "SVD",
+                "M4A1",
+                "M4_RISHndgrd",
+                "Universallight",
+                "M4_OEBttstck",
+                "OMNOGloves_Brown",
+                "GorkaHelmet",
+                "PlateCarrierVest",
+                "GorkaEJacket_Autumn",
+                "GorkaPants_Autumn",
+                "CombatBoots_Black",
+                "Balaclava3Holes_Black",
+                "AliceBag_Black"
+            ]
+        },
+        {
+            "Id": 2,
+            "Name": "TraderPlusSign",
+            "GivenName": "Bob",
+            "Role": "Tool Trader",
+            "Position": [
+                11623.1103515625,
+                59.040000915527347,
+                14658.91015625
+            ],
+            "Orientation": [
+                145.0,
+                0.0,
+                0.0
+            ],
+            "Clothes": []
+        },
+        {
+            "Id": 3,
+            "Name": "SurvivorM_Peter",
+            "GivenName": "John",
+            "Role": "Clothes Trader",
+            "Position": [
+                11596.5498046875,
+                58.7400016784668,
+                14674.5400390625
+            ],
+            "Orientation": [
+                65.0,
+                0.0,
+                0.0
+            ],
+            "Clothes": [
+                "ManSuit_DarkGrey",
+                "DressShoes_Black",
+                "SlacksPants_Black",
+                "SportGlasses_Black"
+            ]
+        },
+        {
+            "Id": 4,
+            "Name": "TraderPlusSign",
+            "GivenName": "Pablo",
+            "Role": "Car Trader",
+            "Position": [
+                11617.349609375,
+                58.7400016784668,
+                14686.9501953125
+            ],
+            "Orientation": [
+                54.0,
+                0.0,
+                0.0
+            ],
+            "Clothes": []
+        },
+        {
+            "Id": -2,
+            "Name": "TraderPlus_BANK_ATM",
+            "GivenName": "ATM",
+            "Role": "ATM",
+            "Position": [
+                11623.0,
+                57.90999984741211,
+                14676.0
+            ],
+            "Orientation": [
+                -37.0,
+                0.0,
+                0.0
+            ],
+            "Clothes": []
+        }
+    ],
+    "TraderObjects": [
+        {
+            "ObjectName": "bldr_Misc_CrashBarrier",
+            "Position": [
+                11636.0,
+                58.0,
+                14646.0
+            ],
+            "Orientation": [
+                -33.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "ObjectName": "bldr_Misc_CrashBarrier",
+            "Position": [
+                11631.0,
+                58.099998474121097,
+                14653.0
+            ],
+            "Orientation": [
+                147.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "ObjectName": "bldr_Misc_RoadBarrier",
+            "Position": [
+                11537.2001953125,
+                59.0,
+                14726.08984375
+            ],
+            "Orientation": [
+                55.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "ObjectName": "bldr_Wall_Barricade1_10",
+            "Position": [
+                11590.5400390625,
+                58.220001220703128,
+                14760.669921875
+            ],
+            "Orientation": [
+                144.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "ObjectName": "bldr_Wall_Barricade1_4",
+            "Position": [
+                11615.189453125,
+                57.636619567871097,
+                14626.82421875
+            ],
+            "Orientation": [
+                153.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "ObjectName": "bldr_Misc_Barricade",
+            "Position": [
+                11613.2607421875,
+                57.99546432495117,
+                14622.95703125
+            ],
+            "Orientation": [
+                54.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "ObjectName": "Land_Wreck_S1023_Blue",
+            "Position": [
+                11596.6044921875,
+                58.728797912597659,
+                14630.3427734375
+            ],
+            "Orientation": [
+                -135.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "ObjectName": "Land_Wreck_Lada_Red",
+            "Position": [
+                11598.5400390625,
+                58.41791915893555,
+                14628.796875
+            ],
+            "Orientation": [
+                171.99954223632813,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "ObjectName": "bldr_Wall_Barricade1_4",
+            "Position": [
+                11593.5087890625,
+                57.81910705566406,
+                14632.2060546875
+            ],
+            "Orientation": [
+                63.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "ObjectName": "bldr_Wall_Barricade1_10",
+            "Position": [
+                11609.3408203125,
+                58.077457427978519,
+                14766.326171875
+            ],
+            "Orientation": [
+                54.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "ObjectName": "bldr_Wall_Barricade1_4",
+            "Position": [
+                11593.5087890625,
+                57.81910705566406,
+                14632.2060546875
+            ],
+            "Orientation": [
+                63.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "ObjectName": "bldr_hbarrier_4m",
+            "Position": [
+                11664.1875,
+                57.7883186340332,
+                14659.564453125
+            ],
+            "Orientation": [
+                -36.00001525878906,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "ObjectName": "bldr_hbarrier_4m",
+            "Position": [
+                11654.0380859375,
+                58.30573272705078,
+                14652.6845703125
+            ],
+            "Orientation": [
+                -36.00001525878906,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "ObjectName": "bldr_hbarrier_4m",
+            "Position": [
+                11656.80078125,
+                58.16636657714844,
+                14653.1533203125
+            ],
+            "Orientation": [
+                53.900001525878909,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "ObjectName": "bldr_hbarrier_4m",
+            "Position": [
+                11662.8837890625,
+                57.84144973754883,
+                14657.0732421875
+            ],
+            "Orientation": [
+                53.900001525878909,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "ObjectName": "Land_City_Stand_FastFood",
+            "Position": [
+                11594.310546875,
+                59.78278350830078,
+                14673.0546875
+            ],
+            "Orientation": [
+                -117.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "ObjectName": "Land_Misc_TrailRoof_Small",
+            "Position": [
+                11598.7998046875,
+                59.28260040283203,
+                14669.2001953125
+            ],
+            "Orientation": [
+                62.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "ObjectName": "Land_Misc_TrailRoof_Small",
+            "Position": [
+                11600.9658203125,
+                59.28261184692383,
+                14665.07421875
+            ],
+            "Orientation": [
+                62.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "ObjectName": "Land_Misc_Well_Pump_Yellow",
+            "Position": [
+                11610.8466796875,
+                58.61098861694336,
+                14674.2265625
+            ],
+            "Orientation": [
+                126.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "ObjectName": "Land_Garage_Office",
+            "Position": [
+                11627.701171875,
+                67.97467041015625,
+                14805.9326171875
+            ],
+            "Orientation": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "ObjectName": "Land_Garage_Small",
+            "Position": [
+                11615.798828125,
+                59.178348541259769,
+                14687.2724609375
+            ],
+            "Orientation": [
+                50.0,
+                0.0,
+                0.0
+            ]
+        }
+    ]
+}

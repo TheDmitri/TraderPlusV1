@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{6507E0193BADBDF2}TraderPlus/datasets/broom.edds"
+ Author "thedmitri"
+ ChangeDate 265989222
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "broom.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

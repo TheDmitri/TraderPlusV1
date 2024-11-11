@@ -1,0 +1,9 @@
+PlayerPreviewWidgetClass rootFrame {
+ position 0 0
+ size 1 0.5
+ hexactpos 0
+ vexactpos 0
+ hexactsize 0
+ vexactsize 0
+ userID 9888
+}

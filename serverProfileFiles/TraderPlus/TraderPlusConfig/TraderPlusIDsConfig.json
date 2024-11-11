@@ -1,0 +1,92 @@
+{
+    "Version": "2.5",
+    "IDs": [
+        {
+            "Id": 0,
+            "Categories": [
+                "Licences",
+                "Vegetables",
+                "Packaged Food",
+                "Meat",
+                "Animal Parts",
+                "Drinks",
+                "Medical Supplies",
+                "Medications",
+                "Money Exchange"
+            ],
+            "LicencesRequired": [],
+            "CurrenciesAccepted": []
+        },
+        {
+            "Id": 1,
+            "Categories": [
+                "Melee",
+                "Sidearms",
+                "Rifles",
+                "Shotguns",
+                "Submachine Guns",
+                "Assault Rifles",
+                "Sniper Rifles",
+                "Grenades",
+                "Ammunition",
+                "Magazines",
+                "Handguards",
+                "Buttstocks",
+                "Optics",
+                "Supressors",
+                "Compensators",
+                "Bayonets",
+                "Flashlights"
+            ],
+            "LicencesRequired": [],
+            "CurrenciesAccepted": []
+        },
+        {
+            "Id": 2,
+            "Categories": [
+                "Tools",
+                "Heavy Tools",
+                "Electronics",
+                "Fire & Lights",
+                "Cooking & Hunting Supplies",
+                "Hardware Supplies",
+                "Seeds & Lime"
+            ],
+            "LicencesRequired": [],
+            "CurrenciesAccepted": []
+        },
+        {
+            "Id": 3,
+            "Categories": [
+                "Glasses",
+                "Armbands",
+                "Gloves",
+                "Hats & Caps",
+                "Helmets",
+                "Masks",
+                "Shirts",
+                "Hoodies & Sweater",
+                "Vests",
+                "Jackets & Coats",
+                "Skirts & Dresses",
+                "Pants",
+                "Shoes & Boots",
+                "Ghillie",
+                "Holster & Pouches",
+                "Belt",
+                "Bags"
+            ],
+            "LicencesRequired": [],
+            "CurrenciesAccepted": []
+        },
+        {
+            "Id": 4,
+            "Categories": [
+                "Vehicles",
+                "Vehicle Parts"
+            ],
+            "LicencesRequired": [],
+            "CurrenciesAccepted": []
+        }
+    ]
+}

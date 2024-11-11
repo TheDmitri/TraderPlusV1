@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{3AB296DDF7C5E618}TraderPlus/datasets/person.edds"
+ Author "thedmitri"
+ ChangeDate 150154342
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "person.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

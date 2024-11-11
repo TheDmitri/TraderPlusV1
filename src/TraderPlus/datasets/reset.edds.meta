@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{0018BC189332CF83}TraderPlus/datasets/reset.edds"
+ Author "thedmitri"
+ ChangeDate 948710452
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "reset.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

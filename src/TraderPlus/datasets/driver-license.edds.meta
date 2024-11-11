@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{F72DC20B72C1AC9A}TraderPlus/datasets/driver-license.edds"
+ Author "thedmitri"
+ ChangeDate -2126779340
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "driver-license.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

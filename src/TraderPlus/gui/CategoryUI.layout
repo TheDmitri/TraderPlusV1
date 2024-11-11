@@ -1,0 +1,13 @@
+GridSpacerWidgetClass rootFrame {
+ position 0 0.0016
+ size 0.99918 0.14441
+ hexactpos 0
+ vexactpos 0
+ hexactsize 0
+ vexactsize 0
+ Padding 5
+ Margin 5
+ "Size To Content V" 1
+ Columns 6
+ Rows 100
+}

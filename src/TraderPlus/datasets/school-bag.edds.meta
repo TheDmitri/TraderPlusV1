@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{866A317A30BC4F6F}TraderPlus/datasets/school-bag.edds"
+ Author "thedmitri"
+ ChangeDate -1992561612
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "school-bag.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{B97B535E02359241}TraderPlus/datasets/refresh.edds"
+ Author "thedmitri"
+ ChangeDate 433761382
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "refresh.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

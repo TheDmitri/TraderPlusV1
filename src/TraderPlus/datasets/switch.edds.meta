@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{F29C736EA962D80B}TraderPlus/datasets/switch.edds"
+ Author "thedmitri"
+ ChangeDate -1824789452
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "switch.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

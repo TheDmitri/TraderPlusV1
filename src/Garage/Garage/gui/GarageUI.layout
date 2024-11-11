@@ -1,0 +1,359 @@
+FrameWidgetClass GarageMainFrame {
+ position 0 0
+ size 1 1
+ halign center_ref
+ valign center_ref
+ hexactpos 0
+ vexactpos 0
+ hexactsize 0
+ vexactsize 0
+ {
+  PanelWidgetClass PanelWidget0 {
+   ignorepointer 1
+   position 0 0
+   size 0.4 0.7
+   halign center_ref
+   valign center_ref
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   style Outline
+   {
+    PanelWidgetClass LayoutBackground {
+     ignorepointer 1
+     color 0 0 0 0.6667
+     position -0.0002 -0.00114
+     size 0.99481 0.99008
+     halign center_ref
+     valign center_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     scriptclass ""
+     style rover_sim_colorable
+     {
+      GridSpacerWidgetClass Grid {
+       ignorepointer 1
+       position 0 0.05
+       size 0.963 0.812
+       halign center_ref
+       valign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       "Size To Content V" 1
+       Columns 1
+       {
+        TextWidgetClass TextListTitle {
+         visible 1
+         ignorepointer 1
+         color 0.8588 0.8588 0.8588 1
+         position 0 0.02
+         size 0.4562 0.0766
+         halign center_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         draggable 0
+         text "#gm_list_title"
+         font "gui/fonts/etelkatextpro22"
+         "text color" 0.6196 0.6196 0.6196 1
+         "exact text" 0
+         "size to text h" 0
+         "size to text v" 0
+         "text halign" center
+         "text valign" center
+        }
+        TextListboxWidgetClass GarageList {
+         visible 1
+         position -0.24786 -0.12427
+         size 0.41594 0.34031
+         halign center_ref
+         valign center_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         style Default
+         "title visible" 0
+         colums ""
+         lines 10
+         "highlight row" 1
+         font "gui/fonts/etelkatextpro16"
+        }
+        GridSpacerWidgetClass GridSpacerWidget0 {
+         visible 1
+         ignorepointer 1
+         position 0.54424 0.12424
+         size 0.43412 0.74292
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         "Size To Content V" 1
+         Columns 1
+         Rows 6
+         {
+          ItemPreviewWidgetClass VehiclePreview {
+           ignorepointer 1
+           position 0.27648 -0.2957
+           size 0.38935 0.49926
+           halign center_ref
+           valign center_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           scaled 1
+           "force flip enable" 1
+           "force flip" 1
+          }
+          GridSpacerWidgetClass GridStatut {
+           ignorepointer 1
+           position 0.023 0.021
+           size 0.111 0.11
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           "Size To Content H" 1
+           Columns 2
+           Rows 1
+           {
+            ImageWidgetClass ParkingStatut {
+             visible 1
+             clipchildren 0
+             inheritalpha 0
+             ignorepointer 1
+             color 0 1 0 1
+             position 1.29939 -0.13356
+             size 0.04868 -1.07358
+             valign center_ref
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             image0 "set:dayz_gui image:circle"
+             mode additive
+             "src alpha" 1
+             "no wrap" 1
+             stretch 1
+             filter 1
+            }
+            TextWidgetClass ParkingText {
+             ignorepointer 1
+             position 0.51963 0.55137
+             size 0.94732 0.74774
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             text "Parking available"
+             font "gui/fonts/etelkatextpro22"
+             "text valign" center
+            }
+           }
+          }
+          TextWidgetClass TextCostParkOut {
+           ignorepointer 1
+           color 0.8588 0.8588 0.8588 1
+           position 0.24667 0.33192
+           size 0.44879 0.0743
+           halign center_ref
+           valign center_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           draggable 0
+           style Normal
+           text "#gm_cost_park_out"
+           font "gui/fonts/etelkatextpro22"
+           "text color" 0.6196 0.6196 0.6196 1
+           "exact text" 0
+           "size to text h" 0
+           "size to text v" 1
+           "text valign" center
+          }
+          TextWidgetClass TextCostParkIn {
+           ignorepointer 1
+           color 0.8588 0.8588 0.8588 1
+           position 0.24706 0.25925
+           size 0.44879 0.06994
+           halign center_ref
+           valign center_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           draggable 0
+           style Normal
+           text "#gm_cost_park_in"
+           font "gui/fonts/etelkatextpro22"
+           "text color" 0.6196 0.6196 0.6196 1
+           "exact text" 0
+           "size to text h" 0
+           "size to text v" 1
+           "text valign" center
+          }
+          TextWidgetClass TextMoney {
+           ignorepointer 1
+           color 0.8588 0.8588 0.8588 1
+           position 0.24848 -0.33384
+           size 0.45024 0.08061
+           halign center_ref
+           valign center_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           draggable 0
+           style Normal
+           text "#tpm_money"
+           font "gui/fonts/etelkatextpro22"
+           "text color" 0.6196 0.6196 0.6196 1
+           "exact text" 0
+           "size to text h" 0
+           "size to text v" 1
+           "text valign" center
+          }
+          GridSpacerWidgetClass GridButtons {
+           ignorepointer 1
+           position 0.247 0.01985
+           size 0.44815 5.25812
+           halign center_ref
+           valign bottom_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 1
+           Padding 5
+           Margin 10
+           "Size To Content V" 1
+           Columns 2
+           Rows 2
+           {
+            PanelWidgetClass BuyPanelWidget {
+             visible 1
+             ignorepointer 1
+             color 0 0 0 0.7843
+             position 0 0
+             size 1 64
+             hexactpos 1
+             vexactpos 1
+             hexactsize 1
+             vexactsize 1
+             style rover_sim_colorable
+             {
+              ButtonWidgetClass BttnParkOut {
+               visible 1
+               color 0.7333 0.7333 0.7333 1
+               position 0 0
+               size 1 1
+               valign center_ref
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+               style OldStyle
+               {
+                TextWidgetClass BttnBuy_label {
+                 ignorepointer 1
+                 position 0 0
+                 size 1 1
+                 halign center_ref
+                 valign center_ref
+                 hexactpos 0
+                 vexactpos 0
+                 hexactsize 0
+                 vexactsize 0
+                 text "#gm_bttn_parkout"
+                 font "gui/fonts/etelkatextpro22"
+                 "text halign" center
+                 "text valign" center
+                }
+               }
+              }
+             }
+            }
+            PanelWidgetClass SellPanelWidget {
+             ignorepointer 1
+             color 0 0 0 0.7843
+             position 0 0
+             size 1 64
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 1
+             style rover_sim_colorable
+             {
+              ButtonWidgetClass BttnParkIn {
+               visible 1
+               color 0.7333 0.7333 0.7333 1
+               position 0 0
+               size 1 1
+               halign right_ref
+               valign center_ref
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 0
+               style OldStyle
+               {
+                TextWidgetClass BttnSell_label {
+                 ignorepointer 1
+                 position 0 0
+                 size 1 1
+                 halign center_ref
+                 valign center_ref
+                 hexactpos 0
+                 vexactpos 0
+                 hexactsize 0
+                 vexactsize 0
+                 text "#gm_bttn_parkin"
+                 font "gui/fonts/etelkatextpro22"
+                 "text halign" center
+                 "text valign" center
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    TextWidgetClass TextTitle {
+     ignorepointer 1
+     color 0.8588 0.8588 0.8588 1
+     position 0.01035 -0.43722
+     size 0.45024 0.08061
+     halign center_ref
+     valign center_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     draggable 0
+     style Bold
+     text "#gm_garage_title"
+     font "gui/fonts/etelkatextpro28"
+     "text color" 0.6196 0.6196 0.6196 1
+     "exact text" 0
+     "size to text h" 0
+     "size to text v" 1
+     "text halign" center
+     "text valign" center
+    }
+   }
+  }
+ }
+}

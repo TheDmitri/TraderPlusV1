@@ -1,0 +1,331 @@
+PanelWidgetClass ProductWrapper {
+ color 0.9725 0.8431 0 0
+ position 0 0
+ size 260 250
+ hexactpos 0
+ vexactpos 0
+ hexactsize 1
+ vexactsize 1
+ style blank
+ {
+  PanelWidgetClass Highlight {
+   visible 0
+   ignorepointer 1
+   color 0.2353 0.6235 0.3333 1
+   size 1 1
+   halign center_ref
+   valign center_ref
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   scriptclass ""
+   style DayZDefaultPanel
+  }
+  ButtonWidgetClass ProductBtn {
+   disabled 0
+   clipchildren 1
+   keepsafezone 0
+   color 0.8745 0.7686 0.451 0.5294
+   position 0.00067 -0.00547
+   size 0.9978 1.00604
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   userID 20062002
+   draggable 0
+   style Empty
+   "no focus" 0
+   switch once
+   {
+    PanelWidgetClass PanelPrice {
+     ignorepointer 1
+     color 0 0 0 0.7843
+     position 0.01836 0.74671
+     size 0.96423 0.11237
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     style DayZDefaultPanelBottom
+     {
+      PanelWidgetClass GridPrice {
+       ignorepointer 1
+       color 0.2353 0.3333 0.6235 1
+       position -0.0014 -0.02469
+       size 0.99302 1.05728
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       scaled 1
+       {
+        TextWidgetClass Price {
+         ignorepointer 1
+         color 1 0.6902 0.3608 1
+         position 0.45119 0.03103
+         size 0.54794 0.97616
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         text "100"
+         font "TraderPlus/gui/fonts/regular12"
+         "exact text" 0
+         "size to text h" 0
+         "size to text v" 0
+         "text valign" center
+        }
+        ImageWidgetClass Coin {
+         ignorepointer 1
+         color 1 0.9137 0.6471 1
+         position 0.30775 -0.00327
+         size 0.13945 0.97795
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         imageTexture "{06ED1030C49F91FB}TraderPlus/gui/coin.edds"
+         mode additive
+         "src alpha" 1
+         stretch 1
+         Mask "{06ED1030C49F91FB}TraderPlus/gui/coin.edds"
+        }
+       }
+      }
+     }
+    }
+    PanelWidgetClass PanelStockcCount {
+     ignorepointer 1
+     color 0 0 0 0.7843
+     position 0.01678 0.87305
+     size 0.96408 0.10902
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     style DayZDefaultPanelBottom
+     {
+      TextWidgetClass StockCountTitle {
+       ignorepointer 1
+       position 0.00326 0.0406
+       size 0.448 0.90974
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       style Bold
+       text "STOCK"
+       font "TraderPlus/gui/fonts/regular12"
+       "exact text" 0
+       "size to text h" 0
+       "text valign" center
+      }
+      TextWidgetClass StockCountInput {
+       ignorepointer 1
+       position 0.45503 0.00141
+       size 0.53645 0.92859
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       text "50/100"
+       font "gui/fonts/etelkatextpro14"
+       "text valign" center
+      }
+     }
+    }
+    PanelWidgetClass PanelPreview {
+     ignorepointer 1
+     color 0 0 0 0.7843
+     position 0.01398 0.18913
+     size 0.96989 0.54555
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     style DayZDefaultPanelBottom
+     {
+      ItemPreviewWidgetClass ProductPreview {
+       ignorepointer 1
+       position -0.00734 0.02528
+       size 0.9499 0.9516
+       halign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+      }
+      ImageWidgetClass Health {
+       visible 1
+       clipchildren 0
+       inheritalpha 0
+       ignorepointer 1
+       color 0 1 0 1
+       position 0.03439 -0.36747
+       size 20.5491 21.9488
+       valign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 1
+       vexactsize 1
+       image0 "set:dayz_gui image:circle"
+       mode additive
+       "src alpha" 1
+       "no wrap" 1
+       stretch 1
+       filter 1
+      }
+      GridSpacerWidgetClass GridSpacerWidget0 {
+       ignorepointer 1
+       position 0.04627 0.05657
+       size 308.18201 23.6119
+       halign right_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 1
+       vexactsize 1
+       Padding 5
+       "Size To Content H" 1
+       Columns 2
+       Rows 1
+       {
+        TextWidgetClass CountOnYou {
+         ignorepointer 1
+         position 0.14098 -0.33064
+         size 0.33271 0.08223
+         halign right_ref
+         valign center_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         font "TraderPlus/gui/fonts/regular12"
+         "text color" 0 0.502 0.1255 1
+         "exact text" 0
+         "size to text h" 0
+         "size to text v" 0
+         "text halign" right
+         "text valign" center
+        }
+        ImageWidgetClass ImageBag {
+         ignorepointer 1
+         position 0.0484 -0.08254
+         size 24 41.0828
+         halign right_ref
+         valign center_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 1
+         vexactsize 1
+         imageTexture "{4AA525A934576ADF}TraderPlus/datasets/bag.edds"
+         mode additive
+         "src alpha" 1
+         "no wrap" 0
+         stretch 1
+         "flip u" 0
+        }
+       }
+      }
+     }
+    }
+    PanelWidgetClass PanelTitle {
+     ignorepointer 1
+     color 0 0 0 0.7843
+     position 0.01772 0.02245
+     size 0.96785 0.15451
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     style DayZDefaultPanelBottom
+     {
+      TextWidgetClass TitleExtraSmall {
+       visible 0
+       ignorepointer 1
+       position 0 0
+       size 1 0.97
+       halign center_ref
+       valign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       scaled 1
+       scriptclass ""
+       style Normal
+       font "TraderPlus/gui/fonts/regular12"
+       "exact text" 0
+       "exact text size" 8
+       "size to text h" 0
+       "size to text v" 0
+       "text halign" center
+       "text valign" center
+      }
+      TextWidgetClass TitleVerySmall {
+       visible 0
+       ignorepointer 1
+       position 0 0
+       size 1 0.97
+       halign center_ref
+       valign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       scriptclass ""
+       style Normal
+       font "TraderPlus/gui/fonts/regular12"
+       "exact text" 0
+       "size to text h" 0
+       "size to text v" 0
+       "text halign" center
+       "text valign" center
+      }
+      TextWidgetClass TitleSmall {
+       visible 0
+       ignorepointer 1
+       position 0 0
+       size 1 0.97
+       halign center_ref
+       valign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       scriptclass ""
+       style Normal
+       font "TraderPlus/gui/fonts/regular16"
+       "exact text" 0
+       "size to text h" 0
+       "size to text v" 0
+       "text halign" center
+       "text valign" center
+      }
+      TextWidgetClass Title {
+       visible 0
+       ignorepointer 1
+       position 0 0
+       size 1 0.96
+       halign center_ref
+       valign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       scriptclass ""
+       style Normal
+       font "TraderPlus/gui/fonts/regular22"
+       "exact text" 0
+       "size to text h" 0
+       "size to text v" 0
+       "text halign" center
+       "text valign" center
+      }
+     }
+    }
+   }
+  }
+ }
+}

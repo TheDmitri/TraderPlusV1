@@ -1,0 +1,40 @@
+FrameWidgetClass NotifFrameWidget {
+ clipchildren 0
+ position 0.39521 -0.41305
+ size 0.20135 0.12259
+ halign center_ref
+ valign center_ref
+ hexactsize 0
+ vexactsize 0
+ {
+  PanelWidgetClass NotifPanel {
+   ignorepointer 1
+   color 0 0 0 0.6863
+   position 0.03286 0.31274
+   size 0.93224 0.37771
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   style rover_sim_colorable
+   {
+    RichTextWidgetClass NotifText {
+     ignorepointer 1
+     color 1 0.749 0 1
+     position 0.01882 0.13265
+     size 0.94863 0.72414
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     text "LEAVING ZONE IN:"
+     "exact text" 1
+     text_proportion 0.6
+     "text halign" center
+     "text valign" center
+     wrap 1
+    }
+   }
+  }
+ }
+}

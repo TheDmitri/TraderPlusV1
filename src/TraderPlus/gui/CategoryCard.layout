@@ -1,0 +1,111 @@
+GridSpacerWidgetClass rootframe {
+ ignorepointer 1
+ position 0 0
+ size 1 1
+ hexactpos 0
+ vexactpos 0
+ hexactsize 0
+ vexactsize 0
+ priority 1
+ style Empty
+ "Size To Content H" 1
+ "Size To Content V" 1
+ content_halign center
+ content_valign center
+ Columns 1
+ Rows 1
+ {
+  PanelWidgetClass CategoryCardPanel {
+   visible 1
+   ignorepointer 1
+   color 1 1 1 0.9412
+   size 1 49
+   halign center_ref
+   valign center_ref
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 1
+   style Outline
+   {
+    PanelWidgetClass TitleBackground {
+     visible 1
+     ignorepointer 1
+     color 0 0 0 1
+     size 0.995 44
+     halign center_ref
+     valign center_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 1
+     style rover_sim_colorable
+    }
+    TextWidgetClass Title {
+     visible 1
+     ignorepointer 1
+     position 21.6083 -0.36264
+     size 0.83229 0.90573
+     valign center_ref
+     hexactpos 1
+     vexactpos 1
+     hexactsize 0
+     vexactsize 0
+     priority 1
+     scriptclass ""
+     style Normal
+     text "CATEGORYNAME"
+     font "TraderPlus/gui/fonts/regular22"
+     "exact text" 0
+     "text halign" left
+     "text valign" center
+    }
+    ButtonWidgetClass BttnCategory {
+     visible 1
+     clipchildren 0
+     ignorepointer 0
+     color 0.8627 0.8627 0.8627 1
+     size 1 1
+     halign center_ref
+     valign center_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     userID 20062003
+     scriptclass ""
+     style Default
+    }
+    TextWidgetClass ProductsCount {
+     ignorepointer 1
+     position 0.8435 0.06401
+     size 0.15428 0.88178
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     text "0/100"
+	 font "TraderPlus/gui/fonts/regular22"
+     "text halign" right
+     "text valign" center
+    }
+   }
+  }
+  GridSpacerWidgetClass ProductsList {
+   visible 0
+   ignorepointer 1
+   position 0 50
+   size 1 0.5
+   hexactpos 0
+   vexactpos 1
+   hexactsize 0
+   vexactsize 0
+   scriptclass "ViewBinding"
+   Padding 8
+   Margin 5
+   "Size To Content V" 1
+   Columns 6
+   Rows 100
+  }
+ }
+}

@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{772EE0CB4B1643A7}TraderPlus/datasets/cashier.edds"
+ Author "thedmitri"
+ ChangeDate -181146572
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "cashier.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

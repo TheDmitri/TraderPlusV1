@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<modded_inputs>
+    <inputs>
+        <actions>
+            <input name="UACarLockToggle" loc="Lock/Unlock vehicle" />
+        </actions>
+    </inputs>
+    <preset>
+		    <input name="UACarLockToggle">
+            <btn name="kU" />
+        </input>
+    </preset>
+</modded_inputs>

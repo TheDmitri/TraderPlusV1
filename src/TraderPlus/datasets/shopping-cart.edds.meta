@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{8451250ACCD03A86}TraderPlus/datasets/shopping-cart.edds"
+ Author "thedmitri"
+ ChangeDate 323742772
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "shopping-cart.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

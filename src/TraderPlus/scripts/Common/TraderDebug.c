@@ -1,0 +1,2 @@
+//#define TRADERPLUSDEBUG
+#define TRADERPLUS

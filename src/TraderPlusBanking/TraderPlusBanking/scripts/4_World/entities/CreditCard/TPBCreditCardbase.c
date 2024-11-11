@@ -1,0 +1,1 @@
+class TraderPlusCreditCard extends ItemBase{};

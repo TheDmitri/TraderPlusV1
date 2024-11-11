@@ -1,0 +1,941 @@
+PanelWidgetClass rootFrame {
+ position 0.00157 0.00461
+ size 1 1
+ halign center_ref
+ valign center_ref
+ hexactpos 0
+ vexactpos 0
+ hexactsize 0
+ vexactsize 0
+ style blank
+ {
+  PanelWidgetClass Background {
+   visible 1
+   ignorepointer 1
+   keepsafezone 1
+   color 0.702 0.702 0.702 1
+   position -5.60285 1.67263
+   size 0.9918 0.98231
+   halign center_ref
+   valign center_ref
+   hexactpos 1
+   vexactpos 1
+   hexactsize 0
+   vexactsize 0
+   style blank
+   {
+    PanelWidgetClass TPSubPanel {
+     ignorepointer 1
+     color 0 0 0 1
+     position -2.48512 3.09383
+     size 0.98 133.474
+     halign center_ref
+     hexactpos 1
+     vexactpos 1
+     hexactsize 0
+     vexactsize 1
+     style blank
+     {
+      PanelWidgetClass TraderPanel {
+       visible 1
+       ignorepointer 1
+       position 10.4635 3.18185
+       size 0.19767 90
+       valign center_ref
+       hexactpos 1
+       vexactpos 1
+       hexactsize 0
+       vexactsize 1
+       style blank
+       {
+        TextWidgetClass TraderNameText {
+         ignorepointer 1
+         position 0.08073 0.4276
+         size 350 45
+         hexactpos 1
+         vexactpos 1
+         hexactsize 1
+         vexactsize 1
+         fixaspect inside
+         text "Keiko"
+         font "TraderPlus/gui/fonts/regular22"
+         "text valign" center
+        }
+        TextWidgetClass TraderDescriptionText {
+         ignorepointer 1
+         color 1 0.749 0 1
+         position 1.1623 42.8743
+         size 350 45
+         hexactpos 1
+         vexactpos 1
+         hexactsize 1
+         vexactsize 1
+         fixaspect inside
+         text "Weapon Seller"
+         font "TraderPlus/gui/fonts/regular22"
+         "text valign" center
+        }
+       }
+      }
+      PanelWidgetClass PlayerInfoPanel {
+       clipchildren 0
+       ignorepointer 1
+       size 0.33 90
+       halign right_ref
+       valign center_ref
+       hexactpos 1
+       vexactpos 1
+       hexactsize 0
+       vexactsize 1
+       {
+        PanelWidgetClass TimerPanel {
+         visible 1
+         clipchildren 0
+         ignorepointer 1
+         size 200 90
+         halign right_ref
+         valign center_ref
+         hexactpos 1
+         vexactpos 1
+         hexactsize 1
+         vexactsize 1
+         {
+          TextWidgetClass TimerText {
+           visible 0
+           ignorepointer 1
+           color 0.8745 0.1098 0.1098 1
+           position 0 0
+           size 200 45
+           hexactpos 1
+           vexactpos 1
+           hexactsize 1
+           vexactsize 1
+           text "Timer"
+           "text halign" center
+           "text valign" center
+          }
+          TextWidgetClass TimerTextInput {
+           visible 0
+           ignorepointer 1
+           color 0.8745 0.1098 0.1098 1
+           position 0 45
+           size 200 45
+           hexactpos 1
+           vexactpos 1
+           hexactsize 1
+           vexactsize 1
+           text "60s"
+           "text halign" center
+           "text valign" center
+          }
+         }
+        }
+        PanelWidgetClass PlayerPanel {
+         visible 1
+         clipchildren 0
+         inheritalpha 0
+         ignorepointer 1
+         position 0.00188 0.25416
+         size 0.60365 0.48945
+         valign center_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         {
+          TextWidgetClass PlayerMoneyText {
+           ignorepointer 1
+           color 0.1098 0.8745 0.302 1
+           position 0.018 0.0059
+           size 0.9673 0.9947
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           text "#tpm_money"
+           font "TraderPlus/gui/fonts/regular22"
+           "text color" 0.1098 0.8745 0.302 1
+           "exact text" 0
+           "text valign" center
+          }
+         }
+        }
+       }
+      }
+      TextWidgetClass TraderTitle {
+       visible 1
+       clipchildren 0
+       ignorepointer 1
+       color 1 0.749 0 1
+       position -1.69784 1.79842
+       size 0.33 90
+       halign center_ref
+       valign center_ref
+       hexactpos 1
+       vexactpos 1
+       hexactsize 0
+       vexactsize 1
+       style Bold
+       text "TRADER PLUS"
+       font "TraderPlus/gui/fonts/regular58"
+       "text halign" center
+       "text valign" center
+      }
+     }
+    }
+    PanelWidgetClass ContentPanel {
+     visible 1
+     clipchildren 0
+     ignorepointer 1
+     position -0.00167 135.705
+     size 0.98 0.83054
+     halign center_ref
+     hexactpos 0
+     vexactpos 1
+     hexactsize 0
+     vexactsize 0
+     {
+      PanelWidgetClass PanelStock {
+       visible 1
+       ignorepointer 1
+       color 0 0 0 1
+       position 3.69745 2.75421
+       size 0.33 1.03801
+       hexactpos 1
+       vexactpos 1
+       hexactsize 0
+       vexactsize 0
+       style rover_sim_black
+       {
+        TextWidgetClass StockText {
+         ignorepointer 1
+         color 1 0.749 0 1
+         position 0 0
+         size 1 75
+         hexactpos 1
+         vexactpos 1
+         hexactsize 0
+         vexactsize 1
+         style Bold
+         text "#tpm_stock"
+         font "TraderPlus/gui/fonts/regular22"
+         "exact text" 0
+         "text halign" center
+         "text valign" center
+        }
+        XComboBoxWidgetClass StockCategories {
+         color 1 0.749 0 1
+         position 1.95913 75
+         size 0.994 48
+         hexactpos 1
+         vexactpos 1
+         hexactsize 0
+         vexactsize 1
+         style Default
+         font "TraderPlus/gui/fonts/regular22"
+         items "#tpm_all"
+        }
+        PanelWidgetClass SearchBarStock {
+         clipchildren 0
+         ignorepointer 1
+         position 0.00832 0.88512
+         size 0.98627 0.04889
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         {
+          ImageWidgetClass LoupeImage {
+           ignorepointer 1
+           color 0.8745 0.8745 0.8745 1
+           position 0.00167 0.02556
+           size 0.06774 0.93528
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           scaled 1
+           imageTexture "{F314F4772CEF6D8D}TraderPlus/gui/loupe.edds"
+           mode additive
+           "src alpha" 0
+           "no wrap" 0
+           stretch 1
+           "flip u" 0
+           "flip v" 0
+           "Transition width" 0
+          }
+          PanelWidgetClass SearchPanelWidget {
+           ignorepointer 1
+           color 0.6235 0.2353 0.2353 1
+           position 0.07864 0.021
+           size 0.92594 0.996
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           style editor_selection
+           {
+            EditBoxWidgetClass SearchStockBox {
+             position 0.00358 0.0379
+             size 0.99273 0.905
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             text "#tpm_search"
+             "limit visible" 1
+             "Use default text" 1
+             font "TraderPlus/gui/fonts/regular22"
+            }
+           }
+          }
+         }
+        }
+        TextWidgetClass StockCountText {
+         ignorepointer 1
+         color 1 0.749 0 1
+         position 5.96473 19.0155
+         size 0.98701 36.9431
+         valign bottom_ref
+         hexactpos 1
+         vexactpos 1
+         hexactsize 0
+         vexactsize 1
+         text "#tpm_stock_count"
+         font "TraderPlus/gui/fonts/regular22"
+         {
+          TextWidgetClass ShowAllText {
+           ignorepointer 1
+           position 0.55663 0.05685
+           size 0.37501 0.94113
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           text "#tpm_showall"
+           font "TraderPlus/gui/fonts/regular16"
+           "exact text" 0
+           "text halign" right
+           "text valign" center
+          }
+          CheckBoxWidgetClass ShowAllCheckBox {
+           position 0.93848 0.08861
+           size 0.05336 29.6132
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 1
+           style Default
+          }
+         }
+        }
+        PanelWidgetClass StockScrollPanel {
+         ignorepointer 1
+         position 0.00493 0.13615
+         size 0.98826 0.74252
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         style blank
+         {
+          TextWidgetClass LoadingTextStock {
+           visible 0
+           ignorepointer 1
+           position 0.1826 0.38361
+           size 0.681 0.117
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           text "Loading..."
+           font "TraderPlus/gui/fonts/regular"
+           "text halign" center
+           "text valign" center
+          }
+         }
+        }
+       }
+      }
+      PanelWidgetClass ProductInformation {
+       visible 1
+       ignorepointer 0
+       position 0 15.3558
+       size 0.33 1.03619
+       halign center_ref
+       valign center_ref
+       hexactpos 1
+       vexactpos 1
+       hexactsize 0
+       vexactsize 0
+       {
+        PanelWidgetClass PanelProduct {
+         visible 1
+         ignorepointer 1
+         color 0 0 0 1
+         position 3.26987 3.15283
+         size 1 0.88641
+         halign center_ref
+         hexactpos 1
+         vexactpos 1
+         hexactsize 0
+         vexactsize 0
+         style rover_sim_black
+         {
+          PanelWidgetClass ItemInfoPanel {
+           clipchildren 0
+           ignorepointer 1
+           position 0 75
+           size 1 48
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 1
+           {
+            PanelWidgetClass PanelWidgetHealth {
+             ignorepointer 1
+             color 0.1569 0.6235 0.2745 1
+             position 0.01781 8.36252
+             size 0.36897 34.8576
+             halign right_ref
+             hexactpos 0
+             vexactpos 1
+             hexactsize 0
+             vexactsize 1
+             style DayZDefaultPanelLeft
+             {
+              TextWidgetClass HealthText {
+               ignorepointer 1
+               position 2.34557 0.15098
+               size 0.98126 34.8576
+               hexactpos 1
+               vexactpos 1
+               hexactsize 0
+               vexactsize 1
+               style Bold
+               text "Pristine"
+               font "TraderPlus/gui/fonts/regular-Italic22"
+               "text halign" center
+               "text valign" center
+              }
+             }
+            }
+            TextWidgetClass QuantityText {
+             ignorepointer 1
+             color 0.1882 0.749 0.3294 1
+             position 11.2594 6.27561
+             size 0.58901 38.1401
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 1
+             style Bold
+             text "Quantity:1000 (-1000)"
+             font "TraderPlus/gui/fonts/regular22"
+             "text color" 0.1569 0.2745 0.6235 1
+             "text valign" center
+            }
+           }
+          }
+          ItemPreviewWidgetClass MainItemPreview {
+           ignorepointer 1
+           position 12.4925 122.45901
+           size 0.96516 0.49411
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 0
+          }
+          TextWidgetClass BuyPriceText {
+           ignorepointer 1
+           color 0.1882 0.749 0.3294 1
+           position 0.02127 0.1412
+           size 0.59044 0.0583
+           valign bottom_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           style Bold
+           text "#tpm_buyprice"
+           font "TraderPlus/gui/fonts/regular22"
+           "text color" 0.1569 0.2745 0.6235 1
+           "exact text" 0
+           "text valign" center
+          }
+          TextWidgetClass QuantityTextCombo {
+           ignorepointer 1
+           color 1 0.749 0 1
+           position 0.02245 0.01437
+           size 0.58779 0.0658
+           valign bottom_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           style Normal
+           text "#tpm_tradeqty"
+           font "TraderPlus/gui/fonts/regular22"
+           "text color" 0.1569 0.2745 0.6235 1
+           "text valign" center
+          }
+          TextWidgetClass SlotCountText {
+           ignorepointer 1
+           color 0.1882 0.749 0.3294 1
+           position 0.61314 0.82583
+           size 0.36919 0.06352
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           style Bold
+           text "#tpm_slot"
+           font "TraderPlus/gui/fonts/regular22"
+           "text color" 1 0.5294 0 1
+           "exact text" 0
+           "text valign" center
+          }
+          TextWidgetClass ProductText {
+           ignorepointer 1
+           color 1 0.749 0 1
+           position 15.424 8.1125
+           size 0.94534 57.8
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 1
+           style Bold
+           text "#tpm_product_informations"
+           font "TraderPlus/gui/fonts/regular22"
+           "exact text" 0
+           "size to text h" 0
+           "size to text v" 0
+           "text halign" center
+           "text valign" center
+          }
+          ButtonWidgetClass BttnKit {
+           position 0.59893 0.58793
+           size 0.38206 0.05786
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           text "#tpm_kit_preview"
+           font "TraderPlus/gui/fonts/regular22"
+           "text color" 0.8745 0.6824 0.1098 1
+          }
+          TextWidgetClass SellPriceText {
+           ignorepointer 1
+           color 0.9961 0.6 0.251 1
+           position 0.02123 0.08171
+           size 0.58823 0.0583
+           valign bottom_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           style Bold
+           text "#tpm_sellprice"
+           font "TraderPlus/gui/fonts/regular22"
+           "text color" 0.1569 0.2745 0.6235 1
+           "exact text" 0
+           "text valign" center
+          }
+         }
+        }
+        PanelWidgetClass BtnPanel {
+         clipchildren 0
+         ignorepointer 1
+         color 1 0.4745 0.0745 1
+         position 0.67288 2.22603
+         size 0.99796 80
+         halign center_ref
+         valign bottom_ref
+         hexactpos 1
+         vexactpos 1
+         hexactsize 0
+         vexactsize 1
+         {
+          PanelWidgetClass BuyPanelWidget {
+           visible 1
+           ignorepointer 1
+           color 0.1882 0.749 0.3294 1
+           position 0.00156 -0.00299
+           size 0.47747 0.988
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           style rover_sim_colorable
+           {
+            ButtonWidgetClass BttnBuy {
+             visible 1
+             color 0.502 0.502 0.502 1
+             position 5.31983 -0.50945
+             size 0.9851 63.9649
+             valign center_ref
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 1
+             style Empty
+             text "#tpm_buy"
+             font "TraderPlus/gui/fonts/regular28"
+            }
+           }
+          }
+          PanelWidgetClass SellPanelWidget {
+           visible 1
+           ignorepointer 1
+           color 0.9961 0.6 0.251 1
+           position 0.48382 -0.00218
+           size 0.51286 0.98551
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           style rover_sim_colorable
+           {
+            ButtonWidgetClass BttnSell {
+             visible 1
+             position 0.00613 -0.00033
+             size 0.97888 66.06529
+             halign right_ref
+             valign center_ref
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 1
+             style Empty
+             text "#tpm_sell"
+             font "TraderPlus/gui/fonts/regular28"
+            }
+           }
+          }
+         }
+        }
+        XComboBoxWidgetClass QuantityMultiplier {
+         visible 1
+         disabled 0
+         inheritalpha 0
+         ignorepointer 0
+         keepsafezone 0
+         color 1 0.749 0 1
+         position 0.01042 0.12327
+         size 0.37656 52.2383
+         halign right_ref
+         valign bottom_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         style Default
+         "no focus" 0
+         font "TraderPlus/gui/fonts/regular22"
+         items "1"
+        }
+       }
+      }
+      PanelWidgetClass PanelInventory {
+       visible 1
+       clipchildren 0
+       ignorepointer 1
+       color 0 0 0 1
+       position 0 14.4251
+       size 0.33 1.03399
+       halign right_ref
+       valign center_ref
+       hexactpos 0
+       vexactpos 1
+       hexactsize 0
+       vexactsize 0
+       style rover_sim_black
+       {
+        TextWidgetClass InventoryText {
+         ignorepointer 1
+         color 1 0.749 0 1
+         position 0 0
+         size 1 75
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         style Bold
+         text "#tpm_inventory"
+         font "TraderPlus/gui/fonts/regular22"
+         "exact text" 0
+         "size to text h" 0
+         "text halign" center
+         "text valign" center
+        }
+        XComboBoxWidgetClass InventoryCategories {
+         color 1 0.749 0 1
+         position 2.04086 75
+         size 0.99399 48
+         hexactpos 1
+         vexactpos 1
+         hexactsize 0
+         vexactsize 1
+         font "TraderPlus/gui/fonts/regular22"
+         items "#tpm_all"
+        }
+        PanelWidgetClass SearchBarPanel {
+         ignorepointer 1
+         position 17.9123 819.336
+         size 0.95 40
+         hexactpos 1
+         vexactpos 1
+         hexactsize 0
+         vexactsize 1
+         {
+          ImageWidgetClass LoupeImage0 {
+           ignorepointer 1
+           color 0.8745 0.8745 0.8745 1
+           position -0.001 0.037
+           size 0.069 0.916
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           scaled 1
+           imageTexture "{F314F4772CEF6D8D}TraderPlus/gui/loupe.edds"
+           mode additive
+           "src alpha" 0
+           "no wrap" 0
+           stretch 1
+           "flip u" 0
+           "flip v" 0
+           "Transition width" 0
+          }
+          PanelWidgetClass SearchInvPanelWidget {
+           visible 1
+           ignorepointer 1
+           color 0.6235 0.2353 0.2353 1
+           position 0.08101 0
+           size 0.91701 1.037
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           style editor_selection
+           {
+            EditBoxWidgetClass SearchInventoryBox {
+             position -0.00088 -0.01626
+             size 1.00012 0.984
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             text "#tpm_search"
+             "Use default text" 1
+             font "TraderPlus/gui/fonts/regular22"
+            }
+           }
+          }
+         }
+        }
+        TextWidgetClass InventoryCountText {
+         ignorepointer 1
+         color 1 0.749 0 1
+         position 18.1387 12.0985
+         size 0.95 35
+         valign bottom_ref
+         hexactpos 1
+         vexactpos 1
+         hexactsize 0
+         vexactsize 1
+         text "#tpm_inventory_count"
+         font "TraderPlus/gui/fonts/regular22"
+         {
+          CheckBoxWidgetClass EnablePreview {
+           position 0.91875 0.01281
+           size 0.08119 0.88619
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+          }
+          TextWidgetClass PreviewEnable {
+           ignorepointer 1
+           position 0.5084 0.04402
+           size 0.40796 0.84934
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           text "#tpm_player_text"
+           font "TraderPlus/gui/fonts/regular16"
+           "text halign" right
+           "text valign" center
+          }
+         }
+        }
+        PanelWidgetClass InventoryScrollPanel {
+         ignorepointer 1
+         position 0.00164 0.14008
+         size 0.99618 0.75196
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         {
+          TextWidgetClass LoadingTextInv {
+           visible 0
+           ignorepointer 1
+           position 0.1826 0.38361
+           size 0.681 0.117
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           text "Loading..."
+           font "TraderPlus/gui/fonts/regular"
+           "text halign" center
+           "text valign" center
+          }
+         }
+        }
+       }
+      }
+      PanelWidgetClass PanelPlayerPreview {
+       visible 0
+       ignorepointer 1
+       position 0.67474 0.00096
+       size 0.32526 1.0351
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       style rover_sim_black
+       {
+        TextWidgetClass PlayerText {
+         ignorepointer 1
+         color 1 0.749 0 1
+         position 0.02616 0.00993
+         size 0.9485 0.0686
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         style Bold
+         text "#tpm_player_text"
+         font "TraderPlus/gui/fonts/regular22"
+         "exact text" 0
+         "size to text h" 0
+         "size to text v" 0
+         "text halign" center
+         "text valign" center
+        }
+        PlayerPreviewWidgetClass PlayerPreview {
+         ignorepointer 1
+         position 0.02346 0.09137
+         size 0.94821 0.73077
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+        }
+        ButtonWidgetClass BttnReset {
+         position 0.02753 0.82991
+         size 0.46669 0.0597
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         text "#tpm_reset"
+         text_proportion 0.8
+         font "TraderPlus/gui/fonts/regular22"
+         "text color" 0.1882 0.749 0.3294 1
+        }
+        ButtonWidgetClass BttnRemove {
+         position 0.50273 0.83136
+         size 0.46992 0.0556
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         text "#tpm_remove"
+         text_proportion 0.8
+         font "TraderPlus/gui/fonts/regular22"
+         "text color" 0.8745 0.1098 0.1098 1
+        }
+        ButtonWidgetClass BttnBackToInventory {
+         position 0.02824 0.89391
+         size 0.94669 0.09856
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         text "#tpm_back_inv"
+         text_proportion 0.8
+         font "TraderPlus/gui/fonts/regular22"
+         "text color" 1 0.749 0 1
+        }
+       }
+      }
+      RichTextWidgetClass InformationText {
+       visible 1
+       ignorepointer 1
+       color 1 0.749 0 1
+       position 0.00222 0.26328
+       size 0.31817 0.14048
+       halign center_ref
+       valign bottom_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       "exact text" 1
+       "text halign" center
+       "text valign" center
+       wrap 1
+       "condense whitespace" 1
+       "strip newlines" 1
+      }
+     }
+    }
+   }
+  }
+  PanelWidgetClass LicenceWarningPanel {
+   visible 0
+   ignorepointer 1
+   position 0.23085 0.34448
+   size 0.497 377.11301
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 1
+   style rover_sim_black
+   {
+    MultilineTextWidgetClass LicenceWarningText {
+     ignorepointer 1
+     position 0.02832 0.08244
+     size 0.93985 240.43199
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 1
+     text "You don't have the following licences to be able to use the trader :"
+     font "TraderPlus/gui/fonts/regular"
+     "exact text" 0
+     "text halign" center
+     "text valign" center
+     wrap 1
+     "condense whitespace" 1
+     "strip newlines" 1
+    }
+    ButtonWidgetClass LicenceCloseBttn {
+     position 0.34857 0.76318
+     size 0.28966 62.3874
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 1
+     text "Close"
+     font "TraderPlus/gui/fonts/regular"
+     "text color" 0.8745 0.1098 0.1098 1
+    }
+   }
+  }
+ }
+}

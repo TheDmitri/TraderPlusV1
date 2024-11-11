@@ -1,0 +1,308 @@
+{
+    "Version": "2.5",
+    "VehiclesParts": [
+        {
+            "VehicleName": "OffroadHatchback",
+            "Height": 0,
+            "VehicleParts": [
+                "SparkPlug",
+                "CarBattery",
+                "CarRadiator",
+                "HeadlightH7",
+                "HeadlightH7",
+                "HatchbackDoors_CoDriver",
+                "HatchbackDoors_Driver",
+                "HatchbackHood",
+                "HatchbackTrunk",
+                "HatchbackWheel",
+                "HatchbackWheel",
+                "HatchbackWheel",
+                "HatchbackWheel"
+            ]
+        },
+        {
+            "VehicleName": "OffroadHatchback_Blue",
+            "Height": 0,
+            "VehicleParts": [
+                "SparkPlug",
+                "CarBattery",
+                "CarRadiator",
+                "HeadlightH7",
+                "HeadlightH7",
+                "HatchbackDoors_CoDriver_BlueRust",
+                "HatchbackDoors_Driver_BlueRust",
+                "HatchbackHood_BlueRust",
+                "HatchbackTrunk_BlueRust",
+                "HatchbackWheel",
+                "HatchbackWheel",
+                "HatchbackWheel",
+                "HatchbackWheel"
+            ]
+        },
+        {
+            "VehicleName": "OffroadHatchback_White",
+            "Height": 0,
+            "VehicleParts": [
+                "SparkPlug",
+                "CarBattery",
+                "CarRadiator",
+                "HeadlightH7",
+                "HeadlightH7",
+                "HatchbackDoors_CoDriver_WhiteRust",
+                "HatchbackDoors_Driver_WhiteRust",
+                "HatchbackHood_WhiteRust",
+                "HatchbackTrunk_WhiteRust",
+                "HatchbackWheel",
+                "HatchbackWheel",
+                "HatchbackWheel",
+                "HatchbackWheel"
+            ]
+        },
+        {
+            "VehicleName": "Hatchback_02",
+            "Height": 0,
+            "VehicleParts": [
+                "SparkPlug",
+                "CarBattery",
+                "CarRadiator",
+                "HeadlightH7",
+                "HeadlightH7",
+                "Hatchback_02_Door_1_1",
+                "Hatchback_02_Door_1_2",
+                "Hatchback_02_Door_2_1",
+                "Hatchback_02_Door_2_2",
+                "Hatchback_02_Hood",
+                "Hatchback_02_Trunk",
+                "Hatchback_02_Wheel",
+                "Hatchback_02_Wheel",
+                "Hatchback_02_Wheel",
+                "Hatchback_02_Wheel"
+            ]
+        },
+        {
+            "VehicleName": "Hatchback_02_Black",
+            "Height": 0,
+            "VehicleParts": [
+                "SparkPlug",
+                "CarBattery",
+                "CarRadiator",
+                "HeadlightH7",
+                "HeadlightH7",
+                "Hatchback_02_Door_1_1_BlackRust",
+                "Hatchback_02_Door_1_2_BlackRust",
+                "Hatchback_02_Door_2_1_BlackRust",
+                "Hatchback_02_Door_2_2_BlackRust",
+                "Hatchback_02_Hood_BlackRust",
+                "Hatchback_02_Trunk_BlackRust",
+                "Hatchback_02_Wheel",
+                "Hatchback_02_Wheel",
+                "Hatchback_02_Wheel",
+                "Hatchback_02_Wheel"
+            ]
+        },
+        {
+            "VehicleName": "Hatchback_02_Blue",
+            "Height": 0,
+            "VehicleParts": [
+                "SparkPlug",
+                "CarBattery",
+                "CarRadiator",
+                "HeadlightH7",
+                "HeadlightH7",
+                "Hatchback_02_Door_1_1_BlueRust",
+                "Hatchback_02_Door_1_2_BlueRust",
+                "Hatchback_02_Door_2_1_BlueRust",
+                "Hatchback_02_Door_2_2_BlueRust",
+                "Hatchback_02_Hood_BlueRust",
+                "Hatchback_02_Trunk_BlueRust",
+                "Hatchback_02_Wheel",
+                "Hatchback_02_Wheel",
+                "Hatchback_02_Wheel",
+                "Hatchback_02_Wheel"
+            ]
+        },
+        {
+            "VehicleName": "CivilianSedan",
+            "Height": 0,
+            "VehicleParts": [
+                "SparkPlug",
+                "CarBattery",
+                "CarRadiator",
+                "HeadlightH7",
+                "HeadlightH7",
+                "CivSedanDoors_Driver_WhiteRust",
+                "CivSedanDoors_CoDriver_WhiteRust",
+                "CivSedanDoors_BackLeft_WhiteRust",
+                "CivSedanDoors_BackRight_WhiteRust",
+                "CivSedanHood_WhiteRust",
+                "CivSedanTrunk_WhiteRust",
+                "CivSedanWheel",
+                "CivSedanWheel",
+                "CivSedanWheel",
+                "CivSedanWheel"
+            ]
+        },
+        {
+            "VehicleName": "CivilianSedan_Wine",
+            "Height": 0,
+            "VehicleParts": [
+                "SparkPlug",
+                "CarBattery",
+                "CarRadiator",
+                "HeadlightH7",
+                "HeadlightH7",
+                "CivSedanDoors_Driver_WineRust",
+                "CivSedanDoors_CoDriver_WineRust",
+                "CivSedanDoors_BackLeft_WineRust",
+                "CivSedanDoors_BackRight_WineRust",
+                "CivSedanHood_WineRust",
+                "CivSedanTrunk_WineRust",
+                "CivSedanWheel",
+                "CivSedanWheel",
+                "CivSedanWheel",
+                "CivSedanWheel"
+            ]
+        },
+        {
+            "VehicleName": "CivilianSedan_Black",
+            "Height": 0,
+            "VehicleParts": [
+                "SparkPlug",
+                "CarBattery",
+                "CarRadiator",
+                "HeadlightH7",
+                "HeadlightH7",
+                "CivSedanDoors_Driver_BlackRust",
+                "CivSedanDoors_CoDriver_BlackRust",
+                "CivSedanDoors_BackLeft_BlackRust",
+                "CivSedanDoors_BackRight_BlackRust",
+                "CivSedanHood_BlackRust",
+                "CivSedanTrunk_BlackRust",
+                "CivSedanWheel",
+                "CivSedanWheel",
+                "CivSedanWheel",
+                "CivSedanWheel"
+            ]
+        },
+        {
+            "VehicleName": "Sedan_02",
+            "Height": 0,
+            "VehicleParts": [
+                "SparkPlug",
+                "CarBattery",
+                "CarRadiator",
+                "HeadlightH7",
+                "HeadlightH7",
+                "Sedan_02_Door_1_1_YellowRust",
+                "Sedan_02_Door_1_2_YellowRust",
+                "Sedan_02_Door_2_1_YellowRust",
+                "Sedan_02_Door_2_2_YellowRust",
+                "Sedan_02_Hood_YellowRust",
+                "Sedan_02_Trunk_YellowRust",
+                "Sedan_02_Wheel",
+                "Sedan_02_Wheel",
+                "Sedan_02_Wheel",
+                "Sedan_02_Wheel"
+            ]
+        },
+        {
+            "VehicleName": "Sedan_02_Red",
+            "Height": 0,
+            "VehicleParts": [
+                "SparkPlug",
+                "CarBattery",
+                "CarRadiator",
+                "HeadlightH7",
+                "HeadlightH7",
+                "Sedan_02_Door_1_1_RedRust",
+                "Sedan_02_Door_1_2_RedRust",
+                "Sedan_02_Door_2_1_RedRust",
+                "Sedan_02_Door_2_2_RedRust",
+                "Sedan_02_Hood_RedRust",
+                "Sedan_02_Trunk_RedRust",
+                "Sedan_02_Wheel",
+                "Sedan_02_Wheel",
+                "Sedan_02_Wheel",
+                "Sedan_02_Wheel"
+            ]
+        },
+        {
+            "VehicleName": "Sedan_02_Grey",
+            "Height": 0,
+            "VehicleParts": [
+                "SparkPlug",
+                "CarBattery",
+                "CarRadiator",
+                "HeadlightH7",
+                "HeadlightH7",
+                "Sedan_02_Door_2_1_GreyRust",
+                "Sedan_02_Door_2_2_GreyRust",
+                "Sedan_02_Door_2_1_GreyRust",
+                "Sedan_02_Door_2_2_GreyRust",
+                "Sedan_02_Hood_GreyRust",
+                "Sedan_02_Trunk_GreyRust",
+                "Sedan_02_Wheel",
+                "Sedan_02_Wheel",
+                "Sedan_02_Wheel",
+                "Sedan_02_Wheel"
+            ]
+        },
+        {
+            "VehicleName": "Truck_01_Covered",
+            "Height": 0,
+            "VehicleParts": [
+                "SparkPlug",
+                "TruckBattery",
+                "HeadlightH7",
+                "HeadlightH7",
+                "Truck_01_Door_1_1_GreenRust",
+                "Truck_01_Door_2_1_GreenRust",
+                "Truck_01_Hood_GreenRust",
+                "Truck_01_Wheel",
+                "Truck_01_Wheel",
+                "Truck_01_WheelDouble",
+                "Truck_01_WheelDouble",
+                "Truck_01_WheelDouble",
+                "Truck_01_WheelDouble"
+            ]
+        },
+        {
+            "VehicleName": "Truck_01_Covered_Blue",
+            "Height": 0,
+            "VehicleParts": [
+                "SparkPlug",
+                "TruckBattery",
+                "HeadlightH7",
+                "HeadlightH7",
+                "Truck_01_Door_1_1_BlueRust",
+                "Truck_01_Door_2_1_BlueRust",
+                "Truck_01_Hood_BlueRust",
+                "Truck_01_Wheel",
+                "Truck_01_Wheel",
+                "Truck_01_WheelDouble",
+                "Truck_01_WheelDouble",
+                "Truck_01_WheelDouble",
+                "Truck_01_WheelDouble"
+            ]
+        },
+        {
+            "VehicleName": "Truck_01_Covered_Orange",
+            "Height": 0,
+            "VehicleParts": [
+                "SparkPlug",
+                "TruckBattery",
+                "HeadlightH7",
+                "HeadlightH7",
+                "Truck_01_Door_1_1_OrangeRust",
+                "Truck_01_Door_2_1_OrangeRust",
+                "Truck_01_Hood_OrangeRust",
+                "Truck_01_Wheel",
+                "Truck_01_Wheel",
+                "Truck_01_WheelDouble",
+                "Truck_01_WheelDouble",
+                "Truck_01_WheelDouble",
+                "Truck_01_WheelDouble"
+            ]
+        }
+    ]
+}

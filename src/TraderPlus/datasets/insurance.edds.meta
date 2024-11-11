@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{E962F2215EE877F4}TraderPlus/datasets/insurance.edds"
+ Author "thedmitri"
+ ChangeDate -2059670476
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "insurance.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}
