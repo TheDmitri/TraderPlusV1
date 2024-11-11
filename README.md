@@ -75,8 +75,7 @@ For new features, please consider contributing to TraderPlus V2 instead.
 - Excel tool for price configuration
 
 ### Known Issues
-- [List of known issues that won't be fixed in V1]
-- See our [Issues](link-to-issues) page for current bugs
+- 
 
 ## 🤝 Community
 
