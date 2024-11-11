@@ -1,6 +1,6 @@
 const string TRADERPLUS_CONFIG_ROOT_SERVER = "$profile:TraderPlus\\";
 const string TRADERPLUS_LOGGER_DIR_SERVER = TRADERPLUS_CONFIG_ROOT_SERVER + "TraderPlusLogs\\";
-const string TRADERPLUS_LOGGER_FILENAME = "TraderPlus_%1.log";
+const string TRADERPLUS_LOGGER_FILENAME = TRADERPLUS_LOGGER_DIR_SERVER + "TraderPlus_%1.log";
 const string TRADERPLUS_CONFIG_DIR_SERVER = TRADERPLUS_CONFIG_ROOT_SERVER + "TraderPlusConfig\\";
 const string TRADERPLUS_DB_DIR_SERVER = TRADERPLUS_CONFIG_ROOT_SERVER + "TraderPlusDatabase\\";
 
