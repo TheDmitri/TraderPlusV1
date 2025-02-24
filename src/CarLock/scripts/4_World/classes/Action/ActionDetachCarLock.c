@@ -34,11 +34,11 @@ class  ActionDetachCarLock: ActionContinuousBase
 		if ( GetGame().IsServer() )
 				return true;
 
-		CarScript ntarget = CarScript.Cast( target.GetObject() );
+		CarScript ntarget = CarLockTargetHelper.GetTargetCar(target);
 		if (ntarget && (ntarget.m_CarLockOwner == player.CLSteamlowID && ntarget.m_CarLockPassword != -1 ) || player.GetAdminStatus() == SZ_IS_ADMIN ||player.HasPassword(ntarget.m_CarLockPassword,ntarget.m_CarLockOwner))
 		{
 			bool IsEmpty = true;
-			Transport transport = Transport.Cast(target.GetObject());
+			Transport transport = Transport.Cast(ntarget);
 			if (!transport)return false;
 
 			int crewSize = transport.CrewSize();

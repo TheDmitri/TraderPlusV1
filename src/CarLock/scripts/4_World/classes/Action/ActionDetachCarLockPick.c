@@ -35,14 +35,14 @@ class  ActionDetachCarLockPick: ActionContinuousBase
 		if ( GetGame().IsServer() )
 				return true;
 
-		CarScript ntarget = CarScript.Cast( target.GetObject() );
+		CarScript ntarget = CarLockTargetHelper.GetTargetCar(target);
 
 		if(player.GetSafeZoneStatus() == SZ_IN_SAFEZONE)return false;
 
 		if (ntarget && ntarget.m_CarLockOwner != -1)
 		{
 			bool IsEmpty = true;
-			Transport transport = Transport.Cast(target.GetObject());
+			Transport transport = Transport.Cast(ntarget);
 			if (!transport)return false;
 
 			int crewSize = transport.CrewSize();
@@ -61,7 +61,7 @@ class  ActionDetachCarLockPick: ActionContinuousBase
 	{
 		if ( action_data.m_MainItem && action_data.m_MainItem.IsKindOf("CarLockPick") && action_data.m_MainItem.GetHierarchyRootPlayer() == action_data.m_Player )
 		{
-			CarScript car = CarScript.Cast(action_data.m_Target.GetObject());
+			CarScript car = CarLockTargetHelper.GetTargetCar(action_data.m_Target);
 			if(car)
 			{
 				m_car = car;

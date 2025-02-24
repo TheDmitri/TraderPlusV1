@@ -370,7 +370,18 @@ class GarageServer
           #ifdef GMDEBUG
           GetGMLogger().LogInfo("garageData.Vehicles[listpos].VehicleName == carname");
           #endif
-          bool state = GarageHelpers.CreateVehicle(player, carname, garageData.Vehicles[listpos].VehicleCargoId, garageData.Vehicles[listpos].CollateralMoney, garageData.Vehicles[listpos].VehicleID, garageData.Vehicles[listpos].EngineHealth, garageData.Vehicles[listpos].FuelAmmount, pos, ori, garageData.Vehicles[listpos].ItemsInCargo);
+          
+          // Store vehicle data in temporary variables to simplify the CreateVehicle call
+          int tVehicleCargoId = garageData.Vehicles[listpos].VehicleCargoId;
+          int tCollateralMoney = garageData.Vehicles[listpos].CollateralMoney;
+          int tVehicleId = garageData.Vehicles[listpos].VehicleID;
+          float tEngineHealth = garageData.Vehicles[listpos].EngineHealth;
+          float tFuelAmount = garageData.Vehicles[listpos].FuelAmmount;
+          array<ref ItemsCargo> tCargoItems = garageData.Vehicles[listpos].ItemsInCargo;
+          
+          // Now create the vehicle with the stored parameters
+          bool state = GarageHelpers.CreateVehicle(player, carname, tVehicleCargoId, tCollateralMoney, tVehicleId, tEngineHealth, tFuelAmount, pos, ori, tCargoItems);
+          
           if(state)
           {
             state = GarageHelpers.RemoveMoneyFromPlayer(player, GetGarageConfig().ParkOutCost);

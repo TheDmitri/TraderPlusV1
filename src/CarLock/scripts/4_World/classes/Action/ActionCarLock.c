@@ -32,21 +32,21 @@ class  ActionCarLock: ActionContinuousBase
         if ( GetGame().IsServer() )
             return true;
 
-        CarScript ntarget = CarScript.Cast( target.GetObject() );
+        CarScript ntarget = CarLockTargetHelper.GetTargetCar(target);
         if (ntarget && ntarget.m_CarLockPassword != -1 && !ntarget.m_CarLock_IsLocked && ntarget.m_CarLockOwner !=-1 && (ntarget.m_CarLockOwner == player.CLSteamlowID || player.GetAdminStatus() == SZ_IS_ADMIN || player.HasPassword(ntarget.m_CarLockPassword,ntarget.m_CarLockOwner)))
-					  return true;
+			return true;
 				
-				return false;
+		return false;
     }
 
     override void OnStartServer(ActionData action_data)
     {
-			CarScript car = CarScript.Cast(action_data.m_Target.GetObject());
-			if(car)
-			{
-				car.SetSoundToPlay(1);
-				car.SetCarLock(true);
-			}
+		CarScript car = CarLockTargetHelper.GetTargetCar(action_data.m_Target); 
+		if(car)
+		{
+			car.SetSoundToPlay(1);
+			car.SetCarLock(true);
 		}
+	}
 }
 #endif
