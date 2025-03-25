@@ -51,6 +51,19 @@ class NewReceiptBase extends ItemBase
 		AddAction(ActionDeployVehicle);
 	}
 
+	override string GetDisplayName()
+	{
+		string displayName;
+		g_Game.ObjectGetDisplayName(this, displayName);
+		
+		if(CarClassName == string.Empty) return displayName;
+
+		displayName = g_Game.ConfigGetTextOut("CfgVehicles " + CarClassName + " displayName");
+
+		if(displayName == string.Empty) return "UNKNOWN_CAR_CLASSNAME";
+		return displayName;
+	}	
+
 	override void OnPlacementComplete(Man player, vector position = "0 0 0", vector orientation = "0 0 0") 
 	{
 		super.OnPlacementComplete(player);
