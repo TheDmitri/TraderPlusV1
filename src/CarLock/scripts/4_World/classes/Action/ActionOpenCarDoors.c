@@ -2,7 +2,7 @@
 modded class ActionCarDoors: ActionInteractBase
 {
     override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
-	   {
+	{
         CarScript carScript;
         if (Class.CastTo(carScript, target.GetParent()))
         {
@@ -12,8 +12,8 @@ modded class ActionCarDoors: ActionInteractBase
             }
         }
 
-		    return super.ActionCondition(player, target, item);
-	 }
+		return super.ActionCondition(player, target, item);
+	}
 }
 
 modded class ActionCarDoorsOutside: ActionInteractBase

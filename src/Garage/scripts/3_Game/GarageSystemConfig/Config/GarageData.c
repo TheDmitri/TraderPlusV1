@@ -6,7 +6,7 @@ class VehiculeData
 	int     Timestamp;
 	float 	EngineHealth;
 	float 	FuelAmmount;
-	int 		CollateralMoney;
+	int 	CollateralMoney;
 	ref array<ref ItemsCargo> ItemsInCargo;
 
 	void VehiculeData(string name, int vehicleCargoId ,int collateralMoney, int vdata,float enginehealth, float fuelamount, array<ref ItemsCargo>cargos, int timestamp = 0)

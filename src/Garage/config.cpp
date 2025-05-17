@@ -61,7 +61,5 @@ class CfgVehicles
 	{
 		scope = 2;
 		displayName = "VEHICLE CARGOS SAVED";
-		hiddenSelections[] = {"zbytek"};
-		hiddenSelectionsTextures[] = {"TraderPlus\images\loot_paperRcpt_co.paa"};
 	};
 };

@@ -6,7 +6,7 @@ modded class  ActionDetachCarLockPick: ActionContinuousBase
 		if ( GetGame().IsServer() )
 				return true;
 
-		CarScript ntarget = CarScript.Cast( target.GetObject() );
+		CarScript ntarget = CarLockTargetHelper.GetTargetCar(target);
 
 		if (ntarget && ntarget.m_CarLockOwner != -1)
 		{

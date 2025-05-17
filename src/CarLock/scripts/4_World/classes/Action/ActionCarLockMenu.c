@@ -24,7 +24,7 @@ class ActionCarLockMenu: ActionInteractBase
         if ( GetGame().IsServer() )
             return true;
 
-        CarScript ntarget = CarScript.Cast( target.GetObject() );
+        CarScript ntarget = CarLockTargetHelper.GetTargetCar(target);
 				if(ntarget && ntarget.m_CarLock_IsLocked && ntarget.m_CarLockOwner == player.CLSteamlowID && ntarget.m_CarLockPassword ==-1)
 				{
 					return true;
@@ -38,7 +38,7 @@ class ActionCarLockMenu: ActionInteractBase
 
     override void OnStartClient(ActionData action_data)
     {
-			CarScript car = CarScript.Cast(action_data.m_Target.GetObject());
+			CarScript car = CarLockTargetHelper.GetTargetCar(action_data.m_Target);
 			if(car)
 			{
 				OpenCarLockMenu(car);

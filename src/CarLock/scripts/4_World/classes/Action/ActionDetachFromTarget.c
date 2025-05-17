@@ -5,11 +5,12 @@ modded class ActionDetachFromTarget: ActionInteractBase
 	{
 		if (target)
 		{
-            CarScript carScript = CarScript.Cast(target.GetObject());
-						if(!carScript)
-							carScript = CarScript.Cast(target.GetParent());
-							if (carScript && carScript.m_CarLock_IsLocked)
-				                return false;
+            CarScript ntarget = CarLockTargetHelper.GetTargetCar(target);
+			if(!ntarget)
+				ntarget = CarScript.Cast(target.GetParent());
+			
+			if (ntarget && ntarget.m_CarLock_IsLocked)
+				return false;
 		}
 
     return super.ActionCondition(player, target, item);
