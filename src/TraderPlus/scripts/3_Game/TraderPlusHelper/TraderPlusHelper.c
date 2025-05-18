@@ -2,7 +2,7 @@ static string TraderPlusTrimSpaces(string line)
 {
 	line.Replace("	", "");
 	bool HasSpaces = true;
-	while(HasSpaces)
+	while (HasSpaces)
 	{
 		line = line.Trim();
 		if (line.Length() > 0)

@@ -2,7 +2,7 @@ modded class DayZPlayerImplementFallDamage
 {
 	override void HandleFallDamage(float pHeight)
 	{
-		if(SZHandleFallDamageHandle(pHeight))
+		if (SZHandleFallDamageHandle(pHeight))
 			return;
 
 		super.HandleFallDamage(pHeight);

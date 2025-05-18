@@ -1,17 +1,8 @@
-////////////////////////////////////////////////////////////////////
-//DeRap: Data\SignPostBoard.rvmat
-//Produced from mikero's Dos Tools Dll version 9.45
-//https://mikero.bytex.digital/Downloads
-//'now' is Mon Nov 11 10:54:26 2024 : 'file' last modified on Sat Nov 05 16:44:39 2022
-////////////////////////////////////////////////////////////////////
-
-#define _ARMA_
-
-ambient[] = {1,1,1,1};
-diffuse[] = {1,1,1,1};
-forcedDiffuse[] = {0,0,0,0};
-emmisive[] = {0,0,0,1};
-specular[] = {0.01,0.01,0.01,1};
+ambient[] = {1, 1, 1, 1};
+diffuse[] = {1, 1, 1, 1};
+forcedDiffuse[] = {0, 0, 0, 0};
+emmisive[] = {0, 0, 0, 1};
+specular[] = {0.01, 0.01, 0.01, 1};
 specularPower = 30;
 PixelShaderID = "Super";
 VertexShaderID = "Super";
@@ -21,10 +12,10 @@ class Stage1
 	uvSource = "tex";
 	class uvTransform
 	{
-		aside[] = {1,0,0};
-		up[] = {0,1,0};
-		dir[] = {0,0,0};
-		pos[] = {0,0,0};
+		aside[] = {1, 0, 0};
+		up[] = {0, 1, 0};
+		dir[] = {0, 0, 0};
+		pos[] = {0, 0, 0};
 	};
 };
 class Stage2
@@ -33,10 +24,10 @@ class Stage2
 	uvSource = "tex";
 	class uvTransform
 	{
-		aside[] = {1,0,0};
-		up[] = {0,1,0};
-		dir[] = {0,0,0};
-		pos[] = {0,0,0};
+		aside[] = {1, 0, 0};
+		up[] = {0, 1, 0};
+		dir[] = {0, 0, 0};
+		pos[] = {0, 0, 0};
 	};
 };
 class Stage3
@@ -45,10 +36,10 @@ class Stage3
 	uvSource = "tex";
 	class uvTransform
 	{
-		aside[] = {1,0,0};
-		up[] = {0,1,0};
-		dir[] = {0,0,0};
-		pos[] = {0,0,0};
+		aside[] = {1, 0, 0};
+		up[] = {0, 1, 0};
+		dir[] = {0, 0, 0};
+		pos[] = {0, 0, 0};
 	};
 };
 class Stage4
@@ -57,10 +48,10 @@ class Stage4
 	uvSource = "tex";
 	class uvTransform
 	{
-		aside[] = {1,0,0};
-		up[] = {0,1,0};
-		dir[] = {0,0,0};
-		pos[] = {0,0,0};
+		aside[] = {1, 0, 0};
+		up[] = {0, 1, 0};
+		dir[] = {0, 0, 0};
+		pos[] = {0, 0, 0};
 	};
 };
 class Stage5
@@ -69,10 +60,10 @@ class Stage5
 	uvSource = "tex";
 	class uvTransform
 	{
-		aside[] = {1,0,0};
-		up[] = {0,1,0};
-		dir[] = {0,0,0};
-		pos[] = {0,0,0};
+		aside[] = {1, 0, 0};
+		up[] = {0, 1, 0};
+		dir[] = {0, 0, 0};
+		pos[] = {0, 0, 0};
 	};
 };
 class Stage6
@@ -86,9 +77,9 @@ class Stage7
 	uvSource = "tex";
 	class uvTransform
 	{
-		aside[] = {1,0,0};
-		up[] = {0,1,0};
-		dir[] = {0,0,0};
-		pos[] = {0,0,0};
+		aside[] = {1, 0, 0};
+		up[] = {0, 1, 0};
+		dir[] = {0, 0, 0};
+		pos[] = {0, 0, 0};
 	};
 };

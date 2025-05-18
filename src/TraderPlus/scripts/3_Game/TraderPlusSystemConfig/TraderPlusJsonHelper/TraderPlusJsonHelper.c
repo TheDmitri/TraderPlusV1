@@ -5,7 +5,9 @@
 */
 class TraderPlusJsonLoader<Class T>
 {
+	// clang-format off
 	protected static ref JsonSerializer m_Serializer = new JsonSerializer;
+	// clang-format on
 
 	static void StringToObject(string string_data, out T data)
 	{
@@ -13,7 +15,8 @@ class TraderPlusJsonLoader<Class T>
 		if (!m_Serializer)
 			m_Serializer = new JsonSerializer;
 
-		if (!m_Serializer.ReadFromString(data, string_data, error)) {
+		if (!m_Serializer.ReadFromString(data, string_data, error))
+		{
 			GetTraderPlusLogger().LogError(error);
 		}
 	}
@@ -24,8 +27,9 @@ class TraderPlusJsonLoader<Class T>
 		if (!m_Serializer)
 			m_Serializer = new JsonSerializer;
 
-		if (!m_Serializer.WriteToString(data, true, string_data)) {
-			GetTraderPlusLogger().LogError("TraderPlusJsonLoader::ObjectToString Could not stringify "+ data.ToString());
+		if (!m_Serializer.WriteToString(data, true, string_data))
+		{
+			GetTraderPlusLogger().LogError("TraderPlusJsonLoader::ObjectToString Could not stringify " + data.ToString());
 			return string.Empty;
 		}
 
@@ -36,15 +40,17 @@ class TraderPlusJsonLoader<Class T>
 	{
 		FileHandle fh = OpenFile(path, FileMode.WRITE);
 
-		if (!fh) {
-			GetTraderPlusLogger().LogError("TraderPlusJsonLoader::SaveToFile File could not be created at "+ path);
+		if (!fh)
+		{
+			GetTraderPlusLogger().LogError("TraderPlusJsonLoader::SaveToFile File could not be created at " + path);
 			return;
 		}
 
 		string jsonData;
-		bool success = m_Serializer.WriteToString(data, true, jsonData);
+		bool   success = m_Serializer.WriteToString(data, true, jsonData);
 
-		if (success && jsonData != string.Empty) {
+		if (success && jsonData != string.Empty)
+		{
 			FPrintln(fh, jsonData);
 		}
 
@@ -54,33 +60,37 @@ class TraderPlusJsonLoader<Class T>
 
 	static void LoadFromFile(string path, out T data, bool isLog = true)
 	{
-		if (!FileExist(path)) {
-			GetTraderPlusLogger().LogError("TraderPlusJsonLoader::LoadFromFile File not found "+ path);
+		if (!FileExist(path))
+		{
+			GetTraderPlusLogger().LogError("TraderPlusJsonLoader::LoadFromFile File not found " + path);
 			return;
 		}
 
 		FileHandle fh = OpenFile(path, FileMode.READ);
-		string jsonData;
-		string error;
+		string	   jsonData;
+		string	   error;
 
-		if (!fh) {
+		if (!fh)
+		{
 			GetTraderPlusLogger().LogError("TraderPlusJsonLoader::LoadFromFile File could not be opened " + path);
 			return;
 		}
 
 		string line;
-		while (FGets(fh, line) > 0) {
+		while (FGets(fh, line) > 0)
+		{
 			jsonData = jsonData + "\n" + line;
 		}
 
 		bool success = m_Serializer.ReadFromString(data, jsonData, error);
 
-		if (error != string.Empty || !success) {
-			GetTraderPlusLogger().LogError("TraderPlusJsonLoader::LoadFromFile ERROR Parsing "+ path + error);
+		if (error != string.Empty || !success)
+		{
+			GetTraderPlusLogger().LogError("TraderPlusJsonLoader::LoadFromFile ERROR Parsing " + path + error);
 			return;
 		}
 
-		if(isLog)
+		if (isLog)
 			GetTraderPlusLogger().LogInfo("TraderPlusJsonLoader::LoadFromFile Loaded file: " + path);
 
 		CloseFile(fh);

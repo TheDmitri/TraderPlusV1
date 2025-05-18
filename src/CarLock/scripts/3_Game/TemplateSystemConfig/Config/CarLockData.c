@@ -15,13 +15,15 @@ class CarLockData
 		JsonFileLoader<CarLockData>.JsonSaveFile(Path, this);
 	}
 
-	static ref CarLockData Load(string id)	{
+	static ref CarLockData Load(string id)
+	{
 		ref CarLockData settings = new CarLockData();
 
 		string Path = CL_DATA + "_" + id + ".json";
 
 		//Now we check if config exist, if yes, we load it. if no, we call function defaultCarLocksettings that will initialize default value
-		if (FileExist(Path)) {
+		if (FileExist(Path))
+		{
 			//Print("file exist ! loading...");
 			JsonFileLoader<CarLockData>.JsonLoadFile(Path, settings);
 		}

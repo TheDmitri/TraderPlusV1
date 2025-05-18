@@ -1,16 +1,16 @@
 class TraderPlusVehiclesSettings
 {
 	string Version = "";
-	ref array<ref TraderPlusVehicleParts>VehiclesParts;
+	ref array<ref TraderPlusVehicleParts> VehiclesParts;
 
 	void TraderPlusVehiclesSettings()
 	{
-		VehiclesParts         = new array<ref TraderPlusVehicleParts>;
+		VehiclesParts = new array<ref TraderPlusVehicleParts>;
 	}
 
 	void DefaultTraderPlusVehiclesSettings()
 	{
-		VehiclesParts.Insert(new  TraderPlusVehicleParts("OffroadHatchback"));
+		VehiclesParts.Insert(new TraderPlusVehicleParts("OffroadHatchback"));
 		VehiclesParts.Get(0).AddAttachmentsToVehicle("SparkPlug");
 		VehiclesParts.Get(0).AddAttachmentsToVehicle("CarBattery");
 		VehiclesParts.Get(0).AddAttachmentsToVehicle("CarRadiator");
@@ -24,7 +24,7 @@ class TraderPlusVehiclesSettings
 		VehiclesParts.Get(0).AddAttachmentsToVehicle("HatchbackWheel");
 		VehiclesParts.Get(0).AddAttachmentsToVehicle("HatchbackWheel");
 		VehiclesParts.Get(0).AddAttachmentsToVehicle("HatchbackWheel");
-		VehiclesParts.Insert(new  TraderPlusVehicleParts("Hatchback_02"));
+		VehiclesParts.Insert(new TraderPlusVehicleParts("Hatchback_02"));
 		VehiclesParts.Get(1).AddAttachmentsToVehicle("SparkPlug");
 		VehiclesParts.Get(1).AddAttachmentsToVehicle("CarBattery");
 		VehiclesParts.Get(1).AddAttachmentsToVehicle("CarRadiator");
@@ -40,7 +40,7 @@ class TraderPlusVehiclesSettings
 		VehiclesParts.Get(1).AddAttachmentsToVehicle("Hatchback_02_Wheel");
 		VehiclesParts.Get(1).AddAttachmentsToVehicle("Hatchback_02_Wheel");
 		VehiclesParts.Get(1).AddAttachmentsToVehicle("Hatchback_02_Wheel");
-		VehiclesParts.Insert(new  TraderPlusVehicleParts("CivilianSedan"));
+		VehiclesParts.Insert(new TraderPlusVehicleParts("CivilianSedan"));
 		VehiclesParts.Get(2).AddAttachmentsToVehicle("SparkPlug");
 		VehiclesParts.Get(2).AddAttachmentsToVehicle("CarBattery");
 		VehiclesParts.Get(2).AddAttachmentsToVehicle("CarRadiator");
@@ -61,7 +61,7 @@ class TraderPlusVehiclesSettings
 
 	void AddVehicleToConfig(string name)
 	{
-		VehiclesParts.Insert(new  TraderPlusVehicleParts(name));
+		VehiclesParts.Insert(new TraderPlusVehicleParts(name));
 	}
 
 	void AddAttachmentsToVehicle(int pos, string attchname)
@@ -71,7 +71,7 @@ class TraderPlusVehiclesSettings
 
 	void CheckVersion()
 	{
-		if(Version != TRADERPLUS_CURRENT_VERSION)
+		if (Version != TRADERPLUS_CURRENT_VERSION)
 		{
 			Version = TRADERPLUS_CURRENT_VERSION;
 			/*
@@ -86,33 +86,36 @@ class TraderPlusVehiclesSettings
 		TraderPlusJsonLoader<TraderPlusVehiclesSettings>.SaveToFile(TRADERPLUS_VEHICULE_CONFIG, this);
 	}
 
-	static ref TraderPlusVehiclesSettings Load()	{
+	static ref TraderPlusVehiclesSettings Load()
+	{
 		TraderPlusVehiclesSettings settings = new TraderPlusVehiclesSettings();
 
-		if ( !FileExist( TRADERPLUS_CONFIG_ROOT_SERVER ) )
+		if (!FileExist(TRADERPLUS_CONFIG_ROOT_SERVER))
 		{
-			MakeDirectory( TRADERPLUS_CONFIG_ROOT_SERVER );
-			if ( !FileExist( TRADERPLUS_CONFIG_DIR_SERVER ) )
+			MakeDirectory(TRADERPLUS_CONFIG_ROOT_SERVER);
+			if (!FileExist(TRADERPLUS_CONFIG_DIR_SERVER))
 			{
-				MakeDirectory( TRADERPLUS_CONFIG_DIR_SERVER );
+				MakeDirectory(TRADERPLUS_CONFIG_DIR_SERVER);
 			}
-			if ( !FileExist( TRADERPLUS_LOGGER_DIR_SERVER ) )
+			if (!FileExist(TRADERPLUS_LOGGER_DIR_SERVER))
 			{
-				MakeDirectory( TRADERPLUS_LOGGER_DIR_SERVER );
+				MakeDirectory(TRADERPLUS_LOGGER_DIR_SERVER);
 			}
-			if ( !FileExist( TRADERPLUS_DB_DIR_SERVER ) )
+			if (!FileExist(TRADERPLUS_DB_DIR_SERVER))
 			{
-				MakeDirectory( TRADERPLUS_DB_DIR_SERVER );
+				MakeDirectory(TRADERPLUS_DB_DIR_SERVER);
 			}
 		}
 		//Now we check if config exist, if yes, we load it. if no, we call function defaultTraderPlussettings that will initialize default value
-		if (FileExist(TRADERPLUS_VEHICULE_CONFIG)) {
+		if (FileExist(TRADERPLUS_VEHICULE_CONFIG))
+		{
 			GetTraderPlusLogger().LogInfo("TraderPlus file exist ! loading...");
 			//JsonFileLoader<TraderPlusVehiclesSettings>.JsonLoadFile(TRADERPLUS_VEHICULE_CONFIG, settings);
 			TraderPlusJsonLoader<TraderPlusVehiclesSettings>.LoadFromFile(TRADERPLUS_VEHICULE_CONFIG, settings);
 			settings.CheckVersion();
 		}
-		else {
+		else
+		{
 			GetTraderPlusLogger().LogInfo("TraderPlus file doesn't exist ! creating...");
 			settings.DefaultTraderPlusVehiclesSettings();
 		}

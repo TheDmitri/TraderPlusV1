@@ -1,11 +1,11 @@
 class GarageNPC
 {
-	string ClassName;
-	vector Position;
-	vector Orientation;
-	vector ParkingPosition;
-	vector ParkingOrientation;
-	ref    TStringArray Clothes;
+	string			 ClassName;
+	vector			 Position;
+	vector			 Orientation;
+	vector			 ParkingPosition;
+	vector			 ParkingOrientation;
+	ref TStringArray Clothes;
 
 	void GarageNPC(string classname, vector pos, vector ori, vector parkpos, vector parkori)
 	{

@@ -1,21 +1,20 @@
 #ifndef CARLOCKDISABLE
-modded class MissionServer extends MissionBase
-{
-	void MissionServer()
-	{
+modded class MissionServer extends MissionBase{
+	void MissionServer(){
 
 		m_CarLockCore = NULL;
-		GetCarLockCore();
+GetCarLockCore();
+}
 
-	}
+void ~MissionServer()
+{
+}
 
-	void ~MissionServer() {
-	}
-
-	override void InvokeOnConnect(PlayerBase player, PlayerIdentity identity)
-	{
-		super.InvokeOnConnect(player,identity);
-		player.SetLowSteamUID(player.GetIdentity().GetPlainId());
-	}
-};
+override void InvokeOnConnect(PlayerBase player, PlayerIdentity identity)
+{
+	super.InvokeOnConnect(player, identity);
+	player.SetLowSteamUID(player.GetIdentity().GetPlainId());
+}
+}
+;
 #endif

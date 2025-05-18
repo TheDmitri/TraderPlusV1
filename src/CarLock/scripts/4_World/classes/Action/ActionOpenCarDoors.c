@@ -1,33 +1,33 @@
 #ifndef CARLOCKDISABLE
-modded class ActionCarDoors: ActionInteractBase
+modded class ActionCarDoors : ActionInteractBase
 {
-    override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-        CarScript carScript;
-        if (Class.CastTo(carScript, target.GetParent()))
-        {
-            if (carScript.m_CarLock_IsLocked)
-            {
-                return false;
-            }
-        }
+		CarScript carScript;
+		if (Class.CastTo(carScript, target.GetParent()))
+		{
+			if (carScript.m_CarLock_IsLocked)
+			{
+				return false;
+			}
+		}
 
 		return super.ActionCondition(player, target, item);
 	}
 }
 
-modded class ActionCarDoorsOutside: ActionInteractBase
+modded class ActionCarDoorsOutside : ActionInteractBase
 {
-    override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-        CarScript carScript;
-        if (Class.CastTo(carScript, target.GetParent()))
-        {
-            if (carScript.m_CarLock_IsLocked)
-            {
-                return false;
-            }
-        }
+		CarScript carScript;
+		if (Class.CastTo(carScript, target.GetParent()))
+		{
+			if (carScript.m_CarLock_IsLocked)
+			{
+				return false;
+			}
+		}
 
 		return super.ActionCondition(player, target, item);
 	}

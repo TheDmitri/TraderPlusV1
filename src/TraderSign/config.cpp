@@ -1,17 +1,8 @@
-////////////////////////////////////////////////////////////////////
-//DeRap: config.bin
-//Produced from mikero's Dos Tools Dll version 9.45
-//https://mikero.bytex.digital/Downloads
-//'now' is Mon Nov 11 10:54:23 2024 : 'file' last modified on Sat Nov 05 16:44:39 2022
-////////////////////////////////////////////////////////////////////
-
-#define _ARMA_
-
 class CfgPatches
 {
 	class Trader_Plus_Trader_Signs
 	{
-		units[] = {"Trade_Sign_Weapons","Trade_Sign_Vehicles","Trade_Sign_Food","Trade_Sign_Clothing","Trade_Sign_Equipment"};
+		units[] = {"Trade_Sign_Weapons", "Trade_Sign_Vehicles", "Trade_Sign_Food", "Trade_Sign_Clothing", "Trade_Sign_Equipment"};
 		weapons[] = {};
 		requiredVersion = 0.1;
 		requiredAddons[] = {"DZ_Data"};
@@ -37,7 +28,7 @@ class CfgMods
 class CfgVehicles
 {
 	class HouseNoDestruct;
-	class Trade_Sign_Base: HouseNoDestruct
+	class Trade_Sign_Base : HouseNoDestruct
 	{
 		scope = 0;
 		displayName = "Trader Sign";
@@ -46,30 +37,30 @@ class CfgVehicles
 		weight = 1000000;
 		useEntityHierarchy = "true";
 		slopeTolerance = 0.3;
-		yawPitchRollLimit[] = {10,10,10};
+		yawPitchRollLimit[] = {10, 10, 10};
 		hiddenSelections[] = {"sign"};
 	};
-	class Trade_Sign_Weapons: Trade_Sign_Base
+	class Trade_Sign_Weapons : Trade_Sign_Base
 	{
 		scope = 2;
 		hiddenSelectionsTextures[] = {"TraderSign\Data\Signs\Weapons_Trader_Sign.paa"};
 	};
-	class Trade_Sign_Vehicles: Trade_Sign_Base
+	class Trade_Sign_Vehicles : Trade_Sign_Base
 	{
 		scope = 2;
 		hiddenSelectionsTextures[] = {"TraderSign\Data\Signs\Vehicle_Trader_Sign.paa"};
 	};
-	class Trade_Sign_Food: Trade_Sign_Base
+	class Trade_Sign_Food : Trade_Sign_Base
 	{
 		scope = 2;
 		hiddenSelectionsTextures[] = {"TraderSign\Data\Signs\Food_Trader_Sign.paa"};
 	};
-	class Trade_Sign_Clothing: Trade_Sign_Base
+	class Trade_Sign_Clothing : Trade_Sign_Base
 	{
 		scope = 2;
 		hiddenSelectionsTextures[] = {"TraderSign\Data\Signs\Clothing_Trader_Sign.paa"};
 	};
-	class Trade_Sign_Equipment: Trade_Sign_Base
+	class Trade_Sign_Equipment : Trade_Sign_Base
 	{
 		scope = 2;
 		hiddenSelectionsTextures[] = {"TraderSign\Data\Signs\Equipment_Trader_Sign.paa"};

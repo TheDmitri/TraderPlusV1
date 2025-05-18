@@ -7,7 +7,7 @@ class ActionAttachCarLockCB : ActionContinuousBaseCB
 	}
 };
 
-class ActionAttachCarLock: ActionContinuousBase
+class ActionAttachCarLock : ActionContinuousBase
 {
 	void ActionAttachCarLock()
 	{
@@ -20,7 +20,7 @@ class ActionAttachCarLock: ActionContinuousBase
 
 	override void CreateConditionComponents()
 	{
-    	m_ConditionTarget = new CCTNonRuined(10);
+		m_ConditionTarget = new CCTNonRuined(10);
 		m_ConditionItem = new CCINonRuined;
 	}
 
@@ -29,17 +29,18 @@ class ActionAttachCarLock: ActionContinuousBase
 		return "Attach CarLock";
 	}
 
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if ( GetGame().IsServer() )
-				return true;
+		if (GetGame().IsServer())
+			return true;
 
 		CarScript ntarget = CarLockTargetHelper.GetTargetCar(target);
-		if (ntarget && ntarget.m_CarLockOwner==-1)
+		if (ntarget && ntarget.m_CarLockOwner == -1)
 		{
-			bool IsEmpty = true;
+			bool	  IsEmpty = true;
 			Transport transport = Transport.Cast(ntarget);
-			if (!transport)return false;
+			if (!transport)
+				return false;
 
 			int crewSize = transport.CrewSize();
 			for (int j = 0; j < crewSize; j++)
@@ -48,36 +49,36 @@ class ActionAttachCarLock: ActionContinuousBase
 					IsEmpty = false;
 			}
 
-			if (IsEmpty){
+			if (IsEmpty)
+			{
 				return true;
 			}
-				
 		}
 		return false;
 	}
 
-	override void OnFinishProgressClient( ActionData action_data )
+	override void OnFinishProgressClient(ActionData action_data)
 	{
-    	if ( action_data.m_MainItem && action_data.m_MainItem.GetHierarchyRootPlayer() == action_data.m_Player )
+		if (action_data.m_MainItem && action_data.m_MainItem.GetHierarchyRootPlayer() == action_data.m_Player)
 		{
 			CarScript vehicle = CarLockTargetHelper.GetTargetCar(action_data.m_Target);
 			OpenCarLockMenu(vehicle);
 			//GetRPCManager().SendRPC("CarLock", "CarLockPasswordRequest",  new Param2<ref CarScript, int>(vehicle,-1), true, NULL);
 		}
-  }
+	}
 
-	override void OnFinishProgressServer( ActionData action_data )
+	override void OnFinishProgressServer(ActionData action_data)
 	{
-    	if ( action_data.m_MainItem && action_data.m_MainItem.GetHierarchyRootPlayer() == action_data.m_Player )
+		if (action_data.m_MainItem && action_data.m_MainItem.GetHierarchyRootPlayer() == action_data.m_Player)
 		{
 			action_data.m_Player.DropItem(action_data.m_MainItem);
-      		action_data.m_MainItem.Delete();
+			action_data.m_MainItem.Delete();
 
 			CarScript vehicle = CarLockTargetHelper.GetTargetCar(action_data.m_Target);
 			vehicle.SetCarLockOwner(action_data.m_Player.CLSteamlowID);
 			vehicle.SetCarLock(true);
 		}
-  }
+	}
 
 	void InitCarLockMenu(PlayerBase player, CarScript vehicle)
 	{
@@ -87,12 +88,12 @@ class ActionAttachCarLock: ActionContinuousBase
 
 	void OpenCarLockMenu(CarScript vehicle)
 	{
-			PlayerBase player = PlayerBase.Cast(GetGame().GetPlayer());
-			if ( g_Game.GetUIManager().GetMenu() == NULL )
-			{
-				InitCarLockMenu(player,vehicle);
-				GetGame().GetUIManager().ShowScriptedMenu( player.m_CarLockMenu, NULL );
-			}
+		PlayerBase player = PlayerBase.Cast(GetGame().GetPlayer());
+		if (g_Game.GetUIManager().GetMenu() == NULL)
+		{
+			InitCarLockMenu(player, vehicle);
+			GetGame().GetUIManager().ShowScriptedMenu(player.m_CarLockMenu, NULL);
+		}
 	}
 };
 #endif

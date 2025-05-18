@@ -1,7 +1,7 @@
 class ReceiptBase extends ItemBase
 {
-	int CarID=0;
-	int CarAttachments=0;
+	int CarID = 0;
+	int CarAttachments = 0;
 
 	void ReceiptBase()
 	{
@@ -21,36 +21,35 @@ class ReceiptBase extends ItemBase
 		AddAction(ActionConvertToNewReceipt);
 	}
 
-	override void OnStoreSave( ParamsWriteContext ctx )
-	 {
-			super.OnStoreSave(ctx);
-			Param2<int,int> data = new Param2<int,int>(CarID,CarAttachments);
-			ctx.Write(data);
-	 }
+	override void OnStoreSave(ParamsWriteContext ctx)
+	{
+		super.OnStoreSave(ctx);
+		Param2<int, int> data = new Param2<int, int>(CarID, CarAttachments);
+		ctx.Write(data);
+	}
 
-	override bool OnStoreLoad( ParamsReadContext ctx, int version )
+	override bool OnStoreLoad(ParamsReadContext ctx, int version)
+	{
+		if (!super.OnStoreLoad(ctx, version))
+			return false;
+
+		Param2<int, int> data = new Param2<int, int>(-1, -1);
+		if (ctx.Read(data))
 		{
-			if ( !super.OnStoreLoad( ctx, version ) )
-				return false;
-
-					Param2<int,int> data = new Param2<int,int>(-1,-1);
-					if (ctx.Read(data))
-					{
-							CarID = data.param1;
-							CarAttachments = data.param2;
-					}
-					LockReceiptInventory();
-					return true;
+			CarID = data.param1;
+			CarAttachments = data.param2;
 		}
+		LockReceiptInventory();
+		return true;
+	}
 
-		void LockReceiptInventory()
-		{
-			GetInventory().LockInventory(HIDE_INV_FROM_SCRIPT);
-			SetSynchDirty();
-		}
+	void LockReceiptInventory()
+	{
+		GetInventory().LockInventory(HIDE_INV_FROM_SCRIPT);
+		SetSynchDirty();
+	}
 };
 
 class Receipt extends ReceiptBase
 {
-
 }
