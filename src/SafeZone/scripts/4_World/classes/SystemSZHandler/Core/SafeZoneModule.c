@@ -1,10 +1,9 @@
 //How to access the module anywhere
 //TraderPlusSafeZone groupModule = TraderPlusSafeZone.Cast(CF_ModuleCoreManager.Get(TraderPlusSafeZone));
 
-[CF_RegisterModule(TraderPlusSafeZone)]
-class TraderPlusSafeZone: CF_ModuleWorld
+[CF_RegisterModule(TraderPlusSafeZone)] class TraderPlusSafeZone : CF_ModuleWorld
 {
-	ref SafeAreaSettings m_ActiveSafeAreaSettings;
+	ref SafeAreaSettings  m_ActiveSafeAreaSettings;
 	ref SafeZoneLocations m_SafeZoneLocations;
 
 	ref SZSafeZoneClient m_SZSafeZoneClient;
@@ -12,12 +11,10 @@ class TraderPlusSafeZone: CF_ModuleWorld
 
 	void TraderPlusSafeZone()
 	{
-
 	}
 
 	void ~TraderPlusSafeZone()
 	{
-
 	}
 
 	override void OnInit()
@@ -32,47 +29,47 @@ class TraderPlusSafeZone: CF_ModuleWorld
 	}
 
 	void OnMissionStartHandler()
-  	{
-    	if (GetGame().IsServer())
-    	{
-          GetTraderPlusLogger().LogInfo("SafeZoneCore - Started !");
-		  
-		  #ifdef SZDEBUG
-      	    GetTraderPlusLogger().LogInfo("DEBUG MODE ENABLED");
-      	  #endif
+	{
+		if (GetGame().IsServer())
+		{
+			GetTraderPlusLogger().LogInfo("SafeZoneCore - Started !");
 
-          m_ActiveSafeAreaSettings = SafeAreaSettings.Load();
-          m_SafeZoneLocations = new SafeZoneLocations(m_ActiveSafeAreaSettings);
-          m_SZSafeZoneServer = new SZSafeZoneServer;
-    	}
-    	else
-    	{
-          m_SZSafeZoneClient = new SZSafeZoneClient;
-    	}
-      InitRPC();
-  	}
+#ifdef SZDEBUG
+			GetTraderPlusLogger().LogInfo("DEBUG MODE ENABLED");
+#endif
+
+			m_ActiveSafeAreaSettings = SafeAreaSettings.Load();
+			m_SafeZoneLocations = new SafeZoneLocations(m_ActiveSafeAreaSettings);
+			m_SZSafeZoneServer = new SZSafeZoneServer;
+		}
+		else
+		{
+			m_SZSafeZoneClient = new SZSafeZoneClient;
+		}
+		InitRPC();
+	}
 
 	void InitRPC()
 	{
-			if (GetGame().IsServer())	
-			{
-				//Server calls
-				GetRPCManager().AddRPC("SZSafeZone", "GetSafeStatut", m_SZSafeZoneServer, SingeplayerExecutionType.Client);
-        		GetRPCManager().AddRPC("SZSafeZone", "GetEntitiesCleanUp", m_SZSafeZoneServer, SingeplayerExecutionType.Client);
-      		}
-			else	
-			{
-				//Client calls
-        		GetRPCManager().AddRPC("SZSafeZone", "GetConfigResponse", m_SZSafeZoneClient, SingeplayerExecutionType.Server);
-			}
+		if (GetGame().IsServer())
+		{
+			//Server calls
+			GetRPCManager().AddRPC("SZSafeZone", "GetSafeStatut", m_SZSafeZoneServer, SingeplayerExecutionType.Client);
+			GetRPCManager().AddRPC("SZSafeZone", "GetEntitiesCleanUp", m_SZSafeZoneServer, SingeplayerExecutionType.Client);
+		}
+		else
+		{
+			//Client calls
+			GetRPCManager().AddRPC("SZSafeZone", "GetConfigResponse", m_SZSafeZoneClient, SingeplayerExecutionType.Server);
+		}
 	}
 
 	void OnPlayerConnect(PlayerBase player)
 	{
-		if(player.IsTraderPlusAdmin())
+		if (player.IsTraderPlusAdmin())
 			player.SetAdminStatus();
 
-		if(m_SafeZoneLocations)
+		if (m_SafeZoneLocations)
 			GetRPCManager().SendRPC("SZSafeZone", "GetConfigResponse", new Param1<ref SafeZoneLocations>(m_SafeZoneLocations), true, player.GetIdentity());
 	}
 
@@ -80,11 +77,11 @@ class TraderPlusSafeZone: CF_ModuleWorld
 	{
 		HideOutObject stash;
 		stash = HideOutObject.Cast(player.FindAttachmentBySlotName("Armband"));
-		if(stash)
+		if (stash)
 		{
-			#ifdef SZDEBUG
-				GetTraderPlusLogger().LogInfo("disconnect player:" + player.GetIdentity().GetName() + "'s stash has been droped");
-			#endif
+#ifdef SZDEBUG
+			GetTraderPlusLogger().LogInfo("disconnect player:" + player.GetIdentity().GetName() + "'s stash has been droped");
+#endif
 			player.ServerDropEntity(stash);
 			stash.Hide();
 		}
@@ -92,7 +89,7 @@ class TraderPlusSafeZone: CF_ModuleWorld
 
 	void OnPlayerLogoutCancel(PlayerBase player)
 	{
-		if(m_ActiveSafeAreaSettings.IsHideOutActive)
+		if (m_ActiveSafeAreaSettings.IsHideOutActive)
 			player.HideOutObjectHandle();
 	}
 
@@ -161,7 +158,7 @@ class TraderPlusSafeZone: CF_ModuleWorld
 			return;
 
 		OnPlayerConnect(cArgs.Player);
- }
+	}
 
 	override void OnUpdate(Class sender, CF_EventArgs args)
 	{

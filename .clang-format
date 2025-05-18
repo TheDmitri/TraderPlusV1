@@ -1,0 +1,15 @@
+BasedOnStyle: Microsoft
+IndentAccessModifiers: false
+UseTab: Always
+IndentWidth: 4
+TabWidth: 4
+ColumnLimit: 0
+RemoveBracesLLVM: false
+AlwaysBreakBeforeMultilineStrings: false
+BinPackArguments: false
+BinPackParameters: false
+ReflowComments: false
+AlignAfterOpenBracket: Align
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: true
+AlignEscapedNewlines: Right

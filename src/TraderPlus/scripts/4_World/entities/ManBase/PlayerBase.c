@@ -1,7 +1,9 @@
 modded class PlayerBase extends ManBase
 {
 	ref TraderPlusMenu m_TraderPlusMenu;
+	// clang-format off
 	private EffectSound m_TradeSound;
+	// clang-format on
 
 	int TraderID;
 	int MaxPlayerPerID;
@@ -35,7 +37,8 @@ modded class PlayerBase extends ManBase
 	{
 		for (int i = 0; i < clothes.Count(); i++)
 		{
-			if(!clothes.Get(i) || clothes.Get(i) == "")continue;
+			if (!clothes.Get(i) || clothes.Get(i) == "")
+				continue;
 			GetInventory().CreateInInventory(clothes.Get(i));
 		}
 	}
@@ -48,40 +51,43 @@ modded class PlayerBase extends ManBase
 
 	void PlayTradeSound(int soundID)
 	{
-		if(m_TradeSound && m_TradeSound.IsSoundPlaying()) m_TradeSound.SoundStop();
-		switch(soundID)
+		if (m_TradeSound && m_TradeSound.IsSoundPlaying())
+			m_TradeSound.SoundStop();
+		switch (soundID)
 		{
-			case TraderPlusSound.QUICKEVENT:PlaySoundSet( m_TradeSound,"TraderPlus_Sound_Quick_Event_SoundSet" , 0, 0);
+		case TraderPlusSound.QUICKEVENT:
+			PlaySoundSet(m_TradeSound, "TraderPlus_Sound_Quick_Event_SoundSet", 0, 0);
 			break;
 
-			case TraderPlusSound.SELL:PlaySoundSet( m_TradeSound,"TraderPlus_Sound_Sell_SoundSet" , 0, 0);
+		case TraderPlusSound.SELL:
+			PlaySoundSet(m_TradeSound, "TraderPlus_Sound_Sell_SoundSet", 0, 0);
 			break;
 
-			case TraderPlusSound.BUY:PlaySoundSet( m_TradeSound,"TraderPlus_Sound_Buy_SoundSet" , 0, 0);
+		case TraderPlusSound.BUY:
+			PlaySoundSet(m_TradeSound, "TraderPlus_Sound_Buy_SoundSet", 0, 0);
 			break;
 		}
 	}
 
 	void MoveHologram(float value)
 	{
-		m_LocalProjectionPosition[1]=m_LocalProjectionPosition[1]+value;
+		m_LocalProjectionPosition[1] = m_LocalProjectionPosition[1] + value;
 	}
 
 	override void SetActions()
-  {
+	{
 		super.SetActions();
 		AddAction(ActionTraderPlusMenu);
-  }
-
+	}
 };
 
 modded class DayZPlayerImplementThrowing
 {
 	override void HandleThrowing(HumanInputController pHic, HumanCommandWeapons pHcw, EntityAI pEntityInHands, float pDt)
 	{
-		super.HandleThrowing(pHic,pHcw, pEntityInHands, pDt);
+		super.HandleThrowing(pHic, pHcw, pEntityInHands, pDt);
 		NewReceiptBase receipt = NewReceiptBase.Cast(pEntityInHands);
-		if(receipt)
+		if (receipt)
 			receipt.LastOwner = PlayerBase.Cast(m_Player);
 	}
 };

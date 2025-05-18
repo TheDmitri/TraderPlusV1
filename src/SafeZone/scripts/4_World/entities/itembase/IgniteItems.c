@@ -9,15 +9,14 @@ modded class Matchbox extends ItemBase
 
 modded class HandDrillKit extends ItemBase
 {
-  override void SetActions()
+	override void SetActions()
 	{
 		super.SetActions();
 		AddAction(ActionLightItemOnFireInSafeZone);
 	}
-}
-modded class PetrolLighter extends ItemBase
+} modded class PetrolLighter extends ItemBase
 {
-  override void SetActions()
+	override void SetActions()
 	{
 		super.SetActions();
 		AddAction(ActionLightItemOnFireInSafeZone);
@@ -26,17 +25,16 @@ modded class PetrolLighter extends ItemBase
 
 modded class PortableGasStove extends ItemBase
 {
-  override void SetActions()
+	override void SetActions()
 	{
 		super.SetActions();
 		AddAction(ActionLightItemOnFireInSafeZone);
 	}
 }
 
-
 modded class Roadflare : ItemBase
 {
-  override void SetActions()
+	override void SetActions()
 	{
 		super.SetActions();
 		AddAction(ActionLightItemOnFireInSafeZone);
@@ -45,7 +43,7 @@ modded class Roadflare : ItemBase
 
 modded class Torch : ItemBase
 {
-  override void SetActions()
+	override void SetActions()
 	{
 		super.SetActions();
 		AddAction(ActionLightItemOnFireInSafeZone);

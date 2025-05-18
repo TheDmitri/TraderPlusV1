@@ -1,44 +1,43 @@
 
 static ref TraderPlusLoggerModule GetTraderPlusLogger()
 {
-    TraderPlusLoggerModule module = TraderPlusLoggerModule.Cast(CF_ModuleCoreManager.Get(TraderPlusLoggerModule));
-    
-    return module;
+	TraderPlusLoggerModule module = TraderPlusLoggerModule.Cast(CF_ModuleCoreManager.Get(TraderPlusLoggerModule));
+
+	return module;
 }
 
-[CF_RegisterModule(TraderPlusLoggerModule)]
-class TraderPlusLoggerModule: CF_ModuleGame
+[CF_RegisterModule(TraderPlusLoggerModule)] class TraderPlusLoggerModule : CF_ModuleGame
 {
-    FileHandle fileHandle;
-    int networkSync_LogLevel;
-    ref TraderPlusLoggingSettings settings;
+	FileHandle					  fileHandle;
+	int							  networkSync_LogLevel;
+	ref TraderPlusLoggingSettings settings;
 
-    float dtime = 0;
+	float dtime = 0;
 
-    override void OnInit()
+	override void OnInit()
 	{
 		super.OnInit();
 		RegisterNetSyncVariable("networkSync_LogLevel");
-        EnableUpdate();
-        EnableMissionStart();
+		EnableUpdate();
+		EnableMissionStart();
 	}
 
-    override void OnMissionStart(Class sender, CF_EventArgs args)
+	override void OnMissionStart(Class sender, CF_EventArgs args)
 	{
 		super.OnMissionStart(sender, args);
-		
-        fileHandle = CreateNewLogFile();
-        
-        if(GetGame().IsServer())
-        {
-            settings = TraderPlusLoggingSettings.Load();
 
-            networkSync_LogLevel = settings.logLevel;
-            SetSynchDirty();
-        }
+		fileHandle = CreateNewLogFile();
+
+		if (GetGame().IsServer())
+		{
+			settings = TraderPlusLoggingSettings.Load();
+
+			networkSync_LogLevel = settings.logLevel;
+			SetSynchDirty();
+		}
 	}
 
-    override void OnUpdate(Class sender, CF_EventArgs args)
+	override void OnUpdate(Class sender, CF_EventArgs args)
 	{
 		auto update = CF_EventUpdateArgs.Cast(args);
 
@@ -46,32 +45,32 @@ class TraderPlusLoggerModule: CF_ModuleGame
 
 		if (GetGame().IsServer() && settings && dtime > settings.refreshRateInSeconds)
 		{
-            dtime = 0;
-            settings = TraderPlusLoggingSettings.Load();
+			dtime = 0;
+			settings = TraderPlusLoggingSettings.Load();
 
-            networkSync_LogLevel = settings.logLevel;
-            SetSynchDirty();
+			networkSync_LogLevel = settings.logLevel;
+			SetSynchDirty();
 		}
 	}
 
-    void MakeDirectoryIfNotExists()
-    {
-        //we check if config folders exist, if not we create them
-		if ( !FileExist( TRADERPLUS_CONFIG_ROOT_SERVER ) )
-			MakeDirectory( TRADERPLUS_CONFIG_ROOT_SERVER );
-
-		if ( !FileExist( TRADERPLUS_LOGGER_DIR_SERVER ) )
-			MakeDirectory( TRADERPLUS_LOGGER_DIR_SERVER );
-    }
-
-    FileHandle CreateNewLogFile()	
+	void MakeDirectoryIfNotExists()
 	{
-        MakeDirectoryIfNotExists();
+		//we check if config folders exist, if not we create them
+		if (!FileExist(TRADERPLUS_CONFIG_ROOT_SERVER))
+			MakeDirectory(TRADERPLUS_CONFIG_ROOT_SERVER);
+
+		if (!FileExist(TRADERPLUS_LOGGER_DIR_SERVER))
+			MakeDirectory(TRADERPLUS_LOGGER_DIR_SERVER);
+	}
+
+	FileHandle CreateNewLogFile()
+	{
+		MakeDirectoryIfNotExists();
 
 		string filePath = string.Format(TRADERPLUS_LOGGER_FILENAME, GenerateFullTimeStamp());
 		//Check the file does not already exist ... fuck knows how it would
-        Print(filePath);
-        fileHandle = OpenFile(filePath, FileMode.WRITE);
+		Print(filePath);
+		fileHandle = OpenFile(filePath, FileMode.WRITE);
 
 		//File created
 		if (fileHandle != 0)
@@ -82,36 +81,36 @@ class TraderPlusLoggerModule: CF_ModuleGame
 		return NULL;
 	}
 
-	void Log(string content, TraderPlusLogLevel logLevel) 
+	void Log(string content, TraderPlusLogLevel logLevel)
 	{
-        if(logLevel >= networkSync_LogLevel)
-        {
-            string timeStamp = GenerateShortTimeString();
-            FPrintln(fileHandle, timeStamp + " | " + GetLogLevelString(logLevel) + " | " + content);
-        }
+		if (logLevel >= networkSync_LogLevel)
+		{
+			string timeStamp = GenerateShortTimeString();
+			FPrintln(fileHandle, timeStamp + " | " + GetLogLevelString(logLevel) + " | " + content);
+		}
 	}
 
-	void LogError(string content) 
+	void LogError(string content)
 	{
 		thread Log(content, TraderPlusLogLevel.Error);
 	}
 
-	void LogInfo(string content) 
+	void LogInfo(string content)
 	{
 		thread Log(content, TraderPlusLogLevel.Info);
 	}
-	
-	void LogDebug(string content) 
+
+	void LogDebug(string content)
 	{
 		thread Log(content, TraderPlusLogLevel.Debug);
 	}
 
-	void LogWarning(string content) 
+	void LogWarning(string content)
 	{
 		thread Log(content, TraderPlusLogLevel.Warning);
 	}
 
-	string GenerateShortDateString() 
+	string GenerateShortDateString()
 	{
 		int year, month, day;
 		GetYearMonthDay(year, month, day);
@@ -119,7 +118,7 @@ class TraderPlusLoggerModule: CF_ModuleGame
 		return ret;
 	}
 
-	string GenerateShortTimeString() 
+	string GenerateShortTimeString()
 	{
 		int hour, minute, second;
 		GetHourMinuteSecond(hour, minute, second);
@@ -127,7 +126,7 @@ class TraderPlusLoggerModule: CF_ModuleGame
 		return ret;
 	}
 
-	string GenerateFullTimeStamp() 
+	string GenerateFullTimeStamp()
 	{
 		string dateStr = GenerateShortDateString();
 		string timeStr = GenerateShortTimeString();
@@ -139,18 +138,18 @@ class TraderPlusLoggerModule: CF_ModuleGame
 	{
 		switch (logLevel)
 		{
-			case TraderPlusLogLevel.Info:
-				return "[INFO]";
-			case TraderPlusLogLevel.Error:
-				return "[ERROR]";
-			case TraderPlusLogLevel.Debug:
-				return "[DEBUG]";
-            case TraderPlusLogLevel.Warning:
-				return "[WARNING]";
-			default:
-				return "";
+		case TraderPlusLogLevel.Info:
+			return "[INFO]";
+		case TraderPlusLogLevel.Error:
+			return "[ERROR]";
+		case TraderPlusLogLevel.Debug:
+			return "[DEBUG]";
+		case TraderPlusLogLevel.Warning:
+			return "[WARNING]";
+		default:
+			return "";
 		}
 
-        return "";
+		return "";
 	}
 }

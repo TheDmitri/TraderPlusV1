@@ -1,7 +1,9 @@
 class HideOutObject extends Armband_Yellow
 {
+	// clang-format off
 	private int m_PlayerID = 0;
-	private static ref map<int, HideOutObject > m_MapAllHideOut = new map<int, HideOutObject >;
+	private static ref map<int, HideOutObject> m_MapAllHideOut = new map<int, HideOutObject>;
+	// clang-format on
 
 	void HideOutObject()
 	{
@@ -10,7 +12,7 @@ class HideOutObject extends Armband_Yellow
 
 	void ~HideOutObject()
 	{
-		if(m_MapAllHideOut)
+		if (m_MapAllHideOut)
 			m_MapAllHideOut.Remove(m_PlayerID);
 	}
 
@@ -19,32 +21,32 @@ class HideOutObject extends Armband_Yellow
 		return false;
 	}
 
-	override bool CanPutIntoHands( EntityAI parent )
+	override bool CanPutIntoHands(EntityAI parent)
 	{
 		return false;
 	}
 
-	override bool CanPutInCargo( EntityAI item )
+	override bool CanPutInCargo(EntityAI item)
 	{
 		return false;
 	}
 
 	override bool CanReceiveItemIntoCargo(EntityAI item)
 	{
-		if(GetGame().IsServer() && GetSZConfig() && GetSZConfig().BlackListedItemInStash.Find(item.GetType()) != -1)
+		if (GetGame().IsServer() && GetSZConfig() && GetSZConfig().BlackListedItemInStash.Find(item.GetType()) != -1)
 			return false;
 
-		if(GetGame().IsClient() && GetSZConfigClient() && GetSZConfigClient().BlackListedItemInStash.Find(item.GetType()) != -1)
+		if (GetGame().IsClient() && GetSZConfigClient() && GetSZConfigClient().BlackListedItemInStash.Find(item.GetType()) != -1)
 			return false;
 
 		return super.CanReceiveItemIntoCargo(item);
 	}
 
-	static map<int, HideOutObject > GetMapAll()
+	static map<int, HideOutObject> GetMapAll()
 	{
-		#ifdef SZDEBUG
-		GetTraderPlusLogger().LogInfo("Map All HideOut:"+m_MapAllHideOut.Count());
-		#endif
+#ifdef SZDEBUG
+		GetTraderPlusLogger().LogInfo("Map All HideOut:" + m_MapAllHideOut.Count());
+#endif
 		return m_MapAllHideOut;
 	}
 
@@ -52,35 +54,34 @@ class HideOutObject extends Armband_Yellow
 	{
 		m_PlayerID = id;
 		m_MapAllHideOut.Set(m_PlayerID, this);
-		#ifdef SZDEBUG
-		GetTraderPlusLogger().LogInfo("Map All HideOut:"+m_MapAllHideOut.Count());
-		#endif
+#ifdef SZDEBUG
+		GetTraderPlusLogger().LogInfo("Map All HideOut:" + m_MapAllHideOut.Count());
+#endif
 		SetSynchDirty();
 	}
 
 	void RefreshLifeTimeCargo()
 	{
-		#ifdef SZDEBUG
+#ifdef SZDEBUG
 		GetTraderPlusLogger().LogInfo("RefreshLifeTimeCargo");
-		#endif
+#endif
 		array<EntityAI> itemsArray = new array<EntityAI>;
-    array<ItemBase> stackableItems = new array<ItemBase>;
-    GetInventory().EnumerateInventory(InventoryTraversalType.PREORDER, itemsArray);
-    for (int i = 0; i < itemsArray.Count(); ++i)
-    {
-        ItemBase item = ItemBase.Cast(itemsArray[i]);
-        if (item)
-				{
-					#ifdef SZDEBUG
-					GetTraderPlusLogger().LogInfo(string.Format("item_%1",item.GetType()));
-					#endif
-					item.SetLifetime(3888000);
-				}
-
+		array<ItemBase> stackableItems = new array<ItemBase>;
+		GetInventory().EnumerateInventory(InventoryTraversalType.PREORDER, itemsArray);
+		for (int i = 0; i < itemsArray.Count(); ++i)
+		{
+			ItemBase item = ItemBase.Cast(itemsArray[i]);
+			if (item)
+			{
+#ifdef SZDEBUG
+				GetTraderPlusLogger().LogInfo(string.Format("item_%1", item.GetType()));
+#endif
+				item.SetLifetime(3888000);
+			}
 		}
-		#ifdef SZDEBUG
+#ifdef SZDEBUG
 		GetTraderPlusLogger().LogInfo("End RefreshLifeTimeCargo");
-		#endif
+#endif
 	}
 
 	int GetOwner()
@@ -88,18 +89,18 @@ class HideOutObject extends Armband_Yellow
 		return m_PlayerID;
 	}
 
-	override void OnStoreSave( ParamsWriteContext ctx )
+	override void OnStoreSave(ParamsWriteContext ctx)
 	{
-		super.OnStoreSave( ctx );
-		ctx.Write( m_PlayerID );
+		super.OnStoreSave(ctx);
+		ctx.Write(m_PlayerID);
 	}
 
-	override bool OnStoreLoad( ParamsReadContext ctx, int version )
+	override bool OnStoreLoad(ParamsReadContext ctx, int version)
 	{
-		if ( !super.OnStoreLoad( ctx, version ) )
+		if (!super.OnStoreLoad(ctx, version))
 			return false;
 
-		if ( !ctx.Read( m_PlayerID ) )
+		if (!ctx.Read(m_PlayerID))
 		{
 			this.Delete();
 			return false;
@@ -121,11 +122,10 @@ class HideOutObject extends Armband_Yellow
 	void CheckStashPos()
 	{
 		float dist = vector.Distance(GetPosition(), vector.Zero);
-		if(dist > 1)
+		if (dist > 1)
 			GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(Hide, 500, false);
 	}
 
-	void InitStarterKit()
-	{
+	void InitStarterKit() {
 	};
 }

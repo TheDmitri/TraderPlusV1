@@ -1,12 +1,3 @@
-////////////////////////////////////////////////////////////////////
-//DeRap: config.bin
-//Produced from mikero's Dos Tools Dll version 9.45
-//https://mikero.bytex.digital/Downloads
-//'now' is Mon Nov 11 10:51:45 2024 : 'file' last modified on Fri Jan 13 17:00:46 2023
-////////////////////////////////////////////////////////////////////
-
-#define _ARMA_
-
 class CfgPatches
 {
 	class CLDefine
@@ -24,7 +15,7 @@ class CfgMods
 		dir = "CLDefine";
 		name = "CL";
 		type = "mod";
-		dependencies[] = {"GameLib","Game","World","Mission"};
+		dependencies[] = {"GameLib", "Game", "World", "Mission"};
 		class defs
 		{
 			class gameLibScriptModule

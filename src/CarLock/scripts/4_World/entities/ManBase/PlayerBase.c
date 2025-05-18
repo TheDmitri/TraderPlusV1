@@ -1,7 +1,7 @@
 #ifndef CARLOCKDISABLE
 modded class PlayerBase extends ManBase
 {
-	int CLSteamlowID=-1;
+	int CLSteamlowID = -1;
 
 	ref CarLockMenu m_CarLockMenu;
 
@@ -13,10 +13,10 @@ modded class PlayerBase extends ManBase
 
 	void SetLowSteamUID(string playerUID)
 	{
-		string temp_ID="";
-		for(int j = 8; j<17; j++)
+		string temp_ID = "";
+		for (int j = 8; j < 17; j++)
 		{
-			temp_ID+=playerUID.Get(j);
+			temp_ID += playerUID.Get(j);
 		}
 		CLSteamlowID = temp_ID.ToInt();
 		//GetTraderPlusLogger().LogInfo("UID:"+playerUID+" CLSteamlowID:"+CLSteamlowID.ToString());
@@ -25,15 +25,16 @@ modded class PlayerBase extends ManBase
 
 	bool HasPassword(int pwd, int id)
 	{
-		if(GetGame().IsClient())
+		if (GetGame().IsClient())
 		{
 			CarLockData carLockData = CarLockData.Load(id.ToString());
-			if(carLockData.CarLockPasswords.Count()>0)
+			if (carLockData.CarLockPasswords.Count() > 0)
 			{
-				for(int i=0;i<carLockData.CarLockPasswords.Count();i++)
+				for (int i = 0; i < carLockData.CarLockPasswords.Count(); i++)
 				{
-					if(carLockData.CarLockPasswords[i] == -1)continue;
-					if(carLockData.CarLockPasswords[i] == pwd)
+					if (carLockData.CarLockPasswords[i] == -1)
+						continue;
+					if (carLockData.CarLockPasswords[i] == pwd)
 					{
 						//GetTraderPlusLogger().LogInfo("HasPassword:true");
 						return true;

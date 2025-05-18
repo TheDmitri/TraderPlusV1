@@ -1,20 +1,11 @@
-////////////////////////////////////////////////////////////////////
-//DeRap: config.bin
-//Produced from mikero's Dos Tools Dll version 9.45
-//https://mikero.bytex.digital/Downloads
-//'now' is Mon Nov 11 10:51:30 2024 : 'file' last modified on Sat Jan 21 17:20:29 2023
-////////////////////////////////////////////////////////////////////
-
-#define _ARMA_
-
 class CfgPatches
 {
 	class CarLock_Script
 	{
-		units[] = {"CarLockPick","CarLock"};
+		units[] = {"CarLockPick", "CarLock"};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"DZ_Data","SafeZone_Script"};
+		requiredAddons[] = {"DZ_Data", "SafeZone_Script"};
 	};
 };
 class CfgMods
@@ -34,23 +25,23 @@ class CfgMods
 		extra = 0;
 		type = "mod";
 		inputs = "CarLock/scripts/3_Game/inputs.xml";
-		dependencies[] = {"Game","World","Mission"};
+		dependencies[] = {"Game", "World", "Mission"};
 		class defs
 		{
 			class gameScriptModule
 			{
 				value = "";
-				files[] = {"MuchCarKey/Scripts/Common","MuchCarKeyDefines/scripts/Common","CLDefine/scripts/Common","TPDefine/scripts/Common","TM/Trader/scripts/defines","CarCover/Scripts/Common","TPDefine/scripts/Common","TraderPlus/scripts/Common","CarLock/scripts/Common","CarLock/scripts/3_Game"};
+				files[] = {"MuchCarKey/Scripts/Common", "MuchCarKeyDefines/scripts/Common", "CLDefine/scripts/Common", "TPDefine/scripts/Common", "TM/Trader/scripts/defines", "CarCover/Scripts/Common", "TPDefine/scripts/Common", "TraderPlus/scripts/Common", "CarLock/scripts/Common", "CarLock/scripts/3_Game"};
 			};
 			class worldScriptModule
 			{
 				value = "";
-				files[] = {"MuchCarKey/Scripts/Common","MuchCarKeyDefines/scripts/Common","CLDefine/scripts/Common","TPDefine/scripts/Common","TM/Trader/scripts/defines","CarCover/Scripts/Common","TPDefine/scripts/Common","TraderPlus/scripts/Common","CarLock/scripts/Common","CarLock/scripts/4_World"};
+				files[] = {"MuchCarKey/Scripts/Common", "MuchCarKeyDefines/scripts/Common", "CLDefine/scripts/Common", "TPDefine/scripts/Common", "TM/Trader/scripts/defines", "CarCover/Scripts/Common", "TPDefine/scripts/Common", "TraderPlus/scripts/Common", "CarLock/scripts/Common", "CarLock/scripts/4_World"};
 			};
 			class missionScriptModule
 			{
 				value = "";
-				files[] = {"MuchCarKey/Scripts/Common","MuchCarKeyDefines/scripts/Common","CLDefine/scripts/Common","TPDefine/scripts/Common","TM/Trader/scripts/defines","CarCover/Scripts/Common","TPDefine/scripts/Common","TraderPlus/scripts/Common","CarLock/scripts/Common","CarLock/scripts/5_Mission"};
+				files[] = {"MuchCarKey/Scripts/Common", "MuchCarKeyDefines/scripts/Common", "CLDefine/scripts/Common", "TPDefine/scripts/Common", "TM/Trader/scripts/defines", "CarCover/Scripts/Common", "TPDefine/scripts/Common", "TraderPlus/scripts/Common", "CarLock/scripts/Common", "CarLock/scripts/5_Mission"};
 			};
 		};
 	};
@@ -58,7 +49,7 @@ class CfgMods
 class CfgVehicles
 {
 	class Inventory_Base;
-	class CarLockPick: Inventory_Base
+	class CarLockPick : Inventory_Base
 	{
 		scope = 2;
 		displayName = "CarLockPick";
@@ -68,7 +59,7 @@ class CfgVehicles
 		RestrainUnlockType = 0;
 		rotationFlags = 17;
 		isLockpick = 1;
-		itemSize[] = {1,2};
+		itemSize[] = {1, 2};
 		weight = 190;
 		fragility = 0.01;
 		class DamageSystem
@@ -78,7 +69,7 @@ class CfgVehicles
 				class Health
 				{
 					hitpoints = 50;
-					healthLevels[] = {{1,{"DZ\gear\tools\data\Lockpick.rvmat"}},{0.7,{"DZ\gear\tools\data\Lockpick.rvmat"}},{0.5,{"DZ\gear\tools\data\Lockpick_damage.rvmat"}},{0.3,{"DZ\gear\tools\data\Lockpick_damage.rvmat"}},{0,{"DZ\gear\tools\data\Lockpick_destruct.rvmat"}}};
+					healthLevels[] = {{1, {"DZ\gear\tools\data\Lockpick.rvmat"}}, {0.7, {"DZ\gear\tools\data\Lockpick.rvmat"}}, {0.5, {"DZ\gear\tools\data\Lockpick_damage.rvmat"}}, {0.3, {"DZ\gear\tools\data\Lockpick_damage.rvmat"}}, {0, {"DZ\gear\tools\data\Lockpick_destruct.rvmat"}}};
 				};
 			};
 		};
@@ -127,7 +118,7 @@ class CfgVehicles
 			};
 		};
 	};
-	class CarLock: Inventory_Base
+	class CarLock : Inventory_Base
 	{
 		scope = 2;
 		weight = 175;
@@ -135,7 +126,7 @@ class CfgVehicles
 		descriptionShort = "CarLock can be attached to a car in order to lock a car with an 8 digits password. Once set, password is saved. Can be used alone or with friends.";
 		model = "CarLock\CarLock.p3d";
 		rotationFlags = 17;
-		itemSize[] = {2,2};
+		itemSize[] = {2, 2};
 		class DamageSystem
 		{
 			class GlobalHealth
@@ -143,7 +134,7 @@ class CfgVehicles
 				class Health
 				{
 					hitpoints = 100;
-					healthLevels[] = {{1.01,{"DZ\gear\food\data\powdered_milk.rvmat"}},{0.07,{"DZ\gear\food\data\powdered_milk.rvmat"}},{0.5,{"DZ\gear\food\data\powdered_milk_damage.rvmat"}},{0.3,{"DZ\gear\food\data\powdered_milk_damage.rvmat"}},{0.01,{"DZ\gear\food\data\powdered_milk_destruct.rvmat"}}};
+					healthLevels[] = {{1.01, {"DZ\gear\food\data\powdered_milk.rvmat"}}, {0.07, {"DZ\gear\food\data\powdered_milk.rvmat"}}, {0.5, {"DZ\gear\food\data\powdered_milk_damage.rvmat"}}, {0.3, {"DZ\gear\food\data\powdered_milk_damage.rvmat"}}, {0.01, {"DZ\gear\food\data\powdered_milk_destruct.rvmat"}}};
 				};
 			};
 		};
@@ -153,21 +144,21 @@ class CfgSoundShaders
 {
 	class cl_CarLock_CarAlarm_SoundShader
 	{
-		samples[] = {{"CarLock\Sounds\CarAlarm",1}};
+		samples[] = {{"CarLock\Sounds\CarAlarm", 1}};
 		radius = 500;
 		range = 500;
 		volume = 1;
-		rangeCurve[] = {{0,1},{50,1},{500,1}};
+		rangeCurve[] = {{0, 1}, {50, 1}, {500, 1}};
 	};
 	class cl_CarLock_CarLock_SoundShader
 	{
-		samples[] = {{"CarLock\Sounds\CarLock",1}};
+		samples[] = {{"CarLock\Sounds\CarLock", 1}};
 		range = 15;
 		volume = 1.2;
 	};
 	class cl_CarLock_CarUnlock_SoundShader
 	{
-		samples[] = {{"CarLock\Sounds\CarUnlock",1}};
+		samples[] = {{"CarLock\Sounds\CarUnlock", 1}};
 		range = 15;
 		volume = 1.2;
 	};

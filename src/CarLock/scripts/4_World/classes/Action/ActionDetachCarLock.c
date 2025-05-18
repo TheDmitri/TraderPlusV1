@@ -1,5 +1,5 @@
 #ifndef CARLOCKDISABLE
-class  ActionDetachCarLockCB : ActionContinuousBaseCB
+class ActionDetachCarLockCB : ActionContinuousBaseCB
 {
 	override void CreateActionComponent()
 	{
@@ -7,11 +7,11 @@ class  ActionDetachCarLockCB : ActionContinuousBaseCB
 	}
 };
 
-class  ActionDetachCarLock: ActionContinuousBase
+class ActionDetachCarLock : ActionContinuousBase
 {
-	void  ActionDetachCarLock()
+	void ActionDetachCarLock()
 	{
-		m_CallbackClass =  ActionDetachCarLockCB;
+		m_CallbackClass = ActionDetachCarLockCB;
 		m_CommandUID = DayZPlayerConstants.CMD_ACTIONFB_CRAFTING;
 		m_FullBody = true;
 		m_StanceMask = DayZPlayerConstants.STANCEMASK_CROUCH;
@@ -20,7 +20,7 @@ class  ActionDetachCarLock: ActionContinuousBase
 
 	override void CreateConditionComponents()
 	{
-    m_ConditionTarget = new CCTNonRuined(10);
+		m_ConditionTarget = new CCTNonRuined(10);
 		m_ConditionItem = new CCINonRuined;
 	}
 
@@ -29,17 +29,18 @@ class  ActionDetachCarLock: ActionContinuousBase
 		return "Detach CarLock";
 	}
 
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if ( GetGame().IsServer() )
-				return true;
+		if (GetGame().IsServer())
+			return true;
 
 		CarScript ntarget = CarLockTargetHelper.GetTargetCar(target);
-		if (ntarget && (ntarget.m_CarLockOwner == player.CLSteamlowID && ntarget.m_CarLockPassword != -1 ) || player.GetAdminStatus() == SZ_IS_ADMIN ||player.HasPassword(ntarget.m_CarLockPassword,ntarget.m_CarLockOwner))
+		if (ntarget && (ntarget.m_CarLockOwner == player.CLSteamlowID && ntarget.m_CarLockPassword != -1) || player.GetAdminStatus() == SZ_IS_ADMIN || player.HasPassword(ntarget.m_CarLockPassword, ntarget.m_CarLockOwner))
 		{
-			bool IsEmpty = true;
+			bool	  IsEmpty = true;
 			Transport transport = Transport.Cast(ntarget);
-			if (!transport)return false;
+			if (!transport)
+				return false;
 
 			int crewSize = transport.CrewSize();
 			for (int j = 0; j < crewSize; j++)
@@ -48,7 +49,8 @@ class  ActionDetachCarLock: ActionContinuousBase
 					IsEmpty = false;
 			}
 
-			if (IsEmpty)return true;
+			if (IsEmpty)
+				return true;
 		}
 		return false;
 	}
@@ -65,22 +67,22 @@ class  ActionDetachCarLock: ActionContinuousBase
 		}
   }*/
 
-	override void OnFinishProgressServer( ActionData action_data )
+	override void OnFinishProgressServer(ActionData action_data)
 	{
-    if ( action_data.m_MainItem && action_data.m_MainItem.GetHierarchyRootPlayer() == action_data.m_Player )
+		if (action_data.m_MainItem && action_data.m_MainItem.GetHierarchyRootPlayer() == action_data.m_Player)
 		{
 			CarScript car = CarScript.Cast(action_data.m_Target.GetObject());
-			if(car)
+			if (car)
 			{
 				car.SetCarLockPassword(-1);
 				car.SetCarLockOwner(-1);
 				car.SetCarLock(false);
-				ItemBase carlock = ItemBase.Cast( GetGame().CreateObjectEx("CarLock", action_data.m_Player.GetPosition(), ECE_PLACE_ON_SURFACE) );
+				ItemBase carlock = ItemBase.Cast(GetGame().CreateObjectEx("CarLock", action_data.m_Player.GetPosition(), ECE_PLACE_ON_SURFACE));
 				action_data.m_Player.DropItem(action_data.m_MainItem);
-	      action_data.m_MainItem.Delete();
-				GetTraderPlusLogger().LogInfo("CARLOCK HAS BEEN DETACHED BY:"+action_data.m_Player.GetIdentity().GetName());
+				action_data.m_MainItem.Delete();
+				GetTraderPlusLogger().LogInfo("CARLOCK HAS BEEN DETACHED BY:" + action_data.m_Player.GetIdentity().GetName());
 			}
 		}
-  }
+	}
 };
 #endif

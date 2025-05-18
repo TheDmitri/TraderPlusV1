@@ -8,50 +8,50 @@ class ActiondeployVehicleCB : ActionContinuousBaseCB
 	void DropDuringPlacing()
 	{
 		EntityAI entity_for_placing = m_ActionData.m_MainItem;
-		if ( entity_for_placing.IsBasebuildingKit() )
+		if (entity_for_placing.IsBasebuildingKit())
 			return;
 
-		vector orientation = m_ActionData.m_Player.GetOrientation();
-		vector 	position = m_ActionData.m_Player.GetPosition() + m_ActionData.m_Player.GetDirection();
-		vector rotation_matrix[3];
-		float direction[4];
+		vector			  orientation = m_ActionData.m_Player.GetOrientation();
+		vector			  position = m_ActionData.m_Player.GetPosition() + m_ActionData.m_Player.GetDirection();
+		vector			  rotation_matrix[3];
+		float			  direction[4];
 		InventoryLocation source = new InventoryLocation;
 		InventoryLocation destination = new InventoryLocation;
 
-		Math3D.YawPitchRollMatrix( orientation, rotation_matrix );
-		Math3D.MatrixToQuat( rotation_matrix, direction );
+		Math3D.YawPitchRollMatrix(orientation, rotation_matrix);
+		Math3D.MatrixToQuat(rotation_matrix, direction);
 
 		vector ground_position = position;
-		ground_position[1] = GetGame().SurfaceY(ground_position[0],ground_position[2]);
+		ground_position[1] = GetGame().SurfaceY(ground_position[0], ground_position[2]);
 
-		if ( vector.DistanceSq( m_ActionData.m_Player.GetPosition(), ground_position ) > UAMaxDistances.DEFAULT * UAMaxDistances.DEFAULT)
+		if (vector.DistanceSq(m_ActionData.m_Player.GetPosition(), ground_position) > UAMaxDistances.DEFAULT * UAMaxDistances.DEFAULT)
 		{
-			if ( entity_for_placing.GetInventory().GetCurrentInventoryLocation( source ) )
+			if (entity_for_placing.GetInventory().GetCurrentInventoryLocation(source))
 			{
-				destination.SetGroundEx( entity_for_placing, position, direction );
+				destination.SetGroundEx(entity_for_placing, position, direction);
 				m_ActionData.m_Player.PredictiveTakeToDst(source, destination);
 			}
 		}
 		else
 		{
-			if ( entity_for_placing.GetInventory().GetCurrentInventoryLocation( source ) )
+			if (entity_for_placing.GetInventory().GetCurrentInventoryLocation(source))
 			{
-				destination.SetGroundEx( entity_for_placing, ground_position, direction );
+				destination.SetGroundEx(entity_for_placing, ground_position, direction);
 				m_ActionData.m_Player.PredictiveTakeToDst(source, destination);
 			}
 		}
 	}
 };
 
-class ActionDeployVehicle: ActionContinuousBase
+class ActionDeployVehicle : ActionContinuousBase
 {
 	void ActionDeployVehicle()
 	{
-		m_CallbackClass		= ActiondeployVehicleCB;
-		m_SpecialtyWeight 	= UASoftSkillsWeight.PRECISE_LOW;
-		m_CommandUID		= 0;
-		m_FullBody			= true;
-		m_StanceMask		= DayZPlayerConstants.STANCEMASK_CROUCH | DayZPlayerConstants.STANCEMASK_ERECT;
+		m_CallbackClass = ActiondeployVehicleCB;
+		m_SpecialtyWeight = UASoftSkillsWeight.PRECISE_LOW;
+		m_CommandUID = 0;
+		m_FullBody = true;
+		m_StanceMask = DayZPlayerConstants.STANCEMASK_CROUCH | DayZPlayerConstants.STANCEMASK_ERECT;
 	}
 
 	override void CreateConditionComponents()
@@ -80,7 +80,7 @@ class ActionDeployVehicle: ActionContinuousBase
 		return "#tpm_deploy_vehicle";
 	}
 
-	override bool ActionConditionContinue( ActionData action_data )
+	override bool ActionConditionContinue(ActionData action_data)
 	{
 		return true;
 	}
@@ -93,12 +93,12 @@ class ActionDeployVehicle: ActionContinuousBase
 
 	override bool SetupAction(PlayerBase player, ActionTarget target, ItemBase item, out ActionData action_data, Param extra_data = NULL)
 	{
-		if ( super.SetupAction(player, target, item, action_data, extra_data ))
+		if (super.SetupAction(player, target, item, action_data, extra_data))
 		{
 			PlaceObjectActionData poActionData;
 			poActionData = PlaceObjectActionData.Cast(action_data);
 			poActionData.m_AlreadyPlaced = false;
-			if (!GetGame().IsMultiplayer() || GetGame().IsClient() )
+			if (!GetGame().IsMultiplayer() || GetGame().IsClient())
 			{
 				Hologram hologram = player.GetHologramLocal();
 				if (hologram)
@@ -106,8 +106,8 @@ class ActionDeployVehicle: ActionContinuousBase
 					poActionData.m_Position = player.GetHologramLocal().GetProjectionPosition();
 					poActionData.m_Orientation = player.GetHologramLocal().GetProjectionOrientation();
 
-					poActionData.m_Player.SetLocalProjectionPosition( poActionData.m_Position );
-					poActionData.m_Player.SetLocalProjectionOrientation( poActionData.m_Orientation );
+					poActionData.m_Player.SetLocalProjectionPosition(poActionData.m_Position);
+					poActionData.m_Player.SetLocalProjectionOrientation(poActionData.m_Orientation);
 				}
 				else
 				{
@@ -115,27 +115,27 @@ class ActionDeployVehicle: ActionContinuousBase
 				}
 			}
 
-			if ( !action_data.m_MainItem )
+			if (!action_data.m_MainItem)
 				return false;
 
-			SetupAnimation( action_data.m_MainItem );
+			SetupAnimation(action_data.m_MainItem);
 			return true;
 		}
 		return false;
 	}
 
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
 		//Print("XXXXXX");
 		//Client
-		if ( !GetGame().IsMultiplayer() || GetGame().IsClient() )
+		if (!GetGame().IsMultiplayer() || GetGame().IsClient())
 		{
-			if ( player.IsPlacingLocal() )
+			if (player.IsPlacingLocal())
 			{
 				//Print("------");
-				if ( !player.GetHologramLocal().IsColliding() && !player.m_TraderPlusMenu)
+				if (!player.GetHologramLocal().IsColliding() && !player.m_TraderPlusMenu)
 				{
-					if ( ConditionAddon(player, target, item) || item.CanBePlaced(player, player.GetHologramLocal().GetProjectionEntity().GetPosition()) && IsNoPlayerNearby(player.GetHologramLocal().GetProjectionEntity().GetPosition()) && !IsVehicleToHigh(player.GetPosition(),player.GetHologramLocal().GetProjectionEntity().GetPosition()))
+					if (ConditionAddon(player, target, item) || item.CanBePlaced(player, player.GetHologramLocal().GetProjectionEntity().GetPosition()) && IsNoPlayerNearby(player.GetHologramLocal().GetProjectionEntity().GetPosition()) && !IsVehicleToHigh(player.GetPosition(), player.GetHologramLocal().GetProjectionEntity().GetPosition()))
 					{
 						return true;
 					}
@@ -144,9 +144,9 @@ class ActionDeployVehicle: ActionContinuousBase
 			return false;
 		}
 		//Server
-		if(GetGame().IsServer())
+		if (GetGame().IsServer())
 		{
-			if(ConditionAddon(player, target, item) || player.GetSafeZoneStatus() == SZ_IN_SAFEZONE || !GetTraderPlusConfigServer().IsReceiptTraderOnly || IsTraderNearby(player.GetPosition()))
+			if (ConditionAddon(player, target, item) || player.GetSafeZoneStatus() == SZ_IN_SAFEZONE || !GetTraderPlusConfigServer().IsReceiptTraderOnly || IsTraderNearby(player.GetPosition()))
 			{
 				return true;
 			}
@@ -157,10 +157,10 @@ class ActionDeployVehicle: ActionContinuousBase
 
 	bool IsTraderNearby(vector playerpos)
 	{
-		for(int i=0;i<GetTraderPlusConfigServer().Traders.Count();i++)
+		for (int i = 0; i < GetTraderPlusConfigServer().Traders.Count(); i++)
 		{
-			float dist = vector.Distance(GetTraderPlusConfigServer().Traders[i].Position,playerpos);
-			if(dist < 15)
+			float dist = vector.Distance(GetTraderPlusConfigServer().Traders[i].Position, playerpos);
+			if (dist < 15)
 			{
 				return true;
 			}
@@ -171,37 +171,38 @@ class ActionDeployVehicle: ActionContinuousBase
 
 	bool IsVehicleToHigh(vector ppos, vector carpos)
 	{
-		if(GetTraderPlusConfigClient().DisableHeightFailSafeForReceiptDeployment)
+		if (GetTraderPlusConfigClient().DisableHeightFailSafeForReceiptDeployment)
 		{
 			Print("DisableHeightFailSafeForReceiptDeployment");
 			return false;
 		}
-		float distance = Math.Sqrt(Math.Pow((carpos[1]-ppos[1]),2));
-		if(distance > 0.5)return true;
-		else return false;
+		float distance = Math.Sqrt(Math.Pow((carpos[1] - ppos[1]), 2));
+		if (distance > 0.5)
+			return true;
+		else
+			return false;
 	}
-
 
 	bool IsNoPlayerNearby(vector pos)
 	{
 		array<Object> objs = new array<Object>;
 
-    GetGame().GetObjectsAtPosition3D(pos, 2.5, objs, NULL);
-    if (objs.Count() < 1)
-    {
-      return true;
-    }
+		GetGame().GetObjectsAtPosition3D(pos, 2.5, objs, NULL);
+		if (objs.Count() < 1)
+		{
+			return true;
+		}
 
-    for (int i = 0; i < objs.Count(); i++)
-    {
-      string tempObjId = objs.Get(i).ToString();
-      tempObjId.ToLower();
-      if(objs.Get(i).IsKindOf("SurvivorBase"))
-      {
-        return false;
-      }
-    }
-    return true;
+		for (int i = 0; i < objs.Count(); i++)
+		{
+			string tempObjId = objs.Get(i).ToString();
+			tempObjId.ToLower();
+			if (objs.Get(i).IsKindOf("SurvivorBase"))
+			{
+				return false;
+			}
+		}
+		return true;
 	}
 
 	//you can override that function for modding purpose -> Function is server + client
@@ -231,74 +232,89 @@ class ActionDeployVehicle: ActionContinuousBase
 		return true;
 	}*/
 
-	override void OnStartClient( ActionData action_data )
+	override void OnStartClient(ActionData action_data)
 	{
 		PlaceObjectActionData poActionData;
 		poActionData = PlaceObjectActionData.Cast(action_data);
 
-		if ( !poActionData ) { return; }
+		if (!poActionData)
+		{
+			return;
+		}
 
 		if (GetGame().IsMultiplayer())
 			action_data.m_Player.PlacingCompleteLocal();
 	}
 
-	override void OnStartServer( ActionData action_data )
+	override void OnStartServer(ActionData action_data)
 	{
-		if ( GetGame().IsMultiplayer() )
+		if (GetGame().IsMultiplayer())
 		{
 			PlaceObjectActionData poActionData;
 			poActionData = PlaceObjectActionData.Cast(action_data);
 
-			if ( !poActionData ) { return; }
+			if (!poActionData)
+			{
+				return;
+			}
 
 			EntityAI entity_for_placing = action_data.m_MainItem;
-			poActionData.m_Player.SetLocalProjectionPosition( poActionData.m_Position );
-			poActionData.m_Player.SetLocalProjectionOrientation( poActionData.m_Orientation );
+			poActionData.m_Player.SetLocalProjectionPosition(poActionData.m_Position);
+			poActionData.m_Player.SetLocalProjectionOrientation(poActionData.m_Orientation);
 
-			if ( action_data.m_MainItem )
+			if (action_data.m_MainItem)
 			{
 				poActionData.m_Player.PlacingStartServer(action_data.m_MainItem);
 
-				GetGame().AddActionJuncture( action_data.m_Player, entity_for_placing, 10000 );
-				action_data.m_MainItem.SetIsBeingPlaced( true );
+				GetGame().AddActionJuncture(action_data.m_Player, entity_for_placing, 10000);
+				action_data.m_MainItem.SetIsBeingPlaced(true);
 			}
 		}
 		else
 		{
 			//local singleplayer
 			action_data.m_Player.PlacingStartServer(action_data.m_MainItem);
-			action_data.m_Player.GetHologramLocal().SetUpdatePosition( false );
-			action_data.m_MainItem.SetIsBeingPlaced( true );
+			action_data.m_Player.GetHologramLocal().SetUpdatePosition(false);
+			action_data.m_MainItem.SetIsBeingPlaced(true);
 		}
 	}
 
-	override void OnFinishProgressClient( ActionData action_data )
+	override void OnFinishProgressClient(ActionData action_data)
 	{
 		PlaceObjectActionData poActionData;
 		poActionData = PlaceObjectActionData.Cast(action_data);
 
-		if ( !poActionData ) { return; }
+		if (!poActionData)
+		{
+			return;
+		}
 
 		EntityAI entity_for_placing = action_data.m_MainItem;
-		vector position = action_data.m_Player.GetLocalProjectionPosition();
-		vector orientation = action_data.m_Player.GetLocalProjectionOrientation();
+		vector	 position = action_data.m_Player.GetLocalProjectionPosition();
+		vector	 orientation = action_data.m_Player.GetLocalProjectionOrientation();
 
 		poActionData.m_AlreadyPlaced = true;
 
-		entity_for_placing.OnPlacementComplete( action_data.m_Player, position, orientation);
+		entity_for_placing.OnPlacementComplete(action_data.m_Player, position, orientation);
 	}
 
-	override void OnFinishProgressServer( ActionData action_data )
+	override void OnFinishProgressServer(ActionData action_data)
 	{
 		PlaceObjectActionData poActionData;
 		poActionData = PlaceObjectActionData.Cast(action_data);
 
-		if ( !poActionData ) { return; }
-		if( !action_data.m_MainItem ) { return; }
+		if (!poActionData)
+		{
+			return;
+		}
+		if (!action_data.m_MainItem)
+		{
+			return;
+		}
 
 		EntityAI entity_for_placing = action_data.m_MainItem;
-		vector position = action_data.m_Player.GetLocalProjectionPosition();
-		vector orientation = action_data.m_Player.GetLocalProjectionOrientation();
+		vector	 position = action_data.m_Player.GetLocalProjectionPosition();
+		vector	 orientation = action_data.m_Player.GetLocalProjectionOrientation();
 
 		action_data.m_Player.GetHologramServer().EvaluateCollision(action_data.m_MainItem);
 		//action_data.m_Player.GetHologramServer().SetIsColliding(true); //REMOVE
@@ -308,49 +324,49 @@ class ActionDeployVehicle: ActionContinuousBase
 			//return;
 		}
 
-		action_data.m_Player.GetHologramServer().PlaceEntity( entity_for_placing );
+		action_data.m_Player.GetHologramServer().PlaceEntity(entity_for_placing);
 
-		if ( GetGame().IsMultiplayer() )
+		if (GetGame().IsMultiplayer())
 			action_data.m_Player.GetHologramServer().CheckPowerSource();
 
 		action_data.m_Player.PlacingCompleteServer();
-		entity_for_placing.OnPlacementComplete( action_data.m_Player, position, orientation );
+		entity_for_placing.OnPlacementComplete(action_data.m_Player, position, orientation);
 
 		//MoveEntityToFinalPosition( action_data, position, orientation );
-		GetGame().ClearJuncture( action_data.m_Player, entity_for_placing );
-		action_data.m_MainItem.SetIsBeingPlaced( false );
-		action_data.m_Player.GetSoftSkillsManager().AddSpecialty( m_SpecialtyWeight );
+		GetGame().ClearJuncture(action_data.m_Player, entity_for_placing);
+		action_data.m_MainItem.SetIsBeingPlaced(false);
+		action_data.m_Player.GetSoftSkillsManager().AddSpecialty(m_SpecialtyWeight);
 		poActionData.m_AlreadyPlaced = true;
 		action_data.m_MainItem.SoundSynchRemoteReset();
 	}
 
-	override void OnEndClient( ActionData action_data  )
+	override void OnEndClient(ActionData action_data)
 	{
 		PlaceObjectActionData poActionData;
 		poActionData = PlaceObjectActionData.Cast(action_data);
-		if ( !poActionData.m_AlreadyPlaced )
+		if (!poActionData.m_AlreadyPlaced)
 		{
 			EntityAI entity_for_placing = action_data.m_MainItem;
 			action_data.m_Player.PlacingCancelLocal();
-			action_data.m_Player.PredictiveTakeEntityToHands( entity_for_placing );
+			action_data.m_Player.PredictiveTakeEntityToHands(entity_for_placing);
 			action_data.m_Player.LockHandsUntilItemHeld();
 		}
 	}
 
-	override void OnEndServer( ActionData action_data  )
+	override void OnEndServer(ActionData action_data)
 	{
-		if( !action_data || !action_data.m_MainItem )
+		if (!action_data || !action_data.m_MainItem)
 			return;
 
 		PlaceObjectActionData poActionData;
 		poActionData = PlaceObjectActionData.Cast(action_data);
-		if ( !poActionData.m_AlreadyPlaced )
+		if (!poActionData.m_AlreadyPlaced)
 		{
 			EntityAI entity_for_placing = action_data.m_MainItem;
-			GetGame().ClearJuncture( action_data.m_Player, entity_for_placing );
-			action_data.m_MainItem.SetIsBeingPlaced( false );
+			GetGame().ClearJuncture(action_data.m_Player, entity_for_placing);
+			action_data.m_MainItem.SetIsBeingPlaced(false);
 
-			if ( GetGame().IsMultiplayer() )
+			if (GetGame().IsMultiplayer())
 			{
 				action_data.m_Player.PlacingCancelServer();
 				//action_data.m_Player.ServerTakeEntityToHands( entity_for_placing );
@@ -365,44 +381,44 @@ class ActionDeployVehicle: ActionContinuousBase
 				InventoryLocation source = new InventoryLocation;
 				InventoryLocation destination = new InventoryLocation;
 
-				if ( action_data.m_MainItem.GetInventory().GetCurrentInventoryLocation( source ) )
+				if (action_data.m_MainItem.GetInventory().GetCurrentInventoryLocation(source))
 				{
-					destination.SetHands( action_data.m_Player, action_data.m_MainItem );
+					destination.SetHands(action_data.m_Player, action_data.m_MainItem);
 					action_data.m_Player.GetDayZPlayerInventory().RedirectToHandEvent(InventoryMode.LOCAL, source, destination);
 				}
 			}
 
-			GetGame().ClearJuncture( action_data.m_Player, action_data.m_MainItem );
+			GetGame().ClearJuncture(action_data.m_Player, action_data.m_MainItem);
 		}
 		else
 		{
 			//TODO: make OnEND placement event and move there
 
-			action_data.m_MainItem.SetIsDeploySound( false );
-			action_data.m_MainItem.SetIsPlaceSound( false );
+			action_data.m_MainItem.SetIsDeploySound(false);
+			action_data.m_MainItem.SetIsPlaceSound(false);
 			action_data.m_MainItem.SoundSynchRemoteReset();
 
-			if ( action_data.m_MainItem.IsBasebuildingKit() )
+			if (action_data.m_MainItem.IsBasebuildingKit())
 			{
 				action_data.m_MainItem.Delete();
 			}
 			else
 			{
-				GetGame().ClearJuncture( action_data.m_Player, action_data.m_MainItem );
+				GetGame().ClearJuncture(action_data.m_Player, action_data.m_MainItem);
 			}
 		}
 	}
 
-	override void OnStartAnimationLoop( ActionData action_data )
+	override void OnStartAnimationLoop(ActionData action_data)
 	{
-		if ( GetGame().IsClient() || !GetGame().IsMultiplayer() )
+		if (GetGame().IsClient() || !GetGame().IsMultiplayer())
 		{
-			if ( action_data.m_Player.GetItemInHands() )
+			if (action_data.m_Player.GetItemInHands())
 				ActiondeployVehicleCB.Cast(action_data.m_Callback).DropDuringPlacing();
 		}
 	}
 
-	override void OnExecuteServer( ActionData action_data )
+	override void OnExecuteServer(ActionData action_data)
 	{
 		action_data.m_MainItem.SoundSynchRemote();
 	}
@@ -414,17 +430,17 @@ class ActionDeployVehicle: ActionContinuousBase
 		PlaceObjectActionData poActionData;
 		poActionData = PlaceObjectActionData.Cast(action_data);
 
-		ctx.Write( poActionData.m_Position );
-		ctx.Write( poActionData.m_Orientation );
+		ctx.Write(poActionData.m_Position);
+		ctx.Write(poActionData.m_Orientation);
 	}
 
-	override bool ReadFromContext(ParamsReadContext ctx, out ActionReciveData action_recive_data )
+	override bool ReadFromContext(ParamsReadContext ctx, out ActionReciveData action_recive_data)
 	{
-		if(!action_recive_data)
+		if (!action_recive_data)
 		{
 			action_recive_data = new PlaceObjectActionReciveData;
 		}
-		super.ReadFromContext(ctx, action_recive_data );
+		super.ReadFromContext(ctx, action_recive_data);
 		PlaceObjectActionReciveData action_data_po = PlaceObjectActionReciveData.Cast(action_recive_data);
 
 		vector entity_position = "0 0 0";
@@ -445,30 +461,31 @@ class ActionDeployVehicle: ActionContinuousBase
 		super.HandleReciveData(action_recive_data, action_data);
 
 		PlaceObjectActionReciveData recive_data_po = PlaceObjectActionReciveData.Cast(action_recive_data);
-		PlaceObjectActionData action_data_po = PlaceObjectActionData.Cast(action_data);
+		PlaceObjectActionData		action_data_po = PlaceObjectActionData.Cast(action_data);
 
 		action_data_po.m_Position = recive_data_po.m_Position;
 		action_data_po.m_Orientation = recive_data_po.m_Orientation;
 	}
 
-	void MoveEntityToFinalPosition( ActionData action_data, vector position, vector orientation )
+	void MoveEntityToFinalPosition(ActionData action_data, vector position, vector orientation)
 	{
-		if ( action_data.m_MainItem.IsBasebuildingKit() ) return;
+		if (action_data.m_MainItem.IsBasebuildingKit())
+			return;
 
-		EntityAI entity_for_placing = action_data.m_MainItem;
-		vector rotation_matrix[3];
-		float direction[4];
+		EntityAI		  entity_for_placing = action_data.m_MainItem;
+		vector			  rotation_matrix[3];
+		float			  direction[4];
 		InventoryLocation source = new InventoryLocation;
 		InventoryLocation destination = new InventoryLocation;
 
-		Math3D.YawPitchRollMatrix( orientation, rotation_matrix );
-		Math3D.MatrixToQuat( rotation_matrix, direction );
+		Math3D.YawPitchRollMatrix(orientation, rotation_matrix);
+		Math3D.MatrixToQuat(rotation_matrix, direction);
 
-		if ( entity_for_placing.GetInventory().GetCurrentInventoryLocation( source ) )
+		if (entity_for_placing.GetInventory().GetCurrentInventoryLocation(source))
 		{
-			destination.SetGroundEx( entity_for_placing, position, direction );
+			destination.SetGroundEx(entity_for_placing, position, direction);
 
-			if ( GetGame().IsMultiplayer() )
+			if (GetGame().IsMultiplayer())
 			{
 				action_data.m_Player.ServerTakeToDst(source, destination);
 			}
@@ -485,19 +502,19 @@ class ActionDeployVehicle: ActionContinuousBase
 		action_data.m_Player.GetInventory().TakeToDst(InventoryMode.LOCAL, source, destination);
 	}
 
-	void SetupAnimation( ItemBase item )
+	void SetupAnimation(ItemBase item)
 	{
-		if ( item.IsDeployable() )
+		if (item.IsDeployable())
 		{
-			if ( item.IsHeavyBehaviour() )
+			if (item.IsHeavyBehaviour())
 			{
 				m_CommandUID = DayZPlayerConstants.CMD_ACTIONFB_DEPLOY_HEAVY;
 			}
-			else if ( item.IsOneHandedBehaviour() )
+			else if (item.IsOneHandedBehaviour())
 			{
 				m_CommandUID = DayZPlayerConstants.CMD_ACTIONFB_DEPLOY_1HD;
 			}
-			else if ( item.IsTwoHandedBehaviour() )
+			else if (item.IsTwoHandedBehaviour())
 			{
 				m_CommandUID = DayZPlayerConstants.CMD_ACTIONFB_DEPLOY_2HD;
 			}
@@ -508,15 +525,15 @@ class ActionDeployVehicle: ActionContinuousBase
 		}
 		else
 		{
-			if ( item.IsHeavyBehaviour() )
+			if (item.IsHeavyBehaviour())
 			{
 				m_CommandUID = DayZPlayerConstants.CMD_ACTIONFB_PLACING_HEAVY;
 			}
-			else if ( item.IsOneHandedBehaviour() )
+			else if (item.IsOneHandedBehaviour())
 			{
 				m_CommandUID = DayZPlayerConstants.CMD_ACTIONFB_PLACING_1HD;
 			}
-			else if ( item.IsTwoHandedBehaviour() )
+			else if (item.IsTwoHandedBehaviour())
 			{
 				m_CommandUID = DayZPlayerConstants.CMD_ACTIONFB_PLACING_2HD;
 			}

@@ -10,7 +10,7 @@ modded class PlayerBase extends ManBase
 
 	TraderPlusBankingData GetBankAccount()
 	{
-		if(m_BankAccount)
+		if (m_BankAccount)
 			delete m_BankAccount;
 
 		m_BankAccount = TraderPlusBankingData.GetAccount(this);
@@ -19,11 +19,9 @@ modded class PlayerBase extends ManBase
 		return m_BankAccount;
 	}
 
-
-
 	override void SetActions()
-  {
+	{
 		super.SetActions();
 		AddAction(ActionTraderPlusBankingMenu);
-  }
+	}
 };

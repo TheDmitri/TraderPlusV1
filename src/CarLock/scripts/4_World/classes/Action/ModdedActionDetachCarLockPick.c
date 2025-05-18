@@ -1,18 +1,19 @@
 #ifndef CARLOCKDISABLE
-modded class  ActionDetachCarLockPick: ActionContinuousBase
+modded class ActionDetachCarLockPick : ActionContinuousBase
 {
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if ( GetGame().IsServer() )
-				return true;
+		if (GetGame().IsServer())
+			return true;
 
 		CarScript ntarget = CarLockTargetHelper.GetTargetCar(target);
 
 		if (ntarget && ntarget.m_CarLockOwner != -1)
 		{
-			bool IsEmpty = true;
+			bool	  IsEmpty = true;
 			Transport transport = Transport.Cast(target.GetObject());
-			if (!transport)return false;
+			if (!transport)
+				return false;
 
 			int crewSize = transport.CrewSize();
 			for (int j = 0; j < crewSize; j++)
@@ -21,7 +22,8 @@ modded class  ActionDetachCarLockPick: ActionContinuousBase
 					IsEmpty = false;
 			}
 
-			if (IsEmpty)return true;
+			if (IsEmpty)
+				return true;
 		}
 		return false;
 	}

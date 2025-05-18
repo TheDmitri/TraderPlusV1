@@ -1,5 +1,5 @@
 #ifndef CARLOCKDISABLE
-class  ActionCarLockCB : ActionContinuousBaseCB
+class ActionCarLockCB : ActionContinuousBaseCB
 {
 	override void CreateActionComponent()
 	{
@@ -7,18 +7,18 @@ class  ActionCarLockCB : ActionContinuousBaseCB
 	}
 };
 
-class  ActionCarLock: ActionContinuousBase
+class ActionCarLock : ActionContinuousBase
 {
-	void  ActionCarLock()
+	void ActionCarLock()
 	{
-		m_CallbackClass =  ActionCarLockCB;
+		m_CallbackClass = ActionCarLockCB;
 		m_CommandUID = DayZPlayerConstants.CMD_ACTIONMOD_INTERACTONCE;
 		m_StanceMask = DayZPlayerConstants.STANCEMASK_ERECT | DayZPlayerConstants.STANCEMASK_CROUCH;
 	}
 
 	override void CreateConditionComponents()
 	{
-		m_ConditionTarget = new CCTObject(7);//CCTMan(10);
+		m_ConditionTarget = new CCTObject(7); //CCTMan(10);
 		m_ConditionItem = new CCINone;
 	}
 
@@ -27,22 +27,22 @@ class  ActionCarLock: ActionContinuousBase
 		return "Lock Car";
 	}
 
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
-    {
-        if ( GetGame().IsServer() )
-            return true;
-
-        CarScript ntarget = CarLockTargetHelper.GetTargetCar(target);
-        if (ntarget && ntarget.m_CarLockPassword != -1 && !ntarget.m_CarLock_IsLocked && ntarget.m_CarLockOwner !=-1 && (ntarget.m_CarLockOwner == player.CLSteamlowID || player.GetAdminStatus() == SZ_IS_ADMIN || player.HasPassword(ntarget.m_CarLockPassword,ntarget.m_CarLockOwner)))
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
+	{
+		if (GetGame().IsServer())
 			return true;
-				
-		return false;
-    }
 
-    override void OnStartServer(ActionData action_data)
-    {
-		CarScript car = CarLockTargetHelper.GetTargetCar(action_data.m_Target); 
-		if(car)
+		CarScript ntarget = CarLockTargetHelper.GetTargetCar(target);
+		if (ntarget && ntarget.m_CarLockPassword != -1 && !ntarget.m_CarLock_IsLocked && ntarget.m_CarLockOwner != -1 && (ntarget.m_CarLockOwner == player.CLSteamlowID || player.GetAdminStatus() == SZ_IS_ADMIN || player.HasPassword(ntarget.m_CarLockPassword, ntarget.m_CarLockOwner)))
+			return true;
+
+		return false;
+	}
+
+	override void OnStartServer(ActionData action_data)
+	{
+		CarScript car = CarLockTargetHelper.GetTargetCar(action_data.m_Target);
+		if (car)
 		{
 			car.SetSoundToPlay(1);
 			car.SetCarLock(true);

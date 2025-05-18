@@ -8,14 +8,14 @@ modded class ActionInjectTarget
 	bool SZActionConditionHandler(PlayerBase player, ActionTarget target, ItemBase item)
 	{
 		if (player.GetSafeZoneStatus() == SZ_IN_SAFEZONE && player.GetAdminStatus() != SZ_IS_ADMIN && TPAdditionalCondition())
-	       return true;
+			return true;
 
 		return false;
 	}
 
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if(SZActionConditionHandler(player, target, item))
+		if (SZActionConditionHandler(player, target, item))
 			return false;
 
 		return super.ActionCondition(player, target, item);
@@ -32,13 +32,13 @@ modded class ActionDisinfectTarget
 	bool SZActionConditionHandler(PlayerBase player, ActionTarget target, ItemBase item)
 	{
 		if (player.GetSafeZoneStatus() == SZ_IN_SAFEZONE && player.GetAdminStatus() != SZ_IS_ADMIN && TPAdditionalCondition())
-	       return true;
+			return true;
 		return false;
 	}
 
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if(SZActionConditionHandler(player, target, item))
+		if (SZActionConditionHandler(player, target, item))
 			return false;
 
 		return super.ActionCondition(player, target, item);
@@ -55,13 +55,13 @@ modded class ActionForceConsumeSingle
 	bool SZActionConditionHandler(PlayerBase player, ActionTarget target, ItemBase item)
 	{
 		if (player.GetSafeZoneStatus() == SZ_IN_SAFEZONE && player.GetAdminStatus() != SZ_IS_ADMIN && TPAdditionalCondition())
-				 return true;
+			return true;
 		return false;
 	}
 
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if(SZActionConditionHandler(player, target, item))
+		if (SZActionConditionHandler(player, target, item))
 			return false;
 
 		return super.ActionCondition(player, target, item);
@@ -78,13 +78,13 @@ modded class ActionForceConsume
 	bool SZActionConditionHandler(PlayerBase player, ActionTarget target, ItemBase item)
 	{
 		if (player.GetSafeZoneStatus() == SZ_IN_SAFEZONE && player.GetAdminStatus() != SZ_IS_ADMIN && TPAdditionalCondition())
-				 return true;
+			return true;
 		return false;
 	}
 
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if(SZActionConditionHandler(player, target, item))
+		if (SZActionConditionHandler(player, target, item))
 			return false;
 
 		return super.ActionCondition(player, target, item);
@@ -101,13 +101,13 @@ modded class ActionPackTent
 	bool SZActionConditionHandler(PlayerBase player, ActionTarget target, ItemBase item)
 	{
 		if (player.GetSafeZoneStatus() == SZ_IN_SAFEZONE && player.GetAdminStatus() != SZ_IS_ADMIN && TPAdditionalCondition())
-				 return true;
+			return true;
 		return false;
 	}
 
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if(SZActionConditionHandler(player, target, item))
+		if (SZActionConditionHandler(player, target, item))
 			return false;
 
 		return super.ActionCondition(player, target, item);
@@ -124,13 +124,13 @@ modded class ActionGiveBloodTarget
 	bool SZActionConditionHandler(PlayerBase player, ActionTarget target, ItemBase item)
 	{
 		if (player.GetSafeZoneStatus() == SZ_IN_SAFEZONE && player.GetAdminStatus() != SZ_IS_ADMIN && TPAdditionalCondition())
-				 return true;
+			return true;
 		return false;
 	}
 
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if(SZActionConditionHandler(player, target, item))
+		if (SZActionConditionHandler(player, target, item))
 			return false;
 
 		return super.ActionCondition(player, target, item);
@@ -147,13 +147,13 @@ modded class ActionCollectBloodTarget
 	bool SZActionConditionHandler(PlayerBase player, ActionTarget target, ItemBase item)
 	{
 		if (player.GetSafeZoneStatus() == SZ_IN_SAFEZONE && player.GetAdminStatus() != SZ_IS_ADMIN && TPAdditionalCondition())
-				 return true;
+			return true;
 		return false;
 	}
 
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if(SZActionConditionHandler(player, target, item))
+		if (SZActionConditionHandler(player, target, item))
 			return false;
 
 		return super.ActionCondition(player, target, item);
@@ -170,13 +170,13 @@ modded class ActionBurnSewTarget
 	bool SZActionConditionHandler(PlayerBase player, ActionTarget target, ItemBase item)
 	{
 		if (player.GetSafeZoneStatus() == SZ_IN_SAFEZONE && player.GetAdminStatus() != SZ_IS_ADMIN && TPAdditionalCondition())
-				 return true;
+			return true;
 		return false;
 	}
 
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if(SZActionConditionHandler(player, target, item))
+		if (SZActionConditionHandler(player, target, item))
 			return false;
 
 		return super.ActionCondition(player, target, item);
@@ -193,13 +193,13 @@ modded class ActionDeployObject
 	bool SZActionConditionHandler(PlayerBase player, ActionTarget target, ItemBase item)
 	{
 		if (player.GetSafeZoneStatus() == SZ_IN_SAFEZONE && player.GetAdminStatus() != SZ_IS_ADMIN && TPAdditionalCondition())
-				 return true;
+			return true;
 		return false;
 	}
 
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if(SZActionConditionHandler(player, target, item))
+		if (SZActionConditionHandler(player, target, item))
 			return false;
 
 		return super.ActionCondition(player, target, item);
@@ -216,13 +216,13 @@ modded class ActionRestrainSelf
 	bool SZActionConditionHandler(PlayerBase player, ActionTarget target, ItemBase item)
 	{
 		if (player.GetSafeZoneStatus() == SZ_IN_SAFEZONE && player.GetAdminStatus() != SZ_IS_ADMIN && TPAdditionalCondition())
-				 return true;
+			return true;
 		return false;
 	}
 
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if(SZActionConditionHandler(player, target, item))
+		if (SZActionConditionHandler(player, target, item))
 			return false;
 
 		return super.ActionCondition(player, target, item);
@@ -239,13 +239,13 @@ modded class ActionRestrainTarget
 	bool SZActionConditionHandler(PlayerBase player, ActionTarget target, ItemBase item)
 	{
 		if (player.GetSafeZoneStatus() == SZ_IN_SAFEZONE && player.GetAdminStatus() != SZ_IS_ADMIN && TPAdditionalCondition())
-				 return true;
+			return true;
 		return false;
 	}
 
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if(SZActionConditionHandler(player, target, item))
+		if (SZActionConditionHandler(player, target, item))
 			return false;
 
 		return super.ActionCondition(player, target, item);
@@ -262,13 +262,13 @@ modded class ActionForceFeedCan
 	override bool SZActionConditionHandler(PlayerBase player, ActionTarget target, ItemBase item)
 	{
 		if (player.GetSafeZoneStatus() == SZ_IN_SAFEZONE && player.GetAdminStatus() != SZ_IS_ADMIN && TPAdditionalCondition())
-				 return true;
+			return true;
 		return false;
 	}
 
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if(SZActionConditionHandler(player, target, item))
+		if (SZActionConditionHandler(player, target, item))
 			return false;
 
 		return super.ActionCondition(player, target, item);
@@ -277,25 +277,25 @@ modded class ActionForceFeedCan
 
 modded class ActionLockDoors
 {
-		bool TPAdditionalCondition()
-		{
+	bool TPAdditionalCondition()
+	{
+		return true;
+	}
+
+	bool SZActionConditionHandler(PlayerBase player, ActionTarget target, ItemBase item)
+	{
+		if (player.GetSafeZoneStatus() == SZ_IN_SAFEZONE && player.GetAdminStatus() != SZ_IS_ADMIN && TPAdditionalCondition())
 			return true;
-		}
+		return false;
+	}
 
-		bool SZActionConditionHandler(PlayerBase player, ActionTarget target, ItemBase item)
-		{
-			if (player.GetSafeZoneStatus() == SZ_IN_SAFEZONE && player.GetAdminStatus() != SZ_IS_ADMIN && TPAdditionalCondition())
-					 return true;
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
+	{
+		if (SZActionConditionHandler(player, target, item))
 			return false;
-		}
 
-		override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
-		{
-			if(SZActionConditionHandler(player, target, item))
-				return false;
-
-			return super.ActionCondition(player, target, item);
-		}
+		return super.ActionCondition(player, target, item);
+	}
 }
 
 modded class ActionUnpin extends ActionSingleUseBase
@@ -308,20 +308,20 @@ modded class ActionUnpin extends ActionSingleUseBase
 	bool SZActionConditionHandler(PlayerBase player, ActionTarget target, ItemBase item)
 	{
 		if (player.GetSafeZoneStatus() == SZ_IN_SAFEZONE && player.GetAdminStatus() != SZ_IS_ADMIN && TPAdditionalCondition())
-				 return true;
+			return true;
 		return false;
 	}
 
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if(SZActionConditionHandler(player, target, item))
+		if (SZActionConditionHandler(player, target, item))
 			return false;
 
 		return super.ActionCondition(player, target, item);
 	}
 }
 
-modded class ActionDigInStash: ActionContinuousBase
+modded class ActionDigInStash : ActionContinuousBase
 {
 	bool TPAdditionalCondition()
 	{
@@ -331,20 +331,20 @@ modded class ActionDigInStash: ActionContinuousBase
 	bool SZActionConditionHandler(PlayerBase player, ActionTarget target, ItemBase item)
 	{
 		if (player.GetSafeZoneStatus() == SZ_IN_SAFEZONE && player.GetAdminStatus() != SZ_IS_ADMIN && TPAdditionalCondition())
-				 return true;
+			return true;
 		return false;
 	}
 
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if(SZActionConditionHandler(player, target, item))
+		if (SZActionConditionHandler(player, target, item))
 			return false;
 
 		return super.ActionCondition(player, target, item);
 	}
 }
 
-modded class ActionDigOutStash: ActionContinuousBase
+modded class ActionDigOutStash : ActionContinuousBase
 {
 	bool TPAdditionalCondition()
 	{
@@ -354,20 +354,20 @@ modded class ActionDigOutStash: ActionContinuousBase
 	bool SZActionConditionHandler(PlayerBase player, ActionTarget target, ItemBase item)
 	{
 		if (player.GetSafeZoneStatus() == SZ_IN_SAFEZONE && player.GetAdminStatus() != SZ_IS_ADMIN && TPAdditionalCondition())
-				 return true;
+			return true;
 		return false;
 	}
 
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if(SZActionConditionHandler(player, target, item))
+		if (SZActionConditionHandler(player, target, item))
 			return false;
 
 		return super.ActionCondition(player, target, item);
 	}
 }
 
-modded class ActionMineTree: ActionContinuousBase
+modded class ActionMineTree : ActionContinuousBase
 {
 	bool TPAdditionalCondition()
 	{
@@ -377,13 +377,13 @@ modded class ActionMineTree: ActionContinuousBase
 	bool SZActionConditionHandler(PlayerBase player, ActionTarget target, ItemBase item)
 	{
 		if (player.GetSafeZoneStatus() == SZ_IN_SAFEZONE && player.GetAdminStatus() != SZ_IS_ADMIN && TPAdditionalCondition())
-				 return true;
+			return true;
 		return false;
 	}
 
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if(SZActionConditionHandler(player, target, item))
+		if (SZActionConditionHandler(player, target, item))
 			return false;
 
 		return super.ActionCondition(player, target, item);
@@ -401,13 +401,13 @@ modded class ActionPickLockOnCar : ActionLockUnlockCar
 	bool SZActionConditionHandler(PlayerBase player, ActionTarget target, ItemBase item)
 	{
 		if (player.GetSafeZoneStatus() == SZ_IN_SAFEZONE && player.GetAdminStatus() != SZ_IS_ADMIN && TPAdditionalCondition())
-				 return true;
+			return true;
 		return false;
 	}
 
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if(SZActionConditionHandler(player, target, item))
+		if (SZActionConditionHandler(player, target, item))
 			return false;
 
 		return super.ActionCondition(player, target, item);
@@ -415,18 +415,18 @@ modded class ActionPickLockOnCar : ActionLockUnlockCar
 };
 #endif
 
-modded class ActionTakeItem: ActionInteractBase
+modded class ActionTakeItem : ActionInteractBase
 {
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if(!GetGame().IsServer())
+		if (!GetGame().IsServer())
 		{
-			HideOutObject stash = HideOutObject.Cast( target.GetObject() );
-			int shortId = GetGame().GetUserManager().GetTitleInitiator().GetUid().Substring(8, 9).ToInt();
-			if(stash && (player.GetSafeZoneStatus() == SZ_OUT_SAFEZONE || player.GetSafeZoneStatus() == SZ_IN_SAFEZONE && stash.GetOwner() != shortId))
+			HideOutObject stash = HideOutObject.Cast(target.GetObject());
+			int			  shortId = GetGame().GetUserManager().GetTitleInitiator().GetUid().Substring(8, 9).ToInt();
+			if (stash && (player.GetSafeZoneStatus() == SZ_OUT_SAFEZONE || player.GetSafeZoneStatus() == SZ_IN_SAFEZONE && stash.GetOwner() != shortId))
 				return false;
 		}
 
-		return super.ActionCondition(player,target,item);
+		return super.ActionCondition(player, target, item);
 	}
 };

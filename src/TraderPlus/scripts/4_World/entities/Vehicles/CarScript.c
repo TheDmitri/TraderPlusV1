@@ -1,88 +1,90 @@
 modded class CarScript
 {
-    private int m_carUniqueId = 0;
-    private static ref map<int, CarScript> m_MapAllCars = new map<int, CarScript>;
+	// clang-format off
+	private int m_carUniqueId = 0;
+	private static ref map<int, CarScript> m_MapAllCars = new map<int, CarScript>;
+	// clang-format on
 
-    string m_TraderPlus_LastDriverID = "";
+	string m_TraderPlus_LastDriverID = "";
 
-    void CarScript()
-	  {
-      RegisterNetSyncVariableInt("m_carUniqueId");
+	void CarScript()
+	{
+		RegisterNetSyncVariableInt("m_carUniqueId");
 
-      if(GetGame().IsClient())
-        return;
-        
-      HandleCarDamage();
-	  }
+		if (GetGame().IsClient())
+			return;
 
-    void HandleCarDamage()
-    {
-      SetAllowDamage(false);
+		HandleCarDamage();
+	}
 
-      if(IsServerAllowDamage())
-      {
-        GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(DisableGodMode, 30000);
-      }
-    }
+	void HandleCarDamage()
+	{
+		SetAllowDamage(false);
 
-    bool IsServerAllowDamage()
-    {
-      return true;
-    }
+		if (IsServerAllowDamage())
+		{
+			GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(DisableGodMode, 30000);
+		}
+	}
 
-    void ~CarScript()
-    {
-      if(m_MapAllCars)
-   		m_MapAllCars.Remove(m_carUniqueId);
-    }
+	bool IsServerAllowDamage()
+	{
+		return true;
+	}
 
-    static map<int, CarScript> GetMapAll()
-   	{
-   		return m_MapAllCars;
-   	}
+	void ~CarScript()
+	{
+		if (m_MapAllCars)
+			m_MapAllCars.Remove(m_carUniqueId);
+	}
 
-    int GetCarUniqueId()
-    {
-      return m_carUniqueId;
-    }
+	static map<int, CarScript> GetMapAll()
+	{
+		return m_MapAllCars;
+	}
 
-    void SetCarUniqueId(int id)
-    {
-      m_carUniqueId = id;
-      m_MapAllCars.Set(id, this);
-    }
+	int GetCarUniqueId()
+	{
+		return m_carUniqueId;
+	}
 
-    override void OnEngineStart()
- 	  {
-        super.OnEngineStart();
-        PlayerBase player = PlayerBase.Cast(CrewMember(DayZPlayerConstants.VEHICLESEAT_DRIVER));
-        if (player)
-          m_TraderPlus_LastDriverID = player.GetIdentity().GetPlainId();
- 	  }
+	void SetCarUniqueId(int id)
+	{
+		m_carUniqueId = id;
+		m_MapAllCars.Set(id, this);
+	}
 
-    void DisableGodMode()
-    {
-      SetAllowDamage(true);
-    }
+	override void OnEngineStart()
+	{
+		super.OnEngineStart();
+		PlayerBase player = PlayerBase.Cast(CrewMember(DayZPlayerConstants.VEHICLESEAT_DRIVER));
+		if (player)
+			m_TraderPlus_LastDriverID = player.GetIdentity().GetPlainId();
+	}
 
-    override void OnStoreSave( ParamsWriteContext ctx )
-     {
-        super.OnStoreSave(ctx);
-        Param1<int> data = new Param1<int>(m_carUniqueId);
-        ctx.Write(data);
-     }
+	void DisableGodMode()
+	{
+		SetAllowDamage(true);
+	}
 
-    override bool OnStoreLoad( ParamsReadContext ctx, int version )
-      {
-        if ( !super.OnStoreLoad( ctx, version ) )
-          return false;
+	override void OnStoreSave(ParamsWriteContext ctx)
+	{
+		super.OnStoreSave(ctx);
+		Param1<int> data = new Param1<int>(m_carUniqueId);
+		ctx.Write(data);
+	}
 
-            Param1<int>data = new Param1<int>(0);
-            if (ctx.Read(data))
-            {
-              m_carUniqueId = data.param1;
-              SetCarUniqueId(m_carUniqueId);
-            }
-            return true;
-      }
+	override bool OnStoreLoad(ParamsReadContext ctx, int version)
+	{
+		if (!super.OnStoreLoad(ctx, version))
+			return false;
+
+		Param1<int> data = new Param1<int>(0);
+		if (ctx.Read(data))
+		{
+			m_carUniqueId = data.param1;
+			SetCarUniqueId(m_carUniqueId);
+		}
+		return true;
+	}
 }

@@ -1,13 +1,14 @@
 class CarLockTargetHelper
 {
-    static CarScript GetTargetCar(ActionTarget target)
-    {
-        CarScript car = CarScript.Cast(target.GetObject());
+	static CarScript GetTargetCar(ActionTarget target)
+	{
+		CarScript car = CarScript.Cast(target.GetObject());
 
-        if (!car){
-            car = CarScript.Cast(target.GetParent());
-        }
+		if (!car)
+		{
+			car = CarScript.Cast(target.GetParent());
+		}
 
-        return car;
-    }
+		return car;
+	}
 }

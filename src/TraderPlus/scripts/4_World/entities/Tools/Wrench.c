@@ -1,8 +1,7 @@
-class TraderPlusWrench extends ItemBase
-{
-  override void SetActions()
-	{
+class TraderPlusWrench extends ItemBase{
+	override void SetActions(){
 		super.SetActions();
-		AddAction(ActionPackVehicle);
-	}
-};
+AddAction(ActionPackVehicle);
+}
+}
+;

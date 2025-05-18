@@ -6,7 +6,7 @@ class ActionConvertToNewReceiptCB : ActionContinuousBaseCB
 	}
 };
 
-class ActionConvertToNewReceipt: ActionContinuousBase
+class ActionConvertToNewReceipt : ActionContinuousBase
 {
 	void ActionConvertToNewReceipt()
 	{
@@ -37,13 +37,13 @@ class ActionConvertToNewReceipt: ActionContinuousBase
 		return "CONVERT TO NEW RECEIPT";
 	}
 
-	override void OnFinishProgressServer( ActionData action_data )
+	override void OnFinishProgressServer(ActionData action_data)
 	{
-		if ( action_data.m_MainItem && action_data.m_MainItem.GetHierarchyRootPlayer() == action_data.m_Player )
+		if (action_data.m_MainItem && action_data.m_MainItem.GetHierarchyRootPlayer() == action_data.m_Player)
 		{
-			Receipt oldReceipt = Receipt.Cast(action_data.m_MainItem);
+			Receipt	   oldReceipt = Receipt.Cast(action_data.m_MainItem);
 			NewReceipt receipt = NewReceipt.Cast(GetGame().CreateObject("NewReceipt", action_data.m_Player.GetPosition(), false, false, true));
-			if(GetTraderPlusVehiculeConfig().VehiclesParts && GetTraderPlusVehiculeConfig().VehiclesParts.Get(oldReceipt.CarID))
+			if (GetTraderPlusVehiculeConfig().VehiclesParts && GetTraderPlusVehiculeConfig().VehiclesParts.Get(oldReceipt.CarID))
 				receipt.CarClassName = GetTraderPlusVehiculeConfig().VehiclesParts.Get(oldReceipt.CarID).VehicleName;
 			receipt.Attachments = TraderPlusHelper.GetVehicleAttachmentsFromConfig(receipt.CarClassName);
 

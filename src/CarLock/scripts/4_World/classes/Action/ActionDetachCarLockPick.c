@@ -1,5 +1,5 @@
 #ifndef CARLOCKDISABLE
-class  ActionDetachCarLockPickCB : ActionContinuousBaseCB
+class ActionDetachCarLockPickCB : ActionContinuousBaseCB
 {
 	override void CreateActionComponent()
 	{
@@ -7,12 +7,12 @@ class  ActionDetachCarLockPickCB : ActionContinuousBaseCB
 	}
 };
 
-class  ActionDetachCarLockPick: ActionContinuousBase
+class ActionDetachCarLockPick : ActionContinuousBase
 {
 	CarScript m_car = NULL;
-	void  ActionDetachCarLockPick()
+	void	  ActionDetachCarLockPick()
 	{
-		m_CallbackClass =  ActionDetachCarLockPickCB;
+		m_CallbackClass = ActionDetachCarLockPickCB;
 		m_CommandUID = DayZPlayerConstants.CMD_ACTIONFB_CRAFTING;
 		m_FullBody = true;
 		m_StanceMask = DayZPlayerConstants.STANCEMASK_CROUCH;
@@ -21,7 +21,7 @@ class  ActionDetachCarLockPick: ActionContinuousBase
 
 	override void CreateConditionComponents()
 	{
-    m_ConditionTarget = new CCTNonRuined(10);
+		m_ConditionTarget = new CCTNonRuined(10);
 		m_ConditionItem = new CCINonRuined;
 	}
 
@@ -30,20 +30,22 @@ class  ActionDetachCarLockPick: ActionContinuousBase
 		return "LockPick CarLock";
 	}
 
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if ( GetGame().IsServer() )
-				return true;
+		if (GetGame().IsServer())
+			return true;
 
 		CarScript ntarget = CarLockTargetHelper.GetTargetCar(target);
 
-		if(player.GetSafeZoneStatus() == SZ_IN_SAFEZONE)return false;
+		if (player.GetSafeZoneStatus() == SZ_IN_SAFEZONE)
+			return false;
 
 		if (ntarget && ntarget.m_CarLockOwner != -1)
 		{
-			bool IsEmpty = true;
+			bool	  IsEmpty = true;
 			Transport transport = Transport.Cast(ntarget);
-			if (!transport)return false;
+			if (!transport)
+				return false;
 
 			int crewSize = transport.CrewSize();
 			for (int j = 0; j < crewSize; j++)
@@ -52,17 +54,18 @@ class  ActionDetachCarLockPick: ActionContinuousBase
 					IsEmpty = false;
 			}
 
-			if (IsEmpty)return true;
+			if (IsEmpty)
+				return true;
 		}
 		return false;
 	}
 
-	override void OnStartServer( ActionData action_data )
+	override void OnStartServer(ActionData action_data)
 	{
-		if ( action_data.m_MainItem && action_data.m_MainItem.IsKindOf("CarLockPick") && action_data.m_MainItem.GetHierarchyRootPlayer() == action_data.m_Player )
+		if (action_data.m_MainItem && action_data.m_MainItem.IsKindOf("CarLockPick") && action_data.m_MainItem.GetHierarchyRootPlayer() == action_data.m_Player)
 		{
 			CarScript car = CarLockTargetHelper.GetTargetCar(action_data.m_Target);
-			if(car)
+			if (car)
 			{
 				m_car = car;
 				car.SetSoundToPlay(3);
@@ -82,30 +85,30 @@ class  ActionDetachCarLockPick: ActionContinuousBase
 		}
   }*/
 
-	override void OnFinishProgressServer( ActionData action_data )
+	override void OnFinishProgressServer(ActionData action_data)
 	{
-		if(action_data.m_MainItem.IsKindOf("CarLockPick"))
+		if (action_data.m_MainItem.IsKindOf("CarLockPick"))
 		{
-				action_data.m_Player.DropItem(action_data.m_MainItem);
-				action_data.m_MainItem.Delete();
-				if(GetTraderPlusConfigServer().LockPickChance > Math.RandomFloat01())
+			action_data.m_Player.DropItem(action_data.m_MainItem);
+			action_data.m_MainItem.Delete();
+			if (GetTraderPlusConfigServer().LockPickChance > Math.RandomFloat01())
+			{
+				if (m_car)
 				{
-					if(m_car)
-					{
-						m_car.SetCarLockPassword(-1);
-						m_car.SetCarLockOwner(-1);
-						m_car.SetCarLock(false);
-						//ItemBase carlock1 = ItemBase.Cast( GetGame().CreateObjectEx("CarLock", action_data.m_Player.GetPosition(), ECE_PLACE_ON_SURFACE) );
-						GetTraderPlusLogger().LogInfo("CARLOCK HAS BEEN DETACHED BY THIEF:"+action_data.m_Player.GetIdentity().GetName() + "AT POSITION:"+action_data.m_Player.GetPosition());
-					}
-					return;
+					m_car.SetCarLockPassword(-1);
+					m_car.SetCarLockOwner(-1);
+					m_car.SetCarLock(false);
+					//ItemBase carlock1 = ItemBase.Cast( GetGame().CreateObjectEx("CarLock", action_data.m_Player.GetPosition(), ECE_PLACE_ON_SURFACE) );
+					GetTraderPlusLogger().LogInfo("CARLOCK HAS BEEN DETACHED BY THIEF:" + action_data.m_Player.GetIdentity().GetName() + "AT POSITION:" + action_data.m_Player.GetPosition());
 				}
-				else
-				{
-					GetTraderPlusLogger().LogInfo("CARLOCK HAS BEEN LOCKPICK WITH FAILURE BY THIEF:"+action_data.m_Player.GetIdentity().GetName());
-				  return;
-				}
+				return;
 			}
-  }
+			else
+			{
+				GetTraderPlusLogger().LogInfo("CARLOCK HAS BEEN LOCKPICK WITH FAILURE BY THIEF:" + action_data.m_Player.GetIdentity().GetName());
+				return;
+			}
+		}
+	}
 };
 #endif

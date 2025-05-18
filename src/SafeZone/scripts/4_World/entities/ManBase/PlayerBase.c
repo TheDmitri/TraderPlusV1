@@ -1,20 +1,24 @@
 //for retrocompatibility do not use for modding use instead GetSafeZoneName(), SetSafeZoneName()
 //for retrocompatibility do not use for modding use instead GetSafeZoneStatus() == SZ_IN_SAFEZONE or GetSafeZoneName() == SZ_OUT_SAFEZONE
-class InsideSZ{
+class InsideSZ
+{
 
 	string SZName;
 	bool   SZStatut;
 
-	void InsideSZ(){
-		SZName="";
-		SZStatut=false;
+	void InsideSZ()
+	{
+		SZName = "";
+		SZStatut = false;
 	}
 }
 
 modded class PlayerBase extends ManBase
 {
+	// clang-format off
 	private int m_SafeZoneStatus;
 	private string m_SafeZoneName;
+	// clang-format on
 
 	bool m_IsStashDisable = false;
 
@@ -30,13 +34,13 @@ modded class PlayerBase extends ManBase
 		m_SafeZoneStatus = 0;
 		m_SafeZoneName = "";
 		super.Init();
-		IsInsideSZ=new InsideSZ;
+		IsInsideSZ = new InsideSZ;
 		RegisterNetSyncVariableInt("m_SafeZoneStatus");
 	}
 
 	bool IsTraderPlusAdmin()
 	{
-		if(GetGame().IsServer())
+		if (GetGame().IsServer())
 			return GetSZConfig().SZSteamUIDs.Find(GetIdentity().GetPlainId()) != -1;
 
 		return false;
@@ -50,12 +54,12 @@ modded class PlayerBase extends ManBase
 
 	void SetSafeZoneStatus(bool state)
 	{
-		if(state)
+		if (state)
 			m_SafeZoneStatus = m_SafeZoneStatus | 0x01;
 		else
 			m_SafeZoneStatus = m_SafeZoneStatus & 0xFE;
 
-		if(GetSZConfig().IsHideOutActive)
+		if (GetSZConfig().IsHideOutActive)
 			HideOutObjectHandle();
 
 		SetSynchDirty();
@@ -94,28 +98,29 @@ modded class PlayerBase extends ManBase
 		{
 			SetAllowDamage(true);
 			SetSafeZoneStatus(false);
-			if(GetSZConfig().IsHideOutActive)
+			if (GetSZConfig().IsHideOutActive)
 				DetachHideOutObjectFromPlayer();
 		}
 	}
 
 	override void EEHitBy(TotalDamageResult damageResult, int damageType, EntityAI source, int component, string dmgZone, string ammo, vector modelPos, float speedCoef)
 	{
-		super.EEHitBy(damageResult,damageType,source,component,dmgZone,ammo,modelPos,speedCoef);
-		SZEEHitByHandler(damageResult,damageType,source,component,dmgZone,ammo,modelPos,speedCoef);
+		super.EEHitBy(damageResult, damageType, source, component, dmgZone, ammo, modelPos, speedCoef);
+		SZEEHitByHandler(damageResult, damageType, source, component, dmgZone, ammo, modelPos, speedCoef);
 	}
 
 	//for modding ability
 	void SZEEHitByHandler(TotalDamageResult damageResult, int damageType, EntityAI source, int component, string dmgZone, string ammo, vector modelPos, float speedCoef)
 	{
-		if(GetSafeZoneStatus() == SZ_IN_SAFEZONE)
+		if (GetSafeZoneStatus() == SZ_IN_SAFEZONE)
 		{
-				if(source.IsDayZCreature() || source.IsAnimal());
-						source.Delete();
-				#ifdef SZDEBUG
-				GetTraderPlusLogger().LogInfo(this.GetIdentity().GetName()+"the source of damage has been deleted");
-				#endif
-				return;
+			if (source.IsDayZCreature() || source.IsAnimal())
+				;
+			source.Delete();
+#ifdef SZDEBUG
+			GetTraderPlusLogger().LogInfo(this.GetIdentity().GetName() + "the source of damage has been deleted");
+#endif
+			return;
 		}
 	}
 
@@ -128,13 +133,13 @@ modded class PlayerBase extends ManBase
 	//for modding ability
 	void SZEEItemDetachedHandler(EntityAI item, string slot_name)
 	{
-		if(slot_name == "Armband" && GetSafeZoneStatus() == SZ_IN_SAFEZONE && GetGame().IsServer() && GetSZConfig().IsHideOutActive && !m_IsStashDisable)
+		if (slot_name == "Armband" && GetSafeZoneStatus() == SZ_IN_SAFEZONE && GetGame().IsServer() && GetSZConfig().IsHideOutActive && !m_IsStashDisable)
 			HideOutObjectHandle();
 	}
 
 	override bool CanDropEntity(notnull EntityAI item)
 	{
-		if(SZCanDropEntityHandler(item))
+		if (SZCanDropEntityHandler(item))
 			return false;
 
 		return super.CanDropEntity(item);
@@ -142,7 +147,7 @@ modded class PlayerBase extends ManBase
 
 	bool SZCanDropEntityHandler(notnull EntityAI item)
 	{
-		if(item.IsInherited(HideOutObject))
+		if (item.IsInherited(HideOutObject))
 			return true;
 
 		return false;
@@ -150,51 +155,51 @@ modded class PlayerBase extends ManBase
 
 	void HideOutObjectHandle()
 	{
-		#ifdef SZDEBUG
+#ifdef SZDEBUG
 		GetTraderPlusLogger().LogInfo("HideOutObjectHandle");
-		#endif
-		if(GetSafeZoneStatus() == SZ_IN_SAFEZONE)
+#endif
+		if (GetSafeZoneStatus() == SZ_IN_SAFEZONE)
 		{
-			#ifdef SZDEBUG
+#ifdef SZDEBUG
 			GetTraderPlusLogger().LogInfo("m_SafeZoneStatus == SZ_IN_SAFEZONE");
-			#endif
+#endif
 			AttachHideOutObjectToPlayer();
 		}
 
-		if(GetSafeZoneStatus() == SZ_OUT_SAFEZONE)
+		if (GetSafeZoneStatus() == SZ_OUT_SAFEZONE)
 		{
-			#ifdef SZDEBUG
+#ifdef SZDEBUG
 			GetTraderPlusLogger().LogInfo("m_SafeZoneStatus == SZ_OUT_SAFEZONE");
-			#endif
+#endif
 			DetachHideOutObjectFromPlayer();
 		}
-
 	}
 
 	void AttachHideOutObjectToPlayer()
 	{
-		if(!GetIdentity())return;
+		if (!GetIdentity())
+			return;
 
 		int playerId = GetIdentity().GetPlainId().Substring(8, 9).ToInt();
 
 		//Check if the player wear an armband, ask him to remove it if so
 		EntityAI tarmband;
 		tarmband = FindAttachmentBySlotName("Armband");
-		if(tarmband && !tarmband.IsInherited(HideOutObject))
+		if (tarmband && !tarmband.IsInherited(HideOutObject))
 		{
 			NotificationSystem.SendNotificationToPlayerIdentityExtended(GetIdentity(), 2, "STASH WARNING", GetSZConfig().MustRemoveArmband, "SafeZone/images/SafeZone.paa");
 			return;
 		}
 
 		HideOutObject stash;
-		if(HideOutObject.GetMapAll().Find(playerId, stash))
+		if (HideOutObject.GetMapAll().Find(playerId, stash))
 		{
 			LocalTakeEntityToTargetAttachmentEx(this, stash, InventorySlots.ARMBAND);
 			GetGame().RemoteObjectTreeCreate(stash);
 		}
 		else
 		{
-			HideOutObject newHideOut = HideOutObject.Cast(GetInventory().CreateAttachmentEx("HideOutObject",InventorySlots.ARMBAND));
+			HideOutObject newHideOut = HideOutObject.Cast(GetInventory().CreateAttachmentEx("HideOutObject", InventorySlots.ARMBAND));
 			newHideOut.SetOwner(playerId);
 			newHideOut.InitStarterKit();
 		}
@@ -202,15 +207,16 @@ modded class PlayerBase extends ManBase
 
 	void DetachHideOutObjectFromPlayer()
 	{
-		if(!this)return;
+		if (!this)
+			return;
 
-		#ifdef SZDEBUG
+#ifdef SZDEBUG
 		GetTraderPlusLogger().LogInfo("DetachHideOutObjectFromPlayer");
-		#endif
+#endif
 
 		EntityAI stash;
 		stash = HideOutObject.Cast(FindAttachmentBySlotName("Armband"));
-		if(stash)
+		if (stash)
 		{
 			ServerDropEntity(stash);
 			GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(HideStash, 500, false, stash);
@@ -219,7 +225,7 @@ modded class PlayerBase extends ManBase
 
 	void HideStash(HideOutObject stash)
 	{
-		if(stash)
+		if (stash)
 			stash.Hide();
 	}
 }

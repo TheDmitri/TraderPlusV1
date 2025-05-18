@@ -1,20 +1,20 @@
 class TraderPlusCore
 {
-	ref TraderPlusGeneralSettings     m_TraderPlusGeneralSettings;
-	ref TraderPlusVehiclesSettings    m_TraderPlusVehiclesSettings;
-	ref TraderPlusPriceSettings    	  m_TraderPlusPriceSettings;
-	ref TraderPlusIDsSettings		  m_TraderPlusIDsSettings;
-	ref TraderPlusInsuranceSettings   m_TraderPlusInsuranceSettings;
+	ref TraderPlusGeneralSettings	m_TraderPlusGeneralSettings;
+	ref TraderPlusVehiclesSettings	m_TraderPlusVehiclesSettings;
+	ref TraderPlusPriceSettings		m_TraderPlusPriceSettings;
+	ref TraderPlusIDsSettings		m_TraderPlusIDsSettings;
+	ref TraderPlusInsuranceSettings m_TraderPlusInsuranceSettings;
 
-	ref TraderPlusGnrlConfigClient    m_TraderPlusGnrlConfigClient;
+	ref TraderPlusGnrlConfigClient m_TraderPlusGnrlConfigClient;
 
 	ref TraderPlusCategories m_TraderPlusCategories;
 
-  	ref TraderPlusClient m_TraderPlusClient;
-  	ref TraderPlusServer m_TraderPlusServer;
+	ref TraderPlusClient m_TraderPlusClient;
+	ref TraderPlusServer m_TraderPlusServer;
 
 	void TraderPlusCore()
-    {
+	{
 		GetTraderPlusLogger().LogInfo("TraderPlusCore - Started !");
 
 		/*We load every config, class that will run on server side here*/
@@ -23,7 +23,7 @@ class TraderPlusCore
 			//LOADING CONFIG FILES...
 			m_TraderPlusGeneralSettings = TraderPlusGeneralSettings.Load();
 			m_TraderPlusVehiclesSettings = TraderPlusVehiclesSettings.Load();
-			m_TraderPlusPriceSettings   = TraderPlusPriceSettings.Load();
+			m_TraderPlusPriceSettings = TraderPlusPriceSettings.Load();
 			m_TraderPlusIDsSettings = TraderPlusIDsSettings.Load();
 			m_TraderPlusInsuranceSettings = TraderPlusInsuranceSettings.Load();
 
@@ -33,7 +33,7 @@ class TraderPlusCore
 			m_TraderPlusCategories.ConvertArrayCategoryToMap();
 
 			m_TraderPlusGnrlConfigClient = new TraderPlusGnrlConfigClient;
-			m_TraderPlusGnrlConfigClient.TransformToSendableConfig(m_TraderPlusGeneralSettings,m_TraderPlusIDsSettings,m_TraderPlusVehiclesSettings,m_TraderPlusInsuranceSettings);
+			m_TraderPlusGnrlConfigClient.TransformToSendableConfig(m_TraderPlusGeneralSettings, m_TraderPlusIDsSettings, m_TraderPlusVehiclesSettings, m_TraderPlusInsuranceSettings);
 			//Creating server side part
 			m_TraderPlusServer = new TraderPlusServer;
 		}
@@ -45,7 +45,7 @@ class TraderPlusCore
 		}
 		//we call our function that will initiaze our RPC
 		InitRPC();
-    }
+	}
 
 	void InitRPC()
 	{
@@ -75,16 +75,16 @@ class TraderPlusCore
 	void TransfertTraderPlusConfigToClient(PlayerBase player)
 	{
 		/*we create a temporary config class that we will send to client with RPC*/
-		GetRPCManager().SendRPC("TraderPlus", "GetTraderPlusGnrlConfigClient",  new Param1<ref TraderPlusGnrlConfigClient>(m_TraderPlusGnrlConfigClient), true, player.GetIdentity());
-		GetRPCManager().SendRPC("TraderPlus", "GetPriceRequestFromCategory",  new Param1<ref TraderPlusCategories>(m_TraderPlusCategories), true, player.GetIdentity());
+		GetRPCManager().SendRPC("TraderPlus", "GetTraderPlusGnrlConfigClient", new Param1<ref TraderPlusGnrlConfigClient>(m_TraderPlusGnrlConfigClient), true, player.GetIdentity());
+		GetRPCManager().SendRPC("TraderPlus", "GetPriceRequestFromCategory", new Param1<ref TraderPlusCategories>(m_TraderPlusCategories), true, player.GetIdentity());
 	}
 
 	void CheckForOldStockFile()
 	{
-		foreach(TraderPlusIDs id: m_TraderPlusIDsSettings.IDs)
+		foreach (TraderPlusIDs id : m_TraderPlusIDsSettings.IDs)
 		{
 			oldTraderPlusStock oldStock = oldTraderPlusStock.Load(id.Id);
-			if(oldStock)
+			if (oldStock)
 				ConvertStock(oldStock, id.Id);
 		}
 	}
@@ -92,71 +92,74 @@ class TraderPlusCore
 	void ConvertStock(oldTraderPlusStock stock, int id)
 	{
 		GetTraderPlusLogger().LogDebug("Convert old Stock to new Stock !");
-		foreach(TraderPlusCategory category: m_TraderPlusPriceSettings.TraderCategories)
+		foreach (TraderPlusCategory category : m_TraderPlusPriceSettings.TraderCategories)
 		{
 			TraderPlusCategory tpStockCategory = TraderPlusHelper.GetStockCategory(id, category.CategoryName);
 
-			foreach(string productInCategory: category.Products )
+			foreach (string productInCategory : category.Products)
 			{
 				TStringArray categoryArr = new TStringArray;
-				productInCategory.Split(",",categoryArr);
-				foreach(string product: stock.TraderPlusItems)
+				productInCategory.Split(",", categoryArr);
+				foreach (string product : stock.TraderPlusItems)
 				{
 					TStringArray productArr = new TStringArray;
 					product.Split(" ", productArr);
-					if(categoryArr[0] == productArr[0])
+					if (categoryArr[0] == productArr[0])
 						tpStockCategory.Products.Insert(product);
 				}
 			}
-			if(tpStockCategory.Products.Count() == 0)continue;
+			if (tpStockCategory.Products.Count() == 0)
+				continue;
 			tpStockCategory.Save(id);
 		}
 		DeleteFile(TRADERPLUS_STOCK_CONFIG + "_" + id.ToString() + ".json");
 	}
 
-
 	//-------------------------------------------RPC PART--------------------------------------------------------//
 	void GetTraderPlusGnrlConfigClient(CallType type, ParamsReadContext ctx, PlayerIdentity sender, Object target)
 	{
-		if(!GetGame().IsClient())return;
+		if (!GetGame().IsClient())
+			return;
 
 		Param1<ref TraderPlusGnrlConfigClient> data;
-	    if (!ctx.Read(data))
-	    	return;
+		if (!ctx.Read(data))
+			return;
 
 		m_TraderPlusGnrlConfigClient = data.param1;
-		#ifdef TRADERPLUSDEBUG
+#ifdef TRADERPLUSDEBUG
 		JsonFileLoader<ref TraderPlusGnrlConfigClient>.JsonSaveFile(TRADERPLUS_CONFIG, m_TraderPlusGnrlConfigClient);
-		#endif
+#endif
 		//we reset the price config before next RPC fills it
 		m_TraderPlusClient.ResetPriceConfig();
 	}
 
 	void GetCarNameReceiptRequest(CallType type, ParamsReadContext ctx, PlayerIdentity sender, Object target)
 	{
-		if(!GetGame().IsServer())return;
+		if (!GetGame().IsServer())
+			return;
 
 		Param1<NewReceipt> data;
-	    if (!ctx.Read(data))
-	    return;
+		if (!ctx.Read(data))
+			return;
 
 		PlayerBase player = TraderPlusGetPlayerByIdentity(sender);
 
 		NewReceipt receipt = data.param1;
-		if(receipt)
-			GetRPCManager().SendRPC("TraderPlus", "GetCarNameReceiptResponse",  new Param2<NewReceipt, string>(receipt, receipt.CarClassName), true, player.GetIdentity());
+		if (receipt)
+			GetRPCManager().SendRPC("TraderPlus", "GetCarNameReceiptResponse", new Param2<NewReceipt, string>(receipt, receipt.CarClassName), true, player.GetIdentity());
 	}
 
 	void GetCarNameReceiptResponse(CallType type, ParamsReadContext ctx, PlayerIdentity sender, Object target)
 	{
-		if(!GetGame().IsClient())return;
+		if (!GetGame().IsClient())
+			return;
 
 		Param2<NewReceipt, string> data;
-	    if (!ctx.Read(data))
-	       return;
+		if (!ctx.Read(data))
+			return;
 
 		NewReceipt receipt = data.param1;
-	 	if(receipt)
+		if (receipt)
 			receipt.CarClassName = data.param2;
 	}
 };

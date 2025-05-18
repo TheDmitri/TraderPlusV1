@@ -3,47 +3,50 @@ well, thanks to that queue system, we handle trade request one by one. => FIFO (
 */
 class BankingTransactionQueue
 {
-    private ref array<ref TraderPlusBankingTransaction> queue;
+	// clang-format off
+	private ref array<ref TraderPlusBankingTransaction> queue;
+	// clang-format on
 
-    void BankingTransactionQueue()
-    {
-        queue = new array<ref TraderPlusBankingTransaction>;
-    }
+	void BankingTransactionQueue()
+	{
+		queue = new array<ref TraderPlusBankingTransaction>;
+	}
 
-    int Count()
-    {
-        return queue.Count();
-    }
+	int Count()
+	{
+		return queue.Count();
+	}
 
-    bool IsMaxQueue(int max)
-    {
-      if(queue.Count()>max)
-      return true;
-      else return false;
-    }
+	bool IsMaxQueue(int max)
+	{
+		if (queue.Count() > max)
+			return true;
+		else
+			return false;
+	}
 
-    void EnQueue(TraderPlusBankingTransaction product)
-    {
-      queue.Insert(product);
-    }
+	void EnQueue(TraderPlusBankingTransaction product)
+	{
+		queue.Insert(product);
+	}
 
-    void DeQueue()
-    {
-        for(int i = 1; i < queue.Count(); i++)
-        {
-            queue.Set(i - 1, queue[i]);
-        }
-        i--;
-        queue.RemoveOrdered(i);
-    }
+	void DeQueue()
+	{
+		for (int i = 1; i < queue.Count(); i++)
+		{
+			queue.Set(i - 1, queue[i]);
+		}
+		i--;
+		queue.RemoveOrdered(i);
+	}
 
-    TraderPlusBankingTransaction Peek()
-    {
-        return queue[0];
-    }
+	TraderPlusBankingTransaction Peek()
+	{
+		return queue[0];
+	}
 
-    bool HasNextQueue()
-    {
-      return queue.IsValidIndex(0));
-    }
+	bool HasNextQueue()
+	{
+	  return queue.IsValidIndex(0));
+	}
 }
