@@ -55,8 +55,10 @@ class TraderPlusClient
 
 			GetTraderPlusLogger().LogDebug("foreach: " + category);
 
-			array<ref TraderPlusItem> ttproducts if (!ttraderPlusItems.traderPlusItems.Find(category, ttproducts)) continue;
-			TraderPlusCategoryItems	  categoryItems = new TraderPlusCategoryItems(category);
+			array<ref TraderPlusItem> ttproducts;
+			if (!ttraderPlusItems.traderPlusItems.Find(category, ttproducts))
+				continue;
+			TraderPlusCategoryItems categoryItems = new TraderPlusCategoryItems(category);
 			foreach (TraderPlusItem traderPlusItem : ttproducts)
 			{
 				bool skip = false;
@@ -135,7 +137,7 @@ class TraderPlusClient
 
 			GetTraderPlusLogger().LogDebug("CalculatePriceForThatItem: state is not accepted");
 
-			return -1,
+			return -1;
 		}
 
 		if (!m_TraderPlusItems.traderPlusItems || !m_TraderPlusItems.traderPlusItems[category] || m_TraderPlusItems.traderPlusItems[category].Count() < 1)

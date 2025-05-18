@@ -115,11 +115,12 @@ modded class PlayerBase extends ManBase
 		if (GetSafeZoneStatus() == SZ_IN_SAFEZONE)
 		{
 			if (source.IsDayZCreature() || source.IsAnimal())
-				;
-			source.Delete();
+			{
+				source.Delete();
 #ifdef SZDEBUG
-			GetTraderPlusLogger().LogInfo(this.GetIdentity().GetName() + "the source of damage has been deleted");
+				GetTraderPlusLogger().LogInfo(this.GetIdentity().GetName() + "the source of damage has been deleted");
 #endif
+			}
 			return;
 		}
 	}

@@ -216,7 +216,7 @@ class TraderPlusCategoryMenu extends UIScriptedMenu
 		return NULL;
 	}
 
-	bool OnDoubleClick(Widget w, int x, int y, int button)
+	override bool OnDoubleClick(Widget w, int x, int y, int button)
 	{
 		if (w.GetUserID() == 20062002)
 		{
@@ -248,7 +248,7 @@ class TraderPlusCategoryMenu extends UIScriptedMenu
 		return false;
 	}
 
-	bool OnClick(Widget w, int x, int y, int button)
+	override bool OnClick(Widget w, int x, int y, int button)
 	{
 		if (w.GetParent().GetParent() == CategoryCard)
 		{

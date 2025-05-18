@@ -56,7 +56,7 @@ class TraderPlusHelper
 		if (pos == -1)
 			return 0;
 
-	return (price * GetTraderPlusConfigClient().InsurancePriceCoefficients[pos];
+	return (price * GetTraderPlusConfigClient().InsurancePriceCoefficients[pos]);
 	}
 
 	static int GetCollateralPriceBasedOnClassname(string className, int price)

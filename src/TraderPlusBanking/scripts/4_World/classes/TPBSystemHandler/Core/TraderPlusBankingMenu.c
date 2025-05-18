@@ -363,7 +363,7 @@ class TraderPlusBankingMenu extends UIScriptedMenu
 		GetGame().CopyToClipboard(m_AccountID);
 	}
 
-	bool OnChange(Widget w, int x, int y, bool finished)
+	override bool OnChange(Widget w, int x, int y, bool finished)
 	{
 		super.OnChange(w, x, y, finished);
 

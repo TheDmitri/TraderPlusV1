@@ -495,7 +495,7 @@ class TraderPlusMenu extends UIScriptedMenu
 	}
 
 	//when mousebuttondown used, start update rotation for either item preview or player preview
-	bool OnMouseButtonDown(Widget w, int x, int y, int button)
+	override bool OnMouseButtonDown(Widget w, int x, int y, int button)
 	{
 		super.OnMouseButtonDown(w, x, y, button);
 		switch (w)
@@ -1080,7 +1080,7 @@ class TraderPlusMenu extends UIScriptedMenu
 	}
 
 	//On double click is needed so we can trade simply by double clicking
-	bool OnDoubleClick(Widget w, int x, int y, int button)
+	override bool OnDoubleClick(Widget w, int x, int y, int button)
 	{
 		foreach (TraderPlusCategoryMenu categoryMenu : m_CategoryMenuControllers)
 		{
