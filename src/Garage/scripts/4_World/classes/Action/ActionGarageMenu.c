@@ -59,27 +59,19 @@ class ActionGarageMenu: ActionInteractBase
 
   override void OnStartClient(ActionData action_data)
   {
-    OpenGarageMenu(action_data.m_Target.GetObject());
+    OpenGarageMenu();
   }
 
-	void InitGarageMenu(PlayerBase player)
+	void OpenGarageMenu()
 	{
-		player.m_GarageMenu = new GarageMenu;
-		player.m_GarageMenu.Init();
-		player.m_GarageMenu.m_IsFlag = IsFlag;
-		player.m_GarageMenu.m_Position = Pos;
-		int LowUID = GarageHelpers.GetLowSteamID(GetGame().GetUserManager().GetTitleInitiator().GetUid());
-		player.m_GarageMenu.m_LowUID = LowUID;
-		GetRPCManager().SendRPC("Garage", "GarageRequest",  new Param3<int, vector,bool>(LowUID, Pos, IsFlag), true, NULL);
-	}
-
-	void OpenGarageMenu(Object obj)
-	{
-      PlayerBase player = PlayerBase.Cast(GetGame().GetPlayer());
-			if ( g_Game.GetUIManager().GetMenu() == NULL )
+		if (g_Game.GetUIManager().GetMenu() == NULL)
+		{
+			int LowUID = GarageHelpers.GetLowSteamID(GetGame().GetUserManager().GetTitleInitiator().GetUid());
+			GetRPCManager().SendRPC("Garage", "GarageRequest", new Param3<int, vector, bool>(LowUID, Pos, IsFlag), true, NULL);
+			if (GetTraderPlusUIService())
 			{
-				InitGarageMenu(player);
-				GetGame().GetUIManager().ShowScriptedMenu( player.m_GarageMenu, NULL );
+				GetTraderPlusUIService().OpenGarageView(LowUID, Pos, IsFlag);
 			}
+		}
 	}
 }

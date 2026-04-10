@@ -78,25 +78,14 @@ class ActionTraderPlusMenu: ActionInteractBase
         OpenTraderMenu(action_data.m_Target.GetObject());
     }
 
-	void InitTraderMenu(PlayerBase player, Object obj)
-	{
-		player.m_TraderPlusMenu = new TraderPlusMenu;
-		player.m_TraderPlusMenu.Init();
-		GetRPCManager().SendRPC("TraderPlus", "GetReceiptCarNameRequest",  NULL, true, NULL);
-		GetRPCManager().SendRPC("TraderPlus", "GetInsuranceRequest",  NULL, true, NULL);
-		GetRPCManager().SendRPC("TraderPlusBanking", "TraderPlusBankingRequest",  NULL, true, NULL);
-		int LowUID = GarageHelpers.GetLowSteamID(GetGame().GetUserManager().GetTitleInitiator().GetUid());
-		GetRPCManager().SendRPC("Garage", "GarageRequest",  new Param3<int, vector,bool>(LowUID, TraderPos, false), true, NULL);
-		player.m_TraderPlusMenu.GetStockRequest(TraderID,TraderPos,obj);
-	}
-
 	void OpenTraderMenu(Object obj)
 	{
-      PlayerBase player = PlayerBase.Cast(GetGame().GetPlayer());
-			if ( g_Game.GetUIManager().GetMenu() == NULL )
+		if (g_Game.GetUIManager().GetMenu() == NULL)
+		{
+			if (GetTraderPlusUIService())
 			{
-				InitTraderMenu(player,obj);
-				GetGame().GetUIManager().ShowScriptedMenu( player.m_TraderPlusMenu, NULL );
+				GetTraderPlusUIService().OpenTraderView(TraderID, TraderPos, obj);
 			}
+		}
 	}
 }

@@ -133,7 +133,7 @@ class ActionDeployVehicle: ActionContinuousBase
 			if ( player.IsPlacingLocal() )
 			{
 				//Print("------");
-				if ( !player.GetHologramLocal().IsColliding() && !player.m_TraderPlusMenu)
+				if ( !player.GetHologramLocal().IsColliding() && (!GetTraderPlusUIService() || !GetTraderPlusUIService().IsMenuOpen()))
 				{
 					if ( ConditionAddon(player, target, item) || item.CanBePlaced(player, player.GetHologramLocal().GetProjectionEntity().GetPosition()) && IsNoPlayerNearby(player.GetHologramLocal().GetProjectionEntity().GetPosition()) && !IsVehicleToHigh(player.GetPosition(),player.GetHologramLocal().GetProjectionEntity().GetPosition()))
 					{

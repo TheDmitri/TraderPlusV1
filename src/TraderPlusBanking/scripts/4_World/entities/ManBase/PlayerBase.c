@@ -1,6 +1,5 @@
 modded class PlayerBase extends ManBase
 {
-	ref TraderPlusBankingMenu m_TraderPlusBankingMenu;
 	ref TraderPlusBankingData m_BankAccount = NULL;
 
 	override void Init()

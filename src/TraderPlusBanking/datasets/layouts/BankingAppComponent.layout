@@ -1,0 +1,559 @@
+PanelWidgetClass rootFrame {
+ position 0.0017 0.0419
+ size 1 1080
+ halign center_ref
+ valign center_ref
+ hexactpos 0
+ vexactpos 0
+ hexactsize 0
+ vexactsize 1
+ style blank
+ {
+  PanelWidgetClass Background {
+   visible 1
+   ignorepointer 1
+   keepsafezone 1
+   color 0 0 0 0.7412
+   position 0.00086 -0.03118
+   size 0.48413 611.71704
+   halign center_ref
+   valign center_ref
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 1
+   style rover_sim_colorable
+   {
+    PanelWidgetClass PlayerAccountPanel {
+     visible 1
+     ignorepointer 1
+     position 0.046 0.1662
+     size 0.9132 397.22202
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 1
+     style Outline
+     {
+      TextWidgetClass PlayerFees {
+       ignorepointer 1
+       position 0.81811 0.03795
+       size 0.16764 38.1275
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 1
+       scriptclass "TextBinding"
+       "exact text" 1
+       "text halign" right
+       "text valign" center
+       {
+        ScriptParamsClass {
+         Binding_Expression "{{ feesText }}"
+        }
+       }
+      }
+      GridSpacerWidgetClass GridPlayerPanel {
+       ignorepointer 1
+       position 0.014 0.133
+       size 0.97248 0.68118
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       Columns 2
+       Rows 5
+       {
+        TextWidgetClass BankAmountText {
+         ignorepointer 1
+         position -0.03968 0.09299
+         size 0.35372 39.7132
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         style Bold
+         text "#tpb_bank_amount"
+         font "TraderPlus/gui/fonts/regular22"
+         "exact text" 1
+         "text halign" right
+         "text valign" center
+        }
+        TextWidgetClass BankAmountTextInput {
+         ignorepointer 1
+         position 0.335 0.108
+         size 0.56729 38.0897
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         scriptclass "TextBinding"
+         font "TraderPlus/gui/fonts/regular22"
+         "text valign" center
+         {
+          ScriptParamsClass {
+           Binding_Expression "{{ bankAmountDisplay }}"
+          }
+         }
+        }
+        TextWidgetClass TransactionAmountText {
+         ignorepointer 1
+         position 0.001 0.321
+         size 0.31308 28.1544
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         style Bold
+         text "#tpb_transaction_amount"
+         font "TraderPlus/gui/fonts/regular22"
+         "exact text" 1
+         "text halign" right
+         "text valign" center
+        }
+        EditBoxWidgetClass PlayerAmountTextInput {
+         position 0.336 0.319
+         size 0.56714 32.3298
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         scriptclass "EditBoxBinding"
+         "Use default text" 0
+         "exact text" 1
+         font "TraderPlus/gui/fonts/regular22"
+         {
+          ScriptParamsClass {
+           Form_Control_Name "depositAmount"
+           Form_Validators "required,integer,min:1"
+           Two_Way_Binding 1
+           OnChange "OnDepositAmountChanged"
+          }
+         }
+        }
+        TextWidgetClass PlayerAmountText {
+         ignorepointer 1
+         position 0.002 0.214
+         size 0.31308 35.8512
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         style Bold
+         text "#tpb_player_amount"
+         font "TraderPlus/gui/fonts/regular22"
+         "exact text" 1
+         "text halign" right
+         "text valign" center
+        }
+        TextWidgetClass PlayerAmountTextOutput {
+         ignorepointer 1
+         position 0.336 0.215
+         size 0.56729 38.0897
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         scriptclass "TextBinding"
+         font "TraderPlus/gui/fonts/regular22"
+         "text valign" center
+         {
+          ScriptParamsClass {
+           Binding_Expression "{{ playerAmountText }}"
+          }
+         }
+        }
+        TextWidgetClass MaxText {
+         ignorepointer 1
+         position 0.621 0.755
+         size 0.28402 33.0969
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         style Bold
+         text "#tpb_max"
+         font "TraderPlus/gui/fonts/regular22"
+         "text color" 1 0.749 0 1
+         "exact text" 1
+         "text halign" right
+         "text valign" center
+        }
+        ProgressBarWidgetClass MoneyProgressBar {
+         ignorepointer 1
+         position 0.04104 0.9375
+         size 0.94518 -21.4156
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         scriptclass "ProgressBinding"
+         style Stamina
+         current 0
+         {
+          ScriptParamsClass {
+           Binding_Expression "{{ progressValue }}"
+          }
+         }
+        }
+        ButtonWidgetClass PlayerDepositBttn {
+         visible 1
+         position 0.40131 0.437
+         size 0.27903 47.6531
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         scriptclass "ButtonBinding"
+         style Editor
+         text "#tpb_deposit"
+         {
+          ScriptParamsClass {
+           OnClick "OnDepositClicked"
+          }
+         }
+        }
+        ButtonWidgetClass PlayerWithdrawBttn {
+         position 0.2 0.70326
+         size 0.2294 -15.3921
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         scriptclass "ButtonBinding"
+         style Editor
+         text "#tpb_withdraw"
+         {
+          ScriptParamsClass {
+           OnClick "OnWithdrawClicked"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    PanelWidgetClass TransfertPanel {
+     visible 0
+     ignorepointer 1
+     position 0.046 0.1662
+     size 0.9123 397.22
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 1
+     style Outline
+     {
+      TextWidgetClass TransfertFees {
+       ignorepointer 1
+       color 1 1 0.9961 1
+       position 0.81811 0.03795
+       size 0.16764 38.1275
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 1
+       scriptclass "TextBinding"
+       "exact text" 1
+       "text halign" right
+       "text valign" center
+       {
+        ScriptParamsClass {
+         Binding_Expression "{{ feesText }}"
+        }
+       }
+      }
+      GridSpacerWidgetClass GridTransfer {
+       ignorepointer 1
+       position 0.0235 0.18618
+       size 0.95681 0.35711
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       Columns 2
+       {
+        TextWidgetClass TransfertBankAmountText {
+         ignorepointer 1
+         position 0 0
+         size 0.30286 46.6228
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         style Bold
+         text "#tpb_bank_amount"
+         font "TraderPlus/gui/fonts/regular22"
+         "exact text" 1
+         text_proportion 0.8
+         "text halign" right
+         "text valign" center
+        }
+        TextWidgetClass TransfertBankAmountTextOutput {
+         ignorepointer 1
+         position 0 0
+         size 0.24723 46.5159
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         scriptclass "TextBinding"
+         font "TraderPlus/gui/fonts/regular22"
+         "text valign" center
+         {
+          ScriptParamsClass {
+           Binding_Expression "{{ transferBankAmountText }}"
+          }
+         }
+        }
+        TextWidgetClass TransfertAmountText {
+         ignorepointer 1
+         position 0 0
+         size 0.35057 47.8806
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         style Bold
+         text "#tpb_transfer_amount"
+         font "TraderPlus/gui/fonts/regular22"
+         "exact text" 1
+         text_proportion 0.8
+         "text halign" right
+         "text valign" center
+        }
+        EditBoxWidgetClass TransfertAmountTextInput {
+         position 0.963 0.67
+         size 0.059 0.446
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         scriptclass "EditBoxBinding"
+         "exact text" 1
+         font "TraderPlus/gui/fonts/regular22"
+         {
+          ScriptParamsClass {
+           Form_Control_Name "transferAmount"
+           Form_Validators "required,integer,min:1"
+           Two_Way_Binding 1
+           OnChange "OnTransferAmountChanged"
+          }
+         }
+        }
+        TextWidgetClass TransfertIDText {
+         ignorepointer 1
+         position 0 0
+         size 0.35057 47.8806
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         style Bold
+         text "#tpb_id_account"
+         font "TraderPlus/gui/fonts/regular22"
+         "exact text" 1
+         text_proportion 0.8
+         "text halign" right
+         "text valign" center
+        }
+        EditBoxWidgetClass TransfertIDTextInput {
+         position 0.85 0.87
+         size 0.059 0.446
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         scriptclass "EditBoxBinding"
+         "exact text" 1
+         font "TraderPlus/gui/fonts/regular22"
+         {
+          ScriptParamsClass {
+           Form_Control_Name "transferId"
+           Form_Validators "required,integer,minlength:16"
+           Two_Way_Binding 1
+          }
+         }
+        }
+       }
+      }
+      ButtonWidgetClass TransfertBttn {
+       position 0.36507 0.55292
+       size 0.28292 39.8923
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 1
+       scriptclass "ButtonBinding"
+       style Editor
+       text "#tpb_transfer"
+       {
+        ScriptParamsClass {
+         OnClick "OnTransferClicked"
+        }
+       }
+      }
+     }
+    }
+    PanelWidgetClass PanelID {
+     ignorepointer 1
+     position 0.046 0.8293
+     size 0.91273 0.11186
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     style Outline
+     {
+      GridSpacerWidgetClass GridID {
+       ignorepointer 1
+       position 0.013 0.077
+       size 0.97707 0.85437
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       Rows 1
+       {
+        TextWidgetClass PlayerIDText {
+         ignorepointer 1
+         position -0.00595 0.3743
+         size 1.00588 0.48119
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         text "#tpb_id_account"
+         font "TraderPlus/gui/fonts/regular22"
+         "exact text" 1
+         "text halign" right
+         "text valign" center
+        }
+        PanelWidgetClass PanelWidget2 {
+         ignorepointer 1
+         color 0 0 0 0.5412
+         position -1.09128 1.18501
+         size 301.38898 99.71629
+         hexactpos 1
+         vexactpos 1
+         hexactsize 1
+         vexactsize 1
+         style rover_sim_colorable
+         {
+          TextWidgetClass PlayerIDAccountText {
+           ignorepointer 1
+           position 0.00499 0.0298
+           size 0.99522 0.94628
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           scriptclass "TextBinding"
+           font "TraderPlus/gui/fonts/regular22"
+           text_proportion 0.6
+           "text halign" center
+           "text valign" center
+           {
+            ScriptParamsClass {
+             Binding_Expression "{{ playerIdText }}"
+            }
+           }
+          }
+         }
+        }
+        ButtonWidgetClass CopyIDBttn {
+         position 0.00146 0.62449
+         size 0.99264 0.8254
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         scriptclass "ButtonBinding"
+         style Editor
+         text "#tpb_copyid"
+         text_proportion 0.6
+         font "TraderPlus/gui/fonts/regular22"
+         {
+          ScriptParamsClass {
+           OnClick "OnCopyIdClicked"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GridSpacerWidgetClass GridBttn {
+     ignorepointer 1
+     position 0.046 0.043
+     size 0.91017 0.1073
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     Rows 1
+     {
+      ButtonWidgetClass PlayerAccountBttn {
+       position 0.04335 0.04262
+       size 0.30356 67.6192
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 1
+       scriptclass "ButtonBinding"
+       scaled 1
+       draggable 0
+       style Editor
+       text "#tpb_player_account"
+       text_proportion 0.5
+       {
+        ScriptParamsClass {
+         OnClick "OnAccountTabClicked"
+        }
+       }
+      }
+      ButtonWidgetClass PtPTransfertBttn {
+       visible 1
+       position 0 0
+       size 0.28601 67.6192
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 1
+       scriptclass "ButtonBinding"
+       style Editor
+       text "#tpb_player_transfer"
+       text_proportion 0.5
+       {
+        ScriptParamsClass {
+         OnClick "OnTransferTabClicked"
+        }
+       }
+      }
+     }
+    }
+    RichTextWidgetClass PlayerDebugText {
+     visible 1
+     ignorepointer 1
+     color 1 0.749 0 1
+     position 0.05415 0.70987
+     size 0.89768 51.4599
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 1
+     scriptclass "TextBinding"
+     "text halign" center
+     "text valign" center
+     wrap 1
+     "condense whitespace" 1
+     {
+      ScriptParamsClass {
+       Binding_Expression "{{ debugText }}"
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,7 +1,5 @@
 modded class PlayerBase extends ManBase
 {
-	ref GarageMenu m_GarageMenu;
-
 	override void Init()
 	{
 		super.Init();

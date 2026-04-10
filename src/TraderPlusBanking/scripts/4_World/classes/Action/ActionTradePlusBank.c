@@ -61,20 +61,15 @@ class ActionTraderPlusBankingMenu: ActionInteractBase
         OpenTraderBankMenu();
     }
 
-	void InitTraderBankMenu(PlayerBase player)
-	{
-		player.m_TraderPlusBankingMenu = new TraderPlusBankingMenu;
-		player.m_TraderPlusBankingMenu.Init();
-	}
-
 	void OpenTraderBankMenu()
 	{
-      PlayerBase player = PlayerBase.Cast(GetGame().GetPlayer());
-			if ( g_Game.GetUIManager().GetMenu() == NULL )
+		if (g_Game.GetUIManager().GetMenu() == NULL)
+		{
+			GetRPCManager().SendRPC("TraderPlusBanking", "TraderPlusBankingRequest", NULL, true, NULL);
+			if (GetTraderPlusUIService())
 			{
-				GetRPCManager().SendRPC("TraderPlusBanking", "TraderPlusBankingRequest",  NULL, true, NULL);
-				InitTraderBankMenu(player);
-				GetGame().GetUIManager().ShowScriptedMenu( player.m_TraderPlusBankingMenu, NULL );
+				GetTraderPlusUIService().OpenBankingView();
 			}
+		}
 	}
 }

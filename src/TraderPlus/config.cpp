@@ -39,17 +39,17 @@ class CfgMods
 			class gameScriptModule
 			{
 				value = "";
-				files[] = {"_UAPIBase/scripts/Common","MuchCarKey/Scripts/Common","MuchCarKeyDefines/scripts/Common","CLDefine/scripts/Common","TPDefine/scripts/Common","TM/Trader/scripts/defines","CarCover/Scripts/Common","TPDefine/scripts/Common","TraderPlus/scripts/Common","TraderPlus/scripts/3_Game"};
+				files[] = {"_UAPIBase/scripts/Common","MuchCarKey/Scripts/Common","MuchCarKeyDefines/scripts/Common","CLDefine/scripts/Common","TPDefine/scripts/Common","TM/Trader/scripts/defines","CarCover/Scripts/Common","TPDefine/scripts/Common","DayZular/scripts/3_Game","TraderPlus/scripts/Common","TraderPlus/scripts/3_Game"};
 			};
 			class worldScriptModule
 			{
 				value = "";
-				files[] = {"_UAPIBase/scripts/Common","MuchCarKey/Scripts/Common","MuchCarKeyDefines/scripts/Common","CLDefine/scripts/Common","TPDefine/scripts/Common","TM/Trader/scripts/defines","CarCover/Scripts/Common","TPDefine/scripts/Common","TraderPlus/scripts/Common","TraderPlus/scripts/4_World"};
+				files[] = {"_UAPIBase/scripts/Common","MuchCarKey/Scripts/Common","MuchCarKeyDefines/scripts/Common","CLDefine/scripts/Common","TPDefine/scripts/Common","TM/Trader/scripts/defines","CarCover/Scripts/Common","TPDefine/scripts/Common","DayZular/scripts/4_World","TraderPlus/scripts/Common","TraderPlus/scripts/4_World"};
 			};
 			class missionScriptModule
 			{
 				value = "";
-				files[] = {"_UAPIBase/scripts/Common","MuchCarKey/Scripts/Common","MuchCarKeyDefines/scripts/Common","CLDefine/scripts/Common","TPDefine/scripts/Common","TM/Trader/scripts/defines","CarCover/Scripts/Common","TPDefine/scripts/Common","TraderPlus/scripts/Common","TraderPlus/scripts/5_Mission"};
+				files[] = {"_UAPIBase/scripts/Common","MuchCarKey/Scripts/Common","MuchCarKeyDefines/scripts/Common","CLDefine/scripts/Common","TPDefine/scripts/Common","TM/Trader/scripts/defines","CarCover/Scripts/Common","TPDefine/scripts/Common","DayZular/scripts/5_Mission","TraderPlus/scripts/Common","TraderPlus/scripts/5_Mission"};
 			};
 		};
 	};

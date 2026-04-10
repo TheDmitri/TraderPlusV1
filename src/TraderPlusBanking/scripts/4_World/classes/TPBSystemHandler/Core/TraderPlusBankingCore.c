@@ -95,15 +95,19 @@ class TraderPlusBankingCore
 
 			m_BankAccount = data.param1;
 
-			PlayerBase player = PlayerBase.Cast(GetGame().GetPlayer());
+			if (GetTraderPlusUIService())
+			{
+				GetTraderPlusUIService().OnBankingResponse();
 
-			if(player && player.m_TraderPlusBankingMenu)
-				player.m_TraderPlusBankingMenu.UIHandle();
+				if (GetTraderPlusUIService().GetTraderApp())
+				{
+					GetTraderPlusUIService().GetTraderApp().UIHandle();
+				}
 
-			if(player && player.m_TraderPlusMenu)
-				player.m_TraderPlusMenu.UIHandle();
-
-			if(player && player.m_GarageMenu)
-				player.m_GarageMenu.UIHandle();
+				if (GetTraderPlusUIService().GetGarageApp())
+				{
+					GetTraderPlusUIService().GetGarageApp().UIHandle();
+				}
+			}
 		}
 	};

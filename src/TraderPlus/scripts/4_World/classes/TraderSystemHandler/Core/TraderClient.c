@@ -553,16 +553,23 @@ class TraderPlusClient
 		 GetTraderPlusLogger().LogDebug("Stock count: "+count.ToString());
 		 
 
-		 PlayerBase player = PlayerBase.Cast(GetGame().GetPlayer());
-		 if(player && player.m_TraderPlusMenu)
-			 		player.m_TraderPlusMenu.UIUpdate();
+		 // Notify the UI service about the stock response
+		 if (GetTraderPlusUIService() && GetTraderPlusUIService().GetTraderApp())
+		 {
+			 GetTraderPlusUIService().GetTraderApp().UIUpdate();
+		 }
 
-		 //We check what kind of stock response is it: Is it a sell/buy update ? or a NO_TRADE response
+		 // Check what kind of stock response: sell/buy update or NO_TRADE
 		 int response = data.param1;
-		 if(response == TraderPlusResponse.NO_TRADE)return;
+		 if (response == TraderPlusResponse.NO_TRADE)
+		 {
+			 return;
+		 }
 
-		 if(player && player.m_TraderPlusMenu)
-			 		player.m_TraderPlusMenu.GetTradingResponse(response);
+		 if (GetTraderPlusUIService())
+		 {
+			 GetTraderPlusUIService().OnTradeResponse(response);
+		 }
   }
 
 

@@ -1,0 +1,27 @@
+PanelWidgetClass rootFrame {
+ position 0 0
+ size 1 32
+ hexactpos 0
+ vexactpos 0
+ hexactsize 0
+ vexactsize 1
+ {
+  ButtonWidgetClass VehicleButton {
+   position 0 0
+   size 1 1
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   scriptclass "ButtonBinding"
+   style Default
+   font "gui/fonts/etelkatextpro16"
+   {
+    ScriptParamsClass {
+     Binding_Text "{{ vehicleDisplayName }}"
+     OnClick "OnVehicleClicked"
+    }
+   }
+  }
+ }
+}

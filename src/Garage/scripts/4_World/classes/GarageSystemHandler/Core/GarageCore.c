@@ -87,17 +87,24 @@ class GarageCore
 			m_VehiclesName = data.param1;
 			m_VehiclesHealth = data.param2;
 
-			if(player && player.m_GarageMenu)
+			if (GetTraderPlusUIService() && GetTraderPlusUIService().GetGarageApp())
 			{
-				player.m_GarageMenu.SetResponseData(data.param1,data.param3);
-				GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(player.m_GarageMenu.UIHandle, 50);
+				GetTraderPlusUIService().OnGarageResponse(data.param1, data.param3);
 
-				switch(data.param4)
+				switch (data.param4)
 				{
-					case TraderPlusResponse.SELL_SUCCESS:player.PlayTradeSound(true);
+					case TraderPlusResponse.SELL_SUCCESS:
+						if (player)
+						{
+							player.PlayTradeSound(true);
+						}
 					break;
 
-					case TraderPlusResponse.BUY_SUCCESS:player.PlayTradeSound(false);
+					case TraderPlusResponse.BUY_SUCCESS:
+						if (player)
+						{
+							player.PlayTradeSound(false);
+						}
 					break;
 
 					default:

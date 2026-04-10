@@ -10,10 +10,13 @@ modded class MissionGameplay extends MissionBase
 	override void OnKeyRelease(int key)
 	{
 		super.OnKeyRelease(key);
-		PlayerBase player = PlayerBase.Cast(GetGame().GetPlayer());
 
-		if ( key == KeyCode.KC_ESCAPE )
-				if (player && player.m_TraderPlusMenu)
-		  		player.m_TraderPlusMenu.OnHide();
+		if (key == KeyCode.KC_ESCAPE)
+		{
+			if (GetTraderPlusUIService() && GetTraderPlusUIService().IsMenuOpen())
+			{
+				GetTraderPlusUIService().CloseView();
+			}
+		}
 	}
 };

@@ -1,0 +1,261 @@
+FrameWidgetClass rootFrame {
+ position 0 0
+ size 1 1
+ hexactpos 0
+ vexactpos 0
+ hexactsize 0
+ vexactsize 0
+ {
+  PanelWidgetClass PanelIcons {
+   ignorepointer 1
+   color 0 0 0 0.6667
+   position 0.02469 0.00323
+   size 0.95104 0.99184
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   style rover_sim_colorable
+   {
+    GridSpacerWidgetClass GridIcons {
+     ignorepointer 1
+     position 0 0
+     size 1 1
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     Columns 1
+     Rows 5
+     {
+      ButtonWidgetClass BttnMarket {
+       position 0.079 0.054
+       size 0.534 0.088
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       scriptclass "ButtonBinding"
+       {
+        ImageWidgetClass ImageMarket {
+         ignorepointer 1
+         position 0 -0.06228
+         size 64 64
+         halign center_ref
+         valign center_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 1
+         vexactsize 1
+         imageTexture "{8451250ACCD03A86}TraderPlus/datasets/shopping-cart.edds"
+         mode blend
+         "src alpha" 1
+         stretch 1
+        }
+        TextWidgetClass MarketText {
+         ignorepointer 1
+         position 0.00705 0.68639
+         size 1.00952 0.13447
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         text "#tpm_market"
+         font "gui/fonts/Metron-Bold12"
+         "exact text" 1
+         "text halign" center
+         "text valign" center
+        }
+       }
+       {
+        ScriptParamsClass {
+         OnClick "OnMarketClicked"
+        }
+       }
+      }
+      ButtonWidgetClass BttnInventory {
+       position 0.079 0.054
+       size 0.534 0.088
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       scriptclass "ButtonBinding"
+       {
+        ImageWidgetClass ImageBag {
+         ignorepointer 1
+         position 0 -0.06228
+         size 64 64
+         halign center_ref
+         valign center_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 1
+         vexactsize 1
+         imageTexture "{866A317A30BC4F6F}TraderPlus/datasets/school-bag.edds"
+         mode blend
+         "src alpha" 1
+         stretch 1
+        }
+        TextWidgetClass InvText {
+         ignorepointer 1
+         position 0.01181 0.7237
+         size 1.0164 0.1285
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         text "#tpm_inventory"
+         font "gui/fonts/Metron-Bold12"
+         "exact text" 1
+         "text halign" center
+         "text valign" center
+        }
+       }
+       {
+        ScriptParamsClass {
+         OnClick "OnInventoryClicked"
+        }
+       }
+      }
+      ButtonWidgetClass BttnCar {
+       position 0.079 0.054
+       size 0.534 0.088
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       scriptclass "ButtonBinding"
+       {
+        ImageWidgetClass ImageCar {
+         ignorepointer 1
+         position 0 -0.08661
+         size 64 64
+         halign center_ref
+         valign center_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 1
+         vexactsize 1
+         imageTexture "{9B109147F48FFFD2}TraderPlus/datasets/car.edds"
+         mode blend
+         "src alpha" 1
+         stretch 1
+        }
+        TextWidgetClass TextWidget3 {
+         ignorepointer 1
+         position -0.00229 0.69812
+         size 1.00952 0.13447
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         text "#tpm_vehicles"
+         font "gui/fonts/Metron-Bold12"
+         "exact text" 1
+         "text halign" center
+         "text valign" center
+        }
+       }
+       {
+        ScriptParamsClass {
+         OnClick "OnCarClicked"
+        }
+       }
+      }
+      ButtonWidgetClass BttnLicence {
+       position 0.079 0.054
+       size 0.534 0.088
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       scriptclass "ButtonBinding"
+       {
+        ImageWidgetClass ImageLicence {
+         ignorepointer 1
+         position 0.01417 -0.08985
+         size 64 64
+         halign center_ref
+         valign center_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 1
+         vexactsize 1
+         imageTexture "{F72DC20B72C1AC9A}TraderPlus/datasets/driver-license.edds"
+         mode blend
+         "src alpha" 1
+         stretch 1
+        }
+        TextWidgetClass TextWidget4 {
+         ignorepointer 1
+         position 0.00705 0.68496
+         size 1.00952 0.13447
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         text "#tpm_licences"
+         font "gui/fonts/Metron-Bold12"
+         "exact text" 1
+         "text halign" center
+         "text valign" center
+        }
+       }
+       {
+        ScriptParamsClass {
+         OnClick "OnLicenceClicked"
+        }
+       }
+      }
+      ButtonWidgetClass BttnInsurance {
+       position 0.079 0.054
+       size 0.14546 0.06505
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       scriptclass "ButtonBinding"
+       {
+        ImageWidgetClass ImageInsurance {
+         ignorepointer 1
+         position 0.00708 -0.07948
+         size 64 64
+         halign center_ref
+         valign center_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 1
+         vexactsize 1
+         imageTexture "{E962F2215EE877F4}TraderPlus/datasets/insurance.edds"
+         mode blend
+         "src alpha" 1
+         stretch 1
+        }
+        TextWidgetClass TextWidget5 {
+         ignorepointer 1
+         position 0.00705 0.70224
+         size 1.00952 0.13447
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         text "#tpm_insurances"
+         font "gui/fonts/Metron-Italic12"
+         "exact text" 1
+         "text halign" center
+         "text valign" center
+        }
+       }
+       {
+        ScriptParamsClass {
+         OnClick "OnInsuranceClicked"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

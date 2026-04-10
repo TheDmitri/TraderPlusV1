@@ -1,0 +1,269 @@
+FrameWidgetClass rootFrame {
+ position -0.00147 -0.00209
+ size 1 1
+ hexactpos 0
+ vexactpos 0
+ hexactsize 0
+ vexactsize 0
+ {
+  PanelWidgetClass ContentPanel {
+   visible 1
+   clipchildren 0
+   ignorepointer 1
+   color 0 0 0 0
+   position 0 0
+   size 0.99859 1
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   style rover_sim_colorable
+   {
+    PanelWidgetClass PanelIconsOutline {
+     ignorepointer 1
+     position 0.0074 0.14
+     size 0.04559 0.8219
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     style Outline
+    }
+    PanelWidgetClass PanelStockOutline {
+     visible 1
+     ignorepointer 1
+     position 0.05907 0.14
+     size 0.64615 0.82173
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     style Outline
+    }
+    PanelWidgetClass ProductInformationOutline {
+     visible 1
+     ignorepointer 1
+     position 0.7113 0.14
+     size 0.28053 0.82372
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     style Outline
+    }
+    PanelWidgetClass PanelInventoryOutline {
+     visible 0
+     ignorepointer 1
+     position 0.05907 0.14
+     size 0.64615 0.82173
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     style Outline
+    }
+    GridSpacerWidgetClass GridMoney {
+     ignorepointer 1
+     position 0.00973 0.1032
+     size 300 48
+     hexactpos 0
+     vexactpos 0
+     hexactsize 1
+     vexactsize 1
+     Padding 0
+     Margin 0
+     "Size To Content H" 1
+     "Size To Content V" 1
+     Columns 2
+     Rows 1
+     {
+      TextWidgetClass PlayerMoneyText {
+       ignorepointer 1
+       color 0.2667 0.8667 0.051 1
+       position 5.00504 0.50465
+       size 165.77901 32.3668
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
+       vexactsize 1
+       scriptclass "TextBinding"
+       text "$1,873,981"
+       font "gui/fonts/etelkatextpro22"
+       "text color" 1 0.6588 0 1
+       "exact text" 0
+       "size to text h" 1
+       "text halign" right
+       "text valign" center
+       {
+        ScriptParamsClass {
+         Binding_Expression "{{ playerMoneyText }}"
+        }
+       }
+      }
+     }
+    }
+    PanelWidgetClass TraderPanel {
+     ignorepointer 1
+     position 20.1165 7.44891
+     size 362.50101 92.3713
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
+     vexactsize 1
+     {
+      GridSpacerWidgetClass GridTrader {
+       visible 1
+       ignorepointer 1
+       position 0.24118 -0.00526
+       size 0.75371 0.95282
+       valign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       style Colorable
+       Columns 1
+       Rows 2
+       {
+        TextWidgetClass TraderNameText {
+         ignorepointer 1
+         position 0.08073 0.4276
+         size 350 45
+         hexactpos 1
+         vexactpos 1
+         hexactsize 1
+         vexactsize 1
+         fixaspect inside
+         scriptclass "TextBinding"
+         text "Keiko"
+         font "gui/fonts/etelkatextpro22"
+         "text valign" center
+         {
+          ScriptParamsClass {
+           Binding_Expression "{{ traderName }}"
+          }
+         }
+        }
+        TextWidgetClass TraderDescriptionText {
+         ignorepointer 1
+         position 1.1623 42.8743
+         size 350 45
+         hexactpos 1
+         vexactpos 1
+         hexactsize 1
+         vexactsize 1
+         fixaspect inside
+         scriptclass "TextBinding"
+         text "Weapon Seller"
+         font ""
+         "text valign" center
+         {
+          ScriptParamsClass {
+           Binding_Expression "{{ traderDescription }}"
+          }
+         }
+        }
+       }
+      }
+      ImageWidgetClass ImageWidget5 {
+       ignorepointer 1
+       position 0.00421 0.02814
+       size 84.431 88.0957
+       hexactpos 0
+       vexactpos 0
+       hexactsize 1
+       vexactsize 1
+       imageTexture "{772EE0CB4B1643A7}TraderPlus/datasets/cashier.edds"
+       mode additive
+       stretch 1
+      }
+     }
+    }
+    RichTextWidgetClass InformationText {
+     visible 1
+     ignorepointer 1
+     position 0.35193 0.0233
+     size 0.28041 0.09651
+     halign center_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     "exact text" 1
+     "text halign" center
+     "text valign" center
+     wrap 1
+     "condense whitespace" 1
+     "strip newlines" 1
+    }
+   }
+  }
+  PanelWidgetClass LicenceWarningPanel {
+   visible 0
+   ignorepointer 1
+   size 0.497 377.11301
+   halign center_ref
+   valign center_ref
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 1
+   style rover_sim_black
+   {
+    ButtonWidgetClass LicenceCloseBttn {
+     color 1 0 0 1
+     position 0.45846 0.83616
+     size 0.05457 49.3874
+     halign center_ref
+     valign bottom_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 1
+     scriptclass "ButtonBinding"
+     style Editor
+     text "x"
+     font "gui/fonts/Metron-Bold22"
+     "text color" 0.8745 0.8745 0.8745 1
+     {
+      ScriptParamsClass {
+       OnClick "OnLicenceCloseClicked"
+      }
+     }
+    }
+    ScrollWidgetClass ScrollText {
+     ignorepointer 1
+     position 0.00874 0.0502
+     size 0.94988 278.366
+     halign center_ref
+     valign center_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 1
+     "Scrollbar V" 1
+     {
+      MultilineTextWidgetClass LicenceWarningText {
+       ignorepointer 1
+       position 0 0
+       size 0.93985 240.43199
+       halign center_ref
+       valign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 1
+       font "TraderPlus/gui/fonts/regular14"
+       "exact text" 1
+       "text halign" center
+       "text valign" center
+       wrap 1
+       "condense whitespace" 1
+       "strip newlines" 1
+      }
+     }
+    }
+   }
+  }
+ }
+}

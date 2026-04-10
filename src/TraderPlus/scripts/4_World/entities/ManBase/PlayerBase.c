@@ -1,6 +1,5 @@
 modded class PlayerBase extends ManBase
 {
-	ref TraderPlusMenu m_TraderPlusMenu;
 	private EffectSound m_TradeSound;
 
 	int TraderID;
