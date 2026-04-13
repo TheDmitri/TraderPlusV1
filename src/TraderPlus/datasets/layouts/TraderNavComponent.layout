@@ -8,14 +8,14 @@ FrameWidgetClass rootFrame {
  {
   PanelWidgetClass PanelIcons {
    ignorepointer 1
-   color 0 0 0 0.6667
+   color 0.996 0.996 0.996 1
    position 0.02469 0.00323
    size 0.95104 0.99184
    hexactpos 0
    vexactpos 0
    hexactsize 0
    vexactsize 0
-   style rover_sim_colorable
+   style TXSidebar
    {
     GridSpacerWidgetClass GridIcons {
      ignorepointer 1
@@ -35,7 +35,9 @@ FrameWidgetClass rootFrame {
        vexactpos 0
        hexactsize 0
        vexactsize 0
+       color 0.996 0.996 0.996 1
        scriptclass "ButtonBinding"
+       style TXCategoryItem
        {
         ImageWidgetClass ImageMarket {
          ignorepointer 1
@@ -61,7 +63,8 @@ FrameWidgetClass rootFrame {
          hexactsize 0
          vexactsize 0
          text "#tpm_market"
-         font "gui/fonts/Metron-Bold12"
+         font "gui/fonts/etelkatextpro10"
+         "text color" 0.533 0.533 0.533 1
          "exact text" 1
          "text halign" center
          "text valign" center
@@ -80,7 +83,9 @@ FrameWidgetClass rootFrame {
        vexactpos 0
        hexactsize 0
        vexactsize 0
+       color 0.996 0.996 0.996 1
        scriptclass "ButtonBinding"
+       style TXCategoryItem
        {
         ImageWidgetClass ImageBag {
          ignorepointer 1
@@ -106,7 +111,8 @@ FrameWidgetClass rootFrame {
          hexactsize 0
          vexactsize 0
          text "#tpm_inventory"
-         font "gui/fonts/Metron-Bold12"
+         font "gui/fonts/etelkatextpro10"
+         "text color" 0.533 0.533 0.533 1
          "exact text" 1
          "text halign" center
          "text valign" center
@@ -125,7 +131,9 @@ FrameWidgetClass rootFrame {
        vexactpos 0
        hexactsize 0
        vexactsize 0
+       color 0.996 0.996 0.996 1
        scriptclass "ButtonBinding"
+       style TXCategoryItem
        {
         ImageWidgetClass ImageCar {
          ignorepointer 1
@@ -151,7 +159,8 @@ FrameWidgetClass rootFrame {
          hexactsize 0
          vexactsize 0
          text "#tpm_vehicles"
-         font "gui/fonts/Metron-Bold12"
+         font "gui/fonts/etelkatextpro10"
+         "text color" 0.533 0.533 0.533 1
          "exact text" 1
          "text halign" center
          "text valign" center
@@ -170,7 +179,9 @@ FrameWidgetClass rootFrame {
        vexactpos 0
        hexactsize 0
        vexactsize 0
+       color 0.996 0.996 0.996 1
        scriptclass "ButtonBinding"
+       style TXCategoryItem
        {
         ImageWidgetClass ImageLicence {
          ignorepointer 1
@@ -196,7 +207,8 @@ FrameWidgetClass rootFrame {
          hexactsize 0
          vexactsize 0
          text "#tpm_licences"
-         font "gui/fonts/Metron-Bold12"
+         font "gui/fonts/etelkatextpro10"
+         "text color" 0.533 0.533 0.533 1
          "exact text" 1
          "text halign" center
          "text valign" center
@@ -215,7 +227,9 @@ FrameWidgetClass rootFrame {
        vexactpos 0
        hexactsize 0
        vexactsize 0
+       color 0.996 0.996 0.996 1
        scriptclass "ButtonBinding"
+       style TXCategoryItem
        {
         ImageWidgetClass ImageInsurance {
          ignorepointer 1
@@ -241,7 +255,8 @@ FrameWidgetClass rootFrame {
          hexactsize 0
          vexactsize 0
          text "#tpm_insurances"
-         font "gui/fonts/Metron-Italic12"
+         font "gui/fonts/etelkatextpro10"
+         "text color" 0.533 0.533 0.533 1
          "exact text" 1
          "text halign" center
          "text valign" center

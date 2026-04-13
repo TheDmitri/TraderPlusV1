@@ -841,6 +841,6 @@ class TraderAppComponent extends DZlrComponentBase
             return;
         }
 
-        m_PreviewPanel.InitPlayerPreview();
+        m_PreviewPanel.SwitchPreview();
     }
 }

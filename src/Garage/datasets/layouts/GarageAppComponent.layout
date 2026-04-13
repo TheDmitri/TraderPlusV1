@@ -18,11 +18,12 @@ FrameWidgetClass rootFrame {
    vexactpos 0
    hexactsize 0
    vexactsize 0
-   style Outline
+   color 0.996 0.996 0.996 1
+   style TXContainer
    {
     PanelWidgetClass LayoutBackground {
      ignorepointer 1
-     color 0 0 0 0.6667
+     color 0.996 0.996 0.996 1
      position -0.0002 -0.00114
      size 0.99481 0.99008
      halign center_ref
@@ -31,7 +32,7 @@ FrameWidgetClass rootFrame {
      vexactpos 0
      hexactsize 0
      vexactsize 0
-     style rover_sim_colorable
+     style TXCard
      {
       GridSpacerWidgetClass Grid {
        ignorepointer 1
@@ -111,7 +112,7 @@ FrameWidgetClass rootFrame {
          Rows 6
          {
           ItemPreviewWidgetClass VehiclePreview {
-           ignorepointer 1
+           ignorepointer 0
            position 0 0
            size 0.38935 0.49926
            halign center_ref
@@ -264,18 +265,18 @@ FrameWidgetClass rootFrame {
             PanelWidgetClass BuyPanelWidget {
              visible 1
              ignorepointer 1
-             color 0 0 0 0.7843
+             color 0.996 0.996 0.996 1
              position 0 0
              size 1 64
              hexactpos 1
              vexactpos 1
              hexactsize 1
              vexactsize 1
-             style rover_sim_colorable
+             style TXCard
              {
               ButtonWidgetClass BttnParkOut {
                visible 1
-               color 0.7333 0.7333 0.7333 1
+               color 0.996 0.996 0.996 1
                position 0 0
                size 1 1
                valign center_ref
@@ -284,7 +285,7 @@ FrameWidgetClass rootFrame {
                hexactsize 0
                vexactsize 0
                scriptclass "ButtonBinding"
-               style OldStyle
+               style TXBtnPrimary
                {
                 TextWidgetClass BttnBuy_label {
                  ignorepointer 1
@@ -312,18 +313,18 @@ FrameWidgetClass rootFrame {
             }
             PanelWidgetClass SellPanelWidget {
              ignorepointer 1
-             color 0 0 0 0.7843
+             color 0.996 0.996 0.996 1
              position 0 0
              size 1 64
              hexactpos 1
              vexactpos 1
              hexactsize 0
              vexactsize 1
-             style rover_sim_colorable
+             style TXCard
              {
               ButtonWidgetClass BttnParkIn {
                visible 1
-               color 0.7333 0.7333 0.7333 1
+               color 0.996 0.996 0.996 1
                position 0 0
                size 1 1
                halign right_ref
@@ -333,7 +334,7 @@ FrameWidgetClass rootFrame {
                hexactsize 0
                vexactsize 0
                scriptclass "ButtonBinding"
-               style OldStyle
+               style TXBtnDanger
                {
                 TextWidgetClass BttnSell_label {
                  ignorepointer 1

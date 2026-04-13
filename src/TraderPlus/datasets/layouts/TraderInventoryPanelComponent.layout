@@ -8,14 +8,14 @@ FrameWidgetClass rootFrame {
  {
   PanelWidgetClass PanelInventory {
    ignorepointer 1
-   color 0 0 0 0.6667
+   color 0.996 0.996 0.996 1
    position 0.00261 0.00283
    size 0.99435 0.99266
    hexactpos 0
    vexactpos 0
    hexactsize 0
    vexactsize 0
-   style rover_sim_colorable
+   style TXCard
    {
     GridSpacerWidgetClass GridRight {
      ignorepointer 1

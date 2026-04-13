@@ -5,6 +5,9 @@ class StockProductCardComponent extends DZlrComponentBase
     static ref ScriptInvoker Event_OnProductSelected = new ScriptInvoker();
     static ref ScriptInvoker Event_OnProductDoubleClicked = new ScriptInvoker();
 
+    // Track currently selected card to deselect previous
+    private static StockProductCardComponent s_SelectedCard;
+
     ref TraderPlusArticle _inputArticle;
 
     // Bound properties
@@ -117,6 +120,27 @@ class StockProductCardComponent extends DZlrComponentBase
     {
         if (_inputArticle)
         {
+            // Deselect previous card
+            if (s_SelectedCard && s_SelectedCard != this && s_SelectedCard.Highlight)
+            {
+                s_SelectedCard.Highlight.Show(false);
+            }
+
+            // Select this card
+            s_SelectedCard = this;
+            if (Highlight)
+            {
+                Highlight.Show(true);
+                Highlight.SetColor(ARGB(255, 201, 48, 44));
+            }
+
+            // Play click sound
+            PlayerBase player = PlayerBase.Cast(GetGame().GetPlayer());
+            if (player)
+            {
+                player.PlayTradeSound(TraderPlusSound.QUICKEVENT);
+            }
+
             Event_OnProductSelected.Invoke(_inputArticle);
         }
     }
@@ -139,7 +163,7 @@ class StockProductCardComponent extends DZlrComponentBase
         if (Highlight)
         {
             Highlight.Show(true);
-            Highlight.SetColor(ARGB(250, 216, 89, 1));
+            Highlight.SetColor(ARGB(250, 201, 48, 44));
         }
     }
 }

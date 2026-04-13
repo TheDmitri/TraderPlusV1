@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{21EB249000B4D241}TraderX/datasets/styles/traderx_atlas.edds"
+ Author "dmitri"
+ ChangeDate 567096425
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "traderx_atlas.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

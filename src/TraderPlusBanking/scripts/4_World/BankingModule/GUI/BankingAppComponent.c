@@ -165,7 +165,8 @@ class BankingAppComponent extends DZlrComponentBase
         }
 
         depositControl.MarkAsTouched();
-        if (!depositControl.Validate())
+        depositControl.Validate();
+        if (!depositControl.IsValid())
         {
             debugText = "#tpb_number_only";
             MarkForCheck();
@@ -220,7 +221,8 @@ class BankingAppComponent extends DZlrComponentBase
         }
 
         depositControl.MarkAsTouched();
-        if (!depositControl.Validate())
+        depositControl.Validate();
+        if (!depositControl.IsValid())
         {
             debugText = "#tpb_number_only";
             MarkForCheck();
@@ -270,15 +272,17 @@ class BankingAppComponent extends DZlrComponentBase
         }
 
         m_FormGroup.MarkAllAsTouched();
+        amountControl.Validate();
+        idControl.Validate();
 
-        if (!amountControl.Validate())
+        if (!amountControl.IsValid())
         {
             debugText = "#tpm_only_number";
             MarkForCheck();
             return;
         }
 
-        if (!idControl.Validate())
+        if (!idControl.IsValid())
         {
             debugText = "#tpm_destination_account_incorrect";
             MarkForCheck();
@@ -337,7 +341,8 @@ class BankingAppComponent extends DZlrComponentBase
             return;
         }
 
-        if (!control.Validate())
+        control.Validate();
+        if (!control.IsValid())
         {
             debugText = "#tpb_number_only";
             MarkForCheck();
@@ -359,7 +364,8 @@ class BankingAppComponent extends DZlrComponentBase
             return;
         }
 
-        if (!control.Validate())
+        control.Validate();
+        if (!control.IsValid())
         {
             debugText = "#tpb_number_only";
             MarkForCheck();

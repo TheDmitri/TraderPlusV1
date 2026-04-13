@@ -30,16 +30,16 @@ class TraderPreviewPanelComponent extends DZlrComponentBase
     ImageWidget ImagePlayerPreview;
     XComboBoxWidget QuantityMultiplier;
     CheckBoxWidget InsuranceCheckBox;
-    ItemPreviewWidget MainItemPreview;
+
+    // Player preview (created dynamically)
+    private PlayerPreviewWidget m_PlayerPreview;
+    private int m_CharacterRotationX;
+    private int m_CharacterRotationY;
 
     // Internal state
     private int m_PreviewID;
     private EntityAI m_previewItem;
     private PlayerBase m_previewPlayer;
-    private int m_MainItemPreviewRotationX;
-    private int m_MainItemPreviewRotationY;
-    private vector m_MainItemPreviewOrientation;
-    private int m_MainItemPreviewScale;
     private vector m_CharacterOrientation;
     private int m_QtyMultiplier;
     private ref TraderPlusProduct m_CurrentProduct;
@@ -277,22 +277,137 @@ class TraderPreviewPanelComponent extends DZlrComponentBase
         MarkForCheck();
     }
 
-    void InitPlayerPreview()
+    int GetPreviewID()
     {
+        return m_PreviewID;
+    }
+
+    void SwitchPreview()
+    {
+        if (m_PreviewID == TRADERPLUS_MAINITEMPREVIEW)
+        {
+            // Switch to player preview
+            m_PreviewID = TRADERPLUS_PLAYERPREVIEW;
+
+            // Hide item preview widget
+            if (PanelWidgetPreview)
+            {
+                PanelWidgetPreview.Show(false);
+            }
+
+            // Init player preview
+            InitPlayerPreview();
+            UpdatePlayerClothes();
+
+            if (ItemDescription)
+            {
+                ItemDescription.Show(false);
+            }
+            if (GridInsurance)
+            {
+                GridInsurance.Show(false);
+            }
+            if (BttnReset)
+            {
+                BttnReset.Show(true);
+            }
+            if (BttnRemove)
+            {
+                BttnRemove.Show(true);
+            }
+            if (ImagePlayerPreview)
+            {
+                ImagePlayerPreview.SetColor(ARGB(255, 201, 48, 44));
+            }
+        }
+        else if (m_PreviewID == TRADERPLUS_PLAYERPREVIEW)
+        {
+            // Switch to item preview
+            m_PreviewID = TRADERPLUS_MAINITEMPREVIEW;
+
+            // Remove player preview
+            RemovePlayerPreview();
+
+            // Show item preview widget
+            if (PanelWidgetPreview)
+            {
+                PanelWidgetPreview.Show(true);
+            }
+            if (ItemDescription)
+            {
+                ItemDescription.Show(true);
+            }
+            if (ImagePlayerPreview)
+            {
+                ImagePlayerPreview.SetColor(ARGB(255, 255, 255, 255));
+            }
+            if (BttnReset)
+            {
+                BttnReset.Show(false);
+            }
+            if (BttnRemove)
+            {
+                BttnRemove.Show(false);
+            }
+
+            // Restore item preview if product selected
+            if (m_CurrentProduct && m_CurrentProduct.ClassName != "")
+            {
+                UpdateItemPreview(m_CurrentProduct.ClassName);
+            }
+        }
+    }
+
+    void CreatePlayerForPreview()
+    {
+        if (m_previewPlayer)
+        {
+            GetGame().ObjectDelete(m_previewPlayer);
+        }
+
         vector dir = GetGame().GetCurrentCameraDirection();
         dir.Normalize();
         vector pos = GetGame().GetCurrentCameraPosition() - dir * 0.5;
         pos[1] = GetGame().GetPlayer().GetPosition()[1];
 
-        if (m_previewPlayer)
-        {
-            GetGame().ObjectDelete(m_previewPlayer);
-        }
         m_previewPlayer = PlayerBase.Cast(GetGame().CreateObjectEx(GetGame().GetPlayer().GetType(), pos, ECE_LOCAL | ECE_NOLIFETIME));
-
         if (m_previewPlayer)
         {
             m_previewPlayer.m_IsStashDisable = true;
+        }
+    }
+
+    void InsertPlayerToPreview()
+    {
+        if (m_PlayerPreview && m_previewPlayer)
+        {
+            m_PlayerPreview.SetPlayer(m_previewPlayer);
+            m_PlayerPreview.UpdateItemInHands(m_previewPlayer.GetHumanInventory().GetEntityInHands());
+            m_PlayerPreview.SetModelOrientation(m_CharacterOrientation);
+            m_PlayerPreview.SetModelPosition(vector.Zero);
+            m_PlayerPreview.SetSize(1, 1);
+        }
+    }
+
+    void InitPlayerPreview()
+    {
+        if (!m_PlayerPreview && PanelWidgetPreview)
+        {
+            Widget previewFrame = GetGame().GetWorkspace().CreateWidgets("TraderPlus/gui/PlayerPreview.layout", PanelWidgetPreview);
+            if (previewFrame)
+            {
+                m_PlayerPreview = PlayerPreviewWidget.Cast(previewFrame);
+                if (m_PlayerPreview)
+                {
+                    m_PlayerPreview.Show(true);
+                }
+            }
+        }
+
+        CreatePlayerForPreview();
+
+        if (m_previewPlayer)
+        {
             for (int i = 0; i < TraderPlusHelper.playerAttachments.Count(); i++)
             {
                 EntityAI ent = GetGame().GetPlayer().FindAttachmentBySlotName(TraderPlusHelper.playerAttachments[i]);
@@ -308,6 +423,76 @@ class TraderPreviewPanelComponent extends DZlrComponentBase
                 }
             }
         }
+
+        InsertPlayerToPreview();
+    }
+
+    void RemovePlayerPreview()
+    {
+        if (m_PlayerPreview)
+        {
+            Widget playerFrame = m_PlayerPreview;
+            if (playerFrame && PanelWidgetPreview)
+            {
+                PanelWidgetPreview.RemoveChild(playerFrame);
+            }
+            m_PlayerPreview = null;
+        }
+        if (m_previewPlayer)
+        {
+            GetGame().ObjectDelete(m_previewPlayer);
+            m_previewPlayer = null;
+        }
+    }
+
+    void UpdatePlayerClothes()
+    {
+        if (!m_PlayerPreview)
+        {
+            InitPlayerPreview();
+        }
+
+        if (!m_CurrentProduct || m_CurrentProduct.ClassName == "")
+        {
+            return;
+        }
+
+        int id = TraderPlusHelper.GetSlotForPlayerPreview(m_CurrentProduct.ClassName);
+
+        if (id != -1 && m_previewPlayer)
+        {
+            EntityAI existingEnt = m_previewPlayer.FindAttachmentBySlotName(TraderPlusHelper.playerAttachments[id]);
+            if (existingEnt)
+            {
+                GetGame().ObjectDelete(existingEnt);
+            }
+            int slotId = InventorySlots.GetSlotIdFromString(TraderPlusHelper.playerAttachments[id]);
+            m_previewPlayer.GetInventory().CreateAttachmentEx(m_CurrentProduct.ClassName, slotId);
+        }
+        else if (m_previewPlayer)
+        {
+            EntityAI currentInHand = m_previewPlayer.GetHumanInventory().GetEntityInHands();
+            if (currentInHand)
+            {
+                GetGame().ObjectDelete(currentInHand);
+            }
+            m_previewPlayer.GetHumanInventory().CreateInHands(m_CurrentProduct.ClassName);
+        }
+
+        InsertPlayerToPreview();
+    }
+
+    void RemoveAllPlayerClothes()
+    {
+        if (!m_previewPlayer)
+        {
+            InitPlayerPreview();
+        }
+        else
+        {
+            CreatePlayerForPreview();
+            InsertPlayerToPreview();
+        }
     }
 
     // --- Button handlers ---
@@ -322,9 +507,9 @@ class TraderPreviewPanelComponent extends DZlrComponentBase
         Event_OnSellRequested.Invoke();
     }
 
-    // --- Quantity multiplier ---
+    // --- Quantity multiplier (OnChange for combo box) ---
 
-    override bool OnClick(Widget w, int x, int y, int button)
+    override bool OnChange(Widget w, int x, int y, bool finished)
     {
         if (w == QuantityMultiplier)
         {
@@ -337,6 +522,11 @@ class TraderPreviewPanelComponent extends DZlrComponentBase
             return true;
         }
 
+        return false;
+    }
+
+    override bool OnClick(Widget w, int x, int y, int button)
+    {
         if (w == InsuranceCheckBox)
         {
             Event_OnQuantityChanged.Invoke(m_QtyMultiplier);
@@ -349,54 +539,47 @@ class TraderPreviewPanelComponent extends DZlrComponentBase
             return true;
         }
 
+        if (w == BttnReset)
+        {
+            InitPlayerPreview();
+            return true;
+        }
+
+        if (w == BttnRemove)
+        {
+            RemoveAllPlayerClothes();
+            return true;
+        }
+
         return false;
     }
 
-    // --- Mouse drag for preview rotation ---
+    // --- Player preview rotation via mouse drag ---
 
     override bool OnMouseButtonDown(Widget w, int x, int y, int button)
     {
-        if (w == MainItemPreview)
+        if (w == m_PlayerPreview)
         {
-            GetGame().GetDragQueue().Call(this, "UpdateRotation");
-            g_Game.GetMousePos(m_MainItemPreviewRotationX, m_MainItemPreviewRotationY);
+            GetGame().GetDragQueue().Call(this, "UpdatePlayerRotation");
+            g_Game.GetMousePos(m_CharacterRotationX, m_CharacterRotationY);
             return true;
         }
         return false;
     }
 
-    void UpdateRotation(int mouse_x, int mouse_y, bool is_dragging)
+    void UpdatePlayerRotation(int mouse_x, int mouse_y, bool is_dragging)
     {
-        if (!MainItemPreview)
+        vector orientation = m_CharacterOrientation;
+        orientation[1] = orientation[1] - (m_CharacterRotationX - mouse_x);
+
+        if (m_PlayerPreview)
         {
-            return;
+            m_PlayerPreview.SetModelOrientation(orientation);
         }
-        vector orientation = m_MainItemPreviewOrientation;
-        orientation[0] = orientation[0] + (m_MainItemPreviewRotationY - mouse_y);
-        orientation[1] = orientation[1] - (m_MainItemPreviewRotationX - mouse_x);
-        MainItemPreview.SetModelOrientation(orientation);
+
         if (!is_dragging)
         {
-            m_MainItemPreviewOrientation = orientation;
+            m_CharacterOrientation = orientation;
         }
-    }
-
-    override bool OnMouseWheel(Widget w, int x, int y, int wheel)
-    {
-        if (w == MainItemPreview)
-        {
-            m_MainItemPreviewScale = wheel;
-            float mw, mh, mx, my;
-            MainItemPreview.GetPos(mx, my);
-            MainItemPreview.GetSize(mw, mh);
-            mw = mw + (m_MainItemPreviewScale / 4);
-            mh = mh + (m_MainItemPreviewScale / 4);
-            if (mw > 0.5 && mw < 3)
-            {
-                MainItemPreview.SetSize(mw, mh);
-            }
-            return true;
-        }
-        return false;
     }
 }

@@ -8,14 +8,14 @@ FrameWidgetClass rootFrame {
  {
   PanelWidgetClass ProductInformation {
    ignorepointer 1
-   color 0 0 0 0.6667
+   color 0.996 0.996 0.996 1
    position 0.00661 0.0032
    size 0.98457 0.99224
    hexactpos 0
    vexactpos 0
    hexactsize 0
    vexactsize 0
-   style rover_sim_colorable
+   style TXCard
    {
     GridSpacerWidgetClass GridCenter {
      visible 1
@@ -45,6 +45,7 @@ FrameWidgetClass rootFrame {
        style Bold
        text "#tpm_product_informations"
        font "gui/fonts/etelkatextpro22"
+       "text color" 0.878 0.878 0.878 1
        "exact text" 1
        "size to text h" 0
        "size to text v" 0
@@ -190,7 +191,7 @@ FrameWidgetClass rootFrame {
       PanelWidgetClass PanelWidgetPreview {
        visible 1
        ignorepointer 1
-       color 0 0 0 0.7843
+       color 0.996 0.996 0.996 1
        position 0 0
        size 0.90086 0.35
        halign center_ref
@@ -198,10 +199,10 @@ FrameWidgetClass rootFrame {
        vexactpos 0
        hexactsize 0
        vexactsize 0
-       style DayZDefaultPanelBottom
+       style TXPreviewPanel
        {
         ItemPreviewWidgetClass ItemPreview {
-         ignorepointer 1
+         ignorepointer 0
          position 0 0
          size 0.95 0.95
          halign center_ref
@@ -266,7 +267,7 @@ FrameWidgetClass rootFrame {
          style Normal
          text "#tpm_tradeqty"
          font "gui/fonts/etelkatextpro12"
-         "text color" 0.1569 0.2745 0.6235 1
+         "text color" 0.533 0.533 0.533 1
          "size to text h" 0
          "text valign" center
         }
@@ -319,7 +320,7 @@ FrameWidgetClass rootFrame {
          style Normal
          text "#tpm_insurance"
          font "gui/fonts/etelkatextpro12"
-         "text color" 0.1569 0.2745 0.6235 1
+         "text color" 0.533 0.533 0.533 1
          "size to text h" 0
          "text valign" center
          {
@@ -350,7 +351,7 @@ FrameWidgetClass rootFrame {
          vexactsize 0
          style Normal
          font "gui/fonts/etelkatextpro12"
-         "text color" 0.1569 0.2745 0.6235 1
+         "text color" 0.533 0.533 0.533 1
          "exact text" 0
          "size to text h" 0
          "text halign" center
@@ -431,18 +432,18 @@ FrameWidgetClass rootFrame {
       PanelWidgetClass BuyPanelWidget {
        visible 1
        ignorepointer 1
-       color 1 1 1 0.7843
+       color 0.996 0.996 0.996 1
        position 0 0
        size 1 64
        hexactpos 1
        vexactpos 1
        hexactsize 1
        vexactsize 1
-       style rover_sim_colorable
+       style TXCard
        {
         ButtonWidgetClass BttnBuy {
          visible 1
-         color 0.7333 0.7333 0.7333 1
+         color 0.996 0.996 0.996 1
          position 0 0
          size 1 1
          valign center_ref
@@ -451,11 +452,11 @@ FrameWidgetClass rootFrame {
          hexactsize 0
          vexactsize 0
          scriptclass "ButtonBinding"
-         style OldStyle
+         style TXBtnPrimary
          {
           TextWidgetClass BttnBuy_label {
            ignorepointer 1
-           color 0 0 0 1
+           color 0.4157 0.6039 0.4157 1
            position 0 0
            size 1 1
            halign center_ref
@@ -481,18 +482,18 @@ FrameWidgetClass rootFrame {
       }
       PanelWidgetClass SellPanelWidget {
        ignorepointer 1
-       color 1 1 1 0.7843
+       color 0.996 0.996 0.996 1
        position 0 0
        size 1 64
        hexactpos 1
        vexactpos 1
        hexactsize 0
        vexactsize 1
-       style rover_sim_colorable
+       style TXCard
        {
         ButtonWidgetClass BttnSell {
          visible 1
-         color 0.7333 0.7333 0.7333 1
+         color 0.996 0.996 0.996 1
          position 0 0
          size 1 1
          halign right_ref
@@ -502,11 +503,11 @@ FrameWidgetClass rootFrame {
          hexactsize 0
          vexactsize 0
          scriptclass "ButtonBinding"
-         style OldStyle
+         style TXBtnDanger
          {
           TextWidgetClass BttnSell_label {
            ignorepointer 1
-           color 0 0 0 1
+           color 1 0.2667 0.2667 1
            position 0 0
            size 1 1
            halign center_ref

@@ -167,7 +167,7 @@ class TraderInventoryPanelComponent extends DZlrComponentBase
         }
     }
 
-    override bool OnClick(Widget w, int x, int y, int button)
+    override bool OnChange(Widget w, int x, int y, bool finished)
     {
         if (w == InventoryCategories)
         {

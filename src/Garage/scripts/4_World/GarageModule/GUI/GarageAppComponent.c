@@ -24,7 +24,7 @@ class GarageAppComponent extends DZlrComponentBase
     private int m_MoneyAmountOnPlayer;
     private int m_ParkInFee;
     private int m_ParkOutFee;
-    private ref CarScript m_CarInPark;
+    private CarScript m_CarInPark;
     private int m_SelectedVehicle;
     private EntityAI m_previewItem;
     private ref TransactionThrottle m_Throttle;

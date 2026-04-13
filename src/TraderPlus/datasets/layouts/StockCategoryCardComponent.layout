@@ -18,7 +18,7 @@ GridSpacerWidgetClass rootframe {
   PanelWidgetClass CategoryCardPanel {
    visible 1
    ignorepointer 1
-   color 1 1 1 0.9412
+   color 0.996 0.996 0.996 1
    size 1 49
    halign center_ref
    valign center_ref
@@ -26,12 +26,12 @@ GridSpacerWidgetClass rootframe {
    vexactpos 0
    hexactsize 0
    vexactsize 1
-   style Outline
+   style TXCategoryItem
    {
     PanelWidgetClass TitleBackground {
      visible 1
      ignorepointer 1
-     color 0 0 0 1
+     color 0.996 0.996 0.996 1
      size 0.995 44
      halign center_ref
      valign center_ref
@@ -39,7 +39,7 @@ GridSpacerWidgetClass rootframe {
      vexactpos 0
      hexactsize 0
      vexactsize 1
-     style rover_sim_colorable
+     style TXCard
     }
     TextWidgetClass Title {
      visible 1
@@ -55,6 +55,7 @@ GridSpacerWidgetClass rootframe {
      scriptclass "TextBinding"
      style Normal
      font "TraderPlus/gui/fonts/regular22"
+     "text color" 0.878 0.878 0.878 1
      "exact text" 0
      "text halign" left
      "text valign" center
@@ -68,7 +69,7 @@ GridSpacerWidgetClass rootframe {
      visible 1
      clipchildren 0
      ignorepointer 0
-     color 0.8627 0.8627 0.8627 1
+     color 0.996 0.996 0.996 1
      size 1 1
      halign center_ref
      valign center_ref
@@ -78,7 +79,7 @@ GridSpacerWidgetClass rootframe {
      vexactsize 0
      userID 20062003
      scriptclass "ButtonBinding"
-     style Default
+     style TXCategoryItem
      {
       ScriptParamsClass {
        OnClick "OnToggleProducts"
@@ -87,14 +88,15 @@ GridSpacerWidgetClass rootframe {
     }
     TextWidgetClass ProductsCount {
      ignorepointer 1
-     position 0.8435 0.06401
-     size 0.15428 0.88178
+     position 0.82 0.06401
+     size 0.155 0.88178
      hexactpos 0
      vexactpos 0
      hexactsize 0
      vexactsize 0
      scriptclass "TextBinding"
      font "TraderPlus/gui/fonts/regular22"
+     "text color" 0.533 0.533 0.533 1
      "text halign" right
      "text valign" center
      {

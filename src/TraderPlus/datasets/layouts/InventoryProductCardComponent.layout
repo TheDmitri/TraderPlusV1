@@ -11,7 +11,7 @@ PanelWidgetClass ProductWrapper {
   PanelWidgetClass Highlight {
    visible 0
    ignorepointer 1
-   color 0.2353 0.6235 0.3333 1
+   color 0.996 0.996 0.996 1
    size 1 1
    halign center_ref
    valign center_ref
@@ -19,13 +19,13 @@ PanelWidgetClass ProductWrapper {
    vexactpos 0
    hexactsize 0
    vexactsize 0
-   style DayZDefaultPanel
+   style TXListRowSelected
   }
   ButtonWidgetClass ProductBtn {
    disabled 0
    clipchildren 1
    keepsafezone 0
-   color 0.8745 0.7686 0.451 0.5294
+   color 0.996 0.996 0.996 1
    position 0.00067 -0.00547
    size 0.9978 1.00604
    hexactpos 0
@@ -35,20 +35,20 @@ PanelWidgetClass ProductWrapper {
    userID 20062002
    draggable 0
    scriptclass "ButtonBinding"
-   style Empty
+   style TXListRow
    "no focus" 0
    switch once
    {
     PanelWidgetClass PanelTitle {
      ignorepointer 1
-     color 0 0 0 0.7843
+     color 0.996 0.996 0.996 1
      position 0.01772 0.02245
      size 0.96785 0.15451
      hexactpos 0
      vexactpos 0
      hexactsize 0
      vexactsize 0
-     style DayZDefaultPanelBottom
+     style TXCardElevated
      {
       TextWidgetClass Title {
        ignorepointer 1
@@ -78,14 +78,14 @@ PanelWidgetClass ProductWrapper {
     }
     PanelWidgetClass PanelPreview {
      ignorepointer 1
-     color 0 0 0 0.7843
+     color 0.996 0.996 0.996 1
      position 0.01398 0.18913
      size 0.96989 0.54555
      hexactpos 0
      vexactpos 0
      hexactsize 0
      vexactsize 0
-     style DayZDefaultPanelBottom
+     style TXCardElevated
      {
       ItemPreviewWidgetClass ProductPreview {
        ignorepointer 1
@@ -127,14 +127,14 @@ PanelWidgetClass ProductWrapper {
     }
     PanelWidgetClass PanelPrice {
      ignorepointer 1
-     color 0 0 0 0.7843
+     color 0.996 0.996 0.996 1
      position 0.01836 0.74671
      size 0.96423 0.11237
      hexactpos 0
      vexactpos 0
      hexactsize 0
      vexactsize 0
-     style DayZDefaultPanelBottom
+     style TXCardElevated
      {
       PanelWidgetClass GridPrice {
        ignorepointer 1
@@ -189,14 +189,14 @@ PanelWidgetClass ProductWrapper {
     }
     PanelWidgetClass PanelStockCount {
      ignorepointer 1
-     color 0 0 0 0.7843
+     color 0.996 0.996 0.996 1
      position 0.01678 0.87305
      size 0.96408 0.10902
      hexactpos 0
      vexactpos 0
      hexactsize 0
      vexactsize 0
-     style DayZDefaultPanelBottom
+     style TXCardElevated
      {
       TextWidgetClass StockCountTitle {
        ignorepointer 1

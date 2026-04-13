@@ -111,6 +111,11 @@ class TraderStockPanelComponent extends DZlrComponentBase
             return true;
         }
 
+        return false;
+    }
+
+    override bool OnChange(Widget w, int x, int y, bool finished)
+    {
         if (w == StockCategories)
         {
             StockCategoryHandler();

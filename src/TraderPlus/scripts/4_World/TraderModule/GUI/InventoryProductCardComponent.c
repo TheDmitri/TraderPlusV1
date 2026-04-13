@@ -5,6 +5,9 @@ class InventoryProductCardComponent extends DZlrComponentBase
     static ref ScriptInvoker Event_OnInventoryProductSelected = new ScriptInvoker();
     static ref ScriptInvoker Event_OnInventoryProductDoubleClicked = new ScriptInvoker();
 
+    // Track currently selected card to deselect previous
+    private static InventoryProductCardComponent s_SelectedCard;
+
     ref TraderPlusArticle _inputArticle;
 
     // Bound properties
@@ -113,6 +116,27 @@ class InventoryProductCardComponent extends DZlrComponentBase
     {
         if (_inputArticle)
         {
+            // Deselect previous card
+            if (s_SelectedCard && s_SelectedCard != this && s_SelectedCard.Highlight)
+            {
+                s_SelectedCard.Highlight.Show(false);
+            }
+
+            // Select this card
+            s_SelectedCard = this;
+            if (Highlight)
+            {
+                Highlight.Show(true);
+                Highlight.SetColor(ARGB(255, 201, 48, 44));
+            }
+
+            // Play click sound
+            PlayerBase player = PlayerBase.Cast(GetGame().GetPlayer());
+            if (player)
+            {
+                player.PlayTradeSound(TraderPlusSound.QUICKEVENT);
+            }
+
             Event_OnInventoryProductSelected.Invoke(_inputArticle, m_Index);
         }
     }

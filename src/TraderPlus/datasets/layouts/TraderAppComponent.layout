@@ -1,5 +1,5 @@
 FrameWidgetClass rootFrame {
- position -0.00147 -0.00209
+ position -0.001 -0.002
  size 1 1
  hexactpos 0
  vexactpos 0
@@ -10,61 +10,65 @@ FrameWidgetClass rootFrame {
    visible 1
    clipchildren 0
    ignorepointer 1
-   color 0 0 0 0
+   color 0.996 0.996 0.996 1
    position 0 0
-   size 0.99859 1
+   size 0.999 1
    hexactpos 0
    vexactpos 0
    hexactsize 0
    vexactsize 0
-   style rover_sim_colorable
+   style TXContainer
    {
     PanelWidgetClass PanelIconsOutline {
      ignorepointer 1
-     position 0.0074 0.14
-     size 0.04559 0.8219
+     color 0.996 0.996 0.996 1
+     position 0.007 0.14
+     size 0.046 0.822
      hexactpos 0
      vexactpos 0
      hexactsize 0
      vexactsize 0
-     style Outline
+     style TXSidebar
     }
     PanelWidgetClass PanelStockOutline {
      visible 1
      ignorepointer 1
-     position 0.05907 0.14
-     size 0.64615 0.82173
+     color 0.996 0.996 0.996 1
+     position 0.059 0.14
+     size 0.646 0.822
      hexactpos 0
      vexactpos 0
      hexactsize 0
      vexactsize 0
-     style Outline
+     style TXCard
     }
     PanelWidgetClass ProductInformationOutline {
      visible 1
      ignorepointer 1
-     position 0.7113 0.14
-     size 0.28053 0.82372
+     color 0.996 0.996 0.996 1
+     position 0.711 0.14
+     size 0.281 0.824
      hexactpos 0
      vexactpos 0
      hexactsize 0
      vexactsize 0
-     style Outline
+     style TXCard
     }
     PanelWidgetClass PanelInventoryOutline {
      visible 0
      ignorepointer 1
-     position 0.05907 0.14
-     size 0.64615 0.82173
+     position 0.059 0.14
+     size 0.646 0.822
      hexactpos 0
      vexactpos 0
      hexactsize 0
      vexactsize 0
-     style Outline
+     color 0.996 0.996 0.996 1
+     style TXCard
     }
     GridSpacerWidgetClass GridMoney {
      ignorepointer 1
-     position 0.00973 0.1032
+     position 0.01 0.103
      size 300 48
      hexactpos 0
      vexactpos 0
@@ -79,9 +83,9 @@ FrameWidgetClass rootFrame {
      {
       TextWidgetClass PlayerMoneyText {
        ignorepointer 1
-       color 0.2667 0.8667 0.051 1
-       position 5.00504 0.50465
-       size 165.77901 32.3668
+       color 0.267 0.867 0.051 1
+       position 5.005 0.505
+       size 165.779 32.367
        hexactpos 1
        vexactpos 1
        hexactsize 1
@@ -89,7 +93,7 @@ FrameWidgetClass rootFrame {
        scriptclass "TextBinding"
        text "$1,873,981"
        font "gui/fonts/etelkatextpro22"
-       "text color" 1 0.6588 0 1
+       "text color" 1 0.267 0.267 1
        "exact text" 0
        "size to text h" 1
        "text halign" right
@@ -104,8 +108,8 @@ FrameWidgetClass rootFrame {
     }
     PanelWidgetClass TraderPanel {
      ignorepointer 1
-     position 20.1165 7.44891
-     size 362.50101 92.3713
+     position 20.117 7.449
+     size 362.501 92.371
      hexactpos 1
      vexactpos 1
      hexactsize 1
@@ -114,8 +118,8 @@ FrameWidgetClass rootFrame {
       GridSpacerWidgetClass GridTrader {
        visible 1
        ignorepointer 1
-       position 0.24118 -0.00526
-       size 0.75371 0.95282
+       position 0.241 -0.005
+       size 0.754 0.953
        valign center_ref
        hexactpos 0
        vexactpos 0
@@ -127,7 +131,7 @@ FrameWidgetClass rootFrame {
        {
         TextWidgetClass TraderNameText {
          ignorepointer 1
-         position 0.08073 0.4276
+         position 0.081 0.428
          size 350 45
          hexactpos 1
          vexactpos 1
@@ -146,7 +150,7 @@ FrameWidgetClass rootFrame {
         }
         TextWidgetClass TraderDescriptionText {
          ignorepointer 1
-         position 1.1623 42.8743
+         position 1.162 42.874
          size 350 45
          hexactpos 1
          vexactpos 1
@@ -167,23 +171,23 @@ FrameWidgetClass rootFrame {
       }
       ImageWidgetClass ImageWidget5 {
        ignorepointer 1
-       position 0.00421 0.02814
-       size 84.431 88.0957
+       position 0.004 0.028
+       size 84.431 88.096
        hexactpos 0
        vexactpos 0
        hexactsize 1
        vexactsize 1
        imageTexture "{772EE0CB4B1643A7}TraderPlus/datasets/cashier.edds"
        mode additive
-       stretch 1
+       "stretch mode" stretch_w_h
       }
      }
     }
     RichTextWidgetClass InformationText {
      visible 1
      ignorepointer 1
-     position 0.35193 0.0233
-     size 0.28041 0.09651
+     position 0.352 0.023
+     size 0.28 0.097
      halign center_ref
      hexactpos 0
      vexactpos 0
@@ -201,19 +205,20 @@ FrameWidgetClass rootFrame {
   PanelWidgetClass LicenceWarningPanel {
    visible 0
    ignorepointer 1
-   size 0.497 377.11301
+   size 0.497 377.113
    halign center_ref
    valign center_ref
    hexactpos 0
    vexactpos 0
    hexactsize 0
    vexactsize 1
-   style rover_sim_black
+   color 0.996 0.996 0.996 1
+   style TXContainer
    {
     ButtonWidgetClass LicenceCloseBttn {
-     color 1 0 0 1
-     position 0.45846 0.83616
-     size 0.05457 49.3874
+     color 0.996 0.996 0.996 1
+     position 0.458 0.836
+     size 0.055 49.387
      halign center_ref
      valign bottom_ref
      hexactpos 0
@@ -221,10 +226,10 @@ FrameWidgetClass rootFrame {
      hexactsize 0
      vexactsize 1
      scriptclass "ButtonBinding"
-     style Editor
+     style TXBtnLeave
      text "x"
      font "gui/fonts/Metron-Bold22"
-     "text color" 0.8745 0.8745 0.8745 1
+     "text color" 0.874 0.874 0.874 1
      {
       ScriptParamsClass {
        OnClick "OnLicenceCloseClicked"
@@ -233,8 +238,8 @@ FrameWidgetClass rootFrame {
     }
     ScrollWidgetClass ScrollText {
      ignorepointer 1
-     position 0.00874 0.0502
-     size 0.94988 278.366
+     position 0.009 0.05
+     size 0.95 278.366
      halign center_ref
      valign center_ref
      hexactpos 0
@@ -246,7 +251,7 @@ FrameWidgetClass rootFrame {
       MultilineTextWidgetClass LicenceWarningText {
        ignorepointer 1
        position 0 0
-       size 0.93985 240.43199
+       size 0.94 240.432
        halign center_ref
        valign center_ref
        hexactpos 0

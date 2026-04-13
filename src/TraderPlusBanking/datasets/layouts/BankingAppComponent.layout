@@ -13,7 +13,7 @@ PanelWidgetClass rootFrame {
    visible 1
    ignorepointer 1
    keepsafezone 1
-   color 0 0 0 0.7412
+   color 0.996 0.996 0.996 1
    position 0.00086 -0.03118
    size 0.48413 611.71704
    halign center_ref
@@ -22,7 +22,7 @@ PanelWidgetClass rootFrame {
    vexactpos 0
    hexactsize 0
    vexactsize 1
-   style rover_sim_colorable
+   style TXContainer
    {
     PanelWidgetClass PlayerAccountPanel {
      visible 1
@@ -33,7 +33,8 @@ PanelWidgetClass rootFrame {
      vexactpos 0
      hexactsize 0
      vexactsize 1
-     style Outline
+     color 0.996 0.996 0.996 1
+     style TXCard
      {
       TextWidgetClass PlayerFees {
        ignorepointer 1
@@ -205,7 +206,8 @@ PanelWidgetClass rootFrame {
          hexactsize 0
          vexactsize 1
          scriptclass "ButtonBinding"
-         style Editor
+         color 0.996 0.996 0.996 1
+         style TXBtnDefault
          text "#tpb_deposit"
          {
           ScriptParamsClass {
@@ -221,7 +223,8 @@ PanelWidgetClass rootFrame {
          hexactsize 0
          vexactsize 1
          scriptclass "ButtonBinding"
-         style Editor
+         color 0.996 0.996 0.996 1
+         style TXBtnDefault
          text "#tpb_withdraw"
          {
           ScriptParamsClass {
@@ -242,7 +245,8 @@ PanelWidgetClass rootFrame {
      vexactpos 0
      hexactsize 0
      vexactsize 1
-     style Outline
+     color 0.996 0.996 0.996 1
+     style TXCard
      {
       TextWidgetClass TransfertFees {
        ignorepointer 1
@@ -385,7 +389,8 @@ PanelWidgetClass rootFrame {
        hexactsize 0
        vexactsize 1
        scriptclass "ButtonBinding"
-       style Editor
+       color 0.996 0.996 0.996 1
+       style TXBtnDefault
        text "#tpb_transfer"
        {
         ScriptParamsClass {
@@ -403,7 +408,8 @@ PanelWidgetClass rootFrame {
      vexactpos 0
      hexactsize 0
      vexactsize 0
-     style Outline
+     color 0.996 0.996 0.996 1
+     style TXCard
      {
       GridSpacerWidgetClass GridID {
        ignorepointer 1
@@ -431,14 +437,14 @@ PanelWidgetClass rootFrame {
         }
         PanelWidgetClass PanelWidget2 {
          ignorepointer 1
-         color 0 0 0 0.5412
+         color 0.996 0.996 0.996 1
          position -1.09128 1.18501
          size 301.38898 99.71629
          hexactpos 1
          vexactpos 1
          hexactsize 1
          vexactsize 1
-         style rover_sim_colorable
+         style TXContainer
          {
           TextWidgetClass PlayerIDAccountText {
            ignorepointer 1
@@ -469,7 +475,8 @@ PanelWidgetClass rootFrame {
          hexactsize 0
          vexactsize 0
          scriptclass "ButtonBinding"
-         style Editor
+         color 0.996 0.996 0.996 1
+         style TXBtnDefault
          text "#tpb_copyid"
          text_proportion 0.6
          font "TraderPlus/gui/fonts/regular22"
@@ -503,7 +510,8 @@ PanelWidgetClass rootFrame {
        scriptclass "ButtonBinding"
        scaled 1
        draggable 0
-       style Editor
+       color 0.996 0.996 0.996 1
+       style TXBtnDefault
        text "#tpb_player_account"
        text_proportion 0.5
        {
@@ -521,7 +529,8 @@ PanelWidgetClass rootFrame {
        hexactsize 0
        vexactsize 1
        scriptclass "ButtonBinding"
-       style Editor
+       color 0.996 0.996 0.996 1
+       style TXBtnDefault
        text "#tpb_player_transfer"
        text_proportion 0.5
        {

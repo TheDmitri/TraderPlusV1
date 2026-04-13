@@ -1,0 +1,896 @@
+ImageSetClass traderx_ui {
+ Name "traderx_ui"
+ RefSize 640 1152
+ Textures {
+  ImageSetTextureClass {
+   mpix 1
+   path "{GUID}traderx_atlas.edds"
+  }
+ }
+ Images {
+ }
+ Groups {
+  ImageSetGroupClass TXContainer_normal {
+   Name "TXContainer_normal"
+   Images {
+    ImageSetDefClass tlc_1 { Name "tlc_1" Pos 4 4 Size 16 16 }
+    ImageSetDefClass trc_1 { Name "trc_1" Pos 88 4 Size 16 16 }
+    ImageSetDefClass blc_1 { Name "blc_1" Pos 4 88 Size 16 16 }
+    ImageSetDefClass brc_1 { Name "brc_1" Pos 88 88 Size 16 16 }
+    ImageSetDefClass lc_1 { Name "lc_1" Pos 4 16 Size 16 76 }
+    ImageSetDefClass rc_1 { Name "rc_1" Pos 88 16 Size 16 76 }
+    ImageSetDefClass tc_1 { Name "tc_1" Pos 16 4 Size 76 16 }
+    ImageSetDefClass bc_1 { Name "bc_1" Pos 16 88 Size 76 16 }
+    ImageSetDefClass c_1 { Name "c_1" Pos 16 16 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXContainer_disabled {
+   Name "TXContainer_disabled"
+   Images {
+    ImageSetDefClass tlc_2 { Name "tlc_2" Pos 106 4 Size 16 16 }
+    ImageSetDefClass trc_2 { Name "trc_2" Pos 190 4 Size 16 16 }
+    ImageSetDefClass blc_2 { Name "blc_2" Pos 106 88 Size 16 16 }
+    ImageSetDefClass brc_2 { Name "brc_2" Pos 190 88 Size 16 16 }
+    ImageSetDefClass lc_2 { Name "lc_2" Pos 106 16 Size 16 76 }
+    ImageSetDefClass rc_2 { Name "rc_2" Pos 190 16 Size 16 76 }
+    ImageSetDefClass tc_2 { Name "tc_2" Pos 118 4 Size 76 16 }
+    ImageSetDefClass bc_2 { Name "bc_2" Pos 118 88 Size 76 16 }
+    ImageSetDefClass c_2 { Name "c_2" Pos 118 16 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXHeader_normal {
+   Name "TXHeader_normal"
+   Images {
+    ImageSetDefClass tlc_3 { Name "tlc_3" Pos 208 4 Size 16 16 }
+    ImageSetDefClass trc_3 { Name "trc_3" Pos 292 4 Size 16 16 }
+    ImageSetDefClass blc_3 { Name "blc_3" Pos 208 88 Size 16 16 }
+    ImageSetDefClass brc_3 { Name "brc_3" Pos 292 88 Size 16 16 }
+    ImageSetDefClass lc_3 { Name "lc_3" Pos 208 16 Size 16 76 }
+    ImageSetDefClass rc_3 { Name "rc_3" Pos 292 16 Size 16 76 }
+    ImageSetDefClass tc_3 { Name "tc_3" Pos 220 4 Size 76 16 }
+    ImageSetDefClass bc_3 { Name "bc_3" Pos 220 88 Size 76 16 }
+    ImageSetDefClass c_3 { Name "c_3" Pos 220 16 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXHeader_disabled {
+   Name "TXHeader_disabled"
+   Images {
+    ImageSetDefClass tlc_4 { Name "tlc_4" Pos 310 4 Size 16 16 }
+    ImageSetDefClass trc_4 { Name "trc_4" Pos 394 4 Size 16 16 }
+    ImageSetDefClass blc_4 { Name "blc_4" Pos 310 88 Size 16 16 }
+    ImageSetDefClass brc_4 { Name "brc_4" Pos 394 88 Size 16 16 }
+    ImageSetDefClass lc_4 { Name "lc_4" Pos 310 16 Size 16 76 }
+    ImageSetDefClass rc_4 { Name "rc_4" Pos 394 16 Size 16 76 }
+    ImageSetDefClass tc_4 { Name "tc_4" Pos 322 4 Size 76 16 }
+    ImageSetDefClass bc_4 { Name "bc_4" Pos 322 88 Size 76 16 }
+    ImageSetDefClass c_4 { Name "c_4" Pos 322 16 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXSidebar_normal {
+   Name "TXSidebar_normal"
+   Images {
+    ImageSetDefClass tlc_5 { Name "tlc_5" Pos 412 4 Size 16 16 }
+    ImageSetDefClass trc_5 { Name "trc_5" Pos 496 4 Size 16 16 }
+    ImageSetDefClass blc_5 { Name "blc_5" Pos 412 88 Size 16 16 }
+    ImageSetDefClass brc_5 { Name "brc_5" Pos 496 88 Size 16 16 }
+    ImageSetDefClass lc_5 { Name "lc_5" Pos 412 16 Size 16 76 }
+    ImageSetDefClass rc_5 { Name "rc_5" Pos 496 16 Size 16 76 }
+    ImageSetDefClass tc_5 { Name "tc_5" Pos 424 4 Size 76 16 }
+    ImageSetDefClass bc_5 { Name "bc_5" Pos 424 88 Size 76 16 }
+    ImageSetDefClass c_5 { Name "c_5" Pos 424 16 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXSidebar_disabled {
+   Name "TXSidebar_disabled"
+   Images {
+    ImageSetDefClass tlc_6 { Name "tlc_6" Pos 514 4 Size 16 16 }
+    ImageSetDefClass trc_6 { Name "trc_6" Pos 598 4 Size 16 16 }
+    ImageSetDefClass blc_6 { Name "blc_6" Pos 514 88 Size 16 16 }
+    ImageSetDefClass brc_6 { Name "brc_6" Pos 598 88 Size 16 16 }
+    ImageSetDefClass lc_6 { Name "lc_6" Pos 514 16 Size 16 76 }
+    ImageSetDefClass rc_6 { Name "rc_6" Pos 598 16 Size 16 76 }
+    ImageSetDefClass tc_6 { Name "tc_6" Pos 526 4 Size 76 16 }
+    ImageSetDefClass bc_6 { Name "bc_6" Pos 526 88 Size 76 16 }
+    ImageSetDefClass c_6 { Name "c_6" Pos 526 16 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXCard_normal {
+   Name "TXCard_normal"
+   Images {
+    ImageSetDefClass tlc_7 { Name "tlc_7" Pos 4 106 Size 16 16 }
+    ImageSetDefClass trc_7 { Name "trc_7" Pos 88 106 Size 16 16 }
+    ImageSetDefClass blc_7 { Name "blc_7" Pos 4 190 Size 16 16 }
+    ImageSetDefClass brc_7 { Name "brc_7" Pos 88 190 Size 16 16 }
+    ImageSetDefClass lc_7 { Name "lc_7" Pos 4 118 Size 16 76 }
+    ImageSetDefClass rc_7 { Name "rc_7" Pos 88 118 Size 16 76 }
+    ImageSetDefClass tc_7 { Name "tc_7" Pos 16 106 Size 76 16 }
+    ImageSetDefClass bc_7 { Name "bc_7" Pos 16 190 Size 76 16 }
+    ImageSetDefClass c_7 { Name "c_7" Pos 16 118 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXCard_disabled {
+   Name "TXCard_disabled"
+   Images {
+    ImageSetDefClass tlc_8 { Name "tlc_8" Pos 106 106 Size 16 16 }
+    ImageSetDefClass trc_8 { Name "trc_8" Pos 190 106 Size 16 16 }
+    ImageSetDefClass blc_8 { Name "blc_8" Pos 106 190 Size 16 16 }
+    ImageSetDefClass brc_8 { Name "brc_8" Pos 190 190 Size 16 16 }
+    ImageSetDefClass lc_8 { Name "lc_8" Pos 106 118 Size 16 76 }
+    ImageSetDefClass rc_8 { Name "rc_8" Pos 190 118 Size 16 76 }
+    ImageSetDefClass tc_8 { Name "tc_8" Pos 118 106 Size 76 16 }
+    ImageSetDefClass bc_8 { Name "bc_8" Pos 118 190 Size 76 16 }
+    ImageSetDefClass c_8 { Name "c_8" Pos 118 118 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXCardElevated_normal {
+   Name "TXCardElevated_normal"
+   Images {
+    ImageSetDefClass tlc_9 { Name "tlc_9" Pos 208 106 Size 16 16 }
+    ImageSetDefClass trc_9 { Name "trc_9" Pos 292 106 Size 16 16 }
+    ImageSetDefClass blc_9 { Name "blc_9" Pos 208 190 Size 16 16 }
+    ImageSetDefClass brc_9 { Name "brc_9" Pos 292 190 Size 16 16 }
+    ImageSetDefClass lc_9 { Name "lc_9" Pos 208 118 Size 16 76 }
+    ImageSetDefClass rc_9 { Name "rc_9" Pos 292 118 Size 16 76 }
+    ImageSetDefClass tc_9 { Name "tc_9" Pos 220 106 Size 76 16 }
+    ImageSetDefClass bc_9 { Name "bc_9" Pos 220 190 Size 76 16 }
+    ImageSetDefClass c_9 { Name "c_9" Pos 220 118 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXCardElevated_disabled {
+   Name "TXCardElevated_disabled"
+   Images {
+    ImageSetDefClass tlc_10 { Name "tlc_10" Pos 310 106 Size 16 16 }
+    ImageSetDefClass trc_10 { Name "trc_10" Pos 394 106 Size 16 16 }
+    ImageSetDefClass blc_10 { Name "blc_10" Pos 310 190 Size 16 16 }
+    ImageSetDefClass brc_10 { Name "brc_10" Pos 394 190 Size 16 16 }
+    ImageSetDefClass lc_10 { Name "lc_10" Pos 310 118 Size 16 76 }
+    ImageSetDefClass rc_10 { Name "rc_10" Pos 394 118 Size 16 76 }
+    ImageSetDefClass tc_10 { Name "tc_10" Pos 322 106 Size 76 16 }
+    ImageSetDefClass bc_10 { Name "bc_10" Pos 322 190 Size 76 16 }
+    ImageSetDefClass c_10 { Name "c_10" Pos 322 118 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXInputField_normal {
+   Name "TXInputField_normal"
+   Images {
+    ImageSetDefClass tlc_11 { Name "tlc_11" Pos 412 106 Size 16 16 }
+    ImageSetDefClass trc_11 { Name "trc_11" Pos 496 106 Size 16 16 }
+    ImageSetDefClass blc_11 { Name "blc_11" Pos 412 190 Size 16 16 }
+    ImageSetDefClass brc_11 { Name "brc_11" Pos 496 190 Size 16 16 }
+    ImageSetDefClass lc_11 { Name "lc_11" Pos 412 118 Size 16 76 }
+    ImageSetDefClass rc_11 { Name "rc_11" Pos 496 118 Size 16 76 }
+    ImageSetDefClass tc_11 { Name "tc_11" Pos 424 106 Size 76 16 }
+    ImageSetDefClass bc_11 { Name "bc_11" Pos 424 190 Size 76 16 }
+    ImageSetDefClass c_11 { Name "c_11" Pos 424 118 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXInputField_disabled {
+   Name "TXInputField_disabled"
+   Images {
+    ImageSetDefClass tlc_12 { Name "tlc_12" Pos 514 106 Size 16 16 }
+    ImageSetDefClass trc_12 { Name "trc_12" Pos 598 106 Size 16 16 }
+    ImageSetDefClass blc_12 { Name "blc_12" Pos 514 190 Size 16 16 }
+    ImageSetDefClass brc_12 { Name "brc_12" Pos 598 190 Size 16 16 }
+    ImageSetDefClass lc_12 { Name "lc_12" Pos 514 118 Size 16 76 }
+    ImageSetDefClass rc_12 { Name "rc_12" Pos 598 118 Size 16 76 }
+    ImageSetDefClass tc_12 { Name "tc_12" Pos 526 106 Size 76 16 }
+    ImageSetDefClass bc_12 { Name "bc_12" Pos 526 190 Size 76 16 }
+    ImageSetDefClass c_12 { Name "c_12" Pos 526 118 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXTabInactive_normal {
+   Name "TXTabInactive_normal"
+   Images {
+    ImageSetDefClass tlc_13 { Name "tlc_13" Pos 4 208 Size 16 16 }
+    ImageSetDefClass trc_13 { Name "trc_13" Pos 88 208 Size 16 16 }
+    ImageSetDefClass blc_13 { Name "blc_13" Pos 4 292 Size 16 16 }
+    ImageSetDefClass brc_13 { Name "brc_13" Pos 88 292 Size 16 16 }
+    ImageSetDefClass lc_13 { Name "lc_13" Pos 4 220 Size 16 76 }
+    ImageSetDefClass rc_13 { Name "rc_13" Pos 88 220 Size 16 76 }
+    ImageSetDefClass tc_13 { Name "tc_13" Pos 16 208 Size 76 16 }
+    ImageSetDefClass bc_13 { Name "bc_13" Pos 16 292 Size 76 16 }
+    ImageSetDefClass c_13 { Name "c_13" Pos 16 220 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXTabInactive_hover {
+   Name "TXTabInactive_hover"
+   Images {
+    ImageSetDefClass tlc_14 { Name "tlc_14" Pos 106 208 Size 16 16 }
+    ImageSetDefClass trc_14 { Name "trc_14" Pos 190 208 Size 16 16 }
+    ImageSetDefClass blc_14 { Name "blc_14" Pos 106 292 Size 16 16 }
+    ImageSetDefClass brc_14 { Name "brc_14" Pos 190 292 Size 16 16 }
+    ImageSetDefClass lc_14 { Name "lc_14" Pos 106 220 Size 16 76 }
+    ImageSetDefClass rc_14 { Name "rc_14" Pos 190 220 Size 16 76 }
+    ImageSetDefClass tc_14 { Name "tc_14" Pos 118 208 Size 76 16 }
+    ImageSetDefClass bc_14 { Name "bc_14" Pos 118 292 Size 76 16 }
+    ImageSetDefClass c_14 { Name "c_14" Pos 118 220 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXTabInactive_active {
+   Name "TXTabInactive_active"
+   Images {
+    ImageSetDefClass tlc_15 { Name "tlc_15" Pos 208 208 Size 16 16 }
+    ImageSetDefClass trc_15 { Name "trc_15" Pos 292 208 Size 16 16 }
+    ImageSetDefClass blc_15 { Name "blc_15" Pos 208 292 Size 16 16 }
+    ImageSetDefClass brc_15 { Name "brc_15" Pos 292 292 Size 16 16 }
+    ImageSetDefClass lc_15 { Name "lc_15" Pos 208 220 Size 16 76 }
+    ImageSetDefClass rc_15 { Name "rc_15" Pos 292 220 Size 16 76 }
+    ImageSetDefClass tc_15 { Name "tc_15" Pos 220 208 Size 76 16 }
+    ImageSetDefClass bc_15 { Name "bc_15" Pos 220 292 Size 76 16 }
+    ImageSetDefClass c_15 { Name "c_15" Pos 220 220 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXTabActive_normal {
+   Name "TXTabActive_normal"
+   Images {
+    ImageSetDefClass tlc_16 { Name "tlc_16" Pos 310 208 Size 16 16 }
+    ImageSetDefClass trc_16 { Name "trc_16" Pos 394 208 Size 16 16 }
+    ImageSetDefClass blc_16 { Name "blc_16" Pos 310 292 Size 16 16 }
+    ImageSetDefClass brc_16 { Name "brc_16" Pos 394 292 Size 16 16 }
+    ImageSetDefClass lc_16 { Name "lc_16" Pos 310 220 Size 16 76 }
+    ImageSetDefClass rc_16 { Name "rc_16" Pos 394 220 Size 16 76 }
+    ImageSetDefClass tc_16 { Name "tc_16" Pos 322 208 Size 76 16 }
+    ImageSetDefClass bc_16 { Name "bc_16" Pos 322 292 Size 76 16 }
+    ImageSetDefClass c_16 { Name "c_16" Pos 322 220 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXTabActive_hover {
+   Name "TXTabActive_hover"
+   Images {
+    ImageSetDefClass tlc_17 { Name "tlc_17" Pos 412 208 Size 16 16 }
+    ImageSetDefClass trc_17 { Name "trc_17" Pos 496 208 Size 16 16 }
+    ImageSetDefClass blc_17 { Name "blc_17" Pos 412 292 Size 16 16 }
+    ImageSetDefClass brc_17 { Name "brc_17" Pos 496 292 Size 16 16 }
+    ImageSetDefClass lc_17 { Name "lc_17" Pos 412 220 Size 16 76 }
+    ImageSetDefClass rc_17 { Name "rc_17" Pos 496 220 Size 16 76 }
+    ImageSetDefClass tc_17 { Name "tc_17" Pos 424 208 Size 76 16 }
+    ImageSetDefClass bc_17 { Name "bc_17" Pos 424 292 Size 76 16 }
+    ImageSetDefClass c_17 { Name "c_17" Pos 424 220 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXTabActive_active {
+   Name "TXTabActive_active"
+   Images {
+    ImageSetDefClass tlc_18 { Name "tlc_18" Pos 514 208 Size 16 16 }
+    ImageSetDefClass trc_18 { Name "trc_18" Pos 598 208 Size 16 16 }
+    ImageSetDefClass blc_18 { Name "blc_18" Pos 514 292 Size 16 16 }
+    ImageSetDefClass brc_18 { Name "brc_18" Pos 598 292 Size 16 16 }
+    ImageSetDefClass lc_18 { Name "lc_18" Pos 514 220 Size 16 76 }
+    ImageSetDefClass rc_18 { Name "rc_18" Pos 598 220 Size 16 76 }
+    ImageSetDefClass tc_18 { Name "tc_18" Pos 526 208 Size 76 16 }
+    ImageSetDefClass bc_18 { Name "bc_18" Pos 526 292 Size 76 16 }
+    ImageSetDefClass c_18 { Name "c_18" Pos 526 220 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXBtnPrimary_normal {
+   Name "TXBtnPrimary_normal"
+   Images {
+    ImageSetDefClass tlc_19 { Name "tlc_19" Pos 4 310 Size 16 16 }
+    ImageSetDefClass trc_19 { Name "trc_19" Pos 88 310 Size 16 16 }
+    ImageSetDefClass blc_19 { Name "blc_19" Pos 4 394 Size 16 16 }
+    ImageSetDefClass brc_19 { Name "brc_19" Pos 88 394 Size 16 16 }
+    ImageSetDefClass lc_19 { Name "lc_19" Pos 4 322 Size 16 76 }
+    ImageSetDefClass rc_19 { Name "rc_19" Pos 88 322 Size 16 76 }
+    ImageSetDefClass tc_19 { Name "tc_19" Pos 16 310 Size 76 16 }
+    ImageSetDefClass bc_19 { Name "bc_19" Pos 16 394 Size 76 16 }
+    ImageSetDefClass c_19 { Name "c_19" Pos 16 322 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXBtnPrimary_hover {
+   Name "TXBtnPrimary_hover"
+   Images {
+    ImageSetDefClass tlc_20 { Name "tlc_20" Pos 106 310 Size 16 16 }
+    ImageSetDefClass trc_20 { Name "trc_20" Pos 190 310 Size 16 16 }
+    ImageSetDefClass blc_20 { Name "blc_20" Pos 106 394 Size 16 16 }
+    ImageSetDefClass brc_20 { Name "brc_20" Pos 190 394 Size 16 16 }
+    ImageSetDefClass lc_20 { Name "lc_20" Pos 106 322 Size 16 76 }
+    ImageSetDefClass rc_20 { Name "rc_20" Pos 190 322 Size 16 76 }
+    ImageSetDefClass tc_20 { Name "tc_20" Pos 118 310 Size 76 16 }
+    ImageSetDefClass bc_20 { Name "bc_20" Pos 118 394 Size 76 16 }
+    ImageSetDefClass c_20 { Name "c_20" Pos 118 322 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXBtnPrimary_active {
+   Name "TXBtnPrimary_active"
+   Images {
+    ImageSetDefClass tlc_21 { Name "tlc_21" Pos 208 310 Size 16 16 }
+    ImageSetDefClass trc_21 { Name "trc_21" Pos 292 310 Size 16 16 }
+    ImageSetDefClass blc_21 { Name "blc_21" Pos 208 394 Size 16 16 }
+    ImageSetDefClass brc_21 { Name "brc_21" Pos 292 394 Size 16 16 }
+    ImageSetDefClass lc_21 { Name "lc_21" Pos 208 322 Size 16 76 }
+    ImageSetDefClass rc_21 { Name "rc_21" Pos 292 322 Size 16 76 }
+    ImageSetDefClass tc_21 { Name "tc_21" Pos 220 310 Size 76 16 }
+    ImageSetDefClass bc_21 { Name "bc_21" Pos 220 394 Size 76 16 }
+    ImageSetDefClass c_21 { Name "c_21" Pos 220 322 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXBtnDanger_normal {
+   Name "TXBtnDanger_normal"
+   Images {
+    ImageSetDefClass tlc_22 { Name "tlc_22" Pos 310 310 Size 16 16 }
+    ImageSetDefClass trc_22 { Name "trc_22" Pos 394 310 Size 16 16 }
+    ImageSetDefClass blc_22 { Name "blc_22" Pos 310 394 Size 16 16 }
+    ImageSetDefClass brc_22 { Name "brc_22" Pos 394 394 Size 16 16 }
+    ImageSetDefClass lc_22 { Name "lc_22" Pos 310 322 Size 16 76 }
+    ImageSetDefClass rc_22 { Name "rc_22" Pos 394 322 Size 16 76 }
+    ImageSetDefClass tc_22 { Name "tc_22" Pos 322 310 Size 76 16 }
+    ImageSetDefClass bc_22 { Name "bc_22" Pos 322 394 Size 76 16 }
+    ImageSetDefClass c_22 { Name "c_22" Pos 322 322 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXBtnDanger_hover {
+   Name "TXBtnDanger_hover"
+   Images {
+    ImageSetDefClass tlc_23 { Name "tlc_23" Pos 412 310 Size 16 16 }
+    ImageSetDefClass trc_23 { Name "trc_23" Pos 496 310 Size 16 16 }
+    ImageSetDefClass blc_23 { Name "blc_23" Pos 412 394 Size 16 16 }
+    ImageSetDefClass brc_23 { Name "brc_23" Pos 496 394 Size 16 16 }
+    ImageSetDefClass lc_23 { Name "lc_23" Pos 412 322 Size 16 76 }
+    ImageSetDefClass rc_23 { Name "rc_23" Pos 496 322 Size 16 76 }
+    ImageSetDefClass tc_23 { Name "tc_23" Pos 424 310 Size 76 16 }
+    ImageSetDefClass bc_23 { Name "bc_23" Pos 424 394 Size 76 16 }
+    ImageSetDefClass c_23 { Name "c_23" Pos 424 322 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXBtnDanger_active {
+   Name "TXBtnDanger_active"
+   Images {
+    ImageSetDefClass tlc_24 { Name "tlc_24" Pos 514 310 Size 16 16 }
+    ImageSetDefClass trc_24 { Name "trc_24" Pos 598 310 Size 16 16 }
+    ImageSetDefClass blc_24 { Name "blc_24" Pos 514 394 Size 16 16 }
+    ImageSetDefClass brc_24 { Name "brc_24" Pos 598 394 Size 16 16 }
+    ImageSetDefClass lc_24 { Name "lc_24" Pos 514 322 Size 16 76 }
+    ImageSetDefClass rc_24 { Name "rc_24" Pos 598 322 Size 16 76 }
+    ImageSetDefClass tc_24 { Name "tc_24" Pos 526 310 Size 76 16 }
+    ImageSetDefClass bc_24 { Name "bc_24" Pos 526 394 Size 76 16 }
+    ImageSetDefClass c_24 { Name "c_24" Pos 526 322 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXBtnDefault_normal {
+   Name "TXBtnDefault_normal"
+   Images {
+    ImageSetDefClass tlc_25 { Name "tlc_25" Pos 4 412 Size 16 16 }
+    ImageSetDefClass trc_25 { Name "trc_25" Pos 88 412 Size 16 16 }
+    ImageSetDefClass blc_25 { Name "blc_25" Pos 4 496 Size 16 16 }
+    ImageSetDefClass brc_25 { Name "brc_25" Pos 88 496 Size 16 16 }
+    ImageSetDefClass lc_25 { Name "lc_25" Pos 4 424 Size 16 76 }
+    ImageSetDefClass rc_25 { Name "rc_25" Pos 88 424 Size 16 76 }
+    ImageSetDefClass tc_25 { Name "tc_25" Pos 16 412 Size 76 16 }
+    ImageSetDefClass bc_25 { Name "bc_25" Pos 16 496 Size 76 16 }
+    ImageSetDefClass c_25 { Name "c_25" Pos 16 424 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXBtnDefault_hover {
+   Name "TXBtnDefault_hover"
+   Images {
+    ImageSetDefClass tlc_26 { Name "tlc_26" Pos 106 412 Size 16 16 }
+    ImageSetDefClass trc_26 { Name "trc_26" Pos 190 412 Size 16 16 }
+    ImageSetDefClass blc_26 { Name "blc_26" Pos 106 496 Size 16 16 }
+    ImageSetDefClass brc_26 { Name "brc_26" Pos 190 496 Size 16 16 }
+    ImageSetDefClass lc_26 { Name "lc_26" Pos 106 424 Size 16 76 }
+    ImageSetDefClass rc_26 { Name "rc_26" Pos 190 424 Size 16 76 }
+    ImageSetDefClass tc_26 { Name "tc_26" Pos 118 412 Size 76 16 }
+    ImageSetDefClass bc_26 { Name "bc_26" Pos 118 496 Size 76 16 }
+    ImageSetDefClass c_26 { Name "c_26" Pos 118 424 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXBtnDefault_active {
+   Name "TXBtnDefault_active"
+   Images {
+    ImageSetDefClass tlc_27 { Name "tlc_27" Pos 208 412 Size 16 16 }
+    ImageSetDefClass trc_27 { Name "trc_27" Pos 292 412 Size 16 16 }
+    ImageSetDefClass blc_27 { Name "blc_27" Pos 208 496 Size 16 16 }
+    ImageSetDefClass brc_27 { Name "brc_27" Pos 292 496 Size 16 16 }
+    ImageSetDefClass lc_27 { Name "lc_27" Pos 208 424 Size 16 76 }
+    ImageSetDefClass rc_27 { Name "rc_27" Pos 292 424 Size 16 76 }
+    ImageSetDefClass tc_27 { Name "tc_27" Pos 220 412 Size 76 16 }
+    ImageSetDefClass bc_27 { Name "bc_27" Pos 220 496 Size 76 16 }
+    ImageSetDefClass c_27 { Name "c_27" Pos 220 424 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXBtnLeave_normal {
+   Name "TXBtnLeave_normal"
+   Images {
+    ImageSetDefClass tlc_28 { Name "tlc_28" Pos 310 412 Size 16 16 }
+    ImageSetDefClass trc_28 { Name "trc_28" Pos 394 412 Size 16 16 }
+    ImageSetDefClass blc_28 { Name "blc_28" Pos 310 496 Size 16 16 }
+    ImageSetDefClass brc_28 { Name "brc_28" Pos 394 496 Size 16 16 }
+    ImageSetDefClass lc_28 { Name "lc_28" Pos 310 424 Size 16 76 }
+    ImageSetDefClass rc_28 { Name "rc_28" Pos 394 424 Size 16 76 }
+    ImageSetDefClass tc_28 { Name "tc_28" Pos 322 412 Size 76 16 }
+    ImageSetDefClass bc_28 { Name "bc_28" Pos 322 496 Size 76 16 }
+    ImageSetDefClass c_28 { Name "c_28" Pos 322 424 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXBtnLeave_hover {
+   Name "TXBtnLeave_hover"
+   Images {
+    ImageSetDefClass tlc_29 { Name "tlc_29" Pos 412 412 Size 16 16 }
+    ImageSetDefClass trc_29 { Name "trc_29" Pos 496 412 Size 16 16 }
+    ImageSetDefClass blc_29 { Name "blc_29" Pos 412 496 Size 16 16 }
+    ImageSetDefClass brc_29 { Name "brc_29" Pos 496 496 Size 16 16 }
+    ImageSetDefClass lc_29 { Name "lc_29" Pos 412 424 Size 16 76 }
+    ImageSetDefClass rc_29 { Name "rc_29" Pos 496 424 Size 16 76 }
+    ImageSetDefClass tc_29 { Name "tc_29" Pos 424 412 Size 76 16 }
+    ImageSetDefClass bc_29 { Name "bc_29" Pos 424 496 Size 76 16 }
+    ImageSetDefClass c_29 { Name "c_29" Pos 424 424 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXBtnLeave_active {
+   Name "TXBtnLeave_active"
+   Images {
+    ImageSetDefClass tlc_30 { Name "tlc_30" Pos 514 412 Size 16 16 }
+    ImageSetDefClass trc_30 { Name "trc_30" Pos 598 412 Size 16 16 }
+    ImageSetDefClass blc_30 { Name "blc_30" Pos 514 496 Size 16 16 }
+    ImageSetDefClass brc_30 { Name "brc_30" Pos 598 496 Size 16 16 }
+    ImageSetDefClass lc_30 { Name "lc_30" Pos 514 424 Size 16 76 }
+    ImageSetDefClass rc_30 { Name "rc_30" Pos 598 424 Size 16 76 }
+    ImageSetDefClass tc_30 { Name "tc_30" Pos 526 412 Size 76 16 }
+    ImageSetDefClass bc_30 { Name "bc_30" Pos 526 496 Size 76 16 }
+    ImageSetDefClass c_30 { Name "c_30" Pos 526 424 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXCategoryItem_normal {
+   Name "TXCategoryItem_normal"
+   Images {
+    ImageSetDefClass tlc_31 { Name "tlc_31" Pos 4 514 Size 16 16 }
+    ImageSetDefClass trc_31 { Name "trc_31" Pos 88 514 Size 16 16 }
+    ImageSetDefClass blc_31 { Name "blc_31" Pos 4 598 Size 16 16 }
+    ImageSetDefClass brc_31 { Name "brc_31" Pos 88 598 Size 16 16 }
+    ImageSetDefClass lc_31 { Name "lc_31" Pos 4 526 Size 16 76 }
+    ImageSetDefClass rc_31 { Name "rc_31" Pos 88 526 Size 16 76 }
+    ImageSetDefClass tc_31 { Name "tc_31" Pos 16 514 Size 76 16 }
+    ImageSetDefClass bc_31 { Name "bc_31" Pos 16 598 Size 76 16 }
+    ImageSetDefClass c_31 { Name "c_31" Pos 16 526 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXCategoryItem_hover {
+   Name "TXCategoryItem_hover"
+   Images {
+    ImageSetDefClass tlc_32 { Name "tlc_32" Pos 106 514 Size 16 16 }
+    ImageSetDefClass trc_32 { Name "trc_32" Pos 190 514 Size 16 16 }
+    ImageSetDefClass blc_32 { Name "blc_32" Pos 106 598 Size 16 16 }
+    ImageSetDefClass brc_32 { Name "brc_32" Pos 190 598 Size 16 16 }
+    ImageSetDefClass lc_32 { Name "lc_32" Pos 106 526 Size 16 76 }
+    ImageSetDefClass rc_32 { Name "rc_32" Pos 190 526 Size 16 76 }
+    ImageSetDefClass tc_32 { Name "tc_32" Pos 118 514 Size 76 16 }
+    ImageSetDefClass bc_32 { Name "bc_32" Pos 118 598 Size 76 16 }
+    ImageSetDefClass c_32 { Name "c_32" Pos 118 526 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXCategoryItem_active {
+   Name "TXCategoryItem_active"
+   Images {
+    ImageSetDefClass tlc_33 { Name "tlc_33" Pos 208 514 Size 16 16 }
+    ImageSetDefClass trc_33 { Name "trc_33" Pos 292 514 Size 16 16 }
+    ImageSetDefClass blc_33 { Name "blc_33" Pos 208 598 Size 16 16 }
+    ImageSetDefClass brc_33 { Name "brc_33" Pos 292 598 Size 16 16 }
+    ImageSetDefClass lc_33 { Name "lc_33" Pos 208 526 Size 16 76 }
+    ImageSetDefClass rc_33 { Name "rc_33" Pos 292 526 Size 16 76 }
+    ImageSetDefClass tc_33 { Name "tc_33" Pos 220 514 Size 76 16 }
+    ImageSetDefClass bc_33 { Name "bc_33" Pos 220 598 Size 76 16 }
+    ImageSetDefClass c_33 { Name "c_33" Pos 220 526 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXCategoryActive_normal {
+   Name "TXCategoryActive_normal"
+   Images {
+    ImageSetDefClass tlc_34 { Name "tlc_34" Pos 310 514 Size 16 16 }
+    ImageSetDefClass trc_34 { Name "trc_34" Pos 394 514 Size 16 16 }
+    ImageSetDefClass blc_34 { Name "blc_34" Pos 310 598 Size 16 16 }
+    ImageSetDefClass brc_34 { Name "brc_34" Pos 394 598 Size 16 16 }
+    ImageSetDefClass lc_34 { Name "lc_34" Pos 310 526 Size 16 76 }
+    ImageSetDefClass rc_34 { Name "rc_34" Pos 394 526 Size 16 76 }
+    ImageSetDefClass tc_34 { Name "tc_34" Pos 322 514 Size 76 16 }
+    ImageSetDefClass bc_34 { Name "bc_34" Pos 322 598 Size 76 16 }
+    ImageSetDefClass c_34 { Name "c_34" Pos 322 526 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXCategoryActive_hover {
+   Name "TXCategoryActive_hover"
+   Images {
+    ImageSetDefClass tlc_35 { Name "tlc_35" Pos 412 514 Size 16 16 }
+    ImageSetDefClass trc_35 { Name "trc_35" Pos 496 514 Size 16 16 }
+    ImageSetDefClass blc_35 { Name "blc_35" Pos 412 598 Size 16 16 }
+    ImageSetDefClass brc_35 { Name "brc_35" Pos 496 598 Size 16 16 }
+    ImageSetDefClass lc_35 { Name "lc_35" Pos 412 526 Size 16 76 }
+    ImageSetDefClass rc_35 { Name "rc_35" Pos 496 526 Size 16 76 }
+    ImageSetDefClass tc_35 { Name "tc_35" Pos 424 514 Size 76 16 }
+    ImageSetDefClass bc_35 { Name "bc_35" Pos 424 598 Size 76 16 }
+    ImageSetDefClass c_35 { Name "c_35" Pos 424 526 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXCategoryActive_active {
+   Name "TXCategoryActive_active"
+   Images {
+    ImageSetDefClass tlc_36 { Name "tlc_36" Pos 514 514 Size 16 16 }
+    ImageSetDefClass trc_36 { Name "trc_36" Pos 598 514 Size 16 16 }
+    ImageSetDefClass blc_36 { Name "blc_36" Pos 514 598 Size 16 16 }
+    ImageSetDefClass brc_36 { Name "brc_36" Pos 598 598 Size 16 16 }
+    ImageSetDefClass lc_36 { Name "lc_36" Pos 514 526 Size 16 76 }
+    ImageSetDefClass rc_36 { Name "rc_36" Pos 598 526 Size 16 76 }
+    ImageSetDefClass tc_36 { Name "tc_36" Pos 526 514 Size 76 16 }
+    ImageSetDefClass bc_36 { Name "bc_36" Pos 526 598 Size 76 16 }
+    ImageSetDefClass c_36 { Name "c_36" Pos 526 526 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXListRow_normal {
+   Name "TXListRow_normal"
+   Images {
+    ImageSetDefClass tlc_37 { Name "tlc_37" Pos 4 616 Size 16 16 }
+    ImageSetDefClass trc_37 { Name "trc_37" Pos 88 616 Size 16 16 }
+    ImageSetDefClass blc_37 { Name "blc_37" Pos 4 700 Size 16 16 }
+    ImageSetDefClass brc_37 { Name "brc_37" Pos 88 700 Size 16 16 }
+    ImageSetDefClass lc_37 { Name "lc_37" Pos 4 628 Size 16 76 }
+    ImageSetDefClass rc_37 { Name "rc_37" Pos 88 628 Size 16 76 }
+    ImageSetDefClass tc_37 { Name "tc_37" Pos 16 616 Size 76 16 }
+    ImageSetDefClass bc_37 { Name "bc_37" Pos 16 700 Size 76 16 }
+    ImageSetDefClass c_37 { Name "c_37" Pos 16 628 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXListRow_hover {
+   Name "TXListRow_hover"
+   Images {
+    ImageSetDefClass tlc_38 { Name "tlc_38" Pos 106 616 Size 16 16 }
+    ImageSetDefClass trc_38 { Name "trc_38" Pos 190 616 Size 16 16 }
+    ImageSetDefClass blc_38 { Name "blc_38" Pos 106 700 Size 16 16 }
+    ImageSetDefClass brc_38 { Name "brc_38" Pos 190 700 Size 16 16 }
+    ImageSetDefClass lc_38 { Name "lc_38" Pos 106 628 Size 16 76 }
+    ImageSetDefClass rc_38 { Name "rc_38" Pos 190 628 Size 16 76 }
+    ImageSetDefClass tc_38 { Name "tc_38" Pos 118 616 Size 76 16 }
+    ImageSetDefClass bc_38 { Name "bc_38" Pos 118 700 Size 76 16 }
+    ImageSetDefClass c_38 { Name "c_38" Pos 118 628 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXListRow_active {
+   Name "TXListRow_active"
+   Images {
+    ImageSetDefClass tlc_39 { Name "tlc_39" Pos 208 616 Size 16 16 }
+    ImageSetDefClass trc_39 { Name "trc_39" Pos 292 616 Size 16 16 }
+    ImageSetDefClass blc_39 { Name "blc_39" Pos 208 700 Size 16 16 }
+    ImageSetDefClass brc_39 { Name "brc_39" Pos 292 700 Size 16 16 }
+    ImageSetDefClass lc_39 { Name "lc_39" Pos 208 628 Size 16 76 }
+    ImageSetDefClass rc_39 { Name "rc_39" Pos 292 628 Size 16 76 }
+    ImageSetDefClass tc_39 { Name "tc_39" Pos 220 616 Size 76 16 }
+    ImageSetDefClass bc_39 { Name "bc_39" Pos 220 700 Size 76 16 }
+    ImageSetDefClass c_39 { Name "c_39" Pos 220 628 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXListRowAlt_normal {
+   Name "TXListRowAlt_normal"
+   Images {
+    ImageSetDefClass tlc_40 { Name "tlc_40" Pos 310 616 Size 16 16 }
+    ImageSetDefClass trc_40 { Name "trc_40" Pos 394 616 Size 16 16 }
+    ImageSetDefClass blc_40 { Name "blc_40" Pos 310 700 Size 16 16 }
+    ImageSetDefClass brc_40 { Name "brc_40" Pos 394 700 Size 16 16 }
+    ImageSetDefClass lc_40 { Name "lc_40" Pos 310 628 Size 16 76 }
+    ImageSetDefClass rc_40 { Name "rc_40" Pos 394 628 Size 16 76 }
+    ImageSetDefClass tc_40 { Name "tc_40" Pos 322 616 Size 76 16 }
+    ImageSetDefClass bc_40 { Name "bc_40" Pos 322 700 Size 76 16 }
+    ImageSetDefClass c_40 { Name "c_40" Pos 322 628 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXListRowAlt_hover {
+   Name "TXListRowAlt_hover"
+   Images {
+    ImageSetDefClass tlc_41 { Name "tlc_41" Pos 412 616 Size 16 16 }
+    ImageSetDefClass trc_41 { Name "trc_41" Pos 496 616 Size 16 16 }
+    ImageSetDefClass blc_41 { Name "blc_41" Pos 412 700 Size 16 16 }
+    ImageSetDefClass brc_41 { Name "brc_41" Pos 496 700 Size 16 16 }
+    ImageSetDefClass lc_41 { Name "lc_41" Pos 412 628 Size 16 76 }
+    ImageSetDefClass rc_41 { Name "rc_41" Pos 496 628 Size 16 76 }
+    ImageSetDefClass tc_41 { Name "tc_41" Pos 424 616 Size 76 16 }
+    ImageSetDefClass bc_41 { Name "bc_41" Pos 424 700 Size 76 16 }
+    ImageSetDefClass c_41 { Name "c_41" Pos 424 628 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXListRowAlt_active {
+   Name "TXListRowAlt_active"
+   Images {
+    ImageSetDefClass tlc_42 { Name "tlc_42" Pos 514 616 Size 16 16 }
+    ImageSetDefClass trc_42 { Name "trc_42" Pos 598 616 Size 16 16 }
+    ImageSetDefClass blc_42 { Name "blc_42" Pos 514 700 Size 16 16 }
+    ImageSetDefClass brc_42 { Name "brc_42" Pos 598 700 Size 16 16 }
+    ImageSetDefClass lc_42 { Name "lc_42" Pos 514 628 Size 16 76 }
+    ImageSetDefClass rc_42 { Name "rc_42" Pos 598 628 Size 16 76 }
+    ImageSetDefClass tc_42 { Name "tc_42" Pos 526 616 Size 76 16 }
+    ImageSetDefClass bc_42 { Name "bc_42" Pos 526 700 Size 76 16 }
+    ImageSetDefClass c_42 { Name "c_42" Pos 526 628 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXListRowSelected_normal {
+   Name "TXListRowSelected_normal"
+   Images {
+    ImageSetDefClass tlc_43 { Name "tlc_43" Pos 4 718 Size 16 16 }
+    ImageSetDefClass trc_43 { Name "trc_43" Pos 88 718 Size 16 16 }
+    ImageSetDefClass blc_43 { Name "blc_43" Pos 4 802 Size 16 16 }
+    ImageSetDefClass brc_43 { Name "brc_43" Pos 88 802 Size 16 16 }
+    ImageSetDefClass lc_43 { Name "lc_43" Pos 4 730 Size 16 76 }
+    ImageSetDefClass rc_43 { Name "rc_43" Pos 88 730 Size 16 76 }
+    ImageSetDefClass tc_43 { Name "tc_43" Pos 16 718 Size 76 16 }
+    ImageSetDefClass bc_43 { Name "bc_43" Pos 16 802 Size 76 16 }
+    ImageSetDefClass c_43 { Name "c_43" Pos 16 730 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXListRowSelected_hover {
+   Name "TXListRowSelected_hover"
+   Images {
+    ImageSetDefClass tlc_44 { Name "tlc_44" Pos 106 718 Size 16 16 }
+    ImageSetDefClass trc_44 { Name "trc_44" Pos 190 718 Size 16 16 }
+    ImageSetDefClass blc_44 { Name "blc_44" Pos 106 802 Size 16 16 }
+    ImageSetDefClass brc_44 { Name "brc_44" Pos 190 802 Size 16 16 }
+    ImageSetDefClass lc_44 { Name "lc_44" Pos 106 730 Size 16 76 }
+    ImageSetDefClass rc_44 { Name "rc_44" Pos 190 730 Size 16 76 }
+    ImageSetDefClass tc_44 { Name "tc_44" Pos 118 718 Size 76 16 }
+    ImageSetDefClass bc_44 { Name "bc_44" Pos 118 802 Size 76 16 }
+    ImageSetDefClass c_44 { Name "c_44" Pos 118 730 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXListRowSelected_active {
+   Name "TXListRowSelected_active"
+   Images {
+    ImageSetDefClass tlc_45 { Name "tlc_45" Pos 208 718 Size 16 16 }
+    ImageSetDefClass trc_45 { Name "trc_45" Pos 292 718 Size 16 16 }
+    ImageSetDefClass blc_45 { Name "blc_45" Pos 208 802 Size 16 16 }
+    ImageSetDefClass brc_45 { Name "brc_45" Pos 292 802 Size 16 16 }
+    ImageSetDefClass lc_45 { Name "lc_45" Pos 208 730 Size 16 76 }
+    ImageSetDefClass rc_45 { Name "rc_45" Pos 292 730 Size 16 76 }
+    ImageSetDefClass tc_45 { Name "tc_45" Pos 220 718 Size 76 16 }
+    ImageSetDefClass bc_45 { Name "bc_45" Pos 220 802 Size 76 16 }
+    ImageSetDefClass c_45 { Name "c_45" Pos 220 730 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXProgressBg_normal {
+   Name "TXProgressBg_normal"
+   Images {
+    ImageSetDefClass tlc_46 { Name "tlc_46" Pos 310 718 Size 16 16 }
+    ImageSetDefClass trc_46 { Name "trc_46" Pos 394 718 Size 16 16 }
+    ImageSetDefClass blc_46 { Name "blc_46" Pos 310 802 Size 16 16 }
+    ImageSetDefClass brc_46 { Name "brc_46" Pos 394 802 Size 16 16 }
+    ImageSetDefClass lc_46 { Name "lc_46" Pos 310 730 Size 16 76 }
+    ImageSetDefClass rc_46 { Name "rc_46" Pos 394 730 Size 16 76 }
+    ImageSetDefClass tc_46 { Name "tc_46" Pos 322 718 Size 76 16 }
+    ImageSetDefClass bc_46 { Name "bc_46" Pos 322 802 Size 76 16 }
+    ImageSetDefClass c_46 { Name "c_46" Pos 322 730 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXProgressBg_disabled {
+   Name "TXProgressBg_disabled"
+   Images {
+    ImageSetDefClass tlc_47 { Name "tlc_47" Pos 412 718 Size 16 16 }
+    ImageSetDefClass trc_47 { Name "trc_47" Pos 496 718 Size 16 16 }
+    ImageSetDefClass blc_47 { Name "blc_47" Pos 412 802 Size 16 16 }
+    ImageSetDefClass brc_47 { Name "brc_47" Pos 496 802 Size 16 16 }
+    ImageSetDefClass lc_47 { Name "lc_47" Pos 412 730 Size 16 76 }
+    ImageSetDefClass rc_47 { Name "rc_47" Pos 496 730 Size 16 76 }
+    ImageSetDefClass tc_47 { Name "tc_47" Pos 424 718 Size 76 16 }
+    ImageSetDefClass bc_47 { Name "bc_47" Pos 424 802 Size 76 16 }
+    ImageSetDefClass c_47 { Name "c_47" Pos 424 730 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXProgressFill_normal {
+   Name "TXProgressFill_normal"
+   Images {
+    ImageSetDefClass tlc_48 { Name "tlc_48" Pos 514 718 Size 16 16 }
+    ImageSetDefClass trc_48 { Name "trc_48" Pos 598 718 Size 16 16 }
+    ImageSetDefClass blc_48 { Name "blc_48" Pos 514 802 Size 16 16 }
+    ImageSetDefClass brc_48 { Name "brc_48" Pos 598 802 Size 16 16 }
+    ImageSetDefClass lc_48 { Name "lc_48" Pos 514 730 Size 16 76 }
+    ImageSetDefClass rc_48 { Name "rc_48" Pos 598 730 Size 16 76 }
+    ImageSetDefClass tc_48 { Name "tc_48" Pos 526 718 Size 76 16 }
+    ImageSetDefClass bc_48 { Name "bc_48" Pos 526 802 Size 76 16 }
+    ImageSetDefClass c_48 { Name "c_48" Pos 526 730 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXProgressFill_disabled {
+   Name "TXProgressFill_disabled"
+   Images {
+    ImageSetDefClass tlc_49 { Name "tlc_49" Pos 4 820 Size 16 16 }
+    ImageSetDefClass trc_49 { Name "trc_49" Pos 88 820 Size 16 16 }
+    ImageSetDefClass blc_49 { Name "blc_49" Pos 4 904 Size 16 16 }
+    ImageSetDefClass brc_49 { Name "brc_49" Pos 88 904 Size 16 16 }
+    ImageSetDefClass lc_49 { Name "lc_49" Pos 4 832 Size 16 76 }
+    ImageSetDefClass rc_49 { Name "rc_49" Pos 88 832 Size 16 76 }
+    ImageSetDefClass tc_49 { Name "tc_49" Pos 16 820 Size 76 16 }
+    ImageSetDefClass bc_49 { Name "bc_49" Pos 16 904 Size 76 16 }
+    ImageSetDefClass c_49 { Name "c_49" Pos 16 832 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXDivider_normal {
+   Name "TXDivider_normal"
+   Images {
+    ImageSetDefClass tlc_50 { Name "tlc_50" Pos 106 820 Size 16 16 }
+    ImageSetDefClass trc_50 { Name "trc_50" Pos 190 820 Size 16 16 }
+    ImageSetDefClass blc_50 { Name "blc_50" Pos 106 904 Size 16 16 }
+    ImageSetDefClass brc_50 { Name "brc_50" Pos 190 904 Size 16 16 }
+    ImageSetDefClass lc_50 { Name "lc_50" Pos 106 832 Size 16 76 }
+    ImageSetDefClass rc_50 { Name "rc_50" Pos 190 832 Size 16 76 }
+    ImageSetDefClass tc_50 { Name "tc_50" Pos 118 820 Size 76 16 }
+    ImageSetDefClass bc_50 { Name "bc_50" Pos 118 904 Size 76 16 }
+    ImageSetDefClass c_50 { Name "c_50" Pos 118 832 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXDivider_disabled {
+   Name "TXDivider_disabled"
+   Images {
+    ImageSetDefClass tlc_51 { Name "tlc_51" Pos 208 820 Size 16 16 }
+    ImageSetDefClass trc_51 { Name "trc_51" Pos 292 820 Size 16 16 }
+    ImageSetDefClass blc_51 { Name "blc_51" Pos 208 904 Size 16 16 }
+    ImageSetDefClass brc_51 { Name "brc_51" Pos 292 904 Size 16 16 }
+    ImageSetDefClass lc_51 { Name "lc_51" Pos 208 832 Size 16 76 }
+    ImageSetDefClass rc_51 { Name "rc_51" Pos 292 832 Size 16 76 }
+    ImageSetDefClass tc_51 { Name "tc_51" Pos 220 820 Size 76 16 }
+    ImageSetDefClass bc_51 { Name "bc_51" Pos 220 904 Size 76 16 }
+    ImageSetDefClass c_51 { Name "c_51" Pos 220 832 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXInfoBox_normal {
+   Name "TXInfoBox_normal"
+   Images {
+    ImageSetDefClass tlc_52 { Name "tlc_52" Pos 310 820 Size 16 16 }
+    ImageSetDefClass trc_52 { Name "trc_52" Pos 394 820 Size 16 16 }
+    ImageSetDefClass blc_52 { Name "blc_52" Pos 310 904 Size 16 16 }
+    ImageSetDefClass brc_52 { Name "brc_52" Pos 394 904 Size 16 16 }
+    ImageSetDefClass lc_52 { Name "lc_52" Pos 310 832 Size 16 76 }
+    ImageSetDefClass rc_52 { Name "rc_52" Pos 394 832 Size 16 76 }
+    ImageSetDefClass tc_52 { Name "tc_52" Pos 322 820 Size 76 16 }
+    ImageSetDefClass bc_52 { Name "bc_52" Pos 322 904 Size 76 16 }
+    ImageSetDefClass c_52 { Name "c_52" Pos 322 832 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXInfoBox_disabled {
+   Name "TXInfoBox_disabled"
+   Images {
+    ImageSetDefClass tlc_53 { Name "tlc_53" Pos 412 820 Size 16 16 }
+    ImageSetDefClass trc_53 { Name "trc_53" Pos 496 820 Size 16 16 }
+    ImageSetDefClass blc_53 { Name "blc_53" Pos 412 904 Size 16 16 }
+    ImageSetDefClass brc_53 { Name "brc_53" Pos 496 904 Size 16 16 }
+    ImageSetDefClass lc_53 { Name "lc_53" Pos 412 832 Size 16 76 }
+    ImageSetDefClass rc_53 { Name "rc_53" Pos 496 832 Size 16 76 }
+    ImageSetDefClass tc_53 { Name "tc_53" Pos 424 820 Size 76 16 }
+    ImageSetDefClass bc_53 { Name "bc_53" Pos 424 904 Size 76 16 }
+    ImageSetDefClass c_53 { Name "c_53" Pos 424 832 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXSuccessBox_normal {
+   Name "TXSuccessBox_normal"
+   Images {
+    ImageSetDefClass tlc_54 { Name "tlc_54" Pos 514 820 Size 16 16 }
+    ImageSetDefClass trc_54 { Name "trc_54" Pos 598 820 Size 16 16 }
+    ImageSetDefClass blc_54 { Name "blc_54" Pos 514 904 Size 16 16 }
+    ImageSetDefClass brc_54 { Name "brc_54" Pos 598 904 Size 16 16 }
+    ImageSetDefClass lc_54 { Name "lc_54" Pos 514 832 Size 16 76 }
+    ImageSetDefClass rc_54 { Name "rc_54" Pos 598 832 Size 16 76 }
+    ImageSetDefClass tc_54 { Name "tc_54" Pos 526 820 Size 76 16 }
+    ImageSetDefClass bc_54 { Name "bc_54" Pos 526 904 Size 76 16 }
+    ImageSetDefClass c_54 { Name "c_54" Pos 526 832 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXSuccessBox_disabled {
+   Name "TXSuccessBox_disabled"
+   Images {
+    ImageSetDefClass tlc_55 { Name "tlc_55" Pos 4 922 Size 16 16 }
+    ImageSetDefClass trc_55 { Name "trc_55" Pos 88 922 Size 16 16 }
+    ImageSetDefClass blc_55 { Name "blc_55" Pos 4 1006 Size 16 16 }
+    ImageSetDefClass brc_55 { Name "brc_55" Pos 88 1006 Size 16 16 }
+    ImageSetDefClass lc_55 { Name "lc_55" Pos 4 934 Size 16 76 }
+    ImageSetDefClass rc_55 { Name "rc_55" Pos 88 934 Size 16 76 }
+    ImageSetDefClass tc_55 { Name "tc_55" Pos 16 922 Size 76 16 }
+    ImageSetDefClass bc_55 { Name "bc_55" Pos 16 1006 Size 76 16 }
+    ImageSetDefClass c_55 { Name "c_55" Pos 16 934 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXBadge_normal {
+   Name "TXBadge_normal"
+   Images {
+    ImageSetDefClass tlc_56 { Name "tlc_56" Pos 106 922 Size 16 16 }
+    ImageSetDefClass trc_56 { Name "trc_56" Pos 190 922 Size 16 16 }
+    ImageSetDefClass blc_56 { Name "blc_56" Pos 106 1006 Size 16 16 }
+    ImageSetDefClass brc_56 { Name "brc_56" Pos 190 1006 Size 16 16 }
+    ImageSetDefClass lc_56 { Name "lc_56" Pos 106 934 Size 16 76 }
+    ImageSetDefClass rc_56 { Name "rc_56" Pos 190 934 Size 16 76 }
+    ImageSetDefClass tc_56 { Name "tc_56" Pos 118 922 Size 76 16 }
+    ImageSetDefClass bc_56 { Name "bc_56" Pos 118 1006 Size 76 16 }
+    ImageSetDefClass c_56 { Name "c_56" Pos 118 934 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXBadge_disabled {
+   Name "TXBadge_disabled"
+   Images {
+    ImageSetDefClass tlc_57 { Name "tlc_57" Pos 208 922 Size 16 16 }
+    ImageSetDefClass trc_57 { Name "trc_57" Pos 292 922 Size 16 16 }
+    ImageSetDefClass blc_57 { Name "blc_57" Pos 208 1006 Size 16 16 }
+    ImageSetDefClass brc_57 { Name "brc_57" Pos 292 1006 Size 16 16 }
+    ImageSetDefClass lc_57 { Name "lc_57" Pos 208 934 Size 16 76 }
+    ImageSetDefClass rc_57 { Name "rc_57" Pos 292 934 Size 16 76 }
+    ImageSetDefClass tc_57 { Name "tc_57" Pos 220 922 Size 76 16 }
+    ImageSetDefClass bc_57 { Name "bc_57" Pos 220 1006 Size 76 16 }
+    ImageSetDefClass c_57 { Name "c_57" Pos 220 934 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXPreviewPanel_normal {
+   Name "TXPreviewPanel_normal"
+   Images {
+    ImageSetDefClass tlc_58 { Name "tlc_58" Pos 310 922 Size 16 16 }
+    ImageSetDefClass trc_58 { Name "trc_58" Pos 394 922 Size 16 16 }
+    ImageSetDefClass blc_58 { Name "blc_58" Pos 310 1006 Size 16 16 }
+    ImageSetDefClass brc_58 { Name "brc_58" Pos 394 1006 Size 16 16 }
+    ImageSetDefClass lc_58 { Name "lc_58" Pos 310 934 Size 16 76 }
+    ImageSetDefClass rc_58 { Name "rc_58" Pos 394 934 Size 16 76 }
+    ImageSetDefClass tc_58 { Name "tc_58" Pos 322 922 Size 76 16 }
+    ImageSetDefClass bc_58 { Name "bc_58" Pos 322 1006 Size 76 16 }
+    ImageSetDefClass c_58 { Name "c_58" Pos 322 934 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXPreviewPanel_disabled {
+   Name "TXPreviewPanel_disabled"
+   Images {
+    ImageSetDefClass tlc_59 { Name "tlc_59" Pos 412 922 Size 16 16 }
+    ImageSetDefClass trc_59 { Name "trc_59" Pos 496 922 Size 16 16 }
+    ImageSetDefClass blc_59 { Name "blc_59" Pos 412 1006 Size 16 16 }
+    ImageSetDefClass brc_59 { Name "brc_59" Pos 496 1006 Size 16 16 }
+    ImageSetDefClass lc_59 { Name "lc_59" Pos 412 934 Size 16 76 }
+    ImageSetDefClass rc_59 { Name "rc_59" Pos 496 934 Size 16 76 }
+    ImageSetDefClass tc_59 { Name "tc_59" Pos 424 922 Size 76 16 }
+    ImageSetDefClass bc_59 { Name "bc_59" Pos 424 1006 Size 76 16 }
+    ImageSetDefClass c_59 { Name "c_59" Pos 424 934 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXParkingAvailable_normal {
+   Name "TXParkingAvailable_normal"
+   Images {
+    ImageSetDefClass tlc_60 { Name "tlc_60" Pos 514 922 Size 16 16 }
+    ImageSetDefClass trc_60 { Name "trc_60" Pos 598 922 Size 16 16 }
+    ImageSetDefClass blc_60 { Name "blc_60" Pos 514 1006 Size 16 16 }
+    ImageSetDefClass brc_60 { Name "brc_60" Pos 598 1006 Size 16 16 }
+    ImageSetDefClass lc_60 { Name "lc_60" Pos 514 934 Size 16 76 }
+    ImageSetDefClass rc_60 { Name "rc_60" Pos 598 934 Size 16 76 }
+    ImageSetDefClass tc_60 { Name "tc_60" Pos 526 922 Size 76 16 }
+    ImageSetDefClass bc_60 { Name "bc_60" Pos 526 1006 Size 76 16 }
+    ImageSetDefClass c_60 { Name "c_60" Pos 526 934 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXParkingAvailable_disabled {
+   Name "TXParkingAvailable_disabled"
+   Images {
+    ImageSetDefClass tlc_61 { Name "tlc_61" Pos 4 1024 Size 16 16 }
+    ImageSetDefClass trc_61 { Name "trc_61" Pos 88 1024 Size 16 16 }
+    ImageSetDefClass blc_61 { Name "blc_61" Pos 4 1108 Size 16 16 }
+    ImageSetDefClass brc_61 { Name "brc_61" Pos 88 1108 Size 16 16 }
+    ImageSetDefClass lc_61 { Name "lc_61" Pos 4 1036 Size 16 76 }
+    ImageSetDefClass rc_61 { Name "rc_61" Pos 88 1036 Size 16 76 }
+    ImageSetDefClass tc_61 { Name "tc_61" Pos 16 1024 Size 76 16 }
+    ImageSetDefClass bc_61 { Name "bc_61" Pos 16 1108 Size 76 16 }
+    ImageSetDefClass c_61 { Name "c_61" Pos 16 1036 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXParkingOccupied_normal {
+   Name "TXParkingOccupied_normal"
+   Images {
+    ImageSetDefClass tlc_62 { Name "tlc_62" Pos 106 1024 Size 16 16 }
+    ImageSetDefClass trc_62 { Name "trc_62" Pos 190 1024 Size 16 16 }
+    ImageSetDefClass blc_62 { Name "blc_62" Pos 106 1108 Size 16 16 }
+    ImageSetDefClass brc_62 { Name "brc_62" Pos 190 1108 Size 16 16 }
+    ImageSetDefClass lc_62 { Name "lc_62" Pos 106 1036 Size 16 76 }
+    ImageSetDefClass rc_62 { Name "rc_62" Pos 190 1036 Size 16 76 }
+    ImageSetDefClass tc_62 { Name "tc_62" Pos 118 1024 Size 76 16 }
+    ImageSetDefClass bc_62 { Name "bc_62" Pos 118 1108 Size 76 16 }
+    ImageSetDefClass c_62 { Name "c_62" Pos 118 1036 Size 76 76 }
+   }
+  }
+  ImageSetGroupClass TXParkingOccupied_disabled {
+   Name "TXParkingOccupied_disabled"
+   Images {
+    ImageSetDefClass tlc_63 { Name "tlc_63" Pos 208 1024 Size 16 16 }
+    ImageSetDefClass trc_63 { Name "trc_63" Pos 292 1024 Size 16 16 }
+    ImageSetDefClass blc_63 { Name "blc_63" Pos 208 1108 Size 16 16 }
+    ImageSetDefClass brc_63 { Name "brc_63" Pos 292 1108 Size 16 16 }
+    ImageSetDefClass lc_63 { Name "lc_63" Pos 208 1036 Size 16 76 }
+    ImageSetDefClass rc_63 { Name "rc_63" Pos 292 1036 Size 16 76 }
+    ImageSetDefClass tc_63 { Name "tc_63" Pos 220 1024 Size 76 16 }
+    ImageSetDefClass bc_63 { Name "bc_63" Pos 220 1108 Size 76 16 }
+    ImageSetDefClass c_63 { Name "c_63" Pos 220 1036 Size 76 76 }
+   }
+  }
+ }
+}

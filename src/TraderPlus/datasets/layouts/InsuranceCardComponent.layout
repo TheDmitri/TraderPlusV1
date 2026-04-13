@@ -12,7 +12,7 @@ PanelWidgetClass ProductWrapper {
    disabled 0
    clipchildren 1
    keepsafezone 0
-   color 0.8745 0.7686 0.451 0.5294
+   color 0.996 0.996 0.996 1
    position 0.00067 -0.00547
    size 0.9978 1.00604
    hexactpos 0
@@ -22,20 +22,20 @@ PanelWidgetClass ProductWrapper {
    userID 20062002
    draggable 0
    scriptclass "ButtonBinding"
-   style Empty
+   style TXListRow
    "no focus" 0
    switch once
    {
     PanelWidgetClass PanelTitle {
      ignorepointer 1
-     color 0 0 0 0.7843
+     color 0.996 0.996 0.996 1
      position 0.01772 0.02245
      size 0.96785 0.15451
      hexactpos 0
      vexactpos 0
      hexactsize 0
      vexactsize 0
-     style DayZDefaultPanelBottom
+     style TXCardElevated
      {
       TextWidgetClass Title {
        ignorepointer 1
@@ -65,14 +65,14 @@ PanelWidgetClass ProductWrapper {
     }
     PanelWidgetClass PanelPreview {
      ignorepointer 1
-     color 0 0 0 0.7843
+     color 0.996 0.996 0.996 1
      position 0.01398 0.18913
      size 0.96989 0.54555
      hexactpos 0
      vexactpos 0
      hexactsize 0
      vexactsize 0
-     style DayZDefaultPanelBottom
+     style TXCardElevated
      {
       ItemPreviewWidgetClass ProductPreview {
        ignorepointer 1
@@ -94,14 +94,14 @@ PanelWidgetClass ProductWrapper {
     }
     PanelWidgetClass PanelPrice {
      ignorepointer 1
-     color 0 0 0 0.7843
+     color 0.996 0.996 0.996 1
      position 0.01836 0.74671
      size 0.96423 0.11237
      hexactpos 0
      vexactpos 0
      hexactsize 0
      vexactsize 0
-     style DayZDefaultPanelBottom
+     style TXCardElevated
      {
       PanelWidgetClass GridPrice {
        ignorepointer 1
@@ -156,25 +156,25 @@ PanelWidgetClass ProductWrapper {
     }
     PanelWidgetClass PanelInsuranceStatut {
      ignorepointer 1
-     color 0 0 0 0.7843
+     color 0.996 0.996 0.996 1
      position 0.0165 0.8736
      size 0.96423 0.11237
      hexactpos 0
      vexactpos 0
      hexactsize 0
      vexactsize 0
-     style DayZDefaultPanelBottom
+     style TXCardElevated
      {
       PanelWidgetClass InsuranceStatut {
        ignorepointer 1
-       color 0.8196 0.5373 0.2353 1
+       color 0.996 0.996 0.996 1
        position 0.02676 0.09566
        size 0.94368 0.80191
        hexactpos 0
        vexactpos 0
        hexactsize 0
        vexactsize 0
-       style rover_sim_colorable
+       style TXCard
        {
         TextWidgetClass TextStatut {
          ignorepointer 1

@@ -36,6 +36,20 @@ class CfgMods
 		dependencies[] = {"Game","World","Mission"};
 		class defs
 		{
+			class widgetStyles
+			{
+				files[]=
+				{
+					"TraderPlus/gui/traderx_styles.styles"
+				};
+			};
+			class imageSets
+			{
+				files[]=
+				{
+					"TraderPlus/gui/traderx_ui.imageset"
+				};
+			};
 			class gameScriptModule
 			{
 				value = "";
