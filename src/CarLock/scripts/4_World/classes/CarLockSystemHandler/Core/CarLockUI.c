@@ -17,14 +17,16 @@ class CarLockMenu extends UIScriptedMenu
   {
     if(rep)
     {
-      GetGame().GetInput().ChangeGameFocus(1);
+      if (GetGame().GetMission())
+        GetGame().GetMission().AddActiveInputExcludes({"menu"});
       GetGame().GetUIManager().ShowUICursor(true);
       GetGame().GetMission().GetHud().Show(false);
       OnShow();
     }
     else
     {
-      GetGame().GetInput().ResetGameFocus();
+      if (GetGame().GetMission())
+        GetGame().GetMission().RemoveActiveInputExcludes({"menu"}, true);
       GetGame().GetUIManager().ShowUICursor(false);
       GetGame().GetMission().GetHud().Show(true);
       OnHide();
@@ -36,7 +38,8 @@ class CarLockMenu extends UIScriptedMenu
 	{
 		super.OnShow();
 		PPEffects.SetBlurMenu(0.5);
-		GetGame().GetInput().ChangeGameFocus(1);
+		if (GetGame().GetMission())
+		  GetGame().GetMission().AddActiveInputExcludes({"menu"});
 		SetFocus( layoutRoot );
     UIHandle();
 	}
@@ -45,7 +48,8 @@ class CarLockMenu extends UIScriptedMenu
 	{
 		super.OnHide();
 		PPEffects.SetBlurMenu(0);
-		GetGame().GetInput().ResetGameFocus();
+		if (GetGame().GetMission())
+		  GetGame().GetMission().RemoveActiveInputExcludes({"menu"}, true);
 		Close();
 	}
 

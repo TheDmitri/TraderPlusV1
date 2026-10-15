@@ -22,7 +22,7 @@ class NewReceiptBase extends ItemBase
 
 		PlayerBase tplayer = PlayerBase.Cast(player);
 		if(tplayer)
-			GetRPCManager().SendRPC("TraderPlus", "GetCarNameReceiptResponse",  new Param2<NewReceipt, string>(this, CarClassName), true, player.GetIdentity());
+			GetRPCManager().SendRPC("TraderPlus", "GetCarNameReceiptResponse",  new Param2<NewReceipt, string>(NewReceipt.Cast(this), CarClassName), true, player.GetIdentity());
 	}
 
 	void SetAttachments( CarScript car)

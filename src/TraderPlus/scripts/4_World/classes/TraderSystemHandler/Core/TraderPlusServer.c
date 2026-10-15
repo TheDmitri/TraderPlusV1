@@ -610,7 +610,7 @@ class TraderPlusServer
       player.GetInventory().EnumerateInventory(InventoryTraversalType.PREORDER, itemsArray);
       foreach(EntityAI entity: itemsArray)
       {
-        NewReceiptBase receipt = NewReceipt.Cast(entity);
+        NewReceipt receipt = NewReceipt.Cast(entity);
         if (receipt)
           GetRPCManager().SendRPC("TraderPlus", "GetCarNameReceiptResponse",  new Param2<NewReceipt, string>(receipt, receipt.CarClassName), true, player.GetIdentity());
       }

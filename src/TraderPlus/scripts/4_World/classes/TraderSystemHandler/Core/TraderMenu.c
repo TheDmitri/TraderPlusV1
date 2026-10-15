@@ -452,7 +452,7 @@ class TraderPlusMenu extends UIScriptedMenu
   }
 
   //when mousebuttondown used, start update rotation for either item preview or player preview
-  bool OnMouseButtonDown(Widget w, int x, int y, int button)
+  override bool OnMouseButtonDown(Widget w, int x, int y, int button)
   {
     super.OnMouseButtonDown(w, x, y, button);
     switch(w)
@@ -460,7 +460,7 @@ class TraderPlusMenu extends UIScriptedMenu
       case m_MainItemPreview:
       {
         GetGame().GetDragQueue().Call(this, "UpdateRotation");
-        g_Game.GetMousePos(m_MainItemPreviewRotationX, m_MainItemPreviewRotationY);
+        GetMousePos(m_MainItemPreviewRotationX, m_MainItemPreviewRotationY);
         return true;
       }
       break;
@@ -468,7 +468,7 @@ class TraderPlusMenu extends UIScriptedMenu
       case m_PlayerPreview:
       {
         GetGame().GetDragQueue().Call(this, "UpdatePlayerRotation");
-        g_Game.GetMousePos( m_CharacterRotationX, m_CharacterRotationY );
+        GetMousePos( m_CharacterRotationX, m_CharacterRotationY );
         return true;
       }
       break;
@@ -1028,7 +1028,7 @@ class TraderPlusMenu extends UIScriptedMenu
   }
 
   //On double click is needed so we can trade simply by double clicking
-  bool OnDoubleClick(Widget w, int x, int y, int button)
+  override bool OnDoubleClick(Widget w, int x, int y, int button)
   {
     foreach(TraderPlusCategoryMenu categoryMenu: m_CategoryMenuControllers)
     {
@@ -2101,7 +2101,6 @@ class TraderPlusMenu extends UIScriptedMenu
 	{
 		super.OnShow();
 		PPEffects.SetBlurMenu(0.5);
-		GetGame().GetInput().ChangeGameFocus(1);
     GetGame().GetUIManager().ShowUICursor(true);
     GetGame().GetMission().GetHud().Show(false);
     GetGame().GetMission().PlayerControlDisable(INPUT_EXCLUDE_ALL);
@@ -2115,7 +2114,6 @@ class TraderPlusMenu extends UIScriptedMenu
     GetGame().GetUIManager().ShowUICursor(false);
     GetGame().GetMission().GetHud().Show(true);
     GetGame().GetMission().PlayerControlEnable(false);
-		GetGame().GetInput().ResetGameFocus();
     if ( m_previewItem )
         GetGame().ObjectDelete( m_previewItem );
     if (m_previewPlayer)

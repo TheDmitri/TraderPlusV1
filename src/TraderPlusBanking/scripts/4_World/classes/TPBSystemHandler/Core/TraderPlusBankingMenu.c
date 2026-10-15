@@ -61,14 +61,16 @@ class TraderPlusBankingMenu extends UIScriptedMenu
   {
     if(rep)
     {
-      GetGame().GetInput().ChangeGameFocus(1);
+      if (GetGame().GetMission())
+        GetGame().GetMission().AddActiveInputExcludes({"menu"});
       GetGame().GetUIManager().ShowUICursor(true);
       GetGame().GetMission().GetHud().Show(false);
       OnShow();
     }
     else
     {
-      GetGame().GetInput().ResetGameFocus();
+      if (GetGame().GetMission())
+        GetGame().GetMission().RemoveActiveInputExcludes({"menu"}, true);
       GetGame().GetUIManager().ShowUICursor(false);
       GetGame().GetMission().GetHud().Show(true);
       OnHide();
@@ -80,7 +82,8 @@ class TraderPlusBankingMenu extends UIScriptedMenu
 	{
 		super.OnShow();
 		PPEffects.SetBlurMenu(0.5);
-		GetGame().GetInput().ChangeGameFocus(1);
+		if (GetGame().GetMission())
+		  GetGame().GetMission().AddActiveInputExcludes({"menu"});
 		SetFocus( layoutRoot );
     UIHandle();
 	}
@@ -89,7 +92,8 @@ class TraderPlusBankingMenu extends UIScriptedMenu
 	{
 		super.OnHide();
 		PPEffects.SetBlurMenu(0);
-		GetGame().GetInput().ResetGameFocus();
+		if (GetGame().GetMission())
+		  GetGame().GetMission().RemoveActiveInputExcludes({"menu"}, true);
 		Close();
 	}
 
@@ -341,7 +345,7 @@ class TraderPlusBankingMenu extends UIScriptedMenu
     GetGame().CopyToClipboard(m_AccountID);
   }
 
-  bool OnChange(Widget w, int x, int y, bool finished)
+  override bool OnChange(Widget w, int x, int y, bool finished)
 	{
 		super.OnChange(w,x,y,finished);
 

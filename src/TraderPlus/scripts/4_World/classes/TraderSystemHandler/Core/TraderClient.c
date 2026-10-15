@@ -132,7 +132,7 @@ class TraderPlusClient
       
       GetTraderPlusLogger().LogDebug("CalculatePriceForThatItem: state is not accepted");
       
-      return -1,
+      return -1;
     }
 
 		if(!m_TraderPlusItems.traderPlusItems || !m_TraderPlusItems.traderPlusItems[category] || m_TraderPlusItems.traderPlusItems[category].Count() < 1)return -1;

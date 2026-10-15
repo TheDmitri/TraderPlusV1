@@ -24,7 +24,7 @@ class HideOutObject extends Armband_Yellow
 		return false;
 	}
 
-	override bool CanPutInCargo( EntityAI item )
+	override bool CanPutInCargo( EntityAI parent )
 	{
 		return false;
 	}

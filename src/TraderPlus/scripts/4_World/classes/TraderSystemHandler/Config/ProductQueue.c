@@ -44,6 +44,6 @@ class ProductQueue
 
     bool HasNextQueue()
     {
-      return queue.IsValidIndex(0));
+      return queue.IsValidIndex(0);
     }
 }
