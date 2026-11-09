@@ -48,20 +48,27 @@ class TPMB
         return true;
     }
 
+    static ref map<string, bool> s_Supported;
+
+    // Any bike whose config class inherits MotorbikeScript, vanilla or modded.
     static bool Supports(string type)
     {
-        switch (type)
+        if (type == "")
+            return false;
+        if (!s_Supported)
+            s_Supported = new map<string, bool>;
+        bool supported;
+        if (!s_Supported.Find(type, supported))
         {
-            case "Motorbike_01_Blue":
-            case "Motorbike_01_Red":
-            case "Motorbike_01_Yellow":
-            case "Motorbike_02_Blue":
-            case "Motorbike_02_Green":
-            case "Motorbike_02_Red":
-            case "Motorbike_02_Yellow":
-                return true;
+            supported = GetGame().IsKindOf(type, "MotorbikeScript");
+            s_Supported.Set(type, supported);
         }
-        return false;
+        return supported;
+    }
+
+    static bool IsVanillaFamily(string type, string family)
+    {
+        return type.IndexOf(family + "_") == 0;
     }
 
 
@@ -240,20 +247,15 @@ class TPMB
         return null;
     }
 
+    // Bike parts are stored by class name. Locks, keys and containers are never stored
+    // (Capture also refuses parts that hold cargo or attachments).
     static bool AllowedPart(string type)
     {
-        if (type == "SparkPlug" || type == "HeadlightH7")
-            return true;
-        if (type == "Motorbike_01_Wheel_1" || type == "Motorbike_01_Wheel_2" || type == "Motorbike_02_Wheel_1" || type == "Motorbike_02_Wheel_2")
-            return true;
-        // Only exact vanilla panel names; never serialize keys, locks or custom scripted cargo.
-        TStringArray colors = {"Blue", "Green", "Red", "Yellow"};
-        foreach (string color : colors)
-        {
-            if (type == "Motorbike_02_ShieldFront_" + color || type == "Motorbike_02_ShieldLeft_" + color || type == "Motorbike_02_ShieldRight_" + color)
-                return true;
-        }
-        return false;
+        if (type == "" || !GetGame().ConfigIsExisting("CfgVehicles " + type))
+            return false;
+        if (GetGame().IsKindOf(type, "CarLock") || GetGame().IsKindOf(type, "CombinationLock") || GetGame().IsKindOf(type, "Container_Base"))
+            return false;
+        return true;
     }
 
     static bool EnsurePart(MotorbikeScript bike, string type)
@@ -290,16 +292,22 @@ class TPMB
             if (tokens.Count() == 0 || !EnsurePart(bike, tokens[0]))
                 return false;
         }
+        return EquipVanillaParts(bike);
+    }
+
+    // Vanilla bikes also need their wheels, headlight and spark plug; modded bikes rely on VehiclesParts.
+    static bool EquipVanillaParts(MotorbikeScript bike)
+    {
         string type = bike.GetType();
-        {
-            string family = "Motorbike_02";
-            if (type == "Motorbike_01_Blue" || type == "Motorbike_01_Red" || type == "Motorbike_01_Yellow")
-                family = "Motorbike_01";
-            if (!EnsurePart(bike, family + "_Wheel_1") || !EnsurePart(bike, family + "_Wheel_2") || !EnsurePart(bike, "HeadlightH7"))
-                return false;
-            if (bike.IsVitalSparkPlug() && !EnsurePart(bike, "SparkPlug"))
-                return false;
-        }
+        if (!IsVanillaFamily(type, "Motorbike_01") && !IsVanillaFamily(type, "Motorbike_02"))
+            return true;
+        string family = "Motorbike_02";
+        if (IsVanillaFamily(type, "Motorbike_01"))
+            family = "Motorbike_01";
+        if (!EnsurePart(bike, family + "_Wheel_1") || !EnsurePart(bike, family + "_Wheel_2") || !EnsurePart(bike, "HeadlightH7"))
+            return false;
+        if (bike.IsVitalSparkPlug() && !EnsurePart(bike, "SparkPlug"))
+            return false;
         return true;
     }
 
@@ -455,10 +463,10 @@ modded class TraderPlusHelper
 
     override static bool CreateInInventoryWithState(PlayerBase player, string classname, int state = 0, int quantity = 1, int collateralMoney = 0)
     {
-        if (!TPMB.Supports(classname))
-            return super.CreateInInventoryWithState(player, classname, state, quantity, collateralMoney);
-        // Supported purchases must use TPMBBuy, which confirms payment and stock.
-        return false;
+        // Garage purchases go through TPMBBuy; without the garage a bike is bought as a receipt like a car.
+        if (TPMB.Supports(classname) && GetTraderPlusConfigServer().UseGarageToTradeCar)
+            return false;
+        return super.CreateInInventoryWithState(player, classname, state, quantity, collateralMoney);
     }
 };
 
@@ -469,11 +477,9 @@ modded class TraderPlusServer
         if (product && TPMB.Supports(product.ClassName))
         {
             Print("[TPMB] BuyRequest: type=" + product.ClassName + " trader=" + product.TraderID.ToString() + " category=" + product.Category + " multiplier=" + product.Multiplier.ToString());
+            // Without the garage, bikes are bought as receipts through the normal vehicle path.
             if (!GetTraderPlusConfigServer().UseGarageToTradeCar)
-            {
-                TPMB.Notify(product.Customer, "Purchase refused: motorbikes are bought through the Garage (UseGarageToTradeCar is off).");
-                return false;
-            }
+                return super.BuyRequest(product);
             if (product.Multiplier != 1)
             {
                 TPMB.Notify(product.Customer, "Purchase refused: buy one motorbike per transaction.");
@@ -520,7 +526,7 @@ modded class TraderPlusServer
                 if (fields.Count() < 6)
                     continue;
                 string name = fields[0];
-                name.Trim();
+                name.TrimInPlace();
                 name.ToLower();
                 if (name == wanted)
                     return fields;
@@ -693,9 +699,10 @@ modded class TraderPlusServer
     override bool SellRequest(TraderPlusProduct product)
     {
         // Original vehicle sale removes a Garage entry through an unchecked save.
-        if (product && TPMB.Supports(product.ClassName))
+        // Bike receipts sell like car receipts; selling a bike stored in the garage is not supported yet.
+        if (product && TPMB.Supports(product.ClassName) && product.TradMode == TRADEMODE_SELLVEHICLE)
         {
-            TPMB.Notify(product.Customer, "Motorbikes cannot be sold to traders yet.");
+            TPMB.Notify(product.Customer, "Motorbikes stored in the Garage cannot be sold to traders yet.");
             return false;
         }
         return super.SellRequest(product);

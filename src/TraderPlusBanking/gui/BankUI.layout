@@ -1,47 +1,52 @@
 PanelWidgetClass rootFrame {
- position 0.0017 0.0419
- size 1 1080
+ position 0 0
+ size 1 1
  halign center_ref
  valign center_ref
  hexactpos 0
  vexactpos 0
  hexactsize 0
- vexactsize 1
+ vexactsize 0
  style blank
  {
   PanelWidgetClass Background {
    visible 1
    ignorepointer 1
    keepsafezone 1
-   color 0 0 0 0.7412
-   position 0.00086 -0.03118
-   size 0.48413 611.71704
+   color 1 1 1 1
+   position 0 0
+   size 560 400
    halign center_ref
    valign center_ref
-   hexactpos 0
-   vexactpos 0
-   hexactsize 0
+   hexactpos 1
+   vexactpos 1
+   hexactsize 1
    vexactsize 1
-   style rover_sim_colorable
+   style TPV2Panel
    {
     PanelWidgetClass PlayerAccountPanel {
+     color 1 1 1 1
      visible 1
      ignorepointer 1
-     position 0.046 0.1662
-     size 0.9132 397.22202
-     hexactpos 0
-     vexactpos 0
-     hexactsize 0
+     position 14 66
+     size 532 236
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
      vexactsize 1
-     style Outline
+     style TPV2CatBar
      {
       TextWidgetClass PlayerFees {
+       "exact text size" 15
+       color 0.7216 0.6627 0.5804 1
+       font "TraderPlus/gui/fonts/tpcond16"
+       halign right_ref
        ignorepointer 1
-       position 0.81811 0.03795
-       size 0.16764 38.1275
-       hexactpos 0
-       vexactpos 0
-       hexactsize 0
+       position 12 6
+       size 200 24
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
        vexactsize 1
        text "#tpb_fees"
        "exact text" 1
@@ -49,140 +54,169 @@ PanelWidgetClass rootFrame {
        "text valign" center
       }
       GridSpacerWidgetClass GridPlayerPanel {
+       "Size To Content V" 1
+       Margin 6
+       Padding 4
        ignorepointer 1
-       position 0.014 0.133
-       size 0.97248 0.68118
-       hexactpos 0
-       vexactpos 0
-       hexactsize 0
-       vexactsize 0
+       position 12 30
+       size 508 200
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
+       vexactsize 1
        Columns 2
        Rows 5
        {
         TextWidgetClass BankAmountText {
+         "exact text size" 13
+         color 0.7216 0.6627 0.5804 1
          ignorepointer 1
-         position -0.03968 0.09299
-         size 0.35372 39.7132
-         hexactpos 0
-         vexactpos 0
+         position 0 0
+         size 1 34
+         hexactpos 1
+         vexactpos 1
          hexactsize 0
          vexactsize 1
-         style Bold
          text "#tpb_bank_amount"
-         font "TraderPlus/gui/fonts/regular22"
+         font "TraderPlus/gui/fonts/tpinter14"
          "exact text" 1
-         "text halign" right
+         "text halign" left
          "text valign" center
         }
         TextWidgetClass BankAmountTextInput {
+         "exact text size" 22
+         "exact text" 1
+         "text halign" left
+         color 0.9529 0.9137 0.8549 1
          ignorepointer 1
-         position 0.335 0.108
-         size 0.56729 38.0897
-         hexactpos 0
-         vexactpos 0
+         position 0 0
+         size 1 34
+         hexactpos 1
+         vexactpos 1
          hexactsize 0
          vexactsize 1
-         font "TraderPlus/gui/fonts/regular22"
+         font "TraderPlus/gui/fonts/tpcond24"
          "text valign" center
         }
         TextWidgetClass TransactionAmountText {
+         "exact text size" 13
+         color 0.7216 0.6627 0.5804 1
          ignorepointer 1
-         position 0.001 0.321
-         size 0.31308 28.1544
-         hexactpos 0
-         vexactpos 0
+         position 0 0
+         size 1 34
+         hexactpos 1
+         vexactpos 1
          hexactsize 0
          vexactsize 1
-         style Bold
          text "#tpb_transaction_amount"
-         font "TraderPlus/gui/fonts/regular22"
+         font "TraderPlus/gui/fonts/tpinter14"
          "exact text" 1
-         "text halign" right
+         "text halign" left
          "text valign" center
         }
         EditBoxWidgetClass PlayerAmountTextInput {
-         position 0.336 0.319
-         size 0.56714 32.3298
-         hexactpos 0
-         vexactpos 0
+         "text halign" left
+         "exact text size" 20
+         color 0.9529 0.9137 0.8549 1
+         style TPV2Field
+         position 0 0
+         size 1 34
+         hexactpos 1
+         vexactpos 1
          hexactsize 0
          vexactsize 1
          "Use default text" 0
          "exact text" 1
-         font "TraderPlus/gui/fonts/regular22"
+         font "TraderPlus/gui/fonts/tpcond20"
         }
         TextWidgetClass PlayerAmountText {
+         "exact text size" 13
+         color 0.7216 0.6627 0.5804 1
          ignorepointer 1
-         position 0.002 0.214
-         size 0.31308 35.8512
-         hexactpos 0
-         vexactpos 0
+         position 0 0
+         size 1 34
+         hexactpos 1
+         vexactpos 1
          hexactsize 0
          vexactsize 1
-         style Bold
-         text "#tpb_player_amount"
-         font "TraderPlus/gui/fonts/regular22"
+         text "ON YOU"
+         font "TraderPlus/gui/fonts/tpinter14"
          "exact text" 1
-         "text halign" right
+         "text halign" left
          "text valign" center
         }
         TextWidgetClass PlayerAmountTextOutput {
+         "exact text size" 22
+         "exact text" 1
+         "text halign" left
+         color 0.6118 0.7608 0.4627 1
          ignorepointer 1
-         position 0.336 0.215
-         size 0.56729 38.0897
-         hexactpos 0
-         vexactpos 0
+         position 0 0
+         size 1 34
+         hexactpos 1
+         vexactpos 1
          hexactsize 0
          vexactsize 1
-         font "TraderPlus/gui/fonts/regular22"
+         font "TraderPlus/gui/fonts/tpcond24"
          "text valign" center
         }
         TextWidgetClass MaxText {
+         "exact text size" 12
+         color 0.7216 0.6627 0.5804 1
          ignorepointer 1
-         position 0.621 0.755
-         size 0.28402 33.0969
-         hexactpos 0
-         vexactpos 0
+         position 0 0
+         size 1 22
+         hexactpos 1
+         vexactpos 1
          hexactsize 0
          vexactsize 1
-         style Bold
          text "#tpb_max"
-         font "TraderPlus/gui/fonts/regular22"
-         "text color" 1 0.749 0 1
+         font "TraderPlus/gui/fonts/tpinter14"
          "exact text" 1
-         "text halign" right
+         "text halign" left
          "text valign" center
         }
         ProgressBarWidgetClass MoneyProgressBar {
+         color 0.8510 0.4627 0.1843 1
          ignorepointer 1
-         position 0.04104 0.9375
-         size 0.94518 -21.4156
-         hexactpos 0
-         vexactpos 0
+         position 0 0
+         size 1 6
+         hexactpos 1
+         vexactpos 1
          hexactsize 0
          vexactsize 1
          style Stamina
          current 0
         }
         ButtonWidgetClass PlayerDepositBttn {
+         "exact text size" 17
+         "exact text" 1
+         "text color" 0.1020 0.0706 0.0392 1
+         font "TraderPlus/gui/fonts/tpcond18"
+         color 1 1 1 1
          visible 1
-         position 0.40131 0.437
-         size 0.27903 47.6531
-         hexactpos 0
-         vexactpos 0
+         position 0 0
+         size 1 40
+         hexactpos 1
+         vexactpos 1
          hexactsize 0
          vexactsize 1
-         style Editor
+         style TPV2BtnAccent
          text "#tpb_deposit"
         }
         ButtonWidgetClass PlayerWithdrawBttn {
-         position 0.2 0.70326
-         size 0.2294 -15.3921
-         hexactpos 0
-         vexactpos 0
+         "exact text size" 17
+         "exact text" 1
+         "text color" 0.8510 0.4627 0.1843 1
+         font "TraderPlus/gui/fonts/tpcond18"
+         color 1 1 1 1
+         position 0 0
+         size 1 40
+         hexactpos 1
+         vexactpos 1
          hexactsize 0
          vexactsize 1
-         style Editor
+         style TPV2IconBtn
          text "#tpb_withdraw"
         }
        }
@@ -600,17 +634,19 @@ PanelWidgetClass rootFrame {
      }
     }
     PanelWidgetClass TransfertPanel {
+     color 1 1 1 1
      visible 0
      ignorepointer 1
-     position 0.046 0.1662
-     size 0.9123 397.22
-     hexactpos 0
-     vexactpos 0
-     hexactsize 0
+     position 14 66
+     size 532 236
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
      vexactsize 1
-     style Outline
+     style TPV2CatBar
      {
       TextWidgetClass TransfertFees {
+       visible 0
        ignorepointer 1
        color 1 1 0.9961 1
        position 747.38098 12.5528
@@ -625,216 +661,264 @@ PanelWidgetClass rootFrame {
        "text valign" center
       }
       GridSpacerWidgetClass GridTransfer {
+       "Size To Content V" 1
+       Margin 6
+       Padding 4
        ignorepointer 1
-       position 0.0235 0.18618
-       size 0.95681 0.35711
-       hexactpos 0
-       vexactpos 0
-       hexactsize 0
-       vexactsize 0
+       position 12 10
+       size 508 160
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
+       vexactsize 1
        Columns 2
        {
         TextWidgetClass TransfertBankAmountText {
+         "exact text size" 13
+         color 0.7216 0.6627 0.5804 1
          ignorepointer 1
-         position 78.5926 95.7784
-         size 0.30286 46.6228
+         position 0 0
+         size 1 34
          hexactpos 1
          vexactpos 1
          hexactsize 0
          vexactsize 1
-         style Bold
          text "#tpb_bank_amount"
-         font "TraderPlus/gui/fonts/regular22"
+         font "TraderPlus/gui/fonts/tpinter14"
          "exact text" 1
          text_proportion 0.8
-         "text halign" right
+         "text halign" left
          "text valign" center
         }
         TextWidgetClass TransfertBankAmountTextOutput {
+         "exact text size" 22
+         "exact text" 1
+         "text halign" left
+         color 0.9529 0.9137 0.8549 1
          ignorepointer 1
-         position 354.92798 95.69559
-         size 0.24723 46.5159
+         position 0 0
+         size 1 34
          hexactpos 1
          vexactpos 1
          hexactsize 0
          vexactsize 1
-         font "TraderPlus/gui/fonts/regular22"
+         font "TraderPlus/gui/fonts/tpcond24"
          "text valign" center
         }
         TextWidgetClass TransfertAmountText {
+         "exact text size" 13
+         color 0.7216 0.6627 0.5804 1
          ignorepointer 1
-         position 35.76431 145.813
-         size 0.35057 47.8806
+         position 0 0
+         size 1 34
          hexactpos 1
          vexactpos 1
          hexactsize 0
          vexactsize 1
-         style Bold
          text "#tpb_transfer_amount"
-         font "TraderPlus/gui/fonts/regular22"
+         font "TraderPlus/gui/fonts/tpinter14"
          "exact text" 1
          text_proportion 0.8
-         "text halign" right
+         "text halign" left
          "text valign" center
         }
         EditBoxWidgetClass TransfertAmountTextInput {
-         position 0.963 0.67
-         size 0.059 0.446
-         hexactpos 0
-         vexactpos 0
-         hexactsize 0
-         vexactsize 0
-         "exact text" 1
-         font "TraderPlus/gui/fonts/regular22"
-        }
-        TextWidgetClass TransfertIDText {
-         ignorepointer 1
-         position 35.76431 145.813
-         size 0.35057 47.8806
+         "text halign" left
+         "exact text size" 20
+         color 0.9529 0.9137 0.8549 1
+         style TPV2Field
+         position 0 0
+         size 1 34
          hexactpos 1
          vexactpos 1
          hexactsize 0
          vexactsize 1
-         style Bold
+         "exact text" 1
+         font "TraderPlus/gui/fonts/tpcond20"
+        }
+        TextWidgetClass TransfertIDText {
+         "exact text size" 13
+         color 0.7216 0.6627 0.5804 1
+         ignorepointer 1
+         position 0 0
+         size 1 34
+         hexactpos 1
+         vexactpos 1
+         hexactsize 0
+         vexactsize 1
          text "#tpb_id_account"
-         font "TraderPlus/gui/fonts/regular22"
+         font "TraderPlus/gui/fonts/tpinter14"
          "exact text" 1
          text_proportion 0.8
-         "text halign" right
+         "text halign" left
          "text valign" center
         }
         EditBoxWidgetClass TransfertIDTextInput {
-         position 0.85 0.87
-         size 0.059 0.446
-         hexactpos 0
-         vexactpos 0
+         "text halign" left
+         "exact text size" 20
+         color 0.9529 0.9137 0.8549 1
+         style TPV2Field
+         position 0 0
+         size 1 34
+         hexactpos 1
+         vexactpos 1
          hexactsize 0
-         vexactsize 0
+         vexactsize 1
          "exact text" 1
-         font "TraderPlus/gui/fonts/regular22"
+         font "TraderPlus/gui/fonts/tpcond20"
         }
        }
       }
       ButtonWidgetClass TransfertBttn {
-       position 0.36507 0.55292
-       size 0.28292 39.8923
-       hexactpos 0
-       vexactpos 0
-       hexactsize 0
+       "exact text size" 17
+       "exact text" 1
+       "text color" 0.1020 0.0706 0.0392 1
+       font "TraderPlus/gui/fonts/tpcond18"
+       color 1 1 1 1
+       valign bottom_ref
+       position 12 12
+       size 508 40
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
        vexactsize 1
-       style Editor
+       style TPV2BtnAccent
        text "#tpb_transfer"
       }
      }
     }
     PanelWidgetClass PanelID {
+     color 1 1 1 1
      ignorepointer 1
-     position 0.046 0.8293
-     size 0.91273 0.11186
-     hexactpos 0
-     vexactpos 0
-     hexactsize 0
-     vexactsize 0
-     style Outline
+     position 14 336
+     size 532 50
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
+     vexactsize 1
+     style TPV2CardWell
      {
       GridSpacerWidgetClass GridID {
+       Margin 6
+       Padding 0
        ignorepointer 1
-       position 0.013 0.077
-       size 0.97707 0.85437
-       hexactpos 0
-       vexactpos 0
-       hexactsize 0
-       vexactsize 0
+       position 10 5
+       size 512 40
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
+       vexactsize 1
        Rows 1
        {
         TextWidgetClass PlayerIDText {
+         "exact text size" 12
+         color 0.7216 0.6627 0.5804 1
          ignorepointer 1
-         position -0.00595 0.3743
-         size 1.00588 0.48119
+         position 0 0
+         size 1 1
          hexactpos 0
          vexactpos 0
          hexactsize 0
          vexactsize 0
          text "#tpb_id_account"
-         font "TraderPlus/gui/fonts/regular22"
+         font "TraderPlus/gui/fonts/tpinter14"
          "exact text" 1
-         "text halign" right
+         "text halign" left
          "text valign" center
         }
         PanelWidgetClass PanelWidget2 {
          ignorepointer 1
-         color 0 0 0 0.5412
-         position -1.09128 1.18501
-         size 301.38898 99.71629
-         hexactpos 1
-         vexactpos 1
-         hexactsize 1
-         vexactsize 1
+         color 0 0 0 0
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
          style rover_sim_colorable
          {
           TextWidgetClass PlayerIDAccountText {
+           "exact text size" 18
+           "exact text" 1
+           color 0.9529 0.9137 0.8549 1
            ignorepointer 1
-           position 0.00499 0.0298
-           size 0.99522 0.94628
+           position 0 0
+           size 1 1
            hexactpos 0
            vexactpos 0
            hexactsize 0
            vexactsize 0
-           font "TraderPlus/gui/fonts/regular22"
+           font "TraderPlus/gui/fonts/tpcond18"
            text_proportion 0.6
-           "text halign" center
+           "text halign" left
            "text valign" center
           }
          }
         }
         ButtonWidgetClass CopyIDBttn {
-         position 0.00146 0.62449
-         size 0.99264 0.8254
-         hexactpos 0
-         vexactpos 0
+         "exact text size" 14
+         "exact text" 1
+         "text color" 0.9098 0.8627 0.7961 1
+         color 1 1 1 1
+         position 0 0
+         size 1 34
+         hexactpos 1
+         vexactpos 1
          hexactsize 0
-         vexactsize 0
-         style Editor
+         vexactsize 1
+         style TPV2IconBtn
          text "#tpb_copyid"
          text_proportion 0.6
-         font "TraderPlus/gui/fonts/regular22"
+         font "TraderPlus/gui/fonts/tpcond16"
         }
        }
       }
      }
     }
     GridSpacerWidgetClass GridBttn {
+     Margin 0
+     Padding 0
      ignorepointer 1
-     position 0.046 0.043
-     size 0.91017 0.1073
-     hexactpos 0
-     vexactpos 0
-     hexactsize 0
-     vexactsize 0
+     position 14 14
+     size 532 44
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
+     vexactsize 1
      Rows 1
      {
       ButtonWidgetClass PlayerAccountBttn {
-       position 0.04335 0.04262
-       size 0.30356 67.6192
-       hexactpos 0
-       vexactpos 0
-       hexactsize 0
-       vexactsize 1
-       scaled 1
-       draggable 0
-       style Editor
-       text "#tpb_player_account"
-       text_proportion 0.5
-      }
-      ButtonWidgetClass PtPTransfertBttn {
-       visible 1
-       position 657.50098 36.024
-       size 0.28601 67.6192
+       "exact text size" 16
+       "exact text" 1
+       "text color" 0.8510 0.4627 0.1843 1
+       font "TraderPlus/gui/fonts/tpcond16"
+       color 1 1 1 1
+       position 0 0
+       size 1 44
        hexactpos 1
        vexactpos 1
        hexactsize 0
        vexactsize 1
-       style Editor
+       scaled 1
+       draggable 0
+       style TPV2IconBtn
+       text "#tpb_player_account"
+       text_proportion 0.5
+      }
+      ButtonWidgetClass PtPTransfertBttn {
+       "exact text size" 16
+       "exact text" 1
+       "text color" 0.7216 0.6627 0.5804 1
+       font "TraderPlus/gui/fonts/tpcond16"
+       color 1 1 1 1
+       visible 1
+       position 0 0
+       size 1 44
+       hexactpos 1
+       vexactpos 1
+       hexactsize 0
+       vexactsize 1
+       style TPV2IconBtn
        text "#tpb_player_transfer"
        text_proportion 0.5
       }
@@ -854,14 +938,17 @@ PanelWidgetClass rootFrame {
      }
     }
     RichTextWidgetClass PlayerDebugText {
+     "exact text size" 13
+     "exact text" 1
+     font "TraderPlus/gui/fonts/tpinter14"
      visible 1
      ignorepointer 1
-     color 1 0.749 0 1
-     position 0.05415 0.70987
-     size 0.89768 51.4599
-     hexactpos 0
-     vexactpos 0
-     hexactsize 0
+     color 0.8784 0.4784 0.3882 1
+     position 14 306
+     size 532 26
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
      vexactsize 1
      "text halign" center
      "text valign" center

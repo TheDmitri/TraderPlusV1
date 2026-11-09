@@ -1,0 +1,70 @@
+ImageSetClass {
+ Name "tpv2_icons"
+ RefSize 256 256
+ Textures {
+  ImageSetTextureClass {
+   mpix 0
+   path "TraderPlus/gui/imagesets/tpv2_icons.edds"
+  }
+  ImageSetTextureClass {
+   mpix 1
+   path "TraderPlus/gui/imagesets/tpv2_icons@2x.edds"
+  }
+ }
+ Images {
+  ImageSetDefClass coin {
+   Name "coin"
+   Pos 2 2
+   Size 64 64
+   Flags 0
+  }
+  ImageSetDefClass insurances {
+   Name "insurances"
+   Pos 70 2
+   Size 64 64
+   Flags 0
+  }
+  ImageSetDefClass inventory {
+   Name "inventory"
+   Pos 138 2
+   Size 64 64
+   Flags 0
+  }
+  ImageSetDefClass licences {
+   Name "licences"
+   Pos 2 70
+   Size 64 64
+   Flags 0
+  }
+  ImageSetDefClass market {
+   Name "market"
+   Pos 70 70
+   Size 64 64
+   Flags 0
+  }
+  ImageSetDefClass player {
+   Name "player"
+   Pos 138 70
+   Size 64 64
+   Flags 0
+  }
+  ImageSetDefClass search {
+   Name "search"
+   Pos 2 138
+   Size 64 64
+   Flags 0
+  }
+  ImageSetDefClass trader {
+   Name "trader"
+   Pos 70 138
+   Size 64 64
+   Flags 0
+  }
+  ImageSetDefClass vehicles {
+   Name "vehicles"
+   Pos 138 138
+   Size 64 64
+   Flags 0
+  }
+ }
+}

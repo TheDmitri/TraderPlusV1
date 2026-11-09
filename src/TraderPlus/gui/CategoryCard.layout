@@ -18,7 +18,7 @@ GridSpacerWidgetClass rootframe {
   PanelWidgetClass CategoryCardPanel {
    visible 1
    ignorepointer 1
-   color 1 1 1 0.9412
+   color 1 1 1 1
    size 1 49
    halign center_ref
    valign center_ref
@@ -26,12 +26,12 @@ GridSpacerWidgetClass rootframe {
    vexactpos 0
    hexactsize 0
    vexactsize 1
-   style Outline
+   style TPV2CatBar
    {
     PanelWidgetClass TitleBackground {
      visible 1
      ignorepointer 1
-     color 0 0 0 1
+     color 0 0 0 0
      size 0.995 44
      halign center_ref
      valign center_ref
@@ -42,6 +42,8 @@ GridSpacerWidgetClass rootframe {
      style rover_sim_colorable
     }
     TextWidgetClass Title {
+     "exact text size" 18
+     color 0.9098 0.8627 0.7961 1
      visible 1
      ignorepointer 1
      position 21.6083 -0.36264
@@ -55,8 +57,8 @@ GridSpacerWidgetClass rootframe {
      scriptclass ""
      style Normal
      text "CATEGORYNAME"
-     font "TraderPlus/gui/fonts/regular22"
-     "exact text" 0
+     font "TraderPlus/gui/fonts/tpcond20"
+     "exact text" 1
      "text halign" left
      "text valign" center
     }
@@ -64,7 +66,7 @@ GridSpacerWidgetClass rootframe {
      visible 1
      clipchildren 0
      ignorepointer 0
-     color 0.8627 0.8627 0.8627 1
+     color 1 1 1 1
      size 1 1
      halign center_ref
      valign center_ref
@@ -74,9 +76,10 @@ GridSpacerWidgetClass rootframe {
      vexactsize 0
      userID 20062003
      scriptclass ""
-     style Default
+     style TPV2CatBtn
     }
     TextWidgetClass ProductsCount {
+     color 0.7216 0.6627 0.5804 1
      ignorepointer 1
      position 0.8435 0.06401
      size 0.15428 0.88178
@@ -85,7 +88,7 @@ GridSpacerWidgetClass rootframe {
      hexactsize 0
      vexactsize 0
      text "0/100"
-	 font "TraderPlus/gui/fonts/regular22"
+     font "TraderPlus/gui/fonts/tpinter14"
      "text halign" right
      "text valign" center
     }

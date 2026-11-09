@@ -2,6 +2,8 @@ class TraderPlusMenu extends UIScriptedMenu
 {
   //Widget of TraderPlusUI
   private   Widget            m_Background;
+  private   Widget            m_BeansBadge;
+  private   TextWidget        m_BeansBadgeText;
             Widget            m_HighLightProduct;
   private   Widget            m_PanelStockOutline;
   private   Widget            m_LicenceWarningPanel;
@@ -238,7 +240,12 @@ class TraderPlusMenu extends UIScriptedMenu
 
   override Widget Init()
   {
-		    layoutRoot = GetGame().GetWorkspace().CreateWidgets( GetTraderPlusLayoutPath() );
+		    string layoutPath = GetTraderPlusLayoutPath();
+		    // Trader Plus Exploit Fix swaps in a 2024 copy of this layout to hide the quantity and
+		    // insurance controls; both exploits are now refused server-side, so keep our layout.
+		    if (layoutPath == "TraderPlusExpliotFix/gui/TraderPlusUIExploitFix.layout")
+		      layoutPath = "TraderPlus/gui/TraderPlusUI.layout";
+		    layoutRoot = GetGame().GetWorkspace().CreateWidgets( layoutPath );
         m_StockScrollPanel = Widget.Cast(layoutRoot.FindAnyWidget("StockScrollPanel"));
         m_InventoryScrollPanel = Widget.Cast(layoutRoot.FindAnyWidget("InventoryScrollPanel"));
         m_LicenceWarningPanel = Widget.Cast(layoutRoot.FindAnyWidget( "LicenceWarningPanel" ));
@@ -269,6 +276,11 @@ class TraderPlusMenu extends UIScriptedMenu
         m_BuyPriceText = TextWidget.Cast(layoutRoot.FindAnyWidget( "BttnBuy_label" ));
         m_SellPriceText = TextWidget.Cast(layoutRoot.FindAnyWidget( "BttnSell_label" ));
         m_InformationText = RichTextWidget.Cast(layoutRoot.FindAnyWidget( "InformationText" ));
+        // Servers with their own TraderPlusUI.layout have no badge widget.
+        m_BeansBadge = layoutRoot.FindAnyWidget( "BeansBadge" );
+        m_BeansBadgeText = TextWidget.Cast(layoutRoot.FindAnyWidget( "BeansBadgeText" ));
+        if (m_BeansBadge)
+          m_BeansBadge.Show(!GetTraderPlusConfigClient().HideBeansLauncherBadge);
         m_ItemDescription = MultilineTextWidget.Cast(layoutRoot.FindAnyWidget( "ItemDescription" ));
         m_Background = Widget.Cast(layoutRoot.FindAnyWidget("ContentPanel"));
         m_PanelInventoryOutline = Widget.Cast(layoutRoot.FindAnyWidget("PanelInventoryOutline"));
@@ -515,6 +527,11 @@ class TraderPlusMenu extends UIScriptedMenu
   override bool OnMouseEnter(Widget w, int x, int y)
   {
     super.OnMouseEnter(w, x, y);
+    if (m_BeansBadge && w == m_BeansBadge && m_BeansBadgeText)
+    {
+      m_BeansBadgeText.SetColor(ARGB(255,217,118,47));
+      return true;
+    }
     switch(w)
     {
       case m_MainItemPreview:GetItemDescription();
@@ -528,6 +545,11 @@ class TraderPlusMenu extends UIScriptedMenu
 	override bool OnMouseLeave(Widget w, Widget enterW, int x, int y)
   {
     super.OnMouseLeave(w, enterW, x, y);
+    if (m_BeansBadge && w == m_BeansBadge && m_BeansBadgeText)
+    {
+      m_BeansBadgeText.SetColor(ARGB(230,242,233,216));
+      return true;
+    }
     switch(w)
     {
       case m_MainItemPreview:
@@ -1092,6 +1114,12 @@ class TraderPlusMenu extends UIScriptedMenu
   {
     super.OnClick(w,x,y,button);
 
+    if (m_BeansBadge && w == m_BeansBadge)
+    {
+      GetGame().OpenURL(TraderPlusBeansLauncherSettings.Link(GetTraderPlusConfigClient().BeansLauncherCode));
+      return true;
+    }
+
     foreach(TraderPlusCategoryMenu categoryMenu: m_CategoryMenuControllers)
     {
       categoryMenu.OnClick(w,x,y,button);
@@ -1238,7 +1266,7 @@ class TraderPlusMenu extends UIScriptedMenu
       m_GridInsurance.Show(false);
       m_BttnReset.Show(true);
       m_BttnRemove.Show(true);
-      m_ImagePlayerPreview.SetColor(ARGB(255,40,159,70));
+      m_ImagePlayerPreview.SetColor(ARGB(255,217,118,47));
 
       m_GridCenter.Update();
     }else if(m_PreviewID == TRADERPLUS_PLAYERPREVIEW)

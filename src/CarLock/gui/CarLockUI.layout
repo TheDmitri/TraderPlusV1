@@ -1,104 +1,107 @@
 WindowWidgetClass CarLockFrame {
  clipchildren 0
- position 0.22268 14.9256
- size 277.44501 188.354
+ position 0 0
+ size 300 196
  halign center_ref
  valign center_ref
  hexactpos 1
  vexactpos 1
  hexactsize 1
  vexactsize 1
- style rover_sim_black_2
+ style blank
  {
   PanelWidgetClass CarLockPanel {
    ignorepointer 1
-   color 0.749 0.749 0.749 1
+   color 1 1 1 1
    position 0 0
    size 1 1
    hexactpos 0
    vexactpos 0
    hexactsize 0
    vexactsize 0
-   style Outline
+   style TPV2Panel
    {
     ButtonWidgetClass BttnCancel {
-     color 0.5608 0.0706 0.0706 1
-     position 0.015 4.3178
-     size 25 25
+     "text color" 0.7216 0.6627 0.5804 1
+     color 1 1 1 1
+     position 8 8
+     size 32 32
      halign right_ref
-     hexactpos 0
+     hexactpos 1
      vexactpos 1
      hexactsize 1
      vexactsize 1
-     style Default
+     style TPV2IconBtn
      text "X"
      text_proportion 0.5
-     font "gui/fonts/metron"
+     font "TraderPlus/gui/fonts/tpcond18"
     }
     TextWidgetClass TextOutPut {
+     "exact text size" 17
+     color 0.9529 0.9137 0.8549 1
      ignorepointer 1
-     position 0 10
-     size 0.6725 35.65
-     halign center_ref
-     hexactpos 0
+     position 16 8
+     size 220 32
+     hexactpos 1
      vexactpos 1
-     hexactsize 0
+     hexactsize 1
      vexactsize 1
      text "ENTER PASSCODE"
-     font "gui/fonts/metron"
-     "exact text" 0
+     font "TraderPlus/gui/fonts/tpcond18"
+     "exact text" 1
      text_proportion 0.75
      "size to text h" 1
-     "text halign" center
+     "text halign" left
      "text valign" center
     }
     EditBoxWidgetClass PasswordInput {
-     color 0.8745 0.8745 0.8745 1
-     position -0.003 72.2081
-     size 243.722 45.2673
-     halign center_ref
-     hexactpos 0
+     "text halign" center
+     "exact text size" 26
+     color 0.9529 0.9137 0.8549 1
+     position 16 58
+     size 268 48
+     hexactpos 1
      vexactpos 1
      hexactsize 1
      vexactsize 1
      scaled 1
-     style DefaultBorder
+     style TPV2Field
      "no focus" 0
      "next left" ""
      text ""
      "limit visible" 0
      "Use default text" 0
-     "exact text" 0
-     font "gui/fonts/sdf_metronlight72"
+     "exact text" 1
+     font "TraderPlus/gui/fonts/tpcond28"
      "text color" 0.749 0.6078 0.1882 1
      "text sharpness" 2.838
     }
     PanelWidgetClass seperatorPanel {
      ignorepointer 1
-     color 0.8745 0.8745 0.8745 1
-     position -0.00282 55.4783
-     size 244.261 3.02171
-     halign center_ref
-     hexactpos 0
+     color 1 1 1 1
+     position 16 106
+     size 268 2
+     hexactpos 1
      vexactpos 1
      hexactsize 1
      vexactsize 1
-     style rover_sim_colorable
+     style TPV2Accent
     }
     ButtonWidgetClass BttnOK {
+     "text color" 0.1020 0.0706 0.0392 1
+     color 1 1 1 1
      keepsafezone 0
-     position 17.8253 18.3713
-     size 243.72 39.0434
-     halign right_ref
+     position 16 16
+     size 268 48
      valign bottom_ref
      hexactpos 1
      vexactpos 1
      hexactsize 1
      vexactsize 1
-     style Editor
+     style TPV2BtnAccent
      text "SET CAR PASSWORD"
      text_proportion 0.5
-     font "gui/fonts/metron"
+     font "TraderPlus/gui/fonts/tpcond18"
     }
    }
   }

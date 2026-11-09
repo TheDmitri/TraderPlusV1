@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "texture": "TraderPlus/gui/imagesets/tpv2_icons",
+  "hires": true,
+  "icons": {
+    "coin": {
+      "size": 64
+    },
+    "insurances": {
+      "size": 64
+    },
+    "inventory": {
+      "size": 64
+    },
+    "licences": {
+      "size": 64
+    },
+    "market": {
+      "size": 64
+    },
+    "player": {
+      "size": 64
+    },
+    "search": {
+      "size": 64
+    },
+    "trader": {
+      "size": 64
+    },
+    "vehicles": {
+      "size": 64
+    }
+  }
+}

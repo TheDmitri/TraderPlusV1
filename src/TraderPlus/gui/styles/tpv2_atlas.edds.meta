@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{7A3F0C51D29B64E8}TraderPlus/gui/styles/tpv2_atlas.edds"
+ Author "dmitri"
+ ChangeDate 0
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "tpv2_atlas.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

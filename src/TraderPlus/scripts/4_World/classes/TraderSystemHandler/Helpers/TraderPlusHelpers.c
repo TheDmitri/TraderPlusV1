@@ -695,10 +695,13 @@ static bool IsWearByPlayer(EntityAI entity)
   static int CheckItemType(string classname)
   {
     int returnValue = TraderPlusItemType.ITEM;
+    // Motorbikes (any MotorbikeScript) are vehicles too; the config check avoids spawning one.
+    if(GetGame().IsKindOf(classname, "MotorbikeScript") || GetGame().IsKindOf(classname, "CarScript"))
+      return TraderPlusItemType.VEHICLE;
     EntityAI ent = EntityAI.Cast(GetGame().CreateObject(classname,Vector(0,0,0)));
     if(ent)
     {
-      if(ent.IsInherited(CarScript))
+      if(ent.IsInherited(CarScript) || ent.IsInherited(MotorbikeScript))
         returnValue=TraderPlusItemType.VEHICLE;
 
       GetGame().ObjectDelete(ent);
@@ -722,7 +725,8 @@ static bool IsWearByPlayer(EntityAI entity)
         #ifdef TRADERPLUSDEBUG
         GetTraderPlusLogger().LogInfo("GetVehicleParts => found!");
         #endif
-        temp = GetTraderPlusVehiculeConfig().VehiclesParts.Get(i).VehicleParts;
+        // A copy: callers must not edit the loaded config.
+        temp.Copy(GetTraderPlusVehiculeConfig().VehiclesParts.Get(i).VehicleParts);
         return temp;
       }
     }
@@ -744,7 +748,8 @@ static bool IsWearByPlayer(EntityAI entity)
         #ifdef TRADERPLUSDEBUG
         GetTraderPlusLogger().LogInfo("GetVehicleParts => found!");
         #endif
-        attachments = GetTraderPlusVehiculeConfig().VehiclesParts.Get(i).VehicleParts;
+        // A copy: appending ",-1" to the config array itself grew it on every purchase.
+        attachments.Copy(GetTraderPlusVehiculeConfig().VehiclesParts.Get(i).VehicleParts);
         for(int j=0; j<attachments.Count(); j++)
         {
           attachments[j] = attachments[j] + ",-1";
@@ -823,27 +828,23 @@ static bool IsWearByPlayer(EntityAI entity)
     GarageData garageData = GarageData.Load(id, player.GetIdentity().GetName());
     if(garageData)
     {
-      if(garageData.Vehicles.Count() > position)
+      // One vehicle per sale: the selected entry, else the first of that type.
+      // The old fallback removed every vehicle of the same type.
+      int sold = -1;
+      if(position >= 0 && garageData.Vehicles.Count() > position && garageData.Vehicles[position].VehicleName == classname)
+        sold = position;
+      for(int j=0; sold == -1 && j<garageData.Vehicles.Count(); j++)
       {
-        if(garageData.Vehicles[position].VehicleName == classname)
-        {
-            garageData.Vehicles.RemoveOrdered(position);
-            garageData.Save(id);
-            state  = true;
-        }
+        if(garageData.Vehicles[j].VehicleName == classname)
+          sold = j;
       }
 
-      if(!state)
+      if(sold != -1)
       {
-        for(int j=0;j<garageData.Vehicles.Count();j++)
-        {
-          if(garageData.Vehicles[j].VehicleName == classname)
-          {
-              garageData.Vehicles.RemoveOrdered(j);
-              garageData.Save(id);
-              state  = true;
-          }
-        }
+        garageData.Vehicles[sold].DeleteCargoIfExist(GarageHelpers.GetLowSteamID(player.GetIdentity().GetPlainId()));
+        garageData.Vehicles.RemoveOrdered(sold);
+        garageData.Save(id);
+        state = true;
       }
 
       if(!state) return false;
@@ -934,6 +935,10 @@ static bool IsWearByPlayer(EntityAI entity)
 
   static bool CreateVehicle(PlayerBase player, string classname, vector position, vector orientation, array<string> attachments, EntityAI receipt, int carUniqueId, int collateralMoney, int carPassword = 0)
 	{
+		// Motorbikes from receipts are built by the Garage module (parts, fuel, owner and lock records).
+		if(GetGame().IsKindOf(classname, "MotorbikeScript"))
+			return TPMBReceipt.Deploy(player, classname, position, orientation, attachments, receipt, carPassword);
+
 		EntityAI obj = EntityAI.Cast(GetGame().CreateObject(classname, position, false, false, true));
 		if (obj)
 		{
@@ -1019,6 +1024,9 @@ static bool IsWearByPlayer(EntityAI entity)
 
         return true;
       }
+      // Not a car (other vehicle types are handled by their own modules): remove it,
+      // since a false result keeps the receipt.
+      GetGame().ObjectDelete(obj);
     }
     return false;
 	}
@@ -1377,11 +1385,21 @@ static bool IsWearByPlayer(EntityAI entity)
       int maxQuantity = GetMaxItemQuantityServer(classname);
       if(quantity < 0) quantity = maxQuantity;
 
-      if(quantity > maxQuantity)
+      // Items without a quantity (maxQuantity 0) are separate items: create one per unit asked
+      // (non-stackable currency paid out in bulk). The old recursion never ended for them.
+      if(maxQuantity <= 0)
       {
-        int remainingqty = quantity-maxQuantity;
-        quantity=maxQuantity;
-        CreateInInventory(player, classname, remainingqty, skipFillMag);
+        int extraItems = quantity - 1;
+        quantity = 0;
+        for(int n = 0; n < extraItems; n++)
+          CreateInInventory(player, classname, 0, skipFillMag);
+      }
+
+      // Extra full stacks first, in a loop: the old recursion went one level per stack.
+      while(quantity > maxQuantity)
+      {
+        quantity -= maxQuantity;
+        CreateInInventory(player, classname, maxQuantity, skipFillMag);
       }
 
       #ifdef TRADERPLUSDEBUG
