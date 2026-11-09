@@ -302,6 +302,17 @@ FrameWidgetClass rootFrame {
        vexactsize 0
        style rover_sim_colorable
        {
+        PanelWidgetClass TPV2StockBar {
+         ignorepointer 1
+         color 1 1 1 1
+         position 0 0
+         size 1 50
+         hexactpos 1
+         vexactpos 1
+         hexactsize 0
+         vexactsize 1
+         style TPV2Bar
+        }
         GridSpacerWidgetClass GridLeft {
          ignorepointer 1
          position 0 0
@@ -463,6 +474,17 @@ FrameWidgetClass rootFrame {
        vexactsize 0
        style rover_sim_colorable
        {
+        PanelWidgetClass TPV2InfoBar {
+         ignorepointer 1
+         color 1 1 1 1
+         position 0 0
+         size 1 64
+         hexactpos 1
+         vexactpos 1
+         hexactsize 0
+         vexactsize 1
+         style TPV2Bar
+        }
         GridSpacerWidgetClass GridCenter {
          visible 1
          ignorepointer 1
@@ -841,32 +863,27 @@ FrameWidgetClass rootFrame {
           }
          }
         }
-        GridSpacerWidgetClass GridButtons {
+        FrameWidgetClass GridButtons {
          ignorepointer 1
-         position 0.00741 0.00171
-         size 0.9 48
+         position 0 14
+         size 0.93 58
          halign center_ref
          valign bottom_ref
          hexactpos 0
-         vexactpos 0
+         vexactpos 1
          hexactsize 0
          vexactsize 1
-         Padding 5
-         Margin 10
-         "Size To Content V" 1
-         Columns 2
-         Rows 2
          {
           PanelWidgetClass BuyPanelWidget {
            visible 1
            ignorepointer 1
            color 0 0 0 0
            position 0 0
-           size 1 64
-           hexactpos 1
-           vexactpos 1
-           hexactsize 1
-           vexactsize 1
+           size 1 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
            style rover_sim_colorable
            {
             ButtonWidgetClass BttnBuy {
@@ -875,8 +892,8 @@ FrameWidgetClass rootFrame {
              position 0 0
              size 1 1
              valign center_ref
-             hexactpos 1
-             vexactpos 1
+             hexactpos 0
+             vexactpos 0
              hexactsize 0
              vexactsize 0
              style TPV2BtnAccent
@@ -905,11 +922,11 @@ FrameWidgetClass rootFrame {
            ignorepointer 1
            color 0 0 0 0
            position 0 0
-           size 1 64
-           hexactpos 1
-           vexactpos 1
+           size 1 1
+           hexactpos 0
+           vexactpos 0
            hexactsize 0
-           vexactsize 1
+           vexactsize 0
            style rover_sim_colorable
            {
             ButtonWidgetClass BttnSell {
@@ -917,10 +934,9 @@ FrameWidgetClass rootFrame {
              color 1 1 1 1
              position 0 0
              size 1 1
-             halign right_ref
              valign center_ref
-             hexactpos 1
-             vexactpos 1
+             hexactpos 0
+             vexactpos 0
              hexactsize 0
              vexactsize 0
              style TPV2BtnAccent
@@ -974,6 +990,17 @@ FrameWidgetClass rootFrame {
        vexactsize 0
        style rover_sim_colorable
        {
+        PanelWidgetClass TPV2InventoryBar {
+         ignorepointer 1
+         color 1 1 1 1
+         position 0 0
+         size 1 48
+         hexactpos 1
+         vexactpos 1
+         hexactsize 0
+         vexactsize 1
+         style TPV2Bar
+        }
         GridSpacerWidgetClass GridRight {
          ignorepointer 1
          position -0.00163 -0.00023
@@ -1080,6 +1107,7 @@ FrameWidgetClass rootFrame {
      Rows 1
      {
       TextWidgetClass PlayerMoneyText {
+       "exact text size" 20
        ignorepointer 1
        color 0.6118 0.7608 0.4627 1
        position 5.00504 0.50465
@@ -1091,7 +1119,7 @@ FrameWidgetClass rootFrame {
        text "$1,873,981"
        font "TraderPlus/gui/fonts/tpcond22"
        "text color" 1 0.6588 0 1
-       "exact text" 0
+       "exact text" 1
        "size to text h" 1
        "text halign" right
        "text valign" center
@@ -1107,6 +1135,17 @@ FrameWidgetClass rootFrame {
      hexactsize 1
      vexactsize 1
      {
+      PanelWidgetClass TPV2AvatarFrame {
+       ignorepointer 1
+       color 1 1 1 1
+       position 0 0
+       size 84 88
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
+       vexactsize 1
+       style TPV2Panel
+      }
       GridSpacerWidgetClass GridTrader {
        visible 1
        ignorepointer 1
@@ -1122,6 +1161,8 @@ FrameWidgetClass rootFrame {
        Rows 2
        {
         TextWidgetClass TraderNameText {
+         "exact text size" 28
+         "exact text" 1
          color 0.9529 0.9137 0.8549 1
          ignorepointer 1
          position 0.08073 0.4276
@@ -1136,9 +1177,11 @@ FrameWidgetClass rootFrame {
          "text valign" center
         }
         TextWidgetClass TraderDescriptionText {
+         "exact text size" 16
+         "exact text" 1
          color 0.851 0.4627 0.1843 1
          ignorepointer 1
-         position 1.1623 42.8743
+         position 1.1623 38
          size 350 45
          hexactpos 1
          vexactpos 1
@@ -1156,10 +1199,10 @@ FrameWidgetClass rootFrame {
        image0 "set:tpv2_icons image:trader"
        color 0.851 0.4627 0.1843 1
        ignorepointer 1
-       position 0.00421 0.02814
-       size 84.431 88.0957
-       hexactpos 0
-       vexactpos 0
+       position 16 18
+       size 52 52
+       hexactpos 1
+       vexactpos 1
        hexactsize 1
        vexactsize 1
        mode blend

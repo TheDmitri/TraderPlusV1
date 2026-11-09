@@ -42,8 +42,8 @@ PanelWidgetClass ProductWrapper {
     PanelWidgetClass PanelPrice {
      ignorepointer 1
      color 1 1 1 1
-     position 0.01836 0.74671
-     size 0.96423 0.11237
+     position 0.01772 0.825
+     size 0.48 0.155
      hexactpos 0
      vexactpos 0
      hexactsize 0
@@ -62,17 +62,18 @@ PanelWidgetClass ProductWrapper {
        scaled 1
        {
         TextWidgetClass Price {
+         "exact text size" 16
          ignorepointer 1
          color 0.9529 0.9137 0.8549 1
-         position 0.45119 0.03103
-         size 0.54794 0.97616
+         position 0.32 0.03103
+         size 0.66 0.97616
          hexactpos 0
          vexactpos 0
          hexactsize 0
          vexactsize 0
          text "100"
          font "TraderPlus/gui/fonts/tpcond14"
-         "exact text" 0
+         "exact text" 1
          "size to text h" 0
          "size to text v" 0
          "text valign" center
@@ -82,7 +83,7 @@ PanelWidgetClass ProductWrapper {
          image0 "set:tpv2_icons image:coin"
          ignorepointer 1
          color 0.851 0.4627 0.1843 1
-         position 0.30775 0
+         position 0.1 0
          size 18 18
          hexactpos 0
          vexactpos 0
@@ -99,8 +100,8 @@ PanelWidgetClass ProductWrapper {
     PanelWidgetClass PanelStockcCount {
      ignorepointer 1
      color 1 1 1 1
-     position 0.01678 0.87305
-     size 0.96408 0.10902
+     position 0.505 0.825
+     size 0.48 0.155
      hexactpos 0
      vexactpos 0
      hexactsize 0
@@ -108,10 +109,11 @@ PanelWidgetClass ProductWrapper {
      style TPV2Card
      {
       TextWidgetClass StockCountTitle {
+       "exact text size" 11
        color 0.7216 0.6627 0.5804 1
        ignorepointer 1
-       position 0.00326 0.0406
-       size 0.448 0.90974
+       position 0.06 0.0406
+       size 0.4 0.90974
        hexactpos 0
        vexactpos 0
        hexactsize 0
@@ -119,15 +121,17 @@ PanelWidgetClass ProductWrapper {
        style Bold
        text "STOCK"
        font "TraderPlus/gui/fonts/tpcond12"
-       "exact text" 0
+       "exact text" 1
        "size to text h" 0
        "text valign" center
       }
       TextWidgetClass StockCountInput {
+       "exact text size" 13
+       "exact text" 1
        color 0.9098 0.8627 0.7961 1
        ignorepointer 1
-       position 0.45503 0.00141
-       size 0.53645 0.92859
+       position 0.46 0.00141
+       size 0.52 0.92859
        hexactpos 0
        vexactpos 0
        hexactsize 0
@@ -142,7 +146,7 @@ PanelWidgetClass ProductWrapper {
      ignorepointer 1
      color 1 1 1 1
      position 0.01398 0.18913
-     size 0.96989 0.54555
+     size 0.96989 0.62
      hexactpos 0
      vexactpos 0
      hexactsize 0
