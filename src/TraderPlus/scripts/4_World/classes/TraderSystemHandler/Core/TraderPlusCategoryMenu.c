@@ -176,7 +176,7 @@ class TraderPlusCategoryMenu extends UIScriptedMenu
       {
         Widget highLightProduct = Widget.Cast(widget.FindAnyWidget("Highlight"));
         highLightProduct.Show(true);
-        highLightProduct.SetColor(ARGB(250,217,118,47));
+        highLightProduct.SetColor(ARGB(255,127,166,90));
         itemName.SetColor(ARGB(250,217,118,47));
       }
       m_WidgetStockList.Insert(widget, i);

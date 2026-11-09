@@ -36,6 +36,14 @@ class CfgMods
 		dependencies[] = {"Game","World","Mission"};
 		class defs
 		{
+			class widgetStyles
+			{
+				files[] = {"TraderPlus/gui/styles/tpv2_styles.styles"};
+			};
+			class imageSets
+			{
+				files[] = {"TraderPlus/gui/styles/tpv2_ui.imageset","TraderPlus/gui/imagesets/tpv2_icons.imageset"};
+			};
 			class gameScriptModule
 			{
 				value = "";

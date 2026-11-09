@@ -20,7 +20,7 @@ PanelWidgetClass ProductWrapper {
    hexactsize 0
    vexactsize 0
    scriptclass ""
-   style DayZDefaultPanel
+   style TPV2Fill
   }
   ButtonWidgetClass ProductBtn {
    disabled 0
@@ -41,14 +41,14 @@ PanelWidgetClass ProductWrapper {
    {
     PanelWidgetClass PanelPrice {
      ignorepointer 1
-     color 0.1098 0.0941 0.0745 1
+     color 1 1 1 1
      position 0.00118 0.52443
      size 0.99862 0.48911
      hexactpos 0
      vexactpos 0
      hexactsize 0
      vexactsize 0
-     style DayZDefaultPanelBottom
+     style TPV2Card
      {
       PanelWidgetClass GridSpacerWidget0 {
        ignorepointer 1
@@ -71,13 +71,14 @@ PanelWidgetClass ProductWrapper {
          hexactsize 0
          vexactsize 0
          text "100"
-         font "TraderPlus/gui/fonts/regular16"
+         font "TraderPlus/gui/fonts/tpcond16"
          "exact text" 0
          "size to text h" 0
          "size to text v" 0
          "text valign" center
         }
         ImageWidgetClass Coin {
+         image0 "set:tpv2_icons image:coin"
          ignorepointer 1
          color 0.851 0.4627 0.1843 1
          position 0.55512 -0.06378
@@ -86,11 +87,9 @@ PanelWidgetClass ProductWrapper {
          vexactpos 0
          hexactsize 0
          vexactsize 0
-         imageTexture "{06ED1030C49F91FB}TraderPlus/gui/coin.edds"
-         mode additive
+         mode blend
          "src alpha" 1
          stretch 1
-         Mask "{06ED1030C49F91FB}TraderPlus/gui/coin.edds"
         }
         TextWidgetClass StockCountInput {
          color 0.9098 0.8627 0.7961 1
@@ -102,7 +101,7 @@ PanelWidgetClass ProductWrapper {
          hexactsize 0
          vexactsize 0
          text "50/100"
-         font "TraderPlus/gui/fonts/regular16"
+         font "TraderPlus/gui/fonts/tpinter16"
          "text halign" center
          "text valign" center
         }
@@ -117,7 +116,7 @@ PanelWidgetClass ProductWrapper {
          vexactsize 0
          style Bold
          text "STOCK"
-         font "TraderPlus/gui/fonts/regular16"
+         font "TraderPlus/gui/fonts/tpcond16"
          "exact text" 0
          "size to text h" 0
          "text valign" center
@@ -128,14 +127,14 @@ PanelWidgetClass ProductWrapper {
     }
     PanelWidgetClass PanelTitle {
      ignorepointer 1
-     color 0.149 0.1255 0.098 1
+     color 1 1 1 1
      position 0.0028 0.02798
      size 0.99744 0.47027
      hexactpos 0
      vexactpos 0
      hexactsize 0
      vexactsize 0
-     style DayZDefaultPanelBottom
+     style TPV2CardTitle
      {
       ImageWidgetClass Health {
        visible 1
@@ -172,7 +171,7 @@ PanelWidgetClass ProductWrapper {
        scaled 1
        scriptclass ""
        style Normal
-       font "TraderPlus/gui/fonts/regular16"
+       font "TraderPlus/gui/fonts/tpcond16"
        "exact text" 0
        "exact text size" 8
        "size to text h" 0
@@ -194,7 +193,7 @@ PanelWidgetClass ProductWrapper {
        vexactsize 0
        scriptclass ""
        style Normal
-       font "TraderPlus/gui/fonts/regular16"
+       font "TraderPlus/gui/fonts/tpcond16"
        "exact text" 0
        "size to text h" 0
        "size to text v" 0
@@ -215,7 +214,7 @@ PanelWidgetClass ProductWrapper {
        vexactsize 0
        scriptclass ""
        style Normal
-       font "TraderPlus/gui/fonts/regular16"
+       font "TraderPlus/gui/fonts/tpcond16"
        "exact text" 0
        "size to text h" 0
        "size to text v" 0
@@ -236,7 +235,7 @@ PanelWidgetClass ProductWrapper {
        vexactsize 0
        scriptclass ""
        style Normal
-       font "TraderPlus/gui/fonts/regular16"
+       font "TraderPlus/gui/fonts/tpcond16"
        "exact text" 0
        "size to text h" 0
        "size to text v" 0

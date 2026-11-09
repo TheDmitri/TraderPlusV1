@@ -1,0 +1,121 @@
+{
+  "output": "tpv2",
+  "texture": "{00000000-0000-0000-0000-000000000000}TraderPlus/gui/styles/tpv2_atlas.edds",
+  "styles": [
+    {
+      "name": "TPV2Panel",
+      "type": "panel",
+      "bg": "#13100ca8",
+      "border": "#3a3127"
+    },
+    {
+      "name": "TPV2Bar",
+      "type": "panel",
+      "bg": "#1c1813",
+      "bottom": "#3a3127"
+    },
+    {
+      "name": "TPV2Field",
+      "type": "panel",
+      "bg": "#0f0d0a",
+      "border": "#3a3127"
+    },
+    {
+      "name": "TPV2Card",
+      "type": "panel",
+      "bg": "#1c1813",
+      "border": "#3a3127"
+    },
+    {
+      "name": "TPV2CardTitle",
+      "type": "panel",
+      "bg": "#262019",
+      "bottom": "#3a3127"
+    },
+    {
+      "name": "TPV2CardWell",
+      "type": "panel",
+      "bg": "#15120e"
+    },
+    {
+      "name": "TPV2Accent",
+      "type": "panel",
+      "bg": "#d9762f"
+    },
+    {
+      "name": "TPV2Fill",
+      "type": "panel",
+      "bg": "#ffffff"
+    },
+    {
+      "name": "TPV2Clear",
+      "type": "panel",
+      "bg": "#00000000"
+    },
+    {
+      "name": "TPV2CatBar",
+      "type": "panel",
+      "bg": "#1c1813",
+      "border": "#2e2720"
+    },
+    {
+      "name": "TPV2CatBtn",
+      "type": "button",
+      "bg": "#00000000",
+      "states": {
+        "highlight": {
+          "bg": "#26201966",
+          "border": "#d9762f"
+        },
+        "pushed": {
+          "bg": "#262019",
+          "border": "#d9762f"
+        }
+      }
+    },
+    {
+      "name": "TPV2RailBtn",
+      "type": "button",
+      "bg": "#00000000",
+      "states": {
+        "highlight": {
+          "bg": "#262019",
+          "border": "#d9762f"
+        },
+        "pushed": {
+          "bg": "#262019",
+          "border": "#d9762f"
+        }
+      }
+    },
+    {
+      "name": "TPV2IconBtn",
+      "type": "button",
+      "bg": "#1c1813",
+      "border": "#3a3127",
+      "states": {
+        "highlight": {
+          "bg": "#262019",
+          "border": "#d9762f"
+        },
+        "pushed": {
+          "bg": "#0f0d0a",
+          "border": "#d9762f"
+        }
+      }
+    },
+    {
+      "name": "TPV2BtnAccent",
+      "type": "button",
+      "bg": "#d9762f",
+      "states": {
+        "highlight": {
+          "bg": "#e8894a"
+        },
+        "pushed": {
+          "bg": "#c4692a"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,812 @@
+<WidgetStyles>
+    <Widget Name="PanelWidget">
+        <Style Name="TPV2Panel" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_1" />
+                <Item Name="Center" Image="c_1" />
+                <Item Name="Left" Image="lc_1" />
+                <Item Name="LeftBottom" Image="blc_1" />
+                <Item Name="LeftTop" Image="tlc_1" />
+                <Item Name="Right" Image="rc_1" />
+                <Item Name="RightBottom" Image="brc_1" />
+                <Item Name="RightTop" Image="trc_1" />
+                <Item Name="Top" Image="tc_1" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_2" />
+                <Item Name="Center" Image="c_2" />
+                <Item Name="Left" Image="lc_2" />
+                <Item Name="LeftBottom" Image="blc_2" />
+                <Item Name="LeftTop" Image="tlc_2" />
+                <Item Name="Right" Image="rc_2" />
+                <Item Name="RightBottom" Image="brc_2" />
+                <Item Name="RightTop" Image="trc_2" />
+                <Item Name="Top" Image="tc_2" />
+            </State>
+        </Style>
+        <Style Name="TPV2Bar" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_3" />
+                <Item Name="Center" Image="c_3" />
+                <Item Name="Left" Image="lc_3" />
+                <Item Name="LeftBottom" Image="blc_3" />
+                <Item Name="LeftTop" Image="tlc_3" />
+                <Item Name="Right" Image="rc_3" />
+                <Item Name="RightBottom" Image="brc_3" />
+                <Item Name="RightTop" Image="trc_3" />
+                <Item Name="Top" Image="tc_3" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_4" />
+                <Item Name="Center" Image="c_4" />
+                <Item Name="Left" Image="lc_4" />
+                <Item Name="LeftBottom" Image="blc_4" />
+                <Item Name="LeftTop" Image="tlc_4" />
+                <Item Name="Right" Image="rc_4" />
+                <Item Name="RightBottom" Image="brc_4" />
+                <Item Name="RightTop" Image="trc_4" />
+                <Item Name="Top" Image="tc_4" />
+            </State>
+        </Style>
+        <Style Name="TPV2Field" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_5" />
+                <Item Name="Center" Image="c_5" />
+                <Item Name="Left" Image="lc_5" />
+                <Item Name="LeftBottom" Image="blc_5" />
+                <Item Name="LeftTop" Image="tlc_5" />
+                <Item Name="Right" Image="rc_5" />
+                <Item Name="RightBottom" Image="brc_5" />
+                <Item Name="RightTop" Image="trc_5" />
+                <Item Name="Top" Image="tc_5" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_6" />
+                <Item Name="Center" Image="c_6" />
+                <Item Name="Left" Image="lc_6" />
+                <Item Name="LeftBottom" Image="blc_6" />
+                <Item Name="LeftTop" Image="tlc_6" />
+                <Item Name="Right" Image="rc_6" />
+                <Item Name="RightBottom" Image="brc_6" />
+                <Item Name="RightTop" Image="trc_6" />
+                <Item Name="Top" Image="tc_6" />
+            </State>
+        </Style>
+        <Style Name="TPV2Card" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_7" />
+                <Item Name="Center" Image="c_7" />
+                <Item Name="Left" Image="lc_7" />
+                <Item Name="LeftBottom" Image="blc_7" />
+                <Item Name="LeftTop" Image="tlc_7" />
+                <Item Name="Right" Image="rc_7" />
+                <Item Name="RightBottom" Image="brc_7" />
+                <Item Name="RightTop" Image="trc_7" />
+                <Item Name="Top" Image="tc_7" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_8" />
+                <Item Name="Center" Image="c_8" />
+                <Item Name="Left" Image="lc_8" />
+                <Item Name="LeftBottom" Image="blc_8" />
+                <Item Name="LeftTop" Image="tlc_8" />
+                <Item Name="Right" Image="rc_8" />
+                <Item Name="RightBottom" Image="brc_8" />
+                <Item Name="RightTop" Image="trc_8" />
+                <Item Name="Top" Image="tc_8" />
+            </State>
+        </Style>
+        <Style Name="TPV2CardTitle" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_9" />
+                <Item Name="Center" Image="c_9" />
+                <Item Name="Left" Image="lc_9" />
+                <Item Name="LeftBottom" Image="blc_9" />
+                <Item Name="LeftTop" Image="tlc_9" />
+                <Item Name="Right" Image="rc_9" />
+                <Item Name="RightBottom" Image="brc_9" />
+                <Item Name="RightTop" Image="trc_9" />
+                <Item Name="Top" Image="tc_9" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_10" />
+                <Item Name="Center" Image="c_10" />
+                <Item Name="Left" Image="lc_10" />
+                <Item Name="LeftBottom" Image="blc_10" />
+                <Item Name="LeftTop" Image="tlc_10" />
+                <Item Name="Right" Image="rc_10" />
+                <Item Name="RightBottom" Image="brc_10" />
+                <Item Name="RightTop" Image="trc_10" />
+                <Item Name="Top" Image="tc_10" />
+            </State>
+        </Style>
+        <Style Name="TPV2CardWell" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_11" />
+                <Item Name="Center" Image="c_11" />
+                <Item Name="Left" Image="lc_11" />
+                <Item Name="LeftBottom" Image="blc_11" />
+                <Item Name="LeftTop" Image="tlc_11" />
+                <Item Name="Right" Image="rc_11" />
+                <Item Name="RightBottom" Image="brc_11" />
+                <Item Name="RightTop" Image="trc_11" />
+                <Item Name="Top" Image="tc_11" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_12" />
+                <Item Name="Center" Image="c_12" />
+                <Item Name="Left" Image="lc_12" />
+                <Item Name="LeftBottom" Image="blc_12" />
+                <Item Name="LeftTop" Image="tlc_12" />
+                <Item Name="Right" Image="rc_12" />
+                <Item Name="RightBottom" Image="brc_12" />
+                <Item Name="RightTop" Image="trc_12" />
+                <Item Name="Top" Image="tc_12" />
+            </State>
+        </Style>
+        <Style Name="TPV2Accent" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_13" />
+                <Item Name="Center" Image="c_13" />
+                <Item Name="Left" Image="lc_13" />
+                <Item Name="LeftBottom" Image="blc_13" />
+                <Item Name="LeftTop" Image="tlc_13" />
+                <Item Name="Right" Image="rc_13" />
+                <Item Name="RightBottom" Image="brc_13" />
+                <Item Name="RightTop" Image="trc_13" />
+                <Item Name="Top" Image="tc_13" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_14" />
+                <Item Name="Center" Image="c_14" />
+                <Item Name="Left" Image="lc_14" />
+                <Item Name="LeftBottom" Image="blc_14" />
+                <Item Name="LeftTop" Image="tlc_14" />
+                <Item Name="Right" Image="rc_14" />
+                <Item Name="RightBottom" Image="brc_14" />
+                <Item Name="RightTop" Image="trc_14" />
+                <Item Name="Top" Image="tc_14" />
+            </State>
+        </Style>
+        <Style Name="TPV2Fill" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_15" />
+                <Item Name="Center" Image="c_15" />
+                <Item Name="Left" Image="lc_15" />
+                <Item Name="LeftBottom" Image="blc_15" />
+                <Item Name="LeftTop" Image="tlc_15" />
+                <Item Name="Right" Image="rc_15" />
+                <Item Name="RightBottom" Image="brc_15" />
+                <Item Name="RightTop" Image="trc_15" />
+                <Item Name="Top" Image="tc_15" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_16" />
+                <Item Name="Center" Image="c_16" />
+                <Item Name="Left" Image="lc_16" />
+                <Item Name="LeftBottom" Image="blc_16" />
+                <Item Name="LeftTop" Image="tlc_16" />
+                <Item Name="Right" Image="rc_16" />
+                <Item Name="RightBottom" Image="brc_16" />
+                <Item Name="RightTop" Image="trc_16" />
+                <Item Name="Top" Image="tc_16" />
+            </State>
+        </Style>
+        <Style Name="TPV2Clear" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_17" />
+                <Item Name="Center" Image="c_17" />
+                <Item Name="Left" Image="lc_17" />
+                <Item Name="LeftBottom" Image="blc_17" />
+                <Item Name="LeftTop" Image="tlc_17" />
+                <Item Name="Right" Image="rc_17" />
+                <Item Name="RightBottom" Image="brc_17" />
+                <Item Name="RightTop" Image="trc_17" />
+                <Item Name="Top" Image="tc_17" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_18" />
+                <Item Name="Center" Image="c_18" />
+                <Item Name="Left" Image="lc_18" />
+                <Item Name="LeftBottom" Image="blc_18" />
+                <Item Name="LeftTop" Image="tlc_18" />
+                <Item Name="Right" Image="rc_18" />
+                <Item Name="RightBottom" Image="brc_18" />
+                <Item Name="RightTop" Image="trc_18" />
+                <Item Name="Top" Image="tc_18" />
+            </State>
+        </Style>
+        <Style Name="TPV2CatBar" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_19" />
+                <Item Name="Center" Image="c_19" />
+                <Item Name="Left" Image="lc_19" />
+                <Item Name="LeftBottom" Image="blc_19" />
+                <Item Name="LeftTop" Image="tlc_19" />
+                <Item Name="Right" Image="rc_19" />
+                <Item Name="RightBottom" Image="brc_19" />
+                <Item Name="RightTop" Image="trc_19" />
+                <Item Name="Top" Image="tc_19" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_20" />
+                <Item Name="Center" Image="c_20" />
+                <Item Name="Left" Image="lc_20" />
+                <Item Name="LeftBottom" Image="blc_20" />
+                <Item Name="LeftTop" Image="tlc_20" />
+                <Item Name="Right" Image="rc_20" />
+                <Item Name="RightBottom" Image="brc_20" />
+                <Item Name="RightTop" Image="trc_20" />
+                <Item Name="Top" Image="tc_20" />
+            </State>
+        </Style>
+        <Style Name="TPV2CatBtn" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_21" />
+                <Item Name="Center" Image="c_21" />
+                <Item Name="Left" Image="lc_21" />
+                <Item Name="LeftBottom" Image="blc_21" />
+                <Item Name="LeftTop" Image="tlc_21" />
+                <Item Name="Right" Image="rc_21" />
+                <Item Name="RightBottom" Image="brc_21" />
+                <Item Name="RightTop" Image="trc_21" />
+                <Item Name="Top" Image="tc_21" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_21" />
+                <Item Name="Center" Image="c_21" />
+                <Item Name="Left" Image="lc_21" />
+                <Item Name="LeftBottom" Image="blc_21" />
+                <Item Name="LeftTop" Image="tlc_21" />
+                <Item Name="Right" Image="rc_21" />
+                <Item Name="RightBottom" Image="brc_21" />
+                <Item Name="RightTop" Image="trc_21" />
+                <Item Name="Top" Image="tc_21" />
+            </State>
+        </Style>
+        <Style Name="TPV2RailBtn" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_24" />
+                <Item Name="Center" Image="c_24" />
+                <Item Name="Left" Image="lc_24" />
+                <Item Name="LeftBottom" Image="blc_24" />
+                <Item Name="LeftTop" Image="tlc_24" />
+                <Item Name="Right" Image="rc_24" />
+                <Item Name="RightBottom" Image="brc_24" />
+                <Item Name="RightTop" Image="trc_24" />
+                <Item Name="Top" Image="tc_24" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_24" />
+                <Item Name="Center" Image="c_24" />
+                <Item Name="Left" Image="lc_24" />
+                <Item Name="LeftBottom" Image="blc_24" />
+                <Item Name="LeftTop" Image="tlc_24" />
+                <Item Name="Right" Image="rc_24" />
+                <Item Name="RightBottom" Image="brc_24" />
+                <Item Name="RightTop" Image="trc_24" />
+                <Item Name="Top" Image="tc_24" />
+            </State>
+        </Style>
+        <Style Name="TPV2IconBtn" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_27" />
+                <Item Name="Center" Image="c_27" />
+                <Item Name="Left" Image="lc_27" />
+                <Item Name="LeftBottom" Image="blc_27" />
+                <Item Name="LeftTop" Image="tlc_27" />
+                <Item Name="Right" Image="rc_27" />
+                <Item Name="RightBottom" Image="brc_27" />
+                <Item Name="RightTop" Image="trc_27" />
+                <Item Name="Top" Image="tc_27" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_27" />
+                <Item Name="Center" Image="c_27" />
+                <Item Name="Left" Image="lc_27" />
+                <Item Name="LeftBottom" Image="blc_27" />
+                <Item Name="LeftTop" Image="tlc_27" />
+                <Item Name="Right" Image="rc_27" />
+                <Item Name="RightBottom" Image="brc_27" />
+                <Item Name="RightTop" Image="trc_27" />
+                <Item Name="Top" Image="tc_27" />
+            </State>
+        </Style>
+        <Style Name="TPV2BtnAccent" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_30" />
+                <Item Name="Center" Image="c_30" />
+                <Item Name="Left" Image="lc_30" />
+                <Item Name="LeftBottom" Image="blc_30" />
+                <Item Name="LeftTop" Image="tlc_30" />
+                <Item Name="Right" Image="rc_30" />
+                <Item Name="RightBottom" Image="brc_30" />
+                <Item Name="RightTop" Image="trc_30" />
+                <Item Name="Top" Image="tc_30" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_30" />
+                <Item Name="Center" Image="c_30" />
+                <Item Name="Left" Image="lc_30" />
+                <Item Name="LeftBottom" Image="blc_30" />
+                <Item Name="LeftTop" Image="tlc_30" />
+                <Item Name="Right" Image="rc_30" />
+                <Item Name="RightBottom" Image="brc_30" />
+                <Item Name="RightTop" Image="trc_30" />
+                <Item Name="Top" Image="tc_30" />
+            </State>
+        </Style>
+    </Widget>
+    <Widget Name="GridSpacerWidget">
+        <Style Name="TPV2Panel" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_1" />
+                <Item Name="Center" Image="c_1" />
+                <Item Name="Left" Image="lc_1" />
+                <Item Name="LeftBottom" Image="blc_1" />
+                <Item Name="LeftTop" Image="tlc_1" />
+                <Item Name="Right" Image="rc_1" />
+                <Item Name="RightBottom" Image="brc_1" />
+                <Item Name="RightTop" Image="trc_1" />
+                <Item Name="Top" Image="tc_1" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_2" />
+                <Item Name="Center" Image="c_2" />
+                <Item Name="Left" Image="lc_2" />
+                <Item Name="LeftBottom" Image="blc_2" />
+                <Item Name="LeftTop" Image="tlc_2" />
+                <Item Name="Right" Image="rc_2" />
+                <Item Name="RightBottom" Image="brc_2" />
+                <Item Name="RightTop" Image="trc_2" />
+                <Item Name="Top" Image="tc_2" />
+            </State>
+        </Style>
+        <Style Name="TPV2Bar" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_3" />
+                <Item Name="Center" Image="c_3" />
+                <Item Name="Left" Image="lc_3" />
+                <Item Name="LeftBottom" Image="blc_3" />
+                <Item Name="LeftTop" Image="tlc_3" />
+                <Item Name="Right" Image="rc_3" />
+                <Item Name="RightBottom" Image="brc_3" />
+                <Item Name="RightTop" Image="trc_3" />
+                <Item Name="Top" Image="tc_3" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_4" />
+                <Item Name="Center" Image="c_4" />
+                <Item Name="Left" Image="lc_4" />
+                <Item Name="LeftBottom" Image="blc_4" />
+                <Item Name="LeftTop" Image="tlc_4" />
+                <Item Name="Right" Image="rc_4" />
+                <Item Name="RightBottom" Image="brc_4" />
+                <Item Name="RightTop" Image="trc_4" />
+                <Item Name="Top" Image="tc_4" />
+            </State>
+        </Style>
+        <Style Name="TPV2Field" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_5" />
+                <Item Name="Center" Image="c_5" />
+                <Item Name="Left" Image="lc_5" />
+                <Item Name="LeftBottom" Image="blc_5" />
+                <Item Name="LeftTop" Image="tlc_5" />
+                <Item Name="Right" Image="rc_5" />
+                <Item Name="RightBottom" Image="brc_5" />
+                <Item Name="RightTop" Image="trc_5" />
+                <Item Name="Top" Image="tc_5" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_6" />
+                <Item Name="Center" Image="c_6" />
+                <Item Name="Left" Image="lc_6" />
+                <Item Name="LeftBottom" Image="blc_6" />
+                <Item Name="LeftTop" Image="tlc_6" />
+                <Item Name="Right" Image="rc_6" />
+                <Item Name="RightBottom" Image="brc_6" />
+                <Item Name="RightTop" Image="trc_6" />
+                <Item Name="Top" Image="tc_6" />
+            </State>
+        </Style>
+        <Style Name="TPV2Card" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_7" />
+                <Item Name="Center" Image="c_7" />
+                <Item Name="Left" Image="lc_7" />
+                <Item Name="LeftBottom" Image="blc_7" />
+                <Item Name="LeftTop" Image="tlc_7" />
+                <Item Name="Right" Image="rc_7" />
+                <Item Name="RightBottom" Image="brc_7" />
+                <Item Name="RightTop" Image="trc_7" />
+                <Item Name="Top" Image="tc_7" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_8" />
+                <Item Name="Center" Image="c_8" />
+                <Item Name="Left" Image="lc_8" />
+                <Item Name="LeftBottom" Image="blc_8" />
+                <Item Name="LeftTop" Image="tlc_8" />
+                <Item Name="Right" Image="rc_8" />
+                <Item Name="RightBottom" Image="brc_8" />
+                <Item Name="RightTop" Image="trc_8" />
+                <Item Name="Top" Image="tc_8" />
+            </State>
+        </Style>
+        <Style Name="TPV2CardTitle" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_9" />
+                <Item Name="Center" Image="c_9" />
+                <Item Name="Left" Image="lc_9" />
+                <Item Name="LeftBottom" Image="blc_9" />
+                <Item Name="LeftTop" Image="tlc_9" />
+                <Item Name="Right" Image="rc_9" />
+                <Item Name="RightBottom" Image="brc_9" />
+                <Item Name="RightTop" Image="trc_9" />
+                <Item Name="Top" Image="tc_9" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_10" />
+                <Item Name="Center" Image="c_10" />
+                <Item Name="Left" Image="lc_10" />
+                <Item Name="LeftBottom" Image="blc_10" />
+                <Item Name="LeftTop" Image="tlc_10" />
+                <Item Name="Right" Image="rc_10" />
+                <Item Name="RightBottom" Image="brc_10" />
+                <Item Name="RightTop" Image="trc_10" />
+                <Item Name="Top" Image="tc_10" />
+            </State>
+        </Style>
+        <Style Name="TPV2CardWell" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_11" />
+                <Item Name="Center" Image="c_11" />
+                <Item Name="Left" Image="lc_11" />
+                <Item Name="LeftBottom" Image="blc_11" />
+                <Item Name="LeftTop" Image="tlc_11" />
+                <Item Name="Right" Image="rc_11" />
+                <Item Name="RightBottom" Image="brc_11" />
+                <Item Name="RightTop" Image="trc_11" />
+                <Item Name="Top" Image="tc_11" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_12" />
+                <Item Name="Center" Image="c_12" />
+                <Item Name="Left" Image="lc_12" />
+                <Item Name="LeftBottom" Image="blc_12" />
+                <Item Name="LeftTop" Image="tlc_12" />
+                <Item Name="Right" Image="rc_12" />
+                <Item Name="RightBottom" Image="brc_12" />
+                <Item Name="RightTop" Image="trc_12" />
+                <Item Name="Top" Image="tc_12" />
+            </State>
+        </Style>
+        <Style Name="TPV2Accent" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_13" />
+                <Item Name="Center" Image="c_13" />
+                <Item Name="Left" Image="lc_13" />
+                <Item Name="LeftBottom" Image="blc_13" />
+                <Item Name="LeftTop" Image="tlc_13" />
+                <Item Name="Right" Image="rc_13" />
+                <Item Name="RightBottom" Image="brc_13" />
+                <Item Name="RightTop" Image="trc_13" />
+                <Item Name="Top" Image="tc_13" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_14" />
+                <Item Name="Center" Image="c_14" />
+                <Item Name="Left" Image="lc_14" />
+                <Item Name="LeftBottom" Image="blc_14" />
+                <Item Name="LeftTop" Image="tlc_14" />
+                <Item Name="Right" Image="rc_14" />
+                <Item Name="RightBottom" Image="brc_14" />
+                <Item Name="RightTop" Image="trc_14" />
+                <Item Name="Top" Image="tc_14" />
+            </State>
+        </Style>
+        <Style Name="TPV2Fill" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_15" />
+                <Item Name="Center" Image="c_15" />
+                <Item Name="Left" Image="lc_15" />
+                <Item Name="LeftBottom" Image="blc_15" />
+                <Item Name="LeftTop" Image="tlc_15" />
+                <Item Name="Right" Image="rc_15" />
+                <Item Name="RightBottom" Image="brc_15" />
+                <Item Name="RightTop" Image="trc_15" />
+                <Item Name="Top" Image="tc_15" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_16" />
+                <Item Name="Center" Image="c_16" />
+                <Item Name="Left" Image="lc_16" />
+                <Item Name="LeftBottom" Image="blc_16" />
+                <Item Name="LeftTop" Image="tlc_16" />
+                <Item Name="Right" Image="rc_16" />
+                <Item Name="RightBottom" Image="brc_16" />
+                <Item Name="RightTop" Image="trc_16" />
+                <Item Name="Top" Image="tc_16" />
+            </State>
+        </Style>
+        <Style Name="TPV2Clear" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_17" />
+                <Item Name="Center" Image="c_17" />
+                <Item Name="Left" Image="lc_17" />
+                <Item Name="LeftBottom" Image="blc_17" />
+                <Item Name="LeftTop" Image="tlc_17" />
+                <Item Name="Right" Image="rc_17" />
+                <Item Name="RightBottom" Image="brc_17" />
+                <Item Name="RightTop" Image="trc_17" />
+                <Item Name="Top" Image="tc_17" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_18" />
+                <Item Name="Center" Image="c_18" />
+                <Item Name="Left" Image="lc_18" />
+                <Item Name="LeftBottom" Image="blc_18" />
+                <Item Name="LeftTop" Image="tlc_18" />
+                <Item Name="Right" Image="rc_18" />
+                <Item Name="RightBottom" Image="brc_18" />
+                <Item Name="RightTop" Image="trc_18" />
+                <Item Name="Top" Image="tc_18" />
+            </State>
+        </Style>
+        <Style Name="TPV2CatBar" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_19" />
+                <Item Name="Center" Image="c_19" />
+                <Item Name="Left" Image="lc_19" />
+                <Item Name="LeftBottom" Image="blc_19" />
+                <Item Name="LeftTop" Image="tlc_19" />
+                <Item Name="Right" Image="rc_19" />
+                <Item Name="RightBottom" Image="brc_19" />
+                <Item Name="RightTop" Image="trc_19" />
+                <Item Name="Top" Image="tc_19" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_20" />
+                <Item Name="Center" Image="c_20" />
+                <Item Name="Left" Image="lc_20" />
+                <Item Name="LeftBottom" Image="blc_20" />
+                <Item Name="LeftTop" Image="tlc_20" />
+                <Item Name="Right" Image="rc_20" />
+                <Item Name="RightBottom" Image="brc_20" />
+                <Item Name="RightTop" Image="trc_20" />
+                <Item Name="Top" Image="tc_20" />
+            </State>
+        </Style>
+    </Widget>
+    <Widget Name="ButtonWidget">
+        <Style Name="TPV2CatBtn" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_21" />
+                <Item Name="Center" Image="c_21" />
+                <Item Name="Left" Image="lc_21" />
+                <Item Name="LeftBottom" Image="blc_21" />
+                <Item Name="LeftTop" Image="tlc_21" />
+                <Item Name="Right" Image="rc_21" />
+                <Item Name="RightBottom" Image="brc_21" />
+                <Item Name="RightTop" Image="trc_21" />
+                <Item Name="Top" Image="tc_21" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_21" />
+                <Item Name="Center" Image="c_21" />
+                <Item Name="Left" Image="lc_21" />
+                <Item Name="LeftBottom" Image="blc_21" />
+                <Item Name="LeftTop" Image="tlc_21" />
+                <Item Name="Right" Image="rc_21" />
+                <Item Name="RightBottom" Image="brc_21" />
+                <Item Name="RightTop" Image="trc_21" />
+                <Item Name="Top" Image="tc_21" />
+            </State>
+            <State Name="Focus">
+                <Item Name="Bottom" Image="bc_22" />
+                <Item Name="Center" Image="c_22" />
+                <Item Name="Left" Image="lc_22" />
+                <Item Name="LeftBottom" Image="blc_22" />
+                <Item Name="LeftTop" Image="tlc_22" />
+                <Item Name="Right" Image="rc_22" />
+                <Item Name="RightBottom" Image="brc_22" />
+                <Item Name="RightTop" Image="trc_22" />
+                <Item Name="Top" Image="tc_22" />
+            </State>
+            <State Name="Highlight">
+                <Item Name="Bottom" Image="bc_22" />
+                <Item Name="Center" Image="c_22" />
+                <Item Name="Left" Image="lc_22" />
+                <Item Name="LeftBottom" Image="blc_22" />
+                <Item Name="LeftTop" Image="tlc_22" />
+                <Item Name="Right" Image="rc_22" />
+                <Item Name="RightBottom" Image="brc_22" />
+                <Item Name="RightTop" Image="trc_22" />
+                <Item Name="Top" Image="tc_22" />
+            </State>
+            <State Name="Pushed">
+                <Item Name="Bottom" Image="bc_23" />
+                <Item Name="Center" Image="c_23" />
+                <Item Name="Left" Image="lc_23" />
+                <Item Name="LeftBottom" Image="blc_23" />
+                <Item Name="LeftTop" Image="tlc_23" />
+                <Item Name="Right" Image="rc_23" />
+                <Item Name="RightBottom" Image="brc_23" />
+                <Item Name="RightTop" Image="trc_23" />
+                <Item Name="Top" Image="tc_23" />
+            </State>
+        </Style>
+        <Style Name="TPV2RailBtn" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_24" />
+                <Item Name="Center" Image="c_24" />
+                <Item Name="Left" Image="lc_24" />
+                <Item Name="LeftBottom" Image="blc_24" />
+                <Item Name="LeftTop" Image="tlc_24" />
+                <Item Name="Right" Image="rc_24" />
+                <Item Name="RightBottom" Image="brc_24" />
+                <Item Name="RightTop" Image="trc_24" />
+                <Item Name="Top" Image="tc_24" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_24" />
+                <Item Name="Center" Image="c_24" />
+                <Item Name="Left" Image="lc_24" />
+                <Item Name="LeftBottom" Image="blc_24" />
+                <Item Name="LeftTop" Image="tlc_24" />
+                <Item Name="Right" Image="rc_24" />
+                <Item Name="RightBottom" Image="brc_24" />
+                <Item Name="RightTop" Image="trc_24" />
+                <Item Name="Top" Image="tc_24" />
+            </State>
+            <State Name="Focus">
+                <Item Name="Bottom" Image="bc_25" />
+                <Item Name="Center" Image="c_25" />
+                <Item Name="Left" Image="lc_25" />
+                <Item Name="LeftBottom" Image="blc_25" />
+                <Item Name="LeftTop" Image="tlc_25" />
+                <Item Name="Right" Image="rc_25" />
+                <Item Name="RightBottom" Image="brc_25" />
+                <Item Name="RightTop" Image="trc_25" />
+                <Item Name="Top" Image="tc_25" />
+            </State>
+            <State Name="Highlight">
+                <Item Name="Bottom" Image="bc_25" />
+                <Item Name="Center" Image="c_25" />
+                <Item Name="Left" Image="lc_25" />
+                <Item Name="LeftBottom" Image="blc_25" />
+                <Item Name="LeftTop" Image="tlc_25" />
+                <Item Name="Right" Image="rc_25" />
+                <Item Name="RightBottom" Image="brc_25" />
+                <Item Name="RightTop" Image="trc_25" />
+                <Item Name="Top" Image="tc_25" />
+            </State>
+            <State Name="Pushed">
+                <Item Name="Bottom" Image="bc_26" />
+                <Item Name="Center" Image="c_26" />
+                <Item Name="Left" Image="lc_26" />
+                <Item Name="LeftBottom" Image="blc_26" />
+                <Item Name="LeftTop" Image="tlc_26" />
+                <Item Name="Right" Image="rc_26" />
+                <Item Name="RightBottom" Image="brc_26" />
+                <Item Name="RightTop" Image="trc_26" />
+                <Item Name="Top" Image="tc_26" />
+            </State>
+        </Style>
+        <Style Name="TPV2IconBtn" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_27" />
+                <Item Name="Center" Image="c_27" />
+                <Item Name="Left" Image="lc_27" />
+                <Item Name="LeftBottom" Image="blc_27" />
+                <Item Name="LeftTop" Image="tlc_27" />
+                <Item Name="Right" Image="rc_27" />
+                <Item Name="RightBottom" Image="brc_27" />
+                <Item Name="RightTop" Image="trc_27" />
+                <Item Name="Top" Image="tc_27" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_27" />
+                <Item Name="Center" Image="c_27" />
+                <Item Name="Left" Image="lc_27" />
+                <Item Name="LeftBottom" Image="blc_27" />
+                <Item Name="LeftTop" Image="tlc_27" />
+                <Item Name="Right" Image="rc_27" />
+                <Item Name="RightBottom" Image="brc_27" />
+                <Item Name="RightTop" Image="trc_27" />
+                <Item Name="Top" Image="tc_27" />
+            </State>
+            <State Name="Focus">
+                <Item Name="Bottom" Image="bc_28" />
+                <Item Name="Center" Image="c_28" />
+                <Item Name="Left" Image="lc_28" />
+                <Item Name="LeftBottom" Image="blc_28" />
+                <Item Name="LeftTop" Image="tlc_28" />
+                <Item Name="Right" Image="rc_28" />
+                <Item Name="RightBottom" Image="brc_28" />
+                <Item Name="RightTop" Image="trc_28" />
+                <Item Name="Top" Image="tc_28" />
+            </State>
+            <State Name="Highlight">
+                <Item Name="Bottom" Image="bc_28" />
+                <Item Name="Center" Image="c_28" />
+                <Item Name="Left" Image="lc_28" />
+                <Item Name="LeftBottom" Image="blc_28" />
+                <Item Name="LeftTop" Image="tlc_28" />
+                <Item Name="Right" Image="rc_28" />
+                <Item Name="RightBottom" Image="brc_28" />
+                <Item Name="RightTop" Image="trc_28" />
+                <Item Name="Top" Image="tc_28" />
+            </State>
+            <State Name="Pushed">
+                <Item Name="Bottom" Image="bc_29" />
+                <Item Name="Center" Image="c_29" />
+                <Item Name="Left" Image="lc_29" />
+                <Item Name="LeftBottom" Image="blc_29" />
+                <Item Name="LeftTop" Image="tlc_29" />
+                <Item Name="Right" Image="rc_29" />
+                <Item Name="RightBottom" Image="brc_29" />
+                <Item Name="RightTop" Image="trc_29" />
+                <Item Name="Top" Image="tc_29" />
+            </State>
+        </Style>
+        <Style Name="TPV2BtnAccent" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_30" />
+                <Item Name="Center" Image="c_30" />
+                <Item Name="Left" Image="lc_30" />
+                <Item Name="LeftBottom" Image="blc_30" />
+                <Item Name="LeftTop" Image="tlc_30" />
+                <Item Name="Right" Image="rc_30" />
+                <Item Name="RightBottom" Image="brc_30" />
+                <Item Name="RightTop" Image="trc_30" />
+                <Item Name="Top" Image="tc_30" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_30" />
+                <Item Name="Center" Image="c_30" />
+                <Item Name="Left" Image="lc_30" />
+                <Item Name="LeftBottom" Image="blc_30" />
+                <Item Name="LeftTop" Image="tlc_30" />
+                <Item Name="Right" Image="rc_30" />
+                <Item Name="RightBottom" Image="brc_30" />
+                <Item Name="RightTop" Image="trc_30" />
+                <Item Name="Top" Image="tc_30" />
+            </State>
+            <State Name="Focus">
+                <Item Name="Bottom" Image="bc_31" />
+                <Item Name="Center" Image="c_31" />
+                <Item Name="Left" Image="lc_31" />
+                <Item Name="LeftBottom" Image="blc_31" />
+                <Item Name="LeftTop" Image="tlc_31" />
+                <Item Name="Right" Image="rc_31" />
+                <Item Name="RightBottom" Image="brc_31" />
+                <Item Name="RightTop" Image="trc_31" />
+                <Item Name="Top" Image="tc_31" />
+            </State>
+            <State Name="Highlight">
+                <Item Name="Bottom" Image="bc_31" />
+                <Item Name="Center" Image="c_31" />
+                <Item Name="Left" Image="lc_31" />
+                <Item Name="LeftBottom" Image="blc_31" />
+                <Item Name="LeftTop" Image="tlc_31" />
+                <Item Name="Right" Image="rc_31" />
+                <Item Name="RightBottom" Image="brc_31" />
+                <Item Name="RightTop" Image="trc_31" />
+                <Item Name="Top" Image="tc_31" />
+            </State>
+            <State Name="Pushed">
+                <Item Name="Bottom" Image="bc_32" />
+                <Item Name="Center" Image="c_32" />
+                <Item Name="Left" Image="lc_32" />
+                <Item Name="LeftBottom" Image="blc_32" />
+                <Item Name="LeftTop" Image="tlc_32" />
+                <Item Name="Right" Image="rc_32" />
+                <Item Name="RightBottom" Image="brc_32" />
+                <Item Name="RightTop" Image="trc_32" />
+                <Item Name="Top" Image="tc_32" />
+            </State>
+        </Style>
+    </Widget>
+</WidgetStyles>

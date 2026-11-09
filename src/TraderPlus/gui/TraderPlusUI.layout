@@ -20,7 +20,7 @@ FrameWidgetClass rootFrame {
    style rover_sim_colorable
    {
     PanelWidgetClass PanelIconsOutline {
-     color 0.2275 0.1922 0.1529 1
+     color 1 1 1 1
      ignorepointer 1
      position 0.0074 0.14
      size 0.04559 0.8219
@@ -28,11 +28,11 @@ FrameWidgetClass rootFrame {
      vexactpos 0
      hexactsize 0
      vexactsize 0
-     style Outline
+     style TPV2Panel
      {
       PanelWidgetClass PanelIcons {
        ignorepointer 1
-       color 0.0745 0.0627 0.0471 0.66
+       color 0 0 0 0
        position 0.02469 0.00323
        size 0.95104 0.99184
        hexactpos 0
@@ -53,6 +53,8 @@ FrameWidgetClass rootFrame {
          Rows 5
          {
           ButtonWidgetClass BttnMarket {
+           color 1 1 1 1
+           style TPV2RailBtn
            position 0.079 0.054
            size 0.534 0.088
            hexactpos 0
@@ -61,22 +63,23 @@ FrameWidgetClass rootFrame {
            vexactsize 0
            {
             ImageWidgetClass ImageMarket {
-             color 0.9098 0.8627 0.7961 1
+             image0 "set:tpv2_icons image:market"
+             color 0.8039 0.749 0.6706 1
              ignorepointer 1
              position 0 -0.06228
-             size 64 64
+             size 36 36
              halign center_ref
              valign center_ref
              hexactpos 0
              vexactpos 0
              hexactsize 1
              vexactsize 1
-             imageTexture "{8451250ACCD03A86}TraderPlus/datasets/shopping-cart.edds"
              mode blend
              "src alpha" 1
              stretch 1
             }
             TextWidgetClass MarketText {
+             "exact text size" 10
              color 0.7216 0.6627 0.5804 1
              ignorepointer 1
              position 0.00705 0.68639
@@ -86,7 +89,7 @@ FrameWidgetClass rootFrame {
              hexactsize 0
              vexactsize 0
              text "#tpm_market"
-             font "gui/fonts/Metron-Bold12"
+             font "TraderPlus/gui/fonts/tpcond12"
              "exact text" 1
              "text halign" center
              "text valign" center
@@ -94,6 +97,8 @@ FrameWidgetClass rootFrame {
            }
           }
           ButtonWidgetClass BttnInventory {
+           color 1 1 1 1
+           style TPV2RailBtn
            position 0.079 0.054
            size 0.534 0.088
            hexactpos 0
@@ -102,22 +107,23 @@ FrameWidgetClass rootFrame {
            vexactsize 0
            {
             ImageWidgetClass ImageBag {
-             color 0.9098 0.8627 0.7961 1
+             image0 "set:tpv2_icons image:inventory"
+             color 0.8039 0.749 0.6706 1
              ignorepointer 1
              position 0 -0.06228
-             size 64 64
+             size 36 36
              halign center_ref
              valign center_ref
              hexactpos 0
              vexactpos 0
              hexactsize 1
              vexactsize 1
-             imageTexture "{866A317A30BC4F6F}TraderPlus/datasets/school-bag.edds"
              mode blend
              "src alpha" 1
              stretch 1
             }
             TextWidgetClass InvText {
+             "exact text size" 10
              color 0.7216 0.6627 0.5804 1
              ignorepointer 1
              position 0.01181 0.7237
@@ -127,7 +133,7 @@ FrameWidgetClass rootFrame {
              hexactsize 0
              vexactsize 0
              text "#tpm_inventory"
-             font "gui/fonts/Metron-Bold12"
+             font "TraderPlus/gui/fonts/tpcond12"
              "exact text" 1
              "text halign" center
              "text valign" center
@@ -135,6 +141,8 @@ FrameWidgetClass rootFrame {
            }
           }
           ButtonWidgetClass BttnCar {
+           color 1 1 1 1
+           style TPV2RailBtn
            position 0.079 0.054
            size 0.534 0.088
            hexactpos 0
@@ -143,22 +151,23 @@ FrameWidgetClass rootFrame {
            vexactsize 0
            {
             ImageWidgetClass ImageCar {
-             color 0.9098 0.8627 0.7961 1
+             image0 "set:tpv2_icons image:vehicles"
+             color 0.8039 0.749 0.6706 1
              ignorepointer 1
              position 0 -0.08661
-             size 64 64
+             size 36 36
              halign center_ref
              valign center_ref
              hexactpos 0
              vexactpos 0
              hexactsize 1
              vexactsize 1
-             imageTexture "{9B109147F48FFFD2}TraderPlus/datasets/car.edds"
              mode blend
              "src alpha" 1
              stretch 1
             }
             TextWidgetClass TextWidget3 {
+             "exact text size" 10
              color 0.7216 0.6627 0.5804 1
              ignorepointer 1
              position -0.00229 0.69812
@@ -168,7 +177,7 @@ FrameWidgetClass rootFrame {
              hexactsize 0
              vexactsize 0
              text "#tpm_vehicles"
-             font "gui/fonts/Metron-Bold12"
+             font "TraderPlus/gui/fonts/tpcond12"
              "exact text" 1
              "text halign" center
              "text valign" center
@@ -176,6 +185,8 @@ FrameWidgetClass rootFrame {
            }
           }
           ButtonWidgetClass BttnLicence {
+           color 1 1 1 1
+           style TPV2RailBtn
            position 0.079 0.054
            size 0.534 0.088
            hexactpos 0
@@ -184,22 +195,23 @@ FrameWidgetClass rootFrame {
            vexactsize 0
            {
             ImageWidgetClass ImageLicence {
-             color 0.9098 0.8627 0.7961 1
+             image0 "set:tpv2_icons image:licences"
+             color 0.8039 0.749 0.6706 1
              ignorepointer 1
              position 0.01417 -0.08985
-             size 64 64
+             size 36 36
              halign center_ref
              valign center_ref
              hexactpos 0
              vexactpos 0
              hexactsize 1
              vexactsize 1
-             imageTexture "{F72DC20B72C1AC9A}TraderPlus/datasets/driver-license.edds"
              mode blend
              "src alpha" 1
              stretch 1
             }
             TextWidgetClass TextWidget4 {
+             "exact text size" 10
              color 0.7216 0.6627 0.5804 1
              ignorepointer 1
              position 0.00705 0.68496
@@ -209,7 +221,7 @@ FrameWidgetClass rootFrame {
              hexactsize 0
              vexactsize 0
              text "#tpm_licences"
-             font "gui/fonts/Metron-Bold12"
+             font "TraderPlus/gui/fonts/tpcond12"
              "exact text" 1
              "text halign" center
              "text valign" center
@@ -217,6 +229,8 @@ FrameWidgetClass rootFrame {
            }
           }
           ButtonWidgetClass BttnInsurance {
+           color 1 1 1 1
+           style TPV2RailBtn
            position 0.079 0.054
            size 0.14546 0.06505
            hexactpos 0
@@ -225,22 +239,23 @@ FrameWidgetClass rootFrame {
            vexactsize 0
            {
             ImageWidgetClass ImageInsurance {
-             color 0.9098 0.8627 0.7961 1
+             image0 "set:tpv2_icons image:insurances"
+             color 0.8039 0.749 0.6706 1
              ignorepointer 1
              position 0.00708 -0.07948
-             size 64 64
+             size 36 36
              halign center_ref
              valign center_ref
              hexactpos 0
              vexactpos 0
              hexactsize 1
              vexactsize 1
-             imageTexture "{E962F2215EE877F4}TraderPlus/datasets/insurance.edds"
              mode blend
              "src alpha" 1
              stretch 1
             }
             TextWidgetClass TextWidget5 {
+             "exact text size" 10
              color 0.7216 0.6627 0.5804 1
              ignorepointer 1
              position 0.00705 0.70224
@@ -250,7 +265,7 @@ FrameWidgetClass rootFrame {
              hexactsize 0
              vexactsize 0
              text "#tpm_insurances"
-             font "gui/fonts/Metron-Italic12"
+             font "TraderPlus/gui/fonts/tpcond12"
              "exact text" 1
              "text halign" center
              "text valign" center
@@ -264,7 +279,7 @@ FrameWidgetClass rootFrame {
      }
     }
     PanelWidgetClass PanelStockOutline {
-     color 0.2275 0.1922 0.1529 1
+     color 1 1 1 1
      visible 1
      ignorepointer 1
      position 0.05907 0.14
@@ -274,11 +289,11 @@ FrameWidgetClass rootFrame {
      hexactsize 0
      vexactsize 0
      draggable 1
-     style Outline
+     style TPV2Panel
      {
       PanelWidgetClass PanelStock {
        ignorepointer 1
-       color 0.0745 0.0627 0.0471 0.66
+       color 0 0 0 0
        position 0.00172 0.00252
        size 0.99579 0.99479
        hexactpos 0
@@ -303,7 +318,7 @@ FrameWidgetClass rootFrame {
          Columns 1
          {
           XComboBoxWidgetClass StockCategories {
-           color 0.9098 0.8627 0.7961 1
+           color 0.9529 0.9137 0.8549 1
            position 0 4.30092
            size 1.0005 42.2904
            hexactpos 1
@@ -311,7 +326,7 @@ FrameWidgetClass rootFrame {
            hexactsize 0
            vexactsize 1
            style Default
-           font "gui/fonts/etelkatextpro22"
+           font "TraderPlus/gui/fonts/tpcond18"
            items "ALL"
           }
           GridSpacerWidgetClass GridSearchLeft {
@@ -331,7 +346,8 @@ FrameWidgetClass rootFrame {
            Rows 1
            {
             ImageWidgetClass SearchLeft {
-             color 0.9098 0.8627 0.7961 1
+             image0 "set:tpv2_icons image:search"
+             color 0.7216 0.6627 0.5804 1
              ignorepointer 1
              position 0 0
              size 30 30
@@ -339,7 +355,6 @@ FrameWidgetClass rootFrame {
              vexactpos 1
              hexactsize 1
              vexactsize 1
-             imageTexture "{F314F4772CEF6D8D}TraderPlus/gui/loupe.edds"
              mode blend
              "src alpha" 1
              stretch 1
@@ -358,7 +373,7 @@ FrameWidgetClass rootFrame {
              text "#tpm_search"
              "Use default text" 1
              "exact text" 0
-             font "gui/fonts/etelkatextpro22"
+             font "TraderPlus/gui/fonts/tpinter16"
             }
             GridSpacerWidgetClass ShowAllGrid {
              ignorepointer 1
@@ -386,7 +401,7 @@ FrameWidgetClass rootFrame {
                hexactsize 0
                vexactsize 0
                text "#tpm_showall"
-               font "TraderPlus/gui/fonts/regular12"
+               font "TraderPlus/gui/fonts/tpcond14"
                "exact text" 1
                "size to text h" 1
                "size to text v" 1
@@ -426,7 +441,7 @@ FrameWidgetClass rootFrame {
      }
     }
     PanelWidgetClass ProductInformationOutline {
-     color 0.2275 0.1922 0.1529 1
+     color 1 1 1 1
      visible 1
      ignorepointer 1
      position 0.7113 0.14
@@ -435,11 +450,11 @@ FrameWidgetClass rootFrame {
      vexactpos 0
      hexactsize 0
      vexactsize 0
-     style Outline
+     style TPV2Panel
      {
       PanelWidgetClass ProductInformation {
        ignorepointer 1
-       color 0.0745 0.0627 0.0471 0.66
+       color 0 0 0 0
        position 0.00661 0.0032
        size 0.98457 0.99224
        hexactpos 0
@@ -476,7 +491,7 @@ FrameWidgetClass rootFrame {
            vexactsize 1
            style Bold
            text "#tpm_product_informations"
-           font "gui/fonts/etelkatextpro22"
+           font "TraderPlus/gui/fonts/tpcond22"
            "exact text" 1
            "size to text h" 0
            "size to text v" 0
@@ -499,6 +514,8 @@ FrameWidgetClass rootFrame {
            Rows 1
            {
             ButtonWidgetClass BttnPlayerPreview {
+             color 1 1 1 1
+             style TPV2IconBtn
              position 0.86711 -0.00056
              size 0.11307 0.11613
              hexactpos 0
@@ -508,6 +525,8 @@ FrameWidgetClass rootFrame {
              "no focus" 0
              {
               ImageWidgetClass ImagePlayerPreview {
+               color 0.9098 0.8627 0.7961 1
+               image0 "set:tpv2_icons image:player"
                visible 1
                inheritalpha 0
                ignorepointer 1
@@ -521,7 +540,6 @@ FrameWidgetClass rootFrame {
                hexactsize 1
                vexactsize 1
                fixaspect inside
-               imageTexture "{3AB296DDF7C5E618}TraderPlus/datasets/person.edds"
                mode blend
                "src alpha" 1
                "no wrap" 0
@@ -534,6 +552,8 @@ FrameWidgetClass rootFrame {
              }
             }
             ButtonWidgetClass BttnKit {
+             color 1 1 1 1
+             style TPV2IconBtn
              position 0.86241 -0.00116
              size 0.10867 0.12912
              hexactpos 0
@@ -561,6 +581,8 @@ FrameWidgetClass rootFrame {
              }
             }
             ButtonWidgetClass BttnRemove {
+             color 1 1 1 1
+             style TPV2IconBtn
              position 0.86966 0.09646
              size 0.12716 0.10375
              hexactpos 0
@@ -586,6 +608,8 @@ FrameWidgetClass rootFrame {
              }
             }
             ButtonWidgetClass BttnReset {
+             color 1 1 1 1
+             style TPV2IconBtn
              position 0.86711 -0.00056
              size 0.13056 0.09564
              hexactpos 0
@@ -629,7 +653,7 @@ FrameWidgetClass rootFrame {
            vexactpos 0
            hexactsize 0
            vexactsize 0
-           font "gui/fonts/etelkatextpro12"
+           font "TraderPlus/gui/fonts/tpinter14"
            "exact text" 1
            wrap 0
            "condense whitespace" 1
@@ -665,12 +689,13 @@ FrameWidgetClass rootFrame {
              vexactsize 1
              style Normal
              text "#tpm_tradeqty"
-             font "gui/fonts/etelkatextpro12"
+             font "TraderPlus/gui/fonts/tpcond14"
              "text color" 0.1569 0.2745 0.6235 1
              "size to text h" 0
              "text valign" center
             }
             XComboBoxWidgetClass QuantityMultiplier {
+             color 0.9529 0.9137 0.8549 1
              disabled 0
              inheritalpha 0
              ignorepointer 0
@@ -684,7 +709,7 @@ FrameWidgetClass rootFrame {
              vexactsize 1
              style Default
              "no focus" 0
-             font "gui/fonts/etelkatextpro22"
+             font "TraderPlus/gui/fonts/tpcond18"
              items "10;20;30;40;50;60;70;80;90;100"
             }
            }
@@ -719,7 +744,7 @@ FrameWidgetClass rootFrame {
              vexactsize 0
              style Normal
              text "#tpm_insurance"
-             font "gui/fonts/etelkatextpro12"
+             font "TraderPlus/gui/fonts/tpcond14"
              "text color" 0.1569 0.2745 0.6235 1
              "size to text h" 0
              "text valign" center
@@ -751,7 +776,7 @@ FrameWidgetClass rootFrame {
              hexactsize 0
              vexactsize 0
              style Normal
-             font "gui/fonts/etelkatextpro12"
+             font "TraderPlus/gui/fonts/tpcond14"
              "text color" 0.1569 0.2745 0.6235 1
              "exact text" 0
              "size to text h" 0
@@ -789,7 +814,7 @@ FrameWidgetClass rootFrame {
              hexactsize 0
              vexactsize 0
              text "#tpm_slot"
-             font "gui/fonts/etelkatextpro14"
+             font "TraderPlus/gui/fonts/tpcond14"
              "size to text h" 0
              "size to text v" 0
              "text valign" center
@@ -806,7 +831,7 @@ FrameWidgetClass rootFrame {
              hexactsize 0
              vexactsize 0
              text "#tpm_size"
-             font "gui/fonts/etelkatextpro14"
+             font "TraderPlus/gui/fonts/tpcond14"
              "size to text h" 0
              "size to text v" 0
              "text halign" right
@@ -835,7 +860,7 @@ FrameWidgetClass rootFrame {
           PanelWidgetClass BuyPanelWidget {
            visible 1
            ignorepointer 1
-           color 0.851 0.4627 0.1843 1
+           color 0 0 0 0
            position 0 0
            size 1 64
            hexactpos 1
@@ -846,7 +871,7 @@ FrameWidgetClass rootFrame {
            {
             ButtonWidgetClass BttnBuy {
              visible 1
-             color 0.851 0.4627 0.1843 1
+             color 1 1 1 1
              position 0 0
              size 1 1
              valign center_ref
@@ -854,7 +879,7 @@ FrameWidgetClass rootFrame {
              vexactpos 1
              hexactsize 0
              vexactsize 0
-             style OldStyle
+             style TPV2BtnAccent
              {
               TextWidgetClass BttnBuy_label {
                ignorepointer 1
@@ -868,7 +893,7 @@ FrameWidgetClass rootFrame {
                hexactsize 0
                vexactsize 0
                text "BUY"
-               font "gui/fonts/etelkatextpro22"
+               font "TraderPlus/gui/fonts/tpcond24"
                "text halign" center
                "text valign" center
               }
@@ -878,7 +903,7 @@ FrameWidgetClass rootFrame {
           }
           PanelWidgetClass SellPanelWidget {
            ignorepointer 1
-           color 0.851 0.4627 0.1843 1
+           color 0 0 0 0
            position 0 0
            size 1 64
            hexactpos 1
@@ -889,7 +914,7 @@ FrameWidgetClass rootFrame {
            {
             ButtonWidgetClass BttnSell {
              visible 1
-             color 0.851 0.4627 0.1843 1
+             color 1 1 1 1
              position 0 0
              size 1 1
              halign right_ref
@@ -898,7 +923,7 @@ FrameWidgetClass rootFrame {
              vexactpos 1
              hexactsize 0
              vexactsize 0
-             style OldStyle
+             style TPV2BtnAccent
              {
               TextWidgetClass BttnSell_label {
                ignorepointer 1
@@ -912,7 +937,7 @@ FrameWidgetClass rootFrame {
                hexactsize 0
                vexactsize 0
                text "SELL"
-               font "gui/fonts/etelkatextpro22"
+               font "TraderPlus/gui/fonts/tpcond24"
                "text halign" center
                "text valign" center
               }
@@ -927,7 +952,7 @@ FrameWidgetClass rootFrame {
      }
     }
     PanelWidgetClass PanelInventoryOutline {
-     color 0.2275 0.1922 0.1529 1
+     color 1 1 1 1
      visible 0
      ignorepointer 1
      position 0.05907 0.14
@@ -936,11 +961,11 @@ FrameWidgetClass rootFrame {
      vexactpos 0
      hexactsize 0
      vexactsize 0
-     style Outline
+     style TPV2Panel
      {
       PanelWidgetClass PanelInventory {
        ignorepointer 1
-       color 0.0745 0.0627 0.0471 0.66
+       color 0 0 0 0
        position 0.00261 0.00283
        size 0.99435 0.99266
        hexactpos 0
@@ -964,7 +989,7 @@ FrameWidgetClass rootFrame {
          Columns 1
          {
           XComboBoxWidgetClass InventoryCategories {
-           color 0.9098 0.8627 0.7961 1
+           color 0.9529 0.9137 0.8549 1
            position 0 0.29267
            size 1.01255 39.7073
            hexactpos 1
@@ -972,7 +997,7 @@ FrameWidgetClass rootFrame {
            hexactsize 0
            vexactsize 1
            style Default
-           font "gui/fonts/etelkatextpro22"
+           font "TraderPlus/gui/fonts/tpcond18"
            items "ALL"
           }
           GridSpacerWidgetClass GridSearchInventory {
@@ -992,7 +1017,8 @@ FrameWidgetClass rootFrame {
            Rows 1
            {
             ImageWidgetClass SearchInventory {
-             color 0.9098 0.8627 0.7961 1
+             image0 "set:tpv2_icons image:search"
+             color 0.7216 0.6627 0.5804 1
              ignorepointer 1
              position 0 0
              size 30 30
@@ -1000,7 +1026,6 @@ FrameWidgetClass rootFrame {
              vexactpos 1
              hexactsize 1
              vexactsize 1
-             imageTexture "{F314F4772CEF6D8D}TraderPlus/gui/loupe.edds"
              mode blend
              "src alpha" 1
              stretch 1
@@ -1018,7 +1043,7 @@ FrameWidgetClass rootFrame {
              text "#tpm_search"
              "Use default text" 1
              "exact text" 0
-             font "gui/fonts/etelkatextpro22"
+             font "TraderPlus/gui/fonts/tpinter16"
             }
            }
           }
@@ -1064,7 +1089,7 @@ FrameWidgetClass rootFrame {
        hexactsize 1
        vexactsize 1
        text "$1,873,981"
-       font "gui/fonts/etelkatextpro22"
+       font "TraderPlus/gui/fonts/tpcond22"
        "text color" 1 0.6588 0 1
        "exact text" 0
        "size to text h" 1
@@ -1107,7 +1132,7 @@ FrameWidgetClass rootFrame {
          vexactsize 1
          fixaspect inside
          text "Keiko"
-         font "gui/fonts/etelkatextpro22"
+         font "TraderPlus/gui/fonts/tpcond28"
          "text valign" center
         }
         TextWidgetClass TraderDescriptionText {
@@ -1121,13 +1146,15 @@ FrameWidgetClass rootFrame {
          vexactsize 1
          fixaspect inside
          text "Weapon Seller"
-         font ""
+         font "TraderPlus/gui/fonts/tpcond16"
          "text valign" center
         }
        }
       }
       ImageWidgetClass ImageWidget5 {
-       color 0.9098 0.8627 0.7961 1
+       "src alpha" 1
+       image0 "set:tpv2_icons image:trader"
+       color 0.851 0.4627 0.1843 1
        ignorepointer 1
        position 0.00421 0.02814
        size 84.431 88.0957
@@ -1135,8 +1162,7 @@ FrameWidgetClass rootFrame {
        vexactpos 0
        hexactsize 1
        vexactsize 1
-       imageTexture "{772EE0CB4B1643A7}TraderPlus/datasets/cashier.edds"
-       mode additive
+       mode blend
        stretch 1
       }
      }
@@ -1258,7 +1284,7 @@ FrameWidgetClass rootFrame {
      hexactsize 1
      vexactsize 1
      text "DAYZ BEANS LAUNCHER"
-     font "gui/fonts/Metron-Bold12"
+     font "TraderPlus/gui/fonts/tpcond12"
      "exact text" 1
      "exact text size" 10
      "text valign" center
