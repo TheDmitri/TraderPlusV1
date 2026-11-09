@@ -10,6 +10,10 @@ class NewReceiptBase extends ItemBase
 	PlayerBase LastOwner = NULL;
 
 	bool hasFallen = false;
+	// Aim point saved by ActionDeployVehicle before the hologram is torn down; not persisted.
+	protected vector m_DeployPos;
+	protected vector m_DeployOri;
+	protected bool m_HasDeployTarget;
 
 	void NewReceiptBase()
 	{
@@ -64,34 +68,73 @@ class NewReceiptBase extends ItemBase
 		return displayName;
 	}	
 
+	void SetDeployTarget(vector pos, vector ori)
+	{
+		m_DeployPos = pos;
+		m_DeployOri = ori;
+		m_HasDeployTarget = true;
+	}
+
 	override void OnPlacementComplete(Man player, vector position = "0 0 0", vector orientation = "0 0 0") 
 	{
 		super.OnPlacementComplete(player);
 	
 		if (!GetGame().IsServer()) return;
+		if (IsSetForDeletion() || hasFallen) return;
 
 		PlayerBase playerBase = PlayerBase.Cast(player);
-		vector localProjectionPosition = playerBase.GetLocalProjectionPosition();
-		localProjectionPosition[1] = localProjectionPosition[1] + TraderPlusHelper.GetHeightIfClassNameInVehicleConfig(CarClassName);
-		vector localProjectionOrientation = playerBase.GetLocalProjectionOrientation();
-	
+		if (!playerBase) return;
+
+		// Best source first: the saved aim point, then where PlaceEntity moved the receipt,
+		// then the synced projection, and the player as a last resort (never map origin).
+		vector spawnPosition = playerBase.GetLocalProjectionPosition();
+		vector spawnOrientation = playerBase.GetLocalProjectionOrientation();
+		if (m_HasDeployTarget && !IsMapOrigin(m_DeployPos))
+		{
+			spawnPosition = m_DeployPos;
+			spawnOrientation = m_DeployOri;
+		}
+		else if (!IsMapOrigin(GetPosition()))
+			spawnPosition = GetPosition();
+		else if (IsMapOrigin(spawnPosition))
+			spawnPosition = playerBase.GetPosition();
+		spawnPosition[1] = spawnPosition[1] + TraderPlusHelper.GetHeightIfClassNameInVehicleConfig(CarClassName);
+
+		if (SpawnVehicleFromReceipt(playerBase, spawnPosition, spawnOrientation))
+			SetIsDeploySound(true);
+	}
+
+	protected bool IsMapOrigin(vector pos)
+	{
+		return pos[0] == 0 && pos[2] == 0;
+	}
+
+	// The receipt is deleted only once the vehicle exists; a failed spawn gives it back.
+	protected bool SpawnVehicleFromReceipt(PlayerBase owner, vector position, vector orientation)
+	{
+		if (IsSetForDeletion() || hasFallen)
+			return false;
+		hasFallen = true;
 		GetInventory().UnlockInventory(HIDE_INV_FROM_SCRIPT);
 		SetSynchDirty();
-	
-		TraderPlusHelper.CreateVehicle(playerBase, CarClassName, localProjectionPosition, localProjectionOrientation, Attachments, this, CarUniqueId, CollateralMoney, CarPassword);
-	
-		Delete();
-		SetIsDeploySound(true);
+		if (TraderPlusHelper.CreateVehicle(owner, CarClassName, position, orientation, Attachments, this, CarUniqueId, CollateralMoney, CarPassword))
+		{
+			Delete();
+			return true;
+		}
+		hasFallen = false;
+		GetInventory().LockInventory(HIDE_INV_FROM_SCRIPT);
+		GetTraderPlusLogger().LogInfo("Receipt kept: vehicle creation failed for " + CarClassName + " at " + position.ToString());
+		return false;
 	}
-	
 
 	override void EOnContact(IEntity other, Contact extra)
   {
-		if ( GetGame().IsServer() )
+		// The placing animation drops the receipt; without IsBeingPlaced this contact spawned a second vehicle.
+		if ( GetGame().IsServer() && !IsSetForDeletion() && !IsBeingPlaced() )
 		 {
 			 	if(!hasFallen && LastOwner && (!GetTraderPlusConfigServer().IsReceiptTraderOnly || IsTraderNearby(GetPosition())) && IsNoPlayerNearby(GetPosition()) && !IsVehicleToHigh(GetPosition(),GetPosition()))
 				{
-					 hasFallen = true;
 					 vector pposition = GetPosition();
 					 if( g_Game.SurfaceIsSea( pposition[0], pposition[2]))
 					 {
@@ -108,12 +151,7 @@ class NewReceiptBase extends ItemBase
 						 pposition[1]=GetGame().SurfaceY( pposition[0], pposition[2] ) + TraderPlusHelper.GetHeightIfClassNameInVehicleConfig(CarClassName);
 					 }
 					vector oorientation = LastOwner.GetOrientation();
-					 GetInventory().UnlockInventory(HIDE_INV_FROM_SCRIPT);
-					 SetSynchDirty();
-
-					 TraderPlusHelper.CreateVehicle(LastOwner,CarClassName,pposition,oorientation, Attachments, this, CarUniqueId, CollateralMoney, CarPassword);
-
-					 this.Delete();
+					 SpawnVehicleFromReceipt(LastOwner, pposition, oorientation);
 				}
 		 }
 	}
@@ -123,7 +161,7 @@ class NewReceiptBase extends ItemBase
 		for(int i=0;i<GetTraderPlusConfigServer().Traders.Count();i++)
 		{
 			float dist = vector.Distance(GetTraderPlusConfigServer().Traders[i].Position,playerpos);
-			if(dist < 50)
+			if(dist < GetTraderPlusConfigServer().GetReceiptThrowTraderRadius())
 			{
 				return true;
 			}

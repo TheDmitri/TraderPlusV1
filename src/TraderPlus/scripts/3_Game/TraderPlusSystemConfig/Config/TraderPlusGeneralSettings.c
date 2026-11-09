@@ -16,6 +16,11 @@ class TraderPlusGeneralSettings
 	bool                                   IsReceiptSaveLock;
 	bool                                   IsReceiptSaveAttachment;
 	bool                                   IsReceiptSaveCargo;
+	// Receipts. A value of 0 (key missing from an older config) keeps the previous behaviour.
+	bool                                   AllowReceiptPackAnywhere;
+	float                                  ReceiptDeployTraderRadius;
+	float                                  ReceiptThrowTraderRadius;
+	float                                  ReceiptHeightTolerance;
 	float                                  LockPickChance;
 	string                                 LicenceKeyWord;
 	ref TStringArray                       Licences;
@@ -33,6 +38,20 @@ class TraderPlusGeneralSettings
 		TraderObjects 				= new array<ref TraderPlusObject>;
 	}
 
+	float GetReceiptDeployTraderRadius()
+	{
+		if(ReceiptDeployTraderRadius > 0)
+			return ReceiptDeployTraderRadius;
+		return 15;
+	}
+
+	float GetReceiptThrowTraderRadius()
+	{
+		if(ReceiptThrowTraderRadius > 0)
+			return ReceiptThrowTraderRadius;
+		return 50;
+	}
+
 	void DefaultTraderPlusGeneralSettings()
 	{
 		UseGarageToTradeCar = false;
@@ -47,6 +66,10 @@ class TraderPlusGeneralSettings
 		IsReceiptTraderOnly = true;
 		IsReceiptSaveAttachment = true;
 		IsReceiptSaveCargo = true;
+		AllowReceiptPackAnywhere = false;
+		ReceiptDeployTraderRadius = 15;
+		ReceiptThrowTraderRadius = 50;
+		ReceiptHeightTolerance = 2.0;
 		LockPickChance = 0.3;
 		LicenceKeyWord = "Licence";
     Licences.Insert("Car Licence");

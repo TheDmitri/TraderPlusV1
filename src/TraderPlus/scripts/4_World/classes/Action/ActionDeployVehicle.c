@@ -160,7 +160,7 @@ class ActionDeployVehicle: ActionContinuousBase
 		for(int i=0;i<GetTraderPlusConfigServer().Traders.Count();i++)
 		{
 			float dist = vector.Distance(GetTraderPlusConfigServer().Traders[i].Position,playerpos);
-			if(dist < 15)
+			if(dist < GetTraderPlusConfigServer().GetReceiptDeployTraderRadius())
 			{
 				return true;
 			}
@@ -176,9 +176,12 @@ class ActionDeployVehicle: ActionContinuousBase
 			Print("DisableHeightFailSafeForReceiptDeployment");
 			return false;
 		}
-		float distance = Math.Sqrt(Math.Pow((carpos[1]-ppos[1]),2));
-		if(distance > 0.5)return true;
-		else return false;
+		// Height of the projection above the ground under it, not above the player's feet:
+		// the old check failed on any slope or step.
+		float above = carpos[1] - GetGame().SurfaceY(carpos[0], carpos[2]);
+		if(above < 0)
+			above = -above;
+		return above > GetTraderPlusConfigClient().GetReceiptHeightTolerance();
 	}
 
 
@@ -192,10 +195,12 @@ class ActionDeployVehicle: ActionContinuousBase
       return true;
     }
 
+    // Client side: the player placing the receipt stands right next to the hologram.
+    Man self = GetGame().GetPlayer();
     for (int i = 0; i < objs.Count(); i++)
     {
-      string tempObjId = objs.Get(i).ToString();
-      tempObjId.ToLower();
+      if(self && objs.Get(i) == self)
+        continue;
       if(objs.Get(i).IsKindOf("SurvivorBase"))
       {
         return false;
@@ -309,6 +314,12 @@ class ActionDeployVehicle: ActionContinuousBase
 		}
 
 		action_data.m_Player.GetHologramServer().PlaceEntity( entity_for_placing );
+
+		// PlacingCompleteServer tears the hologram down and resets the projection, so the
+		// receipt keeps the client's aim point for OnPlacementComplete.
+		NewReceiptBase receipt = NewReceiptBase.Cast(entity_for_placing);
+		if (receipt)
+			receipt.SetDeployTarget(poActionData.m_Position, poActionData.m_Orientation);
 
 		if ( GetGame().IsMultiplayer() )
 			action_data.m_Player.GetHologramServer().CheckPowerSource();

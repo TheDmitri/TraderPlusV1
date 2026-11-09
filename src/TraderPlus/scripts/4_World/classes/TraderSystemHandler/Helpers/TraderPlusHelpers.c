@@ -722,7 +722,8 @@ static bool IsWearByPlayer(EntityAI entity)
         #ifdef TRADERPLUSDEBUG
         GetTraderPlusLogger().LogInfo("GetVehicleParts => found!");
         #endif
-        temp = GetTraderPlusVehiculeConfig().VehiclesParts.Get(i).VehicleParts;
+        // A copy: callers must not edit the loaded config.
+        temp.Copy(GetTraderPlusVehiculeConfig().VehiclesParts.Get(i).VehicleParts);
         return temp;
       }
     }
@@ -744,7 +745,8 @@ static bool IsWearByPlayer(EntityAI entity)
         #ifdef TRADERPLUSDEBUG
         GetTraderPlusLogger().LogInfo("GetVehicleParts => found!");
         #endif
-        attachments = GetTraderPlusVehiculeConfig().VehiclesParts.Get(i).VehicleParts;
+        // A copy: appending ",-1" to the config array itself grew it on every purchase.
+        attachments.Copy(GetTraderPlusVehiculeConfig().VehiclesParts.Get(i).VehicleParts);
         for(int j=0; j<attachments.Count(); j++)
         {
           attachments[j] = attachments[j] + ",-1";
@@ -1377,11 +1379,15 @@ static bool IsWearByPlayer(EntityAI entity)
       int maxQuantity = GetMaxItemQuantityServer(classname);
       if(quantity < 0) quantity = maxQuantity;
 
-      if(quantity > maxQuantity)
+      // Items without a quantity (maxQuantity 0) are created once; the old recursion never ended for them.
+      if(maxQuantity <= 0)
+        quantity = 0;
+
+      // Extra full stacks first, in a loop: the old recursion went one level per stack.
+      while(quantity > maxQuantity)
       {
-        int remainingqty = quantity-maxQuantity;
-        quantity=maxQuantity;
-        CreateInInventory(player, classname, remainingqty, skipFillMag);
+        quantity -= maxQuantity;
+        CreateInInventory(player, classname, maxQuantity, skipFillMag);
       }
 
       #ifdef TRADERPLUSDEBUG
