@@ -57,7 +57,7 @@ class TraderPlusCore
 			if(!GetGame().ConfigIsExisting("CfgPatches " + addon))
 				continue;
 			string message = "[TraderPlus] " + addon + " is loaded but its fixes are now built into TraderPlus. Remove it from your -mod list.";
-			Print(message);
+			PrintFormat("%1", message);
 			GetTraderPlusLogger().LogInfo(message);
 		}
 	}
