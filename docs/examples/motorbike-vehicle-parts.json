@@ -1,0 +1,70 @@
+[
+  {
+    "VehicleName": "Motorbike_01_Blue",
+    "Height": 0,
+    "VehicleParts": [
+      "Motorbike_01_Wheel_1",
+      "Motorbike_01_Wheel_2"
+    ]
+  },
+  {
+    "VehicleName": "Motorbike_01_Red",
+    "Height": 0,
+    "VehicleParts": [
+      "Motorbike_01_Wheel_1",
+      "Motorbike_01_Wheel_2"
+    ]
+  },
+  {
+    "VehicleName": "Motorbike_01_Yellow",
+    "Height": 0,
+    "VehicleParts": [
+      "Motorbike_01_Wheel_1",
+      "Motorbike_01_Wheel_2"
+    ]
+  },
+  {
+    "VehicleName": "Motorbike_02_Blue",
+    "Height": 0,
+    "VehicleParts": [
+      "Motorbike_02_Wheel_1",
+      "Motorbike_02_Wheel_2",
+      "Motorbike_02_ShieldFront_Blue",
+      "Motorbike_02_ShieldLeft_Blue",
+      "Motorbike_02_ShieldRight_Blue"
+    ]
+  },
+  {
+    "VehicleName": "Motorbike_02_Green",
+    "Height": 0,
+    "VehicleParts": [
+      "Motorbike_02_Wheel_1",
+      "Motorbike_02_Wheel_2",
+      "Motorbike_02_ShieldFront_Green",
+      "Motorbike_02_ShieldLeft_Green",
+      "Motorbike_02_ShieldRight_Green"
+    ]
+  },
+  {
+    "VehicleName": "Motorbike_02_Red",
+    "Height": 0,
+    "VehicleParts": [
+      "Motorbike_02_Wheel_1",
+      "Motorbike_02_Wheel_2",
+      "Motorbike_02_ShieldFront_Red",
+      "Motorbike_02_ShieldLeft_Red",
+      "Motorbike_02_ShieldRight_Red"
+    ]
+  },
+  {
+    "VehicleName": "Motorbike_02_Yellow",
+    "Height": 0,
+    "VehicleParts": [
+      "Motorbike_02_Wheel_1",
+      "Motorbike_02_Wheel_2",
+      "Motorbike_02_ShieldFront_Yellow",
+      "Motorbike_02_ShieldLeft_Yellow",
+      "Motorbike_02_ShieldRight_Yellow"
+    ]
+  }
+]
