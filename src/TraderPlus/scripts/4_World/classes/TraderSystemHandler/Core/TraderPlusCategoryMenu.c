@@ -168,16 +168,16 @@ class TraderPlusCategoryMenu extends UIScriptedMenu
       itemStock.SetText(strquantity);
       if(quantity == maxstock && quantity != -1)
       {
-        itemName.SetColor(ARGB(255,191,48,48) );
-        itemHealth.SetColor(ARGB(255,191,48,48) );
-        itemStock.SetColor(ARGB(255,191,48,48) );
+        itemName.SetColor(ARGB(255,224,122,99) );
+        itemHealth.SetColor(ARGB(255,224,122,99) );
+        itemStock.SetColor(ARGB(255,224,122,99) );
       }
       if(TraderPlusHelper.IsItemCompatible(classname, ParentMenu.m_compatibleItemsFromItemInHand))
       {
         Widget highLightProduct = Widget.Cast(widget.FindAnyWidget("Highlight"));
         highLightProduct.Show(true);
-        highLightProduct.SetColor(ARGB(250,216,89,1));
-        itemName.SetColor(ARGB(250,216,89,1));
+        highLightProduct.SetColor(ARGB(250,217,118,47));
+        itemName.SetColor(ARGB(250,217,118,47));
       }
       m_WidgetStockList.Insert(widget, i);
 

@@ -8,6 +8,7 @@ class TraderPlusGnrlConfigClient
 	bool   HideInsuranceBtn;
 	bool   HideGarageBtn;
 	bool   HideLicenceBtn;
+	bool   HideBeansLauncherBadge;
 	bool   UseGarageToTradeCar;
 	bool   EnableShowAllCheckBox;
 	bool   DisableHeightFailSafeForReceiptDeployment;
@@ -66,6 +67,7 @@ class TraderPlusGnrlConfigClient
 		HideInsuranceBtn=m_gnrlconfig.HideInsuranceBtn;
 		HideGarageBtn=m_gnrlconfig.HideGarageBtn;
 		HideLicenceBtn=m_gnrlconfig.HideLicenceBtn;
+		HideBeansLauncherBadge=m_gnrlconfig.HideBeansLauncherBadge;
 		for(int h=0;h<m_gnrlconfig.Traders.Count();h++)
 		{
 			TraderPos.Insert(m_gnrlconfig.Traders.Get(h).Position);

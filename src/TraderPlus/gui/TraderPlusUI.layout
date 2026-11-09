@@ -20,6 +20,7 @@ FrameWidgetClass rootFrame {
    style rover_sim_colorable
    {
     PanelWidgetClass PanelIconsOutline {
+     color 0.2275 0.1922 0.1529 1
      ignorepointer 1
      position 0.0074 0.14
      size 0.04559 0.8219
@@ -31,7 +32,7 @@ FrameWidgetClass rootFrame {
      {
       PanelWidgetClass PanelIcons {
        ignorepointer 1
-       color 0 0 0 0.6667
+       color 0.0745 0.0627 0.0471 0.66
        position 0.02469 0.00323
        size 0.95104 0.99184
        hexactpos 0
@@ -60,6 +61,7 @@ FrameWidgetClass rootFrame {
            vexactsize 0
            {
             ImageWidgetClass ImageMarket {
+             color 0.9098 0.8627 0.7961 1
              ignorepointer 1
              position 0 -0.06228
              size 64 64
@@ -75,6 +77,7 @@ FrameWidgetClass rootFrame {
              stretch 1
             }
             TextWidgetClass MarketText {
+             color 0.7216 0.6627 0.5804 1
              ignorepointer 1
              position 0.00705 0.68639
              size 1.00952 0.13447
@@ -99,6 +102,7 @@ FrameWidgetClass rootFrame {
            vexactsize 0
            {
             ImageWidgetClass ImageBag {
+             color 0.9098 0.8627 0.7961 1
              ignorepointer 1
              position 0 -0.06228
              size 64 64
@@ -114,6 +118,7 @@ FrameWidgetClass rootFrame {
              stretch 1
             }
             TextWidgetClass InvText {
+             color 0.7216 0.6627 0.5804 1
              ignorepointer 1
              position 0.01181 0.7237
              size 1.0164 0.1285
@@ -138,6 +143,7 @@ FrameWidgetClass rootFrame {
            vexactsize 0
            {
             ImageWidgetClass ImageCar {
+             color 0.9098 0.8627 0.7961 1
              ignorepointer 1
              position 0 -0.08661
              size 64 64
@@ -153,6 +159,7 @@ FrameWidgetClass rootFrame {
              stretch 1
             }
             TextWidgetClass TextWidget3 {
+             color 0.7216 0.6627 0.5804 1
              ignorepointer 1
              position -0.00229 0.69812
              size 1.00952 0.13447
@@ -177,6 +184,7 @@ FrameWidgetClass rootFrame {
            vexactsize 0
            {
             ImageWidgetClass ImageLicence {
+             color 0.9098 0.8627 0.7961 1
              ignorepointer 1
              position 0.01417 -0.08985
              size 64 64
@@ -192,6 +200,7 @@ FrameWidgetClass rootFrame {
              stretch 1
             }
             TextWidgetClass TextWidget4 {
+             color 0.7216 0.6627 0.5804 1
              ignorepointer 1
              position 0.00705 0.68496
              size 1.00952 0.13447
@@ -216,6 +225,7 @@ FrameWidgetClass rootFrame {
            vexactsize 0
            {
             ImageWidgetClass ImageInsurance {
+             color 0.9098 0.8627 0.7961 1
              ignorepointer 1
              position 0.00708 -0.07948
              size 64 64
@@ -231,6 +241,7 @@ FrameWidgetClass rootFrame {
              stretch 1
             }
             TextWidgetClass TextWidget5 {
+             color 0.7216 0.6627 0.5804 1
              ignorepointer 1
              position 0.00705 0.70224
              size 1.00952 0.13447
@@ -253,6 +264,7 @@ FrameWidgetClass rootFrame {
      }
     }
     PanelWidgetClass PanelStockOutline {
+     color 0.2275 0.1922 0.1529 1
      visible 1
      ignorepointer 1
      position 0.05907 0.14
@@ -266,7 +278,7 @@ FrameWidgetClass rootFrame {
      {
       PanelWidgetClass PanelStock {
        ignorepointer 1
-       color 0 0 0 0.6667
+       color 0.0745 0.0627 0.0471 0.66
        position 0.00172 0.00252
        size 0.99579 0.99479
        hexactpos 0
@@ -291,7 +303,7 @@ FrameWidgetClass rootFrame {
          Columns 1
          {
           XComboBoxWidgetClass StockCategories {
-           color 1 1 1 0.7843
+           color 0.9098 0.8627 0.7961 1
            position 0 4.30092
            size 1.0005 42.2904
            hexactpos 1
@@ -319,6 +331,7 @@ FrameWidgetClass rootFrame {
            Rows 1
            {
             ImageWidgetClass SearchLeft {
+             color 0.9098 0.8627 0.7961 1
              ignorepointer 1
              position 0 0
              size 30 30
@@ -332,6 +345,7 @@ FrameWidgetClass rootFrame {
              stretch 1
             }
             EditBoxWidgetClass SearchStockBox {
+             color 0.9098 0.8627 0.7961 1
              position 0.15635 -0.06361
              size 0.84365 26.9461
              halign right_ref
@@ -363,6 +377,7 @@ FrameWidgetClass rootFrame {
              Rows 1
              {
               TextWidgetClass TextWidget2 {
+               color 0.7216 0.6627 0.5804 1
                ignorepointer 1
                position 0 0
                size 0.19873 0.48041
@@ -378,7 +393,7 @@ FrameWidgetClass rootFrame {
                "text valign" center
               }
               CheckBoxWidgetClass ShowAllCheckBox {
-               color 0.5255 0.549 0.5882 1
+               color 0.851 0.4627 0.1843 1
                position -0.81421 -0.52574
                size 1.28421 2.11674
                hexactpos 0
@@ -395,7 +410,7 @@ FrameWidgetClass rootFrame {
            }
           }
           PanelWidgetClass StockScrollPanel {
-           color 0 0 0 0.549
+           color 0 0 0 0
            position 0 -0.00161
            size 0.98 1.0016
            hexactpos 0
@@ -411,6 +426,7 @@ FrameWidgetClass rootFrame {
      }
     }
     PanelWidgetClass ProductInformationOutline {
+     color 0.2275 0.1922 0.1529 1
      visible 1
      ignorepointer 1
      position 0.7113 0.14
@@ -423,7 +439,7 @@ FrameWidgetClass rootFrame {
      {
       PanelWidgetClass ProductInformation {
        ignorepointer 1
-       color 0 0 0 0.6667
+       color 0.0745 0.0627 0.0471 0.66
        position 0.00661 0.0032
        size 0.98457 0.99224
        hexactpos 0
@@ -449,6 +465,7 @@ FrameWidgetClass rootFrame {
          Rows 4
          {
           TextWidgetClass ProductText {
+           color 0.9529 0.9137 0.8549 1
            ignorepointer 1
            position -0.02464 0.007
            size 0.85072 50
@@ -603,6 +620,7 @@ FrameWidgetClass rootFrame {
            }
           }
           MultilineTextWidgetClass ItemDescription {
+           color 0.7216 0.6627 0.5804 1
            visible 1
            ignorepointer 1
            position 0.982 0.56
@@ -635,6 +653,7 @@ FrameWidgetClass rootFrame {
            Rows 6
            {
             TextWidgetClass QuantityTextCombo {
+             color 0.7216 0.6627 0.5804 1
              visible 1
              ignorepointer 1
              position 0 0
@@ -688,6 +707,7 @@ FrameWidgetClass rootFrame {
            Rows 6
            {
             TextWidgetClass InsuranceText {
+             color 0.7216 0.6627 0.5804 1
              visible 1
              ignorepointer 1
              position 0 114.012
@@ -705,7 +725,7 @@ FrameWidgetClass rootFrame {
              "text valign" center
              {
               CheckBoxWidgetClass InsuranceCheckBox {
-               color 0.0706 0.5608 0.1922 1
+               color 0.851 0.4627 0.1843 1
                position 0.85542 0.03251
                size 0.13586 0.91772
                hexactpos 0
@@ -720,6 +740,7 @@ FrameWidgetClass rootFrame {
              }
             }
             TextWidgetClass InsuranceTextOuput {
+             color 0.7216 0.6627 0.5804 1
              visible 1
              ignorepointer 1
              position 0 0
@@ -757,6 +778,7 @@ FrameWidgetClass rootFrame {
            Rows 6
            {
             TextWidgetClass CargoCount {
+             color 0.7216 0.6627 0.5804 1
              ignorepointer 1
              position 0 0
              size 0.51275 0.16302
@@ -773,6 +795,7 @@ FrameWidgetClass rootFrame {
              "text valign" center
             }
             TextWidgetClass SizeCount {
+             color 0.7216 0.6627 0.5804 1
              ignorepointer 1
              position 0 0
              size 0.51275 0.16302
@@ -812,7 +835,7 @@ FrameWidgetClass rootFrame {
           PanelWidgetClass BuyPanelWidget {
            visible 1
            ignorepointer 1
-           color 1 1 1 0.7843
+           color 0.851 0.4627 0.1843 1
            position 0 0
            size 1 64
            hexactpos 1
@@ -823,7 +846,7 @@ FrameWidgetClass rootFrame {
            {
             ButtonWidgetClass BttnBuy {
              visible 1
-             color 0.7333 0.7333 0.7333 1
+             color 0.851 0.4627 0.1843 1
              position 0 0
              size 1 1
              valign center_ref
@@ -835,7 +858,7 @@ FrameWidgetClass rootFrame {
              {
               TextWidgetClass BttnBuy_label {
                ignorepointer 1
-               color 0 0 0 1
+               color 0.102 0.0706 0.0392 1
                position 0 0
                size 1 1
                halign center_ref
@@ -855,7 +878,7 @@ FrameWidgetClass rootFrame {
           }
           PanelWidgetClass SellPanelWidget {
            ignorepointer 1
-           color 1 1 1 0.7843
+           color 0.851 0.4627 0.1843 1
            position 0 0
            size 1 64
            hexactpos 1
@@ -866,7 +889,7 @@ FrameWidgetClass rootFrame {
            {
             ButtonWidgetClass BttnSell {
              visible 1
-             color 0.7333 0.7333 0.7333 1
+             color 0.851 0.4627 0.1843 1
              position 0 0
              size 1 1
              halign right_ref
@@ -879,7 +902,7 @@ FrameWidgetClass rootFrame {
              {
               TextWidgetClass BttnSell_label {
                ignorepointer 1
-               color 0 0 0 1
+               color 0.102 0.0706 0.0392 1
                position 0 0
                size 1 1
                halign center_ref
@@ -904,6 +927,7 @@ FrameWidgetClass rootFrame {
      }
     }
     PanelWidgetClass PanelInventoryOutline {
+     color 0.2275 0.1922 0.1529 1
      visible 0
      ignorepointer 1
      position 0.05907 0.14
@@ -916,7 +940,7 @@ FrameWidgetClass rootFrame {
      {
       PanelWidgetClass PanelInventory {
        ignorepointer 1
-       color 0 0 0 0.6667
+       color 0.0745 0.0627 0.0471 0.66
        position 0.00261 0.00283
        size 0.99435 0.99266
        hexactpos 0
@@ -940,6 +964,7 @@ FrameWidgetClass rootFrame {
          Columns 1
          {
           XComboBoxWidgetClass InventoryCategories {
+           color 0.9098 0.8627 0.7961 1
            position 0 0.29267
            size 1.01255 39.7073
            hexactpos 1
@@ -967,6 +992,7 @@ FrameWidgetClass rootFrame {
            Rows 1
            {
             ImageWidgetClass SearchInventory {
+             color 0.9098 0.8627 0.7961 1
              ignorepointer 1
              position 0 0
              size 30 30
@@ -980,6 +1006,7 @@ FrameWidgetClass rootFrame {
              stretch 1
             }
             EditBoxWidgetClass SearchInventoryBox {
+             color 0.9098 0.8627 0.7961 1
              visible 1
              position 0 0
              size 1 30
@@ -997,7 +1024,7 @@ FrameWidgetClass rootFrame {
           }
           PanelWidgetClass InventoryScrollPanel {
            visible 1
-           color 0 0 0 0.549
+           color 0 0 0 0
            position 0 -0.00161
            size 0.98 1.0016
            hexactpos 0
@@ -1029,7 +1056,7 @@ FrameWidgetClass rootFrame {
      {
       TextWidgetClass PlayerMoneyText {
        ignorepointer 1
-       color 0.2667 0.8667 0.051 1
+       color 0.6118 0.7608 0.4627 1
        position 5.00504 0.50465
        size 165.77901 32.3668
        hexactpos 1
@@ -1070,6 +1097,7 @@ FrameWidgetClass rootFrame {
        Rows 2
        {
         TextWidgetClass TraderNameText {
+         color 0.9529 0.9137 0.8549 1
          ignorepointer 1
          position 0.08073 0.4276
          size 350 45
@@ -1083,6 +1111,7 @@ FrameWidgetClass rootFrame {
          "text valign" center
         }
         TextWidgetClass TraderDescriptionText {
+         color 0.851 0.4627 0.1843 1
          ignorepointer 1
          position 1.1623 42.8743
          size 350 45
@@ -1098,6 +1127,7 @@ FrameWidgetClass rootFrame {
        }
       }
       ImageWidgetClass ImageWidget5 {
+       color 0.9098 0.8627 0.7961 1
        ignorepointer 1
        position 0.00421 0.02814
        size 84.431 88.0957
@@ -1188,6 +1218,50 @@ FrameWidgetClass rootFrame {
        "strip newlines" 1
       }
      }
+    }
+   }
+  }
+  PanelWidgetClass BeansBadge {
+   ignorepointer 1
+   color 0 0 0 0
+   position 14 12
+   size 150 12
+   halign right_ref
+   valign bottom_ref
+   hexactpos 1
+   vexactpos 1
+   hexactsize 1
+   vexactsize 1
+   style blank
+   {
+    ImageWidgetClass BeansBadgeIcon {
+     ignorepointer 1
+     color 1 1 1 0.6
+     position 0 0
+     size 10 12
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
+     vexactsize 1
+     image0 "TraderPlus/gui/images/beans_can.edds"
+     mode blend
+     "src alpha" 1
+     stretch 1
+    }
+    TextWidgetClass BeansBadgeText {
+     ignorepointer 1
+     color 0.7216 0.6627 0.5804 0.6
+     position 15 0
+     size 135 12
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
+     vexactsize 1
+     text "DAYZ BEANS LAUNCHER"
+     font "gui/fonts/Metron-Bold12"
+     "exact text" 1
+     "exact text size" 10
+     "text valign" center
     }
    }
   }

@@ -269,6 +269,10 @@ class TraderPlusMenu extends UIScriptedMenu
         m_BuyPriceText = TextWidget.Cast(layoutRoot.FindAnyWidget( "BttnBuy_label" ));
         m_SellPriceText = TextWidget.Cast(layoutRoot.FindAnyWidget( "BttnSell_label" ));
         m_InformationText = RichTextWidget.Cast(layoutRoot.FindAnyWidget( "InformationText" ));
+        // Servers with their own TraderPlusUI.layout have no badge widget.
+        Widget beansBadge = layoutRoot.FindAnyWidget( "BeansBadge" );
+        if (beansBadge)
+          beansBadge.Show(!GetTraderPlusConfigClient().HideBeansLauncherBadge);
         m_ItemDescription = MultilineTextWidget.Cast(layoutRoot.FindAnyWidget( "ItemDescription" ));
         m_Background = Widget.Cast(layoutRoot.FindAnyWidget("ContentPanel"));
         m_PanelInventoryOutline = Widget.Cast(layoutRoot.FindAnyWidget("PanelInventoryOutline"));
@@ -1238,7 +1242,7 @@ class TraderPlusMenu extends UIScriptedMenu
       m_GridInsurance.Show(false);
       m_BttnReset.Show(true);
       m_BttnRemove.Show(true);
-      m_ImagePlayerPreview.SetColor(ARGB(255,40,159,70));
+      m_ImagePlayerPreview.SetColor(ARGB(255,217,118,47));
 
       m_GridCenter.Update();
     }else if(m_PreviewID == TRADERPLUS_PLAYERPREVIEW)
