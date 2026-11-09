@@ -1250,8 +1250,8 @@ FrameWidgetClass rootFrame {
   PanelWidgetClass BeansBadge {
    ignorepointer 1
    color 0 0 0 0
-   position 14 12
-   size 150 12
+   position 16 10
+   size 240 24
    halign right_ref
    valign bottom_ref
    hexactpos 1
@@ -1262,9 +1262,9 @@ FrameWidgetClass rootFrame {
    {
     ImageWidgetClass BeansBadgeIcon {
      ignorepointer 1
-     color 1 1 1 0.6
+     color 1 1 1 1
      position 0 0
-     size 10 12
+     size 24 24
      hexactpos 1
      vexactpos 1
      hexactsize 1
@@ -1276,17 +1276,17 @@ FrameWidgetClass rootFrame {
     }
     TextWidgetClass BeansBadgeText {
      ignorepointer 1
-     color 0.7216 0.6627 0.5804 0.6
-     position 15 0
-     size 135 12
+     color 0.949 0.9137 0.8471 0.9
+     position 30 0
+     size 210 24
      hexactpos 1
      vexactpos 1
      hexactsize 1
      vexactsize 1
-     text "DAYZ BEANS LAUNCHER"
-     font "TraderPlus/gui/fonts/tpcond12"
+     text "DayZ Beans Launcher"
+     font "TraderPlus/gui/fonts/tpcond18"
      "exact text" 1
-     "exact text size" 10
+     "exact text size" 15
      "text valign" center
     }
    }
