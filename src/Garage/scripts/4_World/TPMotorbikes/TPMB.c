@@ -532,13 +532,14 @@ modded class TraderPlusServer
     float TPMBStateCoefficient(int state)
     {
         TraderPlusStates states = GetTraderPlusConfigServer().AcceptedStates;
-        switch (state)
-        {
-            case TraderPlusItemState.PRISTINE: return 1.0;
-            case TraderPlusItemState.WORN: if (states.AcceptWorn) return states.CoefficientWorn; return -1;
-            case TraderPlusItemState.DAMAGED: if (states.AcceptDamaged) return states.CoefficientDamaged; return -1;
-            case TraderPlusItemState.BADLY_DAMAGED: if (states.AcceptBadlyDamaged) return states.CoefficientBadlyDamaged; return -1;
-        }
+        if (state == TraderPlusItemState.PRISTINE)
+            return 1.0;
+        if (state == TraderPlusItemState.WORN && states.AcceptWorn)
+            return states.CoefficientWorn;
+        if (state == TraderPlusItemState.DAMAGED && states.AcceptDamaged)
+            return states.CoefficientDamaged;
+        if (state == TraderPlusItemState.BADLY_DAMAGED && states.AcceptBadlyDamaged)
+            return states.CoefficientBadlyDamaged;
         return -1;
     }
 
