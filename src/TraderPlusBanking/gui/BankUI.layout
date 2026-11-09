@@ -1,872 +1,540 @@
-PanelWidgetClass rootFrame {
- position 0.0017 0.0419
- size 1 1080
- halign center_ref
- valign center_ref
+FrameWidgetClass rootFrame {
+ position 0 0
+ size 1 1
  hexactpos 0
  vexactpos 0
  hexactsize 0
- vexactsize 1
- style blank
+ vexactsize 0
  {
   PanelWidgetClass Background {
-   visible 1
-   ignorepointer 1
-   keepsafezone 1
-   color 0 0 0 0.7412
-   position 0.00086 -0.03118
-   size 0.48413 611.71704
+   ignorepointer 0
+   color 1 1 1 1
+   style TPV2Panel
+   position 0 0
+   size 720 660
+   hexactpos 1
+   vexactpos 1
+   hexactsize 1
+   vexactsize 1
    halign center_ref
    valign center_ref
-   hexactpos 0
-   vexactpos 0
-   hexactsize 0
-   vexactsize 1
-   style rover_sim_colorable
    {
-    PanelWidgetClass PlayerAccountPanel {
-     visible 1
+    PanelWidgetClass BankBar {
      ignorepointer 1
-     position 0.046 0.1662
-     size 0.9132 397.22202
-     hexactpos 0
-     vexactpos 0
-     hexactsize 0
+     color 1 1 1 1
+     style TPV2Bar
+     position 0 0
+     size 720 54
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
      vexactsize 1
-     style Outline
      {
+      TextWidgetClass BankTitle {
+       ignorepointer 1
+       color 0.9529 0.9137 0.8549 1
+       font "TraderPlus/gui/fonts/tpcond22"
+       position 16 0
+       size 300 54
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
+       vexactsize 1
+       text "BANK"
+       "text halign" left
+       "text valign" center
+       "exact text" 1
+       "exact text size" 22
+      }
       TextWidgetClass PlayerFees {
        ignorepointer 1
-       position 0.81811 0.03795
-       size 0.16764 38.1275
-       hexactpos 0
-       vexactpos 0
-       hexactsize 0
+       color 0.7216 0.6627 0.5804 1
+       font "TraderPlus/gui/fonts/tpcond16"
+       position 16 0
+       size 200 54
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
        vexactsize 1
+       halign right_ref
        text "#tpb_fees"
-       "exact text" 1
        "text halign" right
        "text valign" center
-      }
-      GridSpacerWidgetClass GridPlayerPanel {
-       ignorepointer 1
-       position 0.014 0.133
-       size 0.97248 0.68118
-       hexactpos 0
-       vexactpos 0
-       hexactsize 0
-       vexactsize 0
-       Columns 2
-       Rows 5
-       {
-        TextWidgetClass BankAmountText {
-         ignorepointer 1
-         position -0.03968 0.09299
-         size 0.35372 39.7132
-         hexactpos 0
-         vexactpos 0
-         hexactsize 0
-         vexactsize 1
-         style Bold
-         text "#tpb_bank_amount"
-         font "TraderPlus/gui/fonts/regular22"
-         "exact text" 1
-         "text halign" right
-         "text valign" center
-        }
-        TextWidgetClass BankAmountTextInput {
-         ignorepointer 1
-         position 0.335 0.108
-         size 0.56729 38.0897
-         hexactpos 0
-         vexactpos 0
-         hexactsize 0
-         vexactsize 1
-         font "TraderPlus/gui/fonts/regular22"
-         "text valign" center
-        }
-        TextWidgetClass TransactionAmountText {
-         ignorepointer 1
-         position 0.001 0.321
-         size 0.31308 28.1544
-         hexactpos 0
-         vexactpos 0
-         hexactsize 0
-         vexactsize 1
-         style Bold
-         text "#tpb_transaction_amount"
-         font "TraderPlus/gui/fonts/regular22"
-         "exact text" 1
-         "text halign" right
-         "text valign" center
-        }
-        EditBoxWidgetClass PlayerAmountTextInput {
-         position 0.336 0.319
-         size 0.56714 32.3298
-         hexactpos 0
-         vexactpos 0
-         hexactsize 0
-         vexactsize 1
-         "Use default text" 0
-         "exact text" 1
-         font "TraderPlus/gui/fonts/regular22"
-        }
-        TextWidgetClass PlayerAmountText {
-         ignorepointer 1
-         position 0.002 0.214
-         size 0.31308 35.8512
-         hexactpos 0
-         vexactpos 0
-         hexactsize 0
-         vexactsize 1
-         style Bold
-         text "#tpb_player_amount"
-         font "TraderPlus/gui/fonts/regular22"
-         "exact text" 1
-         "text halign" right
-         "text valign" center
-        }
-        TextWidgetClass PlayerAmountTextOutput {
-         ignorepointer 1
-         position 0.336 0.215
-         size 0.56729 38.0897
-         hexactpos 0
-         vexactpos 0
-         hexactsize 0
-         vexactsize 1
-         font "TraderPlus/gui/fonts/regular22"
-         "text valign" center
-        }
-        TextWidgetClass MaxText {
-         ignorepointer 1
-         position 0.621 0.755
-         size 0.28402 33.0969
-         hexactpos 0
-         vexactpos 0
-         hexactsize 0
-         vexactsize 1
-         style Bold
-         text "#tpb_max"
-         font "TraderPlus/gui/fonts/regular22"
-         "text color" 1 0.749 0 1
-         "exact text" 1
-         "text halign" right
-         "text valign" center
-        }
-        ProgressBarWidgetClass MoneyProgressBar {
-         ignorepointer 1
-         position 0.04104 0.9375
-         size 0.94518 -21.4156
-         hexactpos 0
-         vexactpos 0
-         hexactsize 0
-         vexactsize 1
-         style Stamina
-         current 0
-        }
-        ButtonWidgetClass PlayerDepositBttn {
-         visible 1
-         position 0.40131 0.437
-         size 0.27903 47.6531
-         hexactpos 0
-         vexactpos 0
-         hexactsize 0
-         vexactsize 1
-         style Editor
-         text "#tpb_deposit"
-        }
-        ButtonWidgetClass PlayerWithdrawBttn {
-         position 0.2 0.70326
-         size 0.2294 -15.3921
-         hexactpos 0
-         vexactpos 0
-         hexactsize 0
-         vexactsize 1
-         style Editor
-         text "#tpb_withdraw"
-        }
-       }
+       "exact text" 1
+       "exact text size" 16
       }
      }
     }
-    CanvasWidgetClass ClanAccountPanel {
-     visible 0
-     ignorepointer 1
-     position 40.3483 116.812
-     size 0.91324 397.22205
+    ButtonWidgetClass PlayerAccountBttn {
+     color 1 1 1 1
+     style TPV2IconBtn
+     position 16 66
+     size 200 40
      hexactpos 1
      vexactpos 1
-     hexactsize 0
+     hexactsize 1
+     vexactsize 1
+     text "#tpb_player_account"
+     font "TraderPlus/gui/fonts/tpcond16"
+     "text color" 0.8510 0.4627 0.1843 1
+     "exact text" 1
+     "exact text size" 16
+    }
+    ButtonWidgetClass PtPTransfertBttn {
+     color 1 1 1 1
+     style TPV2IconBtn
+     position 224 66
+     size 200 40
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
+     vexactsize 1
+     text "#tpb_player_transfer"
+     font "TraderPlus/gui/fonts/tpcond16"
+     "text color" 0.7216 0.6627 0.5804 1
+     "exact text" 1
+     "exact text size" 16
+    }
+    PanelWidgetClass PlayerAccountPanel {
+     ignorepointer 0
+     color 1 1 1 1
+     style TPV2CatBar
+     position 16 118
+     size 688 406
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
      vexactsize 1
      {
-      PanelWidgetClass ClanMainSubPanel {
-       visible 1
+      PanelWidgetClass BankTile {
        ignorepointer 1
-       position 0.61915 3.17394
-       size 0.99662 396.55499
-       hexactpos 1
-       vexactpos 1
-       hexactsize 0
-       vexactsize 1
-       {
-        ButtonWidgetClass ClanDepositBttn {
-         position 385.79102 220.29399
-         size 0.22933 37.4861
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 1
-         style Editor
-         text "DEPOSIT"
-        }
-        ButtonWidgetClass ClanWithdrawBttn {
-         position 169.427 220.55901
-         size 0.22933 35.8135
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 1
-         style Editor
-         text "WITHDRAW"
-        }
-        ButtonWidgetClass ClanLogsBttn {
-         position 665.67596 357.68799
-         size 0.25964 38.3413
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 1
-         text "CLAN LOGS"
-         text_proportion 0.5
-         "text color" 1 0.749 0 1
-        }
-        TextWidgetClass ClanMaxText {
-         ignorepointer 1
-         color 1 0.749 0 1
-         position 580.401 284.34998
-         size 0.23233 30.2924
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 1
-         style Bold
-         text "MAX: 100 000"
-         "text color" 1 0.749 0 1
-        }
-        ProgressBarWidgetClass ClanMoneyProgressBar {
-         ignorepointer 1
-         color 1 0.749 0 1
-         position 51.512 315.39798
-         size 0.82079 30.8961
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 1
-         style Stamina
-         current 0
-        }
-        EditBoxWidgetClass ClanPlayerAmountTextInput {
-         ignorepointer 1
-         position 384.591 161.61501
-         size 0.44192 45.4218
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 1
-         text "10000"
-        }
-        TextWidgetClass ClanPlayerAmountText {
-         ignorepointer 1
-         color 1 0.749 0 1
-         position 44.8379 157.899
-         size 0.36673 56.074
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 1
-         style Bold
-         text "PLAYER AMOUNT:"
-        }
-        TextWidgetClass ClanBankAmountTextInput {
-         ignorepointer 1
-         position 384.50201 85.45891
-         size 0.44192 56.074
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 1
-         text "100000"
-         "text valign" center
-        }
-        TextWidgetClass ClanBankAmountText {
-         ignorepointer 1
-         color 1 0.749 0 1
-         position 80.2531 87.0687
-         size 0.32735 56.074
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 1
-         style Bold
-         text "BANK AMOUNT:"
-         "text halign" right
-        }
-        ButtonWidgetClass ClanEditBttn {
-         position -2.42731 357.75
-         size 0.25964 38.3413
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 1
-         text "CLAN SETTINGS"
-         text_proportion 0.5
-         "text color" 1 0.749 0 1
-        }
-        TextWidgetClass ClanFeesText {
-         ignorepointer 1
-         color 1 0.749 0 1
-         position 614.66095 36.6073
-         size 0.18379 39.8002
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 1
-         text "Fees: 5%"
-         "text color" 1 0.749 0 1
-         "text halign" right
-        }
-       }
-      }
-      PanelWidgetClass ClanCreateSubPanel {
-       visible 0
-       ignorepointer 1
-       position -0.80956 2.13712
-       size 899.68701 392.009
+       color 1 1 1 1
+       style TPV2CardWell
+       position 18 18
+       size 317 86
        hexactpos 1
        vexactpos 1
        hexactsize 1
        vexactsize 1
        {
-        MultilineTextWidgetClass ClanTextInfo {
+        TextWidgetClass BankAmountText {
          ignorepointer 1
-         position 92.3454 49.7467
-         size 0.75137 113.16399
+         color 0.7216 0.6627 0.5804 1
+         font "TraderPlus/gui/fonts/tpinter12"
+         position 14 8
+         size 289 20
          hexactpos 1
          vexactpos 1
-         hexactsize 0
+         hexactsize 1
          vexactsize 1
-         text "YOU DON'T HAVE A CLAN ACCOUNT, JOIN ONE OR CREATE ONE"
+         text "#tpb_bank_amount"
+         "text halign" left
+         "text valign" center
          "exact text" 1
-         "text halign" center
-         "text valign" center
-         wrap 1
+         "exact text size" 12
         }
-        ButtonWidgetClass CreateClanBttn {
-         position 141.80901 194.756
-         size 0.30582 73.76279
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 1
-         style Editor
-         text "CREATE CLAN"
-        }
-        ButtonWidgetClass JoinClanBttn {
-         position 434.293 194.757
-         size 0.30414 73.76279
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 1
-         style Editor
-         text "JOIN CLAN"
-        }
-        TextWidgetClass PriceCreafeClanText {
+        TextWidgetClass BankAmountTextInput {
          ignorepointer 1
-         position 75.4273 309.138
-         size 0.81984 48
+         color 0.9529 0.9137 0.8549 1
+         font "TraderPlus/gui/fonts/tpcond28"
+         position 14 30
+         size 289 48
          hexactpos 1
          vexactpos 1
-         hexactsize 0
+         hexactsize 1
          vexactsize 1
-         text "PRICE FOR CREATION: 250000"
-         "text halign" center
+         text ""
+         "text halign" left
          "text valign" center
+         "exact text" 1
+         "exact text size" 30
         }
        }
       }
-      PanelWidgetClass ClanEditSubPanel {
-       visible 0
+      PanelWidgetClass CashTile {
        ignorepointer 1
-       position 0.21102 1.19351
-       size 897.776 395.763
+       color 1 1 1 1
+       style TPV2CardWell
+       position 353 18
+       size 317 86
        hexactpos 1
        vexactpos 1
        hexactsize 1
        vexactsize 1
        {
-        TextListboxWidgetClass ClanPlayerList {
-         position 634.34094 18.0543
-         size 251.32901 356.49899
-         hexactpos 1
-         vexactpos 1
-         hexactsize 1
-         vexactsize 1
-         "title visible" 1
-         colums "PLAYERLIST"
-         lines 10
-         "highlight row" 1
-        }
-        TextListboxWidgetClass ClanMemberList {
-         position 367.91 20.8588
-         size 251.32901 356.49899
-         hexactpos 1
-         vexactpos 1
-         hexactsize 1
-         vexactsize 1
-         "title visible" 1
-         colums "CLAN'S MEMBER "
-         lines 10
-        }
-        PanelWidgetClass ClanPermPanel {
-         visible 0
+        TextWidgetClass PlayerAmountText {
          ignorepointer 1
-         position 46.391 23.8236
-         size 0.18946 144.48
+         color 0.7216 0.6627 0.5804 1
+         font "TraderPlus/gui/fonts/tpinter12"
+         position 14 8
+         size 289 20
          hexactpos 1
          vexactpos 1
-         hexactsize 0
+         hexactsize 1
          vexactsize 1
-         {
-          CheckBoxWidgetClass CBCanWithdraw {
-           position 5.6116 38.2691
-           size 0.12775 20.3256
-           hexactpos 1
-           vexactpos 1
-           hexactsize 0
-           vexactsize 1
-          }
-          CheckBoxWidgetClass CBCanInvite {
-           position 5.68706 93.73669
-           size 0.13338 19.332
-           hexactpos 1
-           vexactpos 1
-           hexactsize 0
-           vexactsize 1
-          }
-          CheckBoxWidgetClass CBCanKick {
-           position 5.37894 66.7172
-           size 0.12764 19.854
-           hexactpos 1
-           vexactpos 1
-           hexactsize 0
-           vexactsize 1
-          }
-          CheckBoxWidgetClass CBCanEdit {
-           position 5.80652 121.14
-           size 0.1337 20.3256
-           hexactpos 1
-           vexactpos 1
-           hexactsize 0
-           vexactsize 1
-          }
-          TextWidgetClass CanInvite {
-           ignorepointer 1
-           position 34.2786 65.5145
-           size 0.78103 19.6151
-           hexactpos 1
-           vexactpos 1
-           hexactsize 0
-           vexactsize 1
-           text "CAN INVITE"
-          }
-          CheckBoxWidgetClass CBCanDeposit {
-           position 5.49843 10.3176
-           size 0.13378 20.3256
-           hexactpos 1
-           vexactpos 1
-           hexactsize 0
-           vexactsize 1
-          }
-          TextWidgetClass CanWithdraw {
-           ignorepointer 1
-           position 33.895 38.0225
-           size 0.78114 20.8035
-           hexactpos 1
-           vexactpos 1
-           hexactsize 0
-           vexactsize 1
-           text "CAN WITHDRAW"
-          }
-          TextWidgetClass CanEdit {
-           ignorepointer 1
-           position 34.266 121.298
-           size 0.77673 18.5272
-           hexactpos 1
-           vexactpos 1
-           hexactsize 0
-           vexactsize 1
-           text "CAN EDIT"
-          }
-          TextWidgetClass CanKick {
-           ignorepointer 1
-           position 34.7754 94.19429
-           size 0.77401 18.6655
-           hexactpos 1
-           vexactpos 1
-           hexactsize 0
-           vexactsize 1
-           text "CAN KICK"
-          }
-          TextWidgetClass CanDeposit {
-           ignorepointer 1
-           position 35.2281 11.329
-           size 0.77519 19.615
-           hexactpos 1
-           vexactpos 1
-           hexactsize 0
-           vexactsize 1
-           text "CAN DEPOSIT"
-          }
-          ButtonWidgetClass KickBttn {
-           position 561.23004 296.603
-           size 0.07791 35.455
-           hexactpos 1
-           vexactpos 1
-           hexactsize 0
-           vexactsize 1
-           style Editor
-           text "KICK"
-          }
-         }
+         text "ON YOU"
+         "text halign" left
+         "text valign" center
+         "exact text" 1
+         "exact text size" 12
         }
-        ButtonWidgetClass InviteBttn {
-         position 208.705 336.74603
-         size 0.13466 37.1277
+        TextWidgetClass PlayerAmountTextOutput {
+         ignorepointer 1
+         color 0.6118 0.7608 0.4627 1
+         font "TraderPlus/gui/fonts/tpcond28"
+         position 14 30
+         size 289 48
          hexactpos 1
          vexactpos 1
-         hexactsize 0
+         hexactsize 1
          vexactsize 1
-         style Editor
-         text "INVITE"
-        }
-        ButtonWidgetClass KickBttn0 {
-         position 47.7539 336.41299
-         size 0.13215 38.4985
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 1
-         style Editor
-         text "KICK"
+         text ""
+         "text halign" left
+         "text valign" center
+         "exact text" 1
+         "exact text size" 30
         }
        }
       }
-      CanvasWidgetClass ClanLogsSubPanel {
-       visible 0
+      TextWidgetClass TransactionAmountText {
        ignorepointer 1
-       position 40.3483 115.52299
-       size 0.91324 397.22202
+       color 0.7216 0.6627 0.5804 1
+       font "TraderPlus/gui/fonts/tpinter12"
+       position 18 118
+       size 400 20
        hexactpos 1
        vexactpos 1
-       hexactsize 0
+       hexactsize 1
+       vexactsize 1
+       text "#tpb_transaction_amount"
+       "text halign" left
+       "text valign" center
+       "exact text" 1
+       "exact text size" 12
+      }
+      PanelWidgetClass TransactionField {
+       ignorepointer 0
+       color 1 1 1 1
+       style TPV2Field
+       position 18 140
+       size 652 44
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
        vexactsize 1
        {
-        TextListboxWidgetClass ClanLogsList {
-         position 21.5483 69.4504
-         size 0.95181 306.50201
+        EditBoxWidgetClass PlayerAmountTextInput {
+         color 0.9529 0.9137 0.8549 1
+         style ServerBrowser
+         text ""
+         font "TraderPlus/gui/fonts/tpcond22"
+         "exact text" 1
+         "exact text size" 22
+         "text halign" left
+         position 12 0
+         size 628 44
          hexactpos 1
          vexactpos 1
-         hexactsize 0
+         hexactsize 1
          vexactsize 1
-         lines 10
-        }
-        TextWidgetClass ClanLogsTitle {
-         ignorepointer 1
-         color 1 0.749 0 1
-         position 308.181 12.2178
-         size 0.31769 44.3591
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 1
-         style Bold
-         text "CLAN LOGS"
-         "text halign" center
-         "text valign" center
         }
        }
+      }
+      ButtonWidgetClass PlayerDepositBttn {
+       color 1 1 1 1
+       style TPV2BtnAccent
+       position 18 200
+       size 317 52
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
+       vexactsize 1
+       text "#tpb_deposit"
+       font "TraderPlus/gui/fonts/tpcond20"
+       "text color" 0.1020 0.0706 0.0392 1
+       "exact text" 1
+       "exact text size" 19
+      }
+      ButtonWidgetClass PlayerWithdrawBttn {
+       color 1 1 1 1
+       style TPV2IconBtn
+       position 353 200
+       size 317 52
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
+       vexactsize 1
+       text "#tpb_withdraw"
+       font "TraderPlus/gui/fonts/tpcond20"
+       "text color" 0.8510 0.4627 0.1843 1
+       "exact text" 1
+       "exact text size" 19
+      }
+      TextWidgetClass MaxText {
+       ignorepointer 1
+       color 0.7216 0.6627 0.5804 1
+       font "TraderPlus/gui/fonts/tpinter12"
+       position 18 300
+       size 652 20
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
+       vexactsize 1
+       text "#tpb_max"
+       "text halign" right
+       "text valign" center
+       "exact text" 1
+       "exact text size" 12
+      }
+      ProgressBarWidgetClass MoneyProgressBar {
+       ignorepointer 1
+       color 0.8510 0.4627 0.1843 1
+       style Stamina
+       position 18 326
+       size 652 8
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
+       vexactsize 1
       }
      }
     }
     PanelWidgetClass TransfertPanel {
-     visible 0
-     ignorepointer 1
-     position 0.046 0.1662
-     size 0.9123 397.22
-     hexactpos 0
-     vexactpos 0
-     hexactsize 0
+     ignorepointer 0
+     color 1 1 1 1
+     style TPV2CatBar
+     position 16 118
+     size 688 406
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
      vexactsize 1
-     style Outline
+     visible 0
      {
-      TextWidgetClass TransfertFees {
+      PanelWidgetClass TransfertTile {
        ignorepointer 1
-       color 1 1 0.9961 1
-       position 747.38098 12.5528
-       size 0.14645 38.1275
+       color 1 1 1 1
+       style TPV2CardWell
+       position 18 18
+       size 652 86
        hexactpos 1
        vexactpos 1
-       hexactsize 0
+       hexactsize 1
        vexactsize 1
-       text "#tpb_fees"
-       "exact text" 1
-       "text halign" right
-       "text valign" center
-      }
-      GridSpacerWidgetClass GridTransfer {
-       ignorepointer 1
-       position 0.0235 0.18618
-       size 0.95681 0.35711
-       hexactpos 0
-       vexactpos 0
-       hexactsize 0
-       vexactsize 0
-       Columns 2
        {
         TextWidgetClass TransfertBankAmountText {
          ignorepointer 1
-         position 78.5926 95.7784
-         size 0.30286 46.6228
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 1
-         style Bold
-         text "#tpb_bank_amount"
-         font "TraderPlus/gui/fonts/regular22"
-         "exact text" 1
-         text_proportion 0.8
-         "text halign" right
-         "text valign" center
-        }
-        TextWidgetClass TransfertBankAmountTextOutput {
-         ignorepointer 1
-         position 354.92798 95.69559
-         size 0.24723 46.5159
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 1
-         font "TraderPlus/gui/fonts/regular22"
-         "text valign" center
-        }
-        TextWidgetClass TransfertAmountText {
-         ignorepointer 1
-         position 35.76431 145.813
-         size 0.35057 47.8806
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 1
-         style Bold
-         text "#tpb_transfer_amount"
-         font "TraderPlus/gui/fonts/regular22"
-         "exact text" 1
-         text_proportion 0.8
-         "text halign" right
-         "text valign" center
-        }
-        EditBoxWidgetClass TransfertAmountTextInput {
-         position 0.963 0.67
-         size 0.059 0.446
-         hexactpos 0
-         vexactpos 0
-         hexactsize 0
-         vexactsize 0
-         "exact text" 1
-         font "TraderPlus/gui/fonts/regular22"
-        }
-        TextWidgetClass TransfertIDText {
-         ignorepointer 1
-         position 35.76431 145.813
-         size 0.35057 47.8806
-         hexactpos 1
-         vexactpos 1
-         hexactsize 0
-         vexactsize 1
-         style Bold
-         text "#tpb_id_account"
-         font "TraderPlus/gui/fonts/regular22"
-         "exact text" 1
-         text_proportion 0.8
-         "text halign" right
-         "text valign" center
-        }
-        EditBoxWidgetClass TransfertIDTextInput {
-         position 0.85 0.87
-         size 0.059 0.446
-         hexactpos 0
-         vexactpos 0
-         hexactsize 0
-         vexactsize 0
-         "exact text" 1
-         font "TraderPlus/gui/fonts/regular22"
-        }
-       }
-      }
-      ButtonWidgetClass TransfertBttn {
-       position 0.36507 0.55292
-       size 0.28292 39.8923
-       hexactpos 0
-       vexactpos 0
-       hexactsize 0
-       vexactsize 1
-       style Editor
-       text "#tpb_transfer"
-      }
-     }
-    }
-    PanelWidgetClass PanelID {
-     ignorepointer 1
-     position 0.046 0.8293
-     size 0.91273 0.11186
-     hexactpos 0
-     vexactpos 0
-     hexactsize 0
-     vexactsize 0
-     style Outline
-     {
-      GridSpacerWidgetClass GridID {
-       ignorepointer 1
-       position 0.013 0.077
-       size 0.97707 0.85437
-       hexactpos 0
-       vexactpos 0
-       hexactsize 0
-       vexactsize 0
-       Rows 1
-       {
-        TextWidgetClass PlayerIDText {
-         ignorepointer 1
-         position -0.00595 0.3743
-         size 1.00588 0.48119
-         hexactpos 0
-         vexactpos 0
-         hexactsize 0
-         vexactsize 0
-         text "#tpb_id_account"
-         font "TraderPlus/gui/fonts/regular22"
-         "exact text" 1
-         "text halign" right
-         "text valign" center
-        }
-        PanelWidgetClass PanelWidget2 {
-         ignorepointer 1
-         color 0 0 0 0.5412
-         position -1.09128 1.18501
-         size 301.38898 99.71629
+         color 0.7216 0.6627 0.5804 1
+         font "TraderPlus/gui/fonts/tpinter12"
+         position 14 8
+         size 400 20
          hexactpos 1
          vexactpos 1
          hexactsize 1
          vexactsize 1
-         style rover_sim_colorable
-         {
-          TextWidgetClass PlayerIDAccountText {
-           ignorepointer 1
-           position 0.00499 0.0298
-           size 0.99522 0.94628
-           hexactpos 0
-           vexactpos 0
-           hexactsize 0
-           vexactsize 0
-           font "TraderPlus/gui/fonts/regular22"
-           text_proportion 0.6
-           "text halign" center
-           "text valign" center
-          }
-         }
+         text "#tpb_bank_amount"
+         "text halign" left
+         "text valign" center
+         "exact text" 1
+         "exact text size" 12
         }
-        ButtonWidgetClass CopyIDBttn {
-         position 0.00146 0.62449
-         size 0.99264 0.8254
-         hexactpos 0
-         vexactpos 0
-         hexactsize 0
-         vexactsize 0
-         style Editor
-         text "#tpb_copyid"
-         text_proportion 0.6
-         font "TraderPlus/gui/fonts/regular22"
+        TextWidgetClass TransfertBankAmountTextOutput {
+         ignorepointer 1
+         color 0.9529 0.9137 0.8549 1
+         font "TraderPlus/gui/fonts/tpcond28"
+         position 14 30
+         size 624 48
+         hexactpos 1
+         vexactpos 1
+         hexactsize 1
+         vexactsize 1
+         text ""
+         "text halign" left
+         "text valign" center
+         "exact text" 1
+         "exact text size" 30
         }
        }
       }
-     }
-    }
-    GridSpacerWidgetClass GridBttn {
-     ignorepointer 1
-     position 0.046 0.043
-     size 0.91017 0.1073
-     hexactpos 0
-     vexactpos 0
-     hexactsize 0
-     vexactsize 0
-     Rows 1
-     {
-      ButtonWidgetClass PlayerAccountBttn {
-       position 0.04335 0.04262
-       size 0.30356 67.6192
-       hexactpos 0
-       vexactpos 0
-       hexactsize 0
-       vexactsize 1
-       scaled 1
-       draggable 0
-       style Editor
-       text "#tpb_player_account"
-       text_proportion 0.5
-      }
-      ButtonWidgetClass PtPTransfertBttn {
-       visible 1
-       position 657.50098 36.024
-       size 0.28601 67.6192
+      TextWidgetClass TransfertAmountText {
+       ignorepointer 1
+       color 0.7216 0.6627 0.5804 1
+       font "TraderPlus/gui/fonts/tpinter12"
+       position 18 118
+       size 400 20
        hexactpos 1
        vexactpos 1
-       hexactsize 0
+       hexactsize 1
        vexactsize 1
-       style Editor
-       text "#tpb_player_transfer"
-       text_proportion 0.5
+       text "#tpb_transfer_amount"
+       "text halign" left
+       "text valign" center
+       "exact text" 1
+       "exact text size" 12
       }
-      ButtonWidgetClass ClanAccountBttn {
-       visible 0
-       position 348.82498 36.024
-       size 0.29148 67.6192
+      PanelWidgetClass TransfertAmountField {
+       ignorepointer 0
+       color 1 1 1 1
+       style TPV2Field
+       position 18 140
+       size 652 44
        hexactpos 1
        vexactpos 1
-       hexactsize 0
+       hexactsize 1
        vexactsize 1
-       style Editor
-       text "CLAN ACCOUNT"
-       text_proportion 0.5
-       "text color" 1 0.749 0 1
+       {
+        EditBoxWidgetClass TransfertAmountTextInput {
+         color 0.9529 0.9137 0.8549 1
+         style ServerBrowser
+         text ""
+         font "TraderPlus/gui/fonts/tpcond22"
+         "exact text" 1
+         "exact text size" 22
+         "text halign" left
+         position 12 0
+         size 628 44
+         hexactpos 1
+         vexactpos 1
+         hexactsize 1
+         vexactsize 1
+        }
+       }
+      }
+      TextWidgetClass TransfertIDText {
+       ignorepointer 1
+       color 0.7216 0.6627 0.5804 1
+       font "TraderPlus/gui/fonts/tpinter12"
+       position 18 198
+       size 400 20
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
+       vexactsize 1
+       text "#tpb_id_account"
+       "text halign" left
+       "text valign" center
+       "exact text" 1
+       "exact text size" 12
+      }
+      PanelWidgetClass TransfertIDField {
+       ignorepointer 0
+       color 1 1 1 1
+       style TPV2Field
+       position 18 220
+       size 652 44
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
+       vexactsize 1
+       {
+        EditBoxWidgetClass TransfertIDTextInput {
+         color 0.9529 0.9137 0.8549 1
+         style ServerBrowser
+         text ""
+         font "TraderPlus/gui/fonts/tpcond22"
+         "exact text" 1
+         "exact text size" 22
+         "text halign" left
+         position 12 0
+         size 628 44
+         hexactpos 1
+         vexactpos 1
+         hexactsize 1
+         vexactsize 1
+        }
+       }
+      }
+      ButtonWidgetClass TransfertBttn {
+       color 1 1 1 1
+       style TPV2BtnAccent
+       position 18 18
+       size 652 52
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
+       vexactsize 1
+       valign bottom_ref
+       text "#tpb_transfer"
+       font "TraderPlus/gui/fonts/tpcond20"
+       "text color" 0.1020 0.0706 0.0392 1
+       "exact text" 1
+       "exact text size" 19
       }
      }
     }
     RichTextWidgetClass PlayerDebugText {
-     visible 1
      ignorepointer 1
-     color 1 0.749 0 1
-     position 0.05415 0.70987
-     size 0.89768 51.4599
-     hexactpos 0
-     vexactpos 0
-     hexactsize 0
+     color 0.8784 0.4784 0.3882 1
+     font "TraderPlus/gui/fonts/tpinter14"
+     "exact text" 1
+     "exact text size" 14
+     position 16 528
+     size 688 52
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
      vexactsize 1
-     "text halign" center
-     "text valign" center
-     wrap 1
-     "condense whitespace" 1
+    }
+    PanelWidgetClass PanelID {
+     ignorepointer 0
+     color 1 1 1 1
+     style TPV2CardWell
+     position 16 588
+     size 688 56
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
+     vexactsize 1
+     {
+      TextWidgetClass PlayerIDText {
+       ignorepointer 1
+       color 0.7216 0.6627 0.5804 1
+       font "TraderPlus/gui/fonts/tpinter12"
+       position 14 0
+       size 150 56
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
+       vexactsize 1
+       text "#tpb_id_account"
+       "text halign" left
+       "text valign" center
+       "exact text" 1
+       "exact text size" 12
+      }
+      TextWidgetClass PlayerIDAccountText {
+       ignorepointer 1
+       color 0.9529 0.9137 0.8549 1
+       font "TraderPlus/gui/fonts/tpcond20"
+       position 170 0
+       size 360 56
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
+       vexactsize 1
+       text ""
+       "text halign" left
+       "text valign" center
+       "exact text" 1
+       "exact text size" 20
+      }
+      ButtonWidgetClass CopyIDBttn {
+       color 1 1 1 1
+       style TPV2IconBtn
+       position 8 8
+       size 140 40
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
+       vexactsize 1
+       halign right_ref
+       text "#tpb_copyid"
+       font "TraderPlus/gui/fonts/tpcond16"
+       "text color" 0.9098 0.8627 0.7961 1
+       "exact text" 1
+       "exact text size" 15
+      }
+     }
     }
    }
   }

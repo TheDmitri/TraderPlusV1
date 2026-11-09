@@ -135,8 +135,8 @@ class GarageMenu extends UIScriptedMenu
 
     if(m_ParkingPos == Vector(-1,-1,-1) || m_ParkingPos == Vector(0,0,0) || m_CarInPark)
     {
-      m_ParkingStatut.SetColor(ARGB(255,191,48,48));
-    }else m_ParkingStatut.SetColor(ARGB(255,0,255,0));
+      m_ParkingStatut.SetColor(ARGB(255,224,122,99));
+    }else m_ParkingStatut.SetColor(ARGB(255,127,166,90));
 
     if(m_VehiclesListName.Count() > 0)
     {

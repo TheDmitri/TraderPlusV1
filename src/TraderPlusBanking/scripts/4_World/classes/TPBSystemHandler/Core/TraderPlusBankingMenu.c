@@ -250,10 +250,28 @@ class TraderPlusBankingMenu extends UIScriptedMenu
       return amount;
   }
 
+  // Accent on the open tab, muted on the other.
+  void HighlightTab(bool transfer)
+  {
+    int on = ARGB(255,217,118,47);
+    int off = ARGB(255,184,169,148);
+    if (transfer)
+    {
+      m_PtPTransfertBttn.SetTextColor(on);
+      m_PlayerAccountBttn.SetTextColor(off);
+    }
+    else
+    {
+      m_PtPTransfertBttn.SetTextColor(off);
+      m_PlayerAccountBttn.SetTextColor(on);
+    }
+  }
+
   void  PtPTransfertHandler()
   {
     m_PlayerAccountPanel.Show(false);
     m_TransfertPanel.Show(true);
+    HighlightTab(true);
 
     m_MoneyBankAmount = GetBankAccount().MoneyAmount;
     string stringMoneyBank = TraderPlusHelper.IntToCurrencyString(m_MoneyBankAmount, ",");
@@ -306,6 +324,7 @@ class TraderPlusBankingMenu extends UIScriptedMenu
   {
     m_PlayerAccountPanel.Show(true);
     m_TransfertPanel.Show(false);
+    HighlightTab(false);
     UIHandle();
   }
 
