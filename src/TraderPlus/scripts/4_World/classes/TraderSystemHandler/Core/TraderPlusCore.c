@@ -5,6 +5,7 @@ class TraderPlusCore
 	ref TraderPlusPriceSettings    	  m_TraderPlusPriceSettings;
 	ref TraderPlusIDsSettings		  m_TraderPlusIDsSettings;
 	ref TraderPlusInsuranceSettings   m_TraderPlusInsuranceSettings;
+	ref TraderPlusBeansLauncherSettings m_TraderPlusBeansLauncherSettings;
 
 	ref TraderPlusGnrlConfigClient    m_TraderPlusGnrlConfigClient;
 
@@ -26,6 +27,7 @@ class TraderPlusCore
 			m_TraderPlusPriceSettings   = TraderPlusPriceSettings.Load();
 			m_TraderPlusIDsSettings = TraderPlusIDsSettings.Load();
 			m_TraderPlusInsuranceSettings = TraderPlusInsuranceSettings.Load();
+			m_TraderPlusBeansLauncherSettings = TraderPlusBeansLauncherSettings.Load();
 
 			CheckForOldStockFile();
 
@@ -33,7 +35,7 @@ class TraderPlusCore
 			m_TraderPlusCategories.ConvertArrayCategoryToMap();
 
 			m_TraderPlusGnrlConfigClient = new TraderPlusGnrlConfigClient;
-			m_TraderPlusGnrlConfigClient.TransformToSendableConfig(m_TraderPlusGeneralSettings,m_TraderPlusIDsSettings,m_TraderPlusVehiclesSettings,m_TraderPlusInsuranceSettings);
+			m_TraderPlusGnrlConfigClient.TransformToSendableConfig(m_TraderPlusGeneralSettings,m_TraderPlusIDsSettings,m_TraderPlusVehiclesSettings,m_TraderPlusInsuranceSettings,m_TraderPlusBeansLauncherSettings);
 			//Creating server side part
 			m_TraderPlusServer = new TraderPlusServer;
 			WarnAboutMergedAddons();

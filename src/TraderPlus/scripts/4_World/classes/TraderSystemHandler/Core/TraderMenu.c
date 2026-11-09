@@ -1116,7 +1116,7 @@ class TraderPlusMenu extends UIScriptedMenu
 
     if (m_BeansBadge && w == m_BeansBadge)
     {
-      GetGame().OpenURL("https://dayzbeanslauncher.com");
+      GetGame().OpenURL(TraderPlusBeansLauncherSettings.Link(GetTraderPlusConfigClient().BeansLauncherCode));
       return true;
     }
 

@@ -8,8 +8,6 @@ class TraderPlusGeneralSettings
 	bool                                   HideInsuranceBtn;
 	bool                                   HideGarageBtn;
 	bool                                   HideLicenceBtn;
-	// Missing from older config files, so the badge stays visible unless set to 1.
-	bool                                   HideBeansLauncherBadge;
 	bool                                   EnableShowAllPrices;
 	bool                                   EnableShowAllCheckBox;
 	bool                                   IsReceiptTraderOnly;

@@ -10,6 +10,7 @@ class TraderPlusGnrlConfigClient
 	bool   HideGarageBtn;
 	bool   HideLicenceBtn;
 	bool   HideBeansLauncherBadge;
+	string BeansLauncherCode;
 	bool   UseGarageToTradeCar;
 	bool   EnableShowAllCheckBox;
 	bool   DisableHeightFailSafeForReceiptDeployment;
@@ -55,7 +56,7 @@ class TraderPlusGnrlConfigClient
 		AuthorizedIDInsurance        = new array<int>;
   }
 
-	void TransformToSendableConfig(TraderPlusGeneralSettings m_gnrlconfig,TraderPlusIDsSettings m_TraderPlusIDsSettings,TraderPlusVehiclesSettings m_TraderPlusVehiclesSettings, TraderPlusInsuranceSettings m_TraderPlusInsuranceSettings)
+	void TransformToSendableConfig(TraderPlusGeneralSettings m_gnrlconfig,TraderPlusIDsSettings m_TraderPlusIDsSettings,TraderPlusVehiclesSettings m_TraderPlusVehiclesSettings, TraderPlusInsuranceSettings m_TraderPlusInsuranceSettings, TraderPlusBeansLauncherSettings m_TraderPlusBeansLauncherSettings)
 	{
 		EnableShowAllPrices   = m_gnrlconfig.EnableShowAllPrices;
 		UseGarageToTradeCar   = m_gnrlconfig.UseGarageToTradeCar;
@@ -77,7 +78,8 @@ class TraderPlusGnrlConfigClient
 		HideInsuranceBtn=m_gnrlconfig.HideInsuranceBtn;
 		HideGarageBtn=m_gnrlconfig.HideGarageBtn;
 		HideLicenceBtn=m_gnrlconfig.HideLicenceBtn;
-		HideBeansLauncherBadge=m_gnrlconfig.HideBeansLauncherBadge;
+		HideBeansLauncherBadge=m_TraderPlusBeansLauncherSettings.HideBadge;
+		BeansLauncherCode=TraderPlusBeansLauncherSettings.CleanCode(m_TraderPlusBeansLauncherSettings.PartnerCode);
 		for(int h=0;h<m_gnrlconfig.Traders.Count();h++)
 		{
 			TraderPos.Insert(m_gnrlconfig.Traders.Get(h).Position);

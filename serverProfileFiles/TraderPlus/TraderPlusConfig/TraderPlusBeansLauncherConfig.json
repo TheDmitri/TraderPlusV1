@@ -1,0 +1,5 @@
+{
+    "Info": "The small DayZ Beans Launcher badge in the trader menu opens the launcher download page. Put your own partner code in PartnerCode (get one on dayzbeanslauncher.com) and every player who installs through your badge earns credits for your server: events, promotion and more. Keep the default code to support the TraderPlus maintainer, or set HideBadge to 1 to remove the badge.",
+    "PartnerCode": "MWQ8SCQ7",
+    "HideBadge": 0
+}
