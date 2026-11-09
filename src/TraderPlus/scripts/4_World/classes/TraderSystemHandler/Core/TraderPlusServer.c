@@ -583,7 +583,19 @@ class TraderPlusServer
 
       PlayerBase player = TraderPlusGetPlayerByIdentity(sender);
       TraderPlusProduct product = data.param1;
+      if(!player || !product)
+        return;
       product.Customer = player;
+
+      // Price, quantity and insurance values from the client are rebuilt or refused here.
+      if(!TraderPlusTradeGuard.Prepare(product))
+      {
+        int response = TraderPlusResponse.BUY_FAILED;
+        if(product.TradMode != TRADEMODE_BUY)
+          response = TraderPlusResponse.SELL_FAILED;
+        GetRPCManager().SendRPC("TraderPlus", "GetStockResponseBasedOnID",  new Param3<int,TraderPlusStock, string>(response,TraderPlusStock.GetStockFromID(product.TraderID, TraderPlusHelper.GetCategoriesFromID(product.TraderID)), product.Category), true, sender);
+        return;
+      }
 
       if(LicenceBuyHandler(product))return;
 
