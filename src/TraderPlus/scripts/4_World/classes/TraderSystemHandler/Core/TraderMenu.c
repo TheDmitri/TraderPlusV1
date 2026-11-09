@@ -238,7 +238,12 @@ class TraderPlusMenu extends UIScriptedMenu
 
   override Widget Init()
   {
-		    layoutRoot = GetGame().GetWorkspace().CreateWidgets( GetTraderPlusLayoutPath() );
+		    string layoutPath = GetTraderPlusLayoutPath();
+		    // Trader Plus Exploit Fix swaps in a 2024 copy of this layout to hide the quantity and
+		    // insurance controls; both exploits are now refused server-side, so keep our layout.
+		    if (layoutPath == "TraderPlusExpliotFix/gui/TraderPlusUIExploitFix.layout")
+		      layoutPath = "TraderPlus/gui/TraderPlusUI.layout";
+		    layoutRoot = GetGame().GetWorkspace().CreateWidgets( layoutPath );
         m_StockScrollPanel = Widget.Cast(layoutRoot.FindAnyWidget("StockScrollPanel"));
         m_InventoryScrollPanel = Widget.Cast(layoutRoot.FindAnyWidget("InventoryScrollPanel"));
         m_LicenceWarningPanel = Widget.Cast(layoutRoot.FindAnyWidget( "LicenceWarningPanel" ));

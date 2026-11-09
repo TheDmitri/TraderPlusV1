@@ -36,6 +36,7 @@ class TraderPlusCore
 			m_TraderPlusGnrlConfigClient.TransformToSendableConfig(m_TraderPlusGeneralSettings,m_TraderPlusIDsSettings,m_TraderPlusVehiclesSettings,m_TraderPlusInsuranceSettings);
 			//Creating server side part
 			m_TraderPlusServer = new TraderPlusServer;
+			WarnAboutMergedAddons();
 		}
 		else
 		{
@@ -46,6 +47,20 @@ class TraderPlusCore
 		//we call our function that will initiaze our RPC
 		InitRPC();
     }
+
+	// These add-ons' fixes are part of TraderPlus now; running both patches the same code twice.
+	void WarnAboutMergedAddons()
+	{
+		TStringArray addons = {"TP_Addon", "TraderPlus_Expliot_Fix"};
+		foreach(string addon: addons)
+		{
+			if(!GetGame().ConfigIsExisting("CfgPatches " + addon))
+				continue;
+			string message = "[TraderPlus] " + addon + " is loaded but its fixes are now built into TraderPlus. Remove it from your -mod list.";
+			Print(message);
+			GetTraderPlusLogger().LogInfo(message);
+		}
+	}
 
 	void InitRPC()
 	{
