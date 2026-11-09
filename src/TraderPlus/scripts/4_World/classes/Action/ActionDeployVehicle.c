@@ -178,10 +178,11 @@ class ActionDeployVehicle: ActionContinuousBase
 		}
 		// Height of the projection above the ground under it, not above the player's feet:
 		// the old check failed on any slope or step.
-		float above = carpos[1] - GetGame().SurfaceY(carpos[0], carpos[2]);
-		if(above < 0)
-			above = -above;
-		return above > GetTraderPlusConfigClient().GetReceiptHeightTolerance();
+		// The player's feet stay a valid reference for bridges, decks and floors above the terrain.
+		float tolerance = GetTraderPlusConfigClient().GetReceiptHeightTolerance();
+		float aboveTerrain = Math.AbsFloat(carpos[1] - GetGame().SurfaceY(carpos[0], carpos[2]));
+		float abovePlayer = Math.AbsFloat(carpos[1] - ppos[1]);
+		return aboveTerrain > tolerance && abovePlayer > tolerance;
 	}
 
 

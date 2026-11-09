@@ -292,18 +292,22 @@ class TPMB
             if (tokens.Count() == 0 || !EnsurePart(bike, tokens[0]))
                 return false;
         }
+        return EquipVanillaParts(bike);
+    }
+
+    // Vanilla bikes also need their wheels, headlight and spark plug; modded bikes rely on VehiclesParts.
+    static bool EquipVanillaParts(MotorbikeScript bike)
+    {
         string type = bike.GetType();
-        // Vanilla bikes also need their wheels, headlight and spark plug; modded bikes rely on VehiclesParts.
-        if (IsVanillaFamily(type, "Motorbike_01") || IsVanillaFamily(type, "Motorbike_02"))
-        {
-            string family = "Motorbike_02";
-            if (IsVanillaFamily(type, "Motorbike_01"))
-                family = "Motorbike_01";
-            if (!EnsurePart(bike, family + "_Wheel_1") || !EnsurePart(bike, family + "_Wheel_2") || !EnsurePart(bike, "HeadlightH7"))
-                return false;
-            if (bike.IsVitalSparkPlug() && !EnsurePart(bike, "SparkPlug"))
-                return false;
-        }
+        if (!IsVanillaFamily(type, "Motorbike_01") && !IsVanillaFamily(type, "Motorbike_02"))
+            return true;
+        string family = "Motorbike_02";
+        if (IsVanillaFamily(type, "Motorbike_01"))
+            family = "Motorbike_01";
+        if (!EnsurePart(bike, family + "_Wheel_1") || !EnsurePart(bike, family + "_Wheel_2") || !EnsurePart(bike, "HeadlightH7"))
+            return false;
+        if (bike.IsVitalSparkPlug() && !EnsurePart(bike, "SparkPlug"))
+            return false;
         return true;
     }
 
@@ -522,7 +526,7 @@ modded class TraderPlusServer
                 if (fields.Count() < 6)
                     continue;
                 string name = fields[0];
-                name.Trim();
+                name.TrimInPlace();
                 name.ToLower();
                 if (name == wanted)
                     return fields;

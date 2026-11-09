@@ -46,9 +46,10 @@ class TraderPlusTradeGuard
     if(basePrice == -1)
       return Refuse(product, "price -1 in config");
 
-    int multiplier = product.Multiplier;
+    // A garage vehicle is one vehicle: the client's multiplier would otherwise be added to the stock.
     if(product.TradMode == TRADEMODE_SELLVEHICLE)
-      multiplier = 1;
+      product.Multiplier = 1;
+    int multiplier = product.Multiplier;
 
     float price = 0;
     if(maxStock == -1)
@@ -75,6 +76,9 @@ class TraderPlusTradeGuard
 
     if(!selling && product.CollateralMoney != 0)
     {
+      // Motorbikes have no insurance tracking: the collateral would be paid for nothing.
+      if(GetGame().IsKindOf(product.ClassName, "MotorbikeScript"))
+        return Refuse(product, "insurance is not available for motorbikes");
       TraderPlusVehicleInsurance insurance = FindInsurance(product.ClassName);
       if(!insurance)
         return Refuse(product, "no insurance for this vehicle");
@@ -145,7 +149,7 @@ class TraderPlusTradeGuard
         if(fields.Count() < 6)
           continue;
         string name = fields[0];
-        name.Trim();
+        name.TrimInPlace();
         name.ToLower();
         if(name == wanted)
           return fields;

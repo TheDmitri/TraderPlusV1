@@ -1385,9 +1385,15 @@ static bool IsWearByPlayer(EntityAI entity)
       int maxQuantity = GetMaxItemQuantityServer(classname);
       if(quantity < 0) quantity = maxQuantity;
 
-      // Items without a quantity (maxQuantity 0) are created once; the old recursion never ended for them.
+      // Items without a quantity (maxQuantity 0) are separate items: create one per unit asked
+      // (non-stackable currency paid out in bulk). The old recursion never ended for them.
       if(maxQuantity <= 0)
+      {
+        int extraItems = quantity - 1;
         quantity = 0;
+        for(int n = 0; n < extraItems; n++)
+          CreateInInventory(player, classname, 0, skipFillMag);
+      }
 
       // Extra full stacks first, in a loop: the old recursion went one level per stack.
       while(quantity > maxQuantity)

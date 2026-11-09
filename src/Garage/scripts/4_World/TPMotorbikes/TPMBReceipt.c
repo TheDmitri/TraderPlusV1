@@ -28,6 +28,9 @@ class TPMBReceipt
             }
         }
 
+        // A bought receipt carries the configured parts only; vanilla bikes also need wheels, plug and light.
+        TPMB.EquipVanillaParts(bike);
+
         bike.Fill(MotorbikeFluid.FUEL, bike.GetFluidCapacity(MotorbikeFluid.FUEL));
         if (receipt)
             TraderPlusHelper.TransferInventoryVehicle(receipt, bike);
@@ -140,6 +143,13 @@ class ActionPackMotorbike : ActionContinuousBase
             return;
         if (!Empty(bike) || vector.Distance(player.GetPosition(), bike.GetPosition()) > 10)
             return;
+        // The client checks the trader-only rule too, but a modified client could skip it.
+        bool traderOnly = GetTraderPlusConfigServer().IsReceiptTraderOnly && !GetTraderPlusConfigServer().AllowReceiptPackAnywhere;
+        if (traderOnly && player.GetSafeZoneStatus() != SZ_IN_SAFEZONE)
+        {
+            TPMB.Notify(player, "Motorbikes can only be packed at a trader.");
+            return;
+        }
         // Only the registered owner packs a bike; the client condition cannot know ownership.
         if (!TPMB.IsRegisteredOwner(bike, player))
         {

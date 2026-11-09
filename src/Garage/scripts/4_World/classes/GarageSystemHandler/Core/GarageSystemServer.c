@@ -52,6 +52,9 @@ class GarageServer
 
   void GarageRequestHandler(PlayerBase player, int id, vector pos,bool isFlag)
   {
+    // The garage id comes from the client: only the player's own garage can be listed.
+    if(!player || !player.GetIdentity() || id != GarageHelpers.GetLowSteamID(player.GetIdentity().GetPlainId()))
+      return;
     #ifdef GMDEBUG
     GetGMLogger().LogInfo("GarageRequestHandler");
     #endif
@@ -119,6 +122,9 @@ class GarageServer
 
   void ParkInRequestHandler(PlayerBase player, int id, CarScript car, vector pos)
   {
+    // Same for parking in: a vehicle goes to the player's own garage only.
+    if(!player || !player.GetIdentity() || id != GarageHelpers.GetLowSteamID(player.GetIdentity().GetPlainId()))
+      return;
     #ifdef GMDEBUG
     GetGMLogger().LogInfo("ParkInRequestHandler");
     #endif
@@ -336,7 +342,10 @@ class GarageServer
     if(garageData)
     {
       if(!GarageHelpers.IsValidParkOutSpot(player, pos, garageData))
+      {
+        NotificationSystem.SendNotificationToPlayerIdentityExtended(player.GetIdentity(), 2, "Garage", GetGarageConfig().ParkingNotAvailable, "Garage/image/CarLogo.paa");
         return;
+      }
 
       if(pos == garageData.ParkingPosition)
       {
