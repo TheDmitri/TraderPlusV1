@@ -380,7 +380,7 @@ FrameWidgetClass rootFrame {
              vexactpos 1
              hexactsize 0
              vexactsize 1
-             style Default
+             style TPV2Field
              text "#tpm_search"
              "Use default text" 1
              "exact text" 0
@@ -863,7 +863,7 @@ FrameWidgetClass rootFrame {
           }
          }
         }
-        FrameWidgetClass GridButtons {
+        GridSpacerWidgetClass GridButtons {
          ignorepointer 1
          position 0 14
          size 0.93 58
@@ -873,6 +873,10 @@ FrameWidgetClass rootFrame {
          vexactpos 1
          hexactsize 0
          vexactsize 1
+         Padding 0
+         Margin 0
+         Columns 1
+         Rows 1
          {
           PanelWidgetClass BuyPanelWidget {
            visible 1
@@ -1066,7 +1070,7 @@ FrameWidgetClass rootFrame {
              vexactpos 1
              hexactsize 0
              vexactsize 1
-             style Default
+             style TPV2Field
              text "#tpm_search"
              "Use default text" 1
              "exact text" 0

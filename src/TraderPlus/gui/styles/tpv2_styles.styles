@@ -809,4 +809,42 @@
             </State>
         </Style>
     </Widget>
+
+    <Widget Name="EditBoxWidget">
+        <Style Name="TPV2Field" Font="" ImageSet="tpv2_ui" Color="0">
+            <State Name="Normal">
+                <Item Name="Bottom" Image="bc_5" />
+                <Item Name="Center" Image="c_5" />
+                <Item Name="Left" Image="lc_5" />
+                <Item Name="LeftBottom" Image="blc_5" />
+                <Item Name="LeftTop" Image="tlc_5" />
+                <Item Name="Right" Image="rc_5" />
+                <Item Name="RightBottom" Image="brc_5" />
+                <Item Name="RightTop" Image="trc_5" />
+                <Item Name="Top" Image="tc_5" />
+            </State>
+            <State Name="Focus">
+                <Item Name="Bottom" Image="bc_5" />
+                <Item Name="Center" Image="c_5" />
+                <Item Name="Left" Image="lc_5" />
+                <Item Name="LeftBottom" Image="blc_5" />
+                <Item Name="LeftTop" Image="tlc_5" />
+                <Item Name="Right" Image="rc_5" />
+                <Item Name="RightBottom" Image="brc_5" />
+                <Item Name="RightTop" Image="trc_5" />
+                <Item Name="Top" Image="tc_5" />
+            </State>
+            <State Name="Disabled">
+                <Item Name="Bottom" Image="bc_5" />
+                <Item Name="Center" Image="c_5" />
+                <Item Name="Left" Image="lc_5" />
+                <Item Name="LeftBottom" Image="blc_5" />
+                <Item Name="LeftTop" Image="tlc_5" />
+                <Item Name="Right" Image="rc_5" />
+                <Item Name="RightBottom" Image="brc_5" />
+                <Item Name="RightTop" Image="trc_5" />
+                <Item Name="Top" Image="tc_5" />
+            </State>
+        </Style>
+    </Widget>
 </WidgetStyles>
