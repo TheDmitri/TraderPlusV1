@@ -182,6 +182,8 @@ class GarageHelpers
 		GetGMLogger().LogInfo("CreateVehicle");
 		#endif
 		Object obj = GetGame().CreateObject(classname, vector.Zero, false, false, true);
+		if(!obj)
+			return false;
 
 		obj.SetPosition(vector.Zero);
 		obj.SetOrientation(orientation);
@@ -283,13 +285,19 @@ class GarageHelpers
 				vehicle.Fill(CarFluid.BRAKE, brakeReq);
 
 				//LOCK SCRIPT
-				if(GetGarageConfig().VehicleMustHaveLock || GetGarageConfig().SaveVehicleLock)
+				// id -2: car bought into the garage under TP_Addon; the buyer owns the lock and sets its code.
+				if(GetGarageConfig().VehicleMustHaveLock || GetGarageConfig().SaveVehicleLock || id == -2)
 				{
 					#ifdef GMDEBUG
 					GetGMLogger().LogInfo("Set Lock:"+id.ToString());
 					#endif
 					#ifndef CARLOCKDISABLE
-						if(id != -1 && id != 0){
+						if(id == -2){
+							vehicle.SetCarLockOwner(player.CLSteamlowID);
+							vehicle.SetCarLockPassword(-1);
+							vehicle.SetCarLock(true);
+						}
+						else if(id != -1 && id != 0){
 							vehicle.SetCarLockOwner(player.CLSteamlowID);
 							vehicle.SetCarLockPassword(id);
 							vehicle.SetCarLock(true);
@@ -371,12 +379,48 @@ class GarageHelpers
 		if(GetGarageConfig().PayWithBankAccount)
     {
 			TraderPlusBankingData account = player.GetBankAccount();
+			if(!account)
+				return 0;
 			return account.MoneyAmount;
     }
     else
     {
 			return TraderPlusBankHelpers.GetPlayerMoney(player);
     }
+	}
+
+	// Gives back a fee taken for an action that then failed.
+	static void RefundPlayer(PlayerBase player, int amount)
+	{
+		if(amount <= 0)
+			return;
+		if(GetGarageConfig().PayWithBankAccount)
+		{
+			TraderPlusBankingData account = player.GetBankAccount();
+			if(account)
+			{
+				account.MoneyAmount = account.MoneyAmount + amount;
+				account.UpdateAccount(player);
+			}
+			return;
+		}
+		TraderPlusBankHelpers.AddMoneyToPlayer(player, amount);
+	}
+
+	// The parking spot a park-out request names must be a garage NPC's spot (or the flag garage's),
+	// and the player must be close to it.
+	static bool IsValidParkOutSpot(PlayerBase player, vector pos, GarageData garageData)
+	{
+		if(vector.Distance(player.GetPosition(), pos) > 20)
+			return false;
+		if(garageData && garageData.ParkingPosition != vector.Zero && vector.Distance(garageData.ParkingPosition, pos) < 3)
+			return true;
+		foreach(GarageNPC npc: GetGarageConfig().NPCs)
+		{
+			if(vector.Distance(npc.ParkingPosition, pos) < 3)
+				return true;
+		}
+		return false;
 	}
 
 	static ref GarageItemData GetGarageItemData(EntityAI item)

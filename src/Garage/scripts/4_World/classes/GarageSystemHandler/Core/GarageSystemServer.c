@@ -320,16 +320,24 @@ class GarageServer
     GetGMLogger().LogInfo("ParkOutRequestHandler data: "+id + " " + listpos + " " + carname+ " " + pos);
     #endif
 
+    // The garage id comes from the client: it must be the player's own.
+    if(!player || !player.GetIdentity() || listpos < 0 || id != GarageHelpers.GetLowSteamID(player.GetIdentity().GetPlainId()))
+      return;
+
     if(!GarageHelpers.CheckifPlayerHasEnoughMoney(player, GetGarageConfig().ParkOutCost))
     {
       NotificationSystem.SendNotificationToPlayerIdentityExtended(player.GetIdentity(), 2, "Garage", GetGarageConfig().NotEnoughMoney, "Garage/image/CarLogo.paa");
-      //not enough money
+      return;
     }
 
     vector ori;
+    bool state = false;
     GarageData garageData = GarageData.Load(id.ToString(), player.GetIdentity().GetName());
     if(garageData)
     {
+      if(!GarageHelpers.IsValidParkOutSpot(player, pos, garageData))
+        return;
+
       if(pos == garageData.ParkingPosition)
       {
         #ifdef GMDEBUG
@@ -347,9 +355,6 @@ class GarageServer
           #endif
           if(distance < 3)
           {
-            #ifdef GMDEBUG
-            GetGMLogger().LogInfo("distance < 5");
-            #endif
             pos = GetGarageConfig().NPCs[i].ParkingPosition;
             ori = GetGarageConfig().NPCs[i].ParkingOrientation;
           }
@@ -363,56 +368,35 @@ class GarageServer
         return;
       }
 
-      if(garageData.Vehicles.Count() > listpos)
+      // Only the exact entry the player selected; no fallback to another vehicle of the same type.
+      if(listpos < garageData.Vehicles.Count() && garageData.Vehicles[listpos].VehicleName == carname)
       {
-        if(garageData.Vehicles[listpos].VehicleName == carname)
+        // Pay first, then spawn; a failed spawn gives the fee back and keeps the garage entry.
+        if(!GarageHelpers.RemoveMoneyFromPlayer(player, GetGarageConfig().ParkOutCost) && GetGarageConfig().ParkOutCost > 0)
         {
-          #ifdef GMDEBUG
-          GetGMLogger().LogInfo("garageData.Vehicles[listpos].VehicleName == carname");
-          #endif
-          
-          // Store vehicle data in temporary variables to simplify the CreateVehicle call
-          int tVehicleCargoId = garageData.Vehicles[listpos].VehicleCargoId;
-          int tCollateralMoney = garageData.Vehicles[listpos].CollateralMoney;
-          int tVehicleId = garageData.Vehicles[listpos].VehicleID;
-          float tEngineHealth = garageData.Vehicles[listpos].EngineHealth;
-          float tFuelAmount = garageData.Vehicles[listpos].FuelAmmount;
-          array<ref ItemsCargo> tCargoItems = garageData.Vehicles[listpos].ItemsInCargo;
-          
-          // Now create the vehicle with the stored parameters
-          bool state = GarageHelpers.CreateVehicle(player, carname, tVehicleCargoId, tCollateralMoney, tVehicleId, tEngineHealth, tFuelAmount, pos, ori, tCargoItems);
-          
-          if(state)
-          {
-            state = GarageHelpers.RemoveMoneyFromPlayer(player, GetGarageConfig().ParkOutCost);
-            NotificationSystem.SendNotificationToPlayerIdentityExtended(player.GetIdentity(), 2, "Garage", GetGarageConfig().ParkOutSuccess, "Garage/image/CarLogo.paa");
-            garageData.Vehicles.RemoveOrdered(listpos);
-            garageData.Save(id.ToString());
-          }
+          NotificationSystem.SendNotificationToPlayerIdentityExtended(player.GetIdentity(), 2, "Garage", GetGarageConfig().NotEnoughMoney, "Garage/image/CarLogo.paa");
+          return;
         }
-      }
 
-      if(!state)
-      {
-        for(int j=0;j<garageData.Vehicles.Count();j++)
+        // Store vehicle data in temporary variables to simplify the CreateVehicle call
+        int tVehicleCargoId = garageData.Vehicles[listpos].VehicleCargoId;
+        int tCollateralMoney = garageData.Vehicles[listpos].CollateralMoney;
+        int tVehicleId = garageData.Vehicles[listpos].VehicleID;
+        float tEngineHealth = garageData.Vehicles[listpos].EngineHealth;
+        float tFuelAmount = garageData.Vehicles[listpos].FuelAmmount;
+        array<ref ItemsCargo> tCargoItems = garageData.Vehicles[listpos].ItemsInCargo;
+
+        state = GarageHelpers.CreateVehicle(player, carname, tVehicleCargoId, tCollateralMoney, tVehicleId, tEngineHealth, tFuelAmount, pos, ori, tCargoItems);
+        if(state)
         {
-          if(garageData.Vehicles[j].VehicleName == carname)
-          {
-            int collateralMoney = garageData.Vehicles[j].CollateralMoney;
-            int vehicleCargoId = garageData.Vehicles[j].VehicleCargoId;
-            state = GarageHelpers.CreateVehicle(player, carname,vehicleCargoId, collateralMoney, garageData.Vehicles[j].VehicleID, garageData.Vehicles[j].EngineHealth, garageData.Vehicles[j].FuelAmmount, pos, ori,garageData.Vehicles[j].ItemsInCargo);
-            if(state)
-            {
-              state = GarageHelpers.RemoveMoneyFromPlayer(player, GetGarageConfig().ParkOutCost);
-              NotificationSystem.SendNotificationToPlayerIdentityExtended(player.GetIdentity(), 2, "Garage", GetGarageConfig().ParkOutSuccess, "Garage/image/CarLogo.paa");
-              garageData.Vehicles.RemoveOrdered(j);
-              garageData.Save(id.ToString());
-            }
-            else
-            {
-              NotificationSystem.SendNotificationToPlayerIdentityExtended(player.GetIdentity(), 2, "Garage", GetGarageConfig().ParkOutFail, "Garage/image/CarLogo.paa");
-            }
-          }
+          NotificationSystem.SendNotificationToPlayerIdentityExtended(player.GetIdentity(), 2, "Garage", GetGarageConfig().ParkOutSuccess, "Garage/image/CarLogo.paa");
+          garageData.Vehicles.RemoveOrdered(listpos);
+          garageData.Save(id.ToString());
+        }
+        else
+        {
+          GarageHelpers.RefundPlayer(player, GetGarageConfig().ParkOutCost);
+          NotificationSystem.SendNotificationToPlayerIdentityExtended(player.GetIdentity(), 2, "Garage", GetGarageConfig().ParkOutFail, "Garage/image/CarLogo.paa");
         }
       }
 

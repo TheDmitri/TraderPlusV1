@@ -825,27 +825,23 @@ static bool IsWearByPlayer(EntityAI entity)
     GarageData garageData = GarageData.Load(id, player.GetIdentity().GetName());
     if(garageData)
     {
-      if(garageData.Vehicles.Count() > position)
+      // One vehicle per sale: the selected entry, else the first of that type.
+      // The old fallback removed every vehicle of the same type.
+      int sold = -1;
+      if(position >= 0 && garageData.Vehicles.Count() > position && garageData.Vehicles[position].VehicleName == classname)
+        sold = position;
+      for(int j=0; sold == -1 && j<garageData.Vehicles.Count(); j++)
       {
-        if(garageData.Vehicles[position].VehicleName == classname)
-        {
-            garageData.Vehicles.RemoveOrdered(position);
-            garageData.Save(id);
-            state  = true;
-        }
+        if(garageData.Vehicles[j].VehicleName == classname)
+          sold = j;
       }
 
-      if(!state)
+      if(sold != -1)
       {
-        for(int j=0;j<garageData.Vehicles.Count();j++)
-        {
-          if(garageData.Vehicles[j].VehicleName == classname)
-          {
-              garageData.Vehicles.RemoveOrdered(j);
-              garageData.Save(id);
-              state  = true;
-          }
-        }
+        garageData.Vehicles[sold].DeleteCargoIfExist(GarageHelpers.GetLowSteamID(player.GetIdentity().GetPlainId()));
+        garageData.Vehicles.RemoveOrdered(sold);
+        garageData.Save(id);
+        state = true;
       }
 
       if(!state) return false;

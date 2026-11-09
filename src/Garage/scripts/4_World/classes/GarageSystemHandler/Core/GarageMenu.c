@@ -314,13 +314,14 @@ class GarageMenu extends UIScriptedMenu
       //vehicle is blocking garage
       return;
     }
-    if(m_MoneyAmountOnPlayer<m_ParkInFee)
+    if(m_MoneyAmountOnPlayer<m_ParkOutFee)
     {
       NotificationSystem.AddNotificationExtended( 2, "Garage", GetGarageConfig().NotEnoughMoney, "Garage/image/CarLogo.paa" );
       //Not enough Money
       return;
     }
     if(!m_canTradeRequest)return;
+    if(m_SelectedVehicle < 0 || !m_VehiclesName || m_SelectedVehicle >= m_VehiclesName.Count())return;
     GetRPCManager().SendRPC("Garage", "ParkOutRequest",  new Param4<int, int, string, vector>(m_LowUID,m_SelectedVehicle,m_VehiclesName[m_SelectedVehicle],m_ParkingPos), true, NULL);
     m_canTradeRequest = false;
   }
