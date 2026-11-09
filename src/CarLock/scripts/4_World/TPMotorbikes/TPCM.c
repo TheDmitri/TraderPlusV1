@@ -1,15 +1,10 @@
 #ifndef CARLOCKDISABLE
 class TPCM
 {
+    // Every MotorbikeScript, vanilla or modded.
     static bool Supports(MotorbikeScript bike)
     {
-        if (!bike) return false;
-        switch (bike.GetType())
-        {
-            case "Motorbike_01_Blue": case "Motorbike_01_Red": case "Motorbike_01_Yellow":
-            case "Motorbike_02_Blue": case "Motorbike_02_Green": case "Motorbike_02_Red": case "Motorbike_02_Yellow": return true;
-        }
-        return false;
+        return bike != null;
     }
     static string Directory()
     {

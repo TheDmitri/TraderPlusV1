@@ -695,10 +695,13 @@ static bool IsWearByPlayer(EntityAI entity)
   static int CheckItemType(string classname)
   {
     int returnValue = TraderPlusItemType.ITEM;
+    // Motorbikes (any MotorbikeScript) are vehicles too; the config check avoids spawning one.
+    if(GetGame().IsKindOf(classname, "MotorbikeScript") || GetGame().IsKindOf(classname, "CarScript"))
+      return TraderPlusItemType.VEHICLE;
     EntityAI ent = EntityAI.Cast(GetGame().CreateObject(classname,Vector(0,0,0)));
     if(ent)
     {
-      if(ent.IsInherited(CarScript))
+      if(ent.IsInherited(CarScript) || ent.IsInherited(MotorbikeScript))
         returnValue=TraderPlusItemType.VEHICLE;
 
       GetGame().ObjectDelete(ent);
@@ -932,6 +935,10 @@ static bool IsWearByPlayer(EntityAI entity)
 
   static bool CreateVehicle(PlayerBase player, string classname, vector position, vector orientation, array<string> attachments, EntityAI receipt, int carUniqueId, int collateralMoney, int carPassword = 0)
 	{
+		// Motorbikes from receipts are built by the Garage module (parts, fuel, owner and lock records).
+		if(GetGame().IsKindOf(classname, "MotorbikeScript"))
+			return TPMBReceipt.Deploy(player, classname, position, orientation, attachments, receipt, carPassword);
+
 		EntityAI obj = EntityAI.Cast(GetGame().CreateObject(classname, position, false, false, true));
 		if (obj)
 		{
@@ -1017,6 +1024,9 @@ static bool IsWearByPlayer(EntityAI entity)
 
         return true;
       }
+      // Not a car (other vehicle types are handled by their own modules): remove it,
+      // since a false result keeps the receipt.
+      GetGame().ObjectDelete(obj);
     }
     return false;
 	}
