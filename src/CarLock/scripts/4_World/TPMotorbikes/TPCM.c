@@ -109,6 +109,8 @@ modded class MotorbikeScript
     bool m_TPCMInstalled;
     bool m_TPCMHasPassword;
     bool m_TPCMFault;
+    bool m_TPCMFromStorage;
+    int m_TPCMIdRetries;
     int m_TPCMSound;
     int m_TPCMLastSound;
     EffectSound m_TPCMEffect;
@@ -129,6 +131,11 @@ modded class MotorbikeScript
         super.EEInit();
         if (GetGame().IsServer() && TPCM.Supports(this)) GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(TPCMLoad,1000,false);
     }
+    override bool OnStoreLoad(ParamsReadContext ctx,int version)
+    {
+        m_TPCMFromStorage=true;
+        return super.OnStoreLoad(ctx,version);
+    }
     override void AfterStoreLoad()
     {
         super.AfterStoreLoad();
@@ -140,10 +147,24 @@ modded class MotorbikeScript
         string path=TPCM.Path(this);
         if (path=="")
         {
-            GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(TPCMLoad,1000,false);
+            m_TPCMIdRetries++;
+            if (m_TPCMIdRetries<60) { GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(TPCMLoad,1000,false); return; }
+            // No persistent ID after a minute: run without a lock record.
+            Print("[TPCM] No persistent ID for "+GetType()+"; motorbike lock disabled for this instance");
+            m_TPCMReady=true;
+            TPCMApply();
             return;
         }
         m_TPCMReady=true;
+        if (!m_TPCMFromStorage && (FileExist(path) || FileExist(path+".backup")))
+        {
+            // A bike that was not loaded from storage is new: a record for its ID is stale.
+            Print("[TPCM] Removing stale lock record for a new bike: "+path);
+            DeleteFile(path);
+            DeleteFile(path+".backup");
+            TPCMApply();
+            return;
+        }
         if (!FileExist(path) && FileExist(path+".backup"))
         {
             m_TPCMFault=true; m_TPCMLocked=true; SetSynchDirty();
@@ -241,6 +262,31 @@ modded class CarLockCore
 modded class CarLockServer
 {
     ref map<string,int> m_TPCMAttempts=new map<string,int>;
+    ref map<string,int> m_TPCMWrongPins=new map<string,int>;
+    ref map<string,int> m_TPCMLockedOut=new map<string,int>;
+    // Five wrong PINs on one motorbike, from any account, lock its keypad for ten minutes.
+    bool TPCMKeypadLocked(MotorbikeScript bike)
+    {
+        int until;
+        return m_TPCMLockedOut.Find(TPCM.Path(bike),until) && GetGame().GetTime()<until;
+    }
+    void TPCMWrongPin(PlayerBase player,MotorbikeScript bike)
+    {
+        string key=TPCM.Path(bike);
+        int count;
+        m_TPCMWrongPins.Find(key,count);
+        count++;
+        if (count>=5)
+        {
+            m_TPCMWrongPins.Remove(key);
+            m_TPCMLockedOut.Set(key,GetGame().GetTime()+600000);
+            bike.TPCMSound(3);
+            TPCM.Notify(player,"Wrong PIN. The keypad is blocked for 10 minutes.");
+            return;
+        }
+        m_TPCMWrongPins.Set(key,count);
+        TPCM.Notify(player,"Wrong PIN.");
+    }
     void TPCMHotkeyRequest(CallType type,ParamsReadContext ctx,PlayerIdentity sender,Object target)
     {
         if (!GetGame().IsServer() || type!=CallType.Server || !sender) return;
@@ -258,12 +304,12 @@ modded class CarLockServer
         string uid=sender.GetPlainId();
         if (m_TPCMAttempts.Find(uid,previous) && GetGame().GetTime()-previous<3000) return;
         m_TPCMAttempts.Set(uid,GetGame().GetTime());
-        if (!TPCM.Empty(bike)) { TPCM.Notify(player,"Desligue, pare e desocupe a moto."); return; }
+        if (!TPCM.Empty(bike)) { TPCM.Notify(player,"Turn the engine off, stop and get off the motorbike first."); return; }
         TPCMRecord record=TPCM.Copy(bike.m_TPCMRecord);
         record.Locked=!record.Locked;
-        if (!TPCM.Commit(bike,record)) { TPCM.Notify(player,"Falha ao salvar; operacao cancelada."); return; }
-        if (record.Locked) { bike.TPCMSound(1); TPCM.Notify(player,"Trava salva: bloqueada."); }
-        else { bike.TPCMSound(2); TPCM.Notify(player,"Trava salva: desbloqueada."); }
+        if (!TPCM.Commit(bike,record)) { TPCM.Notify(player,"The lock could not be saved. Nothing changed."); return; }
+        if (record.Locked) { bike.TPCMSound(1); TPCM.Notify(player,"Motorbike locked."); }
+        else { bike.TPCMSound(2); TPCM.Notify(player,"Motorbike unlocked."); }
     }
     void TPCMRequest(CallType type,ParamsReadContext ctx,PlayerIdentity sender,Object target)
     {
@@ -282,25 +328,27 @@ modded class CarLockServer
         bool defining=owner && record.Password=="" && data.param2!="";
         if (defining)
         {
-            if (!TPCM.Password(data.param2)) { TPCM.Notify(player,"Use exatamente 8 numeros."); return; }
+            if (!TPCM.Password(data.param2)) { TPCM.Notify(player,"The PIN must be exactly 8 digits."); return; }
             record.Password=data.param2;
         }
         else
         {
-            if (!TPCM.CanToggle(owner,record.Password,data.param2)) { TPCM.Notify(player,"Acesso recusado."); return; }
-            if (!TPCM.Empty(bike)) { TPCM.Notify(player,"Desligue, pare e desocupe a moto."); return; }
+            if (data.param2!="" && TPCMKeypadLocked(bike)) { TPCM.Notify(player,"The keypad is blocked. Try again later."); return; }
+            if (!TPCM.CanToggle(owner,record.Password,data.param2)) { TPCMWrongPin(player,bike); return; }
+            m_TPCMWrongPins.Remove(TPCM.Path(bike));
+            if (!TPCM.Empty(bike)) { TPCM.Notify(player,"Turn the engine off, stop and get off the motorbike first."); return; }
             record.Locked=!record.Locked;
         }
-        if (!TPCM.Commit(bike,record)) { TPCM.Notify(player,"Falha ao salvar; operacao cancelada."); return; }
+        if (!TPCM.Commit(bike,record)) { TPCM.Notify(player,"The lock could not be saved. Nothing changed."); return; }
         if (defining)
         {
-            TPCM.Notify(player,"Senha definida. Voce e o proprietario da trava. Estado mantido.");
+            TPCM.Notify(player,"PIN set. You own this lock.");
             return;
         }
         if (record.Locked) bike.TPCMSound(1);
         else bike.TPCMSound(2);
-        if (record.Locked) TPCM.Notify(player,"Trava salva: bloqueada.");
-        else TPCM.Notify(player,"Trava salva: desbloqueada.");
+        if (record.Locked) TPCM.Notify(player,"Motorbike locked.");
+        else TPCM.Notify(player,"Motorbike unlocked.");
     }
 };
 #endif

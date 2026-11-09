@@ -8,22 +8,26 @@ modded class GarageServer
         if (player && player.GetIdentity() && id == TPMB.PlayerId(player))
         {
             GarageData garage = GarageData.Load(id.ToString(), player.GetIdentity().GetName());
+            bool pending = false;
+            bool touched = false;
             foreach (VehiculeData entry : garage.Vehicles)
             {
-                if (entry.TPMBVersion == 1 && entry.TPMBState != "Stored")
+                if (entry.TPMBVersion != 1 || entry.TPMBState == "Stored")
+                    continue;
+                pending = true;
+                // UseGarageOnlyToTrade must not expire an interrupted motorbike transaction.
+                if (GetGarageConfig().UseGarageOnlyToTrade && entry.Timestamp != TraderPlusHelper.GetTimeStamp())
                 {
-                    // Do not let UseGarageOnlyToTrade auto-expire an interrupted transaction.
-                    foreach (GarageNPC npc : GetGarageConfig().NPCs)
-                    {
-                        if (vector.Distance(pos, npc.Position) < 1.0 && vector.Distance(player.GetPosition(), npc.Position) < 5.0)
-                        {
-                            TPMBResponse(player, garage, npc.ParkingPosition);
-                            TPMB.Notify(player, "Garage com operacao pendente. Solicite verificacao administrativa antes de repetir.");
-                            return;
-                        }
-                    }
-                    return;
+                    entry.Timestamp = TraderPlusHelper.GetTimeStamp();
+                    touched = true;
                 }
+            }
+            if (touched)
+                TPMB.Save(id, garage);
+            if (pending)
+            {
+                Print("[TPMB] Pending motorbike entry in Garage " + id.ToString() + " (" + player.GetIdentity().GetPlainId() + "): admin check needed");
+                TPMB.Notify(player, "A motorbike operation in your Garage was interrupted. That motorbike stays locked until an admin checks it; your other vehicles are available.");
             }
         }
         super.GarageRequestHandler(player, id, pos, isFlag);
@@ -94,14 +98,14 @@ modded class GarageServer
         GarageNPC npc = TPMB.NPC(player, requested);
         if (!npc)
         {
-            TPMB.Notify(player, "Use o Garage terrestre e fique proximo do atendente.");
+            TPMB.Notify(player, "Use a Garage NPC and stand next to it.");
             return;
         }
         vector pos = npc.ParkingPosition;
         vector ori = npc.ParkingOrientation;
         if (!GarageHelpers.IsParkingAvailable(pos, ori) || TPMB.Nearby(pos))
         {
-            TPMB.Notify(player, "Estacionamento ocupado. Liberte o ponto antes de retirar.");
+            TPMB.Notify(player, "The parking spot is taken. Clear it before retrieving a vehicle.");
             return;
         }
         GarageData garage = GarageData.Load(id.ToString(), player.GetIdentity().GetName());
@@ -110,12 +114,12 @@ modded class GarageServer
         VehiculeData entry = garage.Vehicles[index];
         if (entry.VehicleName != type || entry.TPMBVersion != 1 || !entry.TPMBData)
         {
-            TPMB.Notify(player, "Registro sem snapshot compativel. Solicite verificacao administrativa.");
+            TPMB.Notify(player, "This Garage entry has no motorbike data. Ask an admin to check it.");
             return;
         }
         if (entry.TPMBState != "Stored")
         {
-            TPMB.Notify(player, "Operacao pendente: nao repetir a entrega. Solicite verificacao administrativa.");
+            TPMB.Notify(player, "This motorbike has an interrupted operation. Ask an admin to check it.");
             return;
         }
         int cost = GetGarageConfig().ParkOutCost;
@@ -127,14 +131,14 @@ modded class GarageServer
         entry.TPMBState = "Withdrawing";
         if (!TPMB.Save(id, garage))
         {
-            TPMB.Notify(player, "Falha no banco do Garage. Retirada cancelada.");
+            TPMB.Notify(player, "The Garage could not be saved. Retrieval cancelled.");
             return;
         }
         MotorbikeScript bike = MotorbikeScript.Cast(GetGame().CreateObject(type, pos, false, false, true));
         if (!bike)
         {
             entry.TPMBState="Stored"; TPMB.Save(id,garage);
-            TPMB.Notify(player,"Falha ao criar moto. Registro preservado no Garage.");
+            TPMB.Notify(player,"The motorbike could not be created. Your Garage entry is kept.");
             return;
         }
         bike.m_TPMBDeliveryPending=true;
@@ -160,7 +164,7 @@ modded class GarageServer
                 if (entry.TPMBToken==delivery.Token && entry.TPMBState=="Withdrawing")
                 {
                     entry.TPMBState="Stored";
-                    if (!TPMB.Save(delivery.Id,garage)) Print("[TPMB s01] Cancel save failed; inspect pending token "+delivery.Token);
+                    if (!TPMB.Save(delivery.Id,garage)) Print("[TPMB] Cancel save failed; inspect pending token "+delivery.Token);
                     break;
                 }
             }
@@ -183,19 +187,19 @@ modded class GarageServer
         MotorbikeScript bike=delivery.Bike;
         if (!player || !player.GetIdentity() || player.GetIdentity().GetPlainId()!=delivery.UID || !player.IsAlive() || !TPMB.NPC(player,delivery.Requested) || !bike || bike.IsRuined())
         {
-            TPMBCancelDelivery(delivery,"Entrega cancelada. Registro preservado; nenhuma taxa cobrada.");
+            TPMBCancelDelivery(delivery,"Retrieval cancelled. Your Garage entry is kept and nothing was charged.");
             return true;
         }
         if (vector.Distance(bike.GetPosition(),delivery.Position)>2 || bike.EngineIsOn())
         {
-            TPMBCancelDelivery(delivery,"Moto movida durante a entrega. Retirada cancelada.");
+            TPMBCancelDelivery(delivery,"The motorbike moved during retrieval. Retrieval cancelled.");
             return true;
         }
         for (int seat=0;seat<bike.CrewSize();seat++)
         {
             if (bike.CrewMember(seat))
             {
-                TPMBCancelDelivery(delivery,"Moto ocupada durante a entrega. Retirada cancelada.");
+                TPMBCancelDelivery(delivery,"Someone got on the motorbike during retrieval. Retrieval cancelled.");
                 return true;
             }
         }
@@ -209,7 +213,7 @@ modded class GarageServer
         }
         if (index<0 || garage.Vehicles[index].TPMBState!="Withdrawing")
         {
-            TPMBCancelDelivery(delivery,"Registro da entrega alterado. Solicite verificacao administrativa.");
+            TPMBCancelDelivery(delivery,"The Garage entry changed during retrieval. Retrieval cancelled.");
             return true;
         }
         VehiculeData entry=garage.Vehicles[index];
@@ -217,7 +221,7 @@ modded class GarageServer
         {
             if (!TPMB.Restore(bike,entry))
             {
-                TPMBCancelDelivery(delivery,"Falha ao restaurar pecas ou dados. Registro preservado no Garage.");
+                TPMBCancelDelivery(delivery,"The motorbike parts could not be restored. Your Garage entry is kept.");
                 return true;
             }
             delivery.ExpectedFuel=entry.FuelAmmount;
@@ -229,17 +233,16 @@ modded class GarageServer
         {
             float capacity=bike.GetFluidCapacity(MotorbikeFluid.FUEL);
             float actual=bike.GetFluidFraction(MotorbikeFluid.FUEL)*capacity;
-            Print("[TPMB s01] Fuel tick: "+bike.GetType()+" / expected="+delivery.ExpectedFuel.ToString()+" / actual="+actual.ToString()+" / retry="+delivery.Retries.ToString());
             if (capacity<=0 || delivery.ExpectedFuel<0 || delivery.ExpectedFuel>capacity+0.01)
             {
-                TPMBCancelDelivery(delivery,"Quantidade de combustivel invalida. Registro preservado.");
+                TPMBCancelDelivery(delivery,"Invalid fuel amount. Your Garage entry is kept.");
                 return true;
             }
             if (Math.AbsFloat(actual-delivery.ExpectedFuel)>0.01)
             {
                 if (delivery.Retries>=3)
                 {
-                    TPMBCancelDelivery(delivery,"Abastecimento nao confirmado. Registro preservado; nenhuma taxa cobrada.");
+                    TPMBCancelDelivery(delivery,"Fuel could not be restored. Your Garage entry is kept and nothing was charged.");
                     return true;
                 }
                 delivery.Retries++;
@@ -269,7 +272,7 @@ modded class GarageServer
             GetGame().ObjectDelete(bike);
             entry.TPMBState = "Stored";
             TPMB.Save(id, garage);
-            TPMB.Notify(player, "Falha no registro do comprador. Retirada cancelada; nenhuma taxa cobrada.");
+            TPMB.Notify(player, "The owner could not be registered. Retrieval cancelled; nothing was charged.");
             return;
         }
         bike.SetKickstand(1.0);
@@ -280,7 +283,7 @@ modded class GarageServer
             GetGame().ObjectDelete(bike);
             entry.TPMBState = "Stored";
             TPMB.Save(id, garage);
-            TPMB.Notify(player, "Pagamento falhou. Retirada cancelada.");
+            TPMB.Notify(player, "Payment failed. Retrieval cancelled.");
             return;
         }
         garage.Vehicles.RemoveOrdered(index);
@@ -290,7 +293,7 @@ modded class GarageServer
             GetGame().ObjectDelete(bike);
             TPMBRefund(player, cost);
             // The on-disk Withdrawing entry stays quarantined until an administrator checks it.
-            TPMB.Notify(player, "Falha na confirmacao: veiculo removido e taxa devolvida. Solicite verificacao do registro pendente.");
+            TPMB.Notify(player, "The Garage could not be saved: retrieval cancelled and the fee returned. Ask an admin to check the entry.");
             return;
         }
         bike.m_TPMBDeliveryPending=false;
@@ -314,7 +317,7 @@ modded class GarageServer
             return;
         if (!TPMB.IsRegisteredOwner(bike, player))
         {
-            TPMB.Notify(player, "Este veiculo nao tem registro de compra em seu nome neste patch.");
+            TPMB.Notify(player, "This motorbike is not registered to you.");
             return;
         }
         for (int seat = 0; seat < bike.CrewSize(); seat++)
@@ -327,13 +330,13 @@ modded class GarageServer
         }
         if (bike.GetSpeedometerAbsolute() > 0.1 || (TPMB.Supports(bike.GetType()) && bike.EngineIsOn()))
         {
-            TPMB.Notify(player, "Pare o veiculo, desca e desligue o motor antes de guardar.");
+            TPMB.Notify(player, "Stop the motorbike, get off and turn the engine off before storing it.");
             return;
         }
         TPMBSnapshot snapshot = TPMB.Capture(bike);
         if (!snapshot)
         {
-            TPMB.Notify(player, "Retire carga, cadeado e acessorios especiais antes de guardar.");
+            TPMB.Notify(player, "Remove cargo and non-standard parts before storing the motorbike.");
             return;
         }
         int id = TPMB.PlayerId(player);
@@ -355,14 +358,14 @@ modded class GarageServer
         garage.Vehicles.Insert(entry);
         if (!TPMB.Save(id, garage))
         {
-            TPMB.Notify(player, "Falha ao gravar o Garage. Veiculo preservado no mundo.");
+            TPMB.Notify(player, "The Garage could not be saved. The motorbike stays in the world.");
             return;
         }
         if (!TPMBPay(player, cost))
         {
             garage.Vehicles.RemoveOrdered(garage.Vehicles.Count() - 1);
             TPMB.Save(id, garage);
-            TPMB.Notify(player, "Pagamento falhou. Veiculo preservado no mundo.");
+            TPMB.Notify(player, "Payment failed. The motorbike stays in the world.");
             return;
         }
         TPMB.ForgetOwner(bike, player);
@@ -370,7 +373,7 @@ modded class GarageServer
         entry.TPMBState = "Stored";
         if (!TPMB.Save(id, garage))
         {
-            TPMB.Notify(player, "Veiculo registrado como Parking. Solicite verificacao administrativa antes de retirar.");
+            TPMB.Notify(player, "The motorbike was stored but the Garage could not confirm it. Ask an admin to check it before retrieving it.");
             return;
         }
         Print("[TPMB] ParkIn committed: " + keyForLog(player, entry));
@@ -426,6 +429,29 @@ class TPMBDelivery
 modded class MotorbikeScript
 {
     bool m_TPMBDeliveryPending;
+    bool m_TPMBFromStorage;
+    bool m_TPMBRegistered;
+
+    override bool OnStoreLoad(ParamsReadContext ctx, int version)
+    {
+        m_TPMBFromStorage = true;
+        return super.OnStoreLoad(ctx, version);
+    }
+
+    override void EEInit()
+    {
+        super.EEInit();
+        if (GetGame().IsServer() && TPMB.Supports(GetType()))
+            GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(TPMBCheckFresh, 1000, false);
+    }
+
+    // A bike that was not loaded from storage is new: any owner record for its ID is stale.
+    void TPMBCheckFresh()
+    {
+        if (!m_TPMBFromStorage && !m_TPMBDeliveryPending && !m_TPMBRegistered)
+            TPMB.ForgetStaleOwner(this);
+    }
+
     override bool CanGetIn() { return !m_TPMBDeliveryPending && super.CanGetIn(); }
     override bool OnBeforeEngineStart() { return !m_TPMBDeliveryPending && super.OnBeforeEngineStart(); }
     override bool CanReleaseAttachment(EntityAI attachment) { return !m_TPMBDeliveryPending && super.CanReleaseAttachment(attachment); }

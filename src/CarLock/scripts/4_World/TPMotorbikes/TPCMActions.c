@@ -92,9 +92,9 @@ class ActionTPCMInstall: ActionContinuousBase
         if (action_data.m_Player.GetItemInHands()!=action_data.m_MainItem || action_data.m_MainItem.IsRuined()) return;
         TPCMRecord record=new TPCMRecord;
         record.Type=bike.GetType(); record.Owner=action_data.m_Player.GetIdentity().GetPlainId(); record.Locked=true;
-        if (!TPCM.Commit(bike,record)) { TPCM.Notify(action_data.m_Player,"Falha ao salvar trava; item preservado."); return; }
+        if (!TPCM.Commit(bike,record)) { TPCM.Notify(action_data.m_Player,"The lock could not be saved; the CarLock item is kept."); return; }
         action_data.m_MainItem.Delete();
-        TPCM.Notify(action_data.m_Player,"CarLock instalado. Defina a senha.");
+        TPCM.Notify(action_data.m_Player,"CarLock installed. Set a PIN.");
         GetRPCManager().SendRPC("TPMotorbikeCarLock","TPCMOpenMenu",new Param1<MotorbikeScript>(bike),true,action_data.m_Player.GetIdentity());
     }
 };
@@ -119,7 +119,7 @@ class ActionTPCMRemove: ActionTPCMInstall
         TPCMRecord record=new TPCMRecord; record.Type=bike.GetType();
         if (!TPCM.Commit(bike,record)) { device.Delete(); return; }
         action_data.m_MainItem.AddHealth("","Health",-10);
-        TPCM.Notify(action_data.m_Player,"CarLock removido; item no chao.");
+        TPCM.Notify(action_data.m_Player,"CarLock removed; the item is on the ground.");
     }
 };
 class ActionTPCMLockCB: ActionContinuousBaseCB
@@ -151,12 +151,12 @@ class ActionTPCMLock: ActionContinuousBase
             GetRPCManager().SendRPC("TPMotorbikeCarLock","TPCMOpenMenu",new Param1<MotorbikeScript>(bike),true,action_data.m_Player.GetIdentity());
             return;
         }
-        if (!TPCM.Empty(bike)) { TPCM.Notify(action_data.m_Player,"Desligue, pare e desocupe a moto."); return; }
+        if (!TPCM.Empty(bike)) { TPCM.Notify(action_data.m_Player,"Turn the engine off, stop and get off the motorbike first."); return; }
         TPCMRecord record=TPCM.Copy(bike.m_TPCMRecord);
         record.Locked=WantLocked();
-        if (!TPCM.Commit(bike,record)) { TPCM.Notify(action_data.m_Player,"Falha ao salvar; operacao cancelada."); return; }
-        if (record.Locked) { bike.TPCMSound(1); TPCM.Notify(action_data.m_Player,"Trava salva: bloqueada."); }
-        else { bike.TPCMSound(2); TPCM.Notify(action_data.m_Player,"Trava salva: desbloqueada."); }
+        if (!TPCM.Commit(bike,record)) { TPCM.Notify(action_data.m_Player,"The lock could not be saved. Nothing changed."); return; }
+        if (record.Locked) { bike.TPCMSound(1); TPCM.Notify(action_data.m_Player,"Motorbike locked."); }
+        else { bike.TPCMSound(2); TPCM.Notify(action_data.m_Player,"Motorbike unlocked."); }
     }
 };
 class ActionTPCMUnlock: ActionTPCMLock
@@ -203,9 +203,9 @@ class ActionTPCMPick: ActionTPCMInstall
             TPCMRecord record=new TPCMRecord; record.Type=bike.GetType();
             if (!TPCM.Commit(bike,record)) return;
             bike.TPCMSound(2);
-            TPCM.Notify(action_data.m_Player,"CarLock removido por arrombamento.");
+            TPCM.Notify(action_data.m_Player,"Lockpick succeeded: the CarLock was removed.");
         }
-        else TPCM.Notify(action_data.m_Player,"Arrombamento falhou.");
+        else TPCM.Notify(action_data.m_Player,"Lockpick failed.");
         action_data.m_MainItem.Delete();
     }
 };

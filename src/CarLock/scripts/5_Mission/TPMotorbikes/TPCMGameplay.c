@@ -8,17 +8,22 @@ modded class MissionGameplay
         GetGame().GetObjectsAtPosition3D(player.GetPosition(),5,objects,NULL);
         MotorbikeScript selected;
         float nearest=4;
+        float nearestOther=5;
         foreach (Object object:objects)
         {
-            // Preserve the original car shortcut in mixed parking areas.
-            Transport other=Transport.Cast(object);
-            if (other && !MotorbikeScript.Cast(other)) { super.TryToLockVehicleNearby(player); return; }
-            MotorbikeScript bike=MotorbikeScript.Cast(object);
-            if (!TPCM.Supports(bike) || !bike.m_TPCMInstalled || bike.m_TPCMFault) continue;
-            float distance=vector.Distance(player.GetPosition(),bike.GetPosition());
+            Transport vehicle=Transport.Cast(object);
+            if (!vehicle) continue;
+            float distance=vector.Distance(player.GetPosition(),vehicle.GetPosition());
+            MotorbikeScript bike=MotorbikeScript.Cast(vehicle);
+            if (!TPCM.Supports(bike) || !bike.m_TPCMInstalled || bike.m_TPCMFault)
+            {
+                if (distance<nearestOther) nearestOther=distance;
+                continue;
+            }
             if (distance<nearest) { selected=bike; nearest=distance; }
         }
-        if (!selected) { super.TryToLockVehicleNearby(player); return; }
+        // The closest vehicle wins; a nearer car keeps the original car shortcut.
+        if (!selected || nearestOther<nearest) { super.TryToLockVehicleNearby(player); return; }
         // The server decides ownership and the resulting lock state.
         if (GetGame().GetUIManager().GetMenu()) return;
         GetRPCManager().SendRPC("TPMotorbikeCarLock","TPCMHotkeyRequest",new Param1<MotorbikeScript>(selected),true,NULL);

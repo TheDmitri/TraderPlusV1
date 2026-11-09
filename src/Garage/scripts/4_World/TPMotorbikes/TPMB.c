@@ -98,15 +98,20 @@ class TPMB
         string path = OwnerPath(bike);
         if (path == "")
         {
-            Notify(player, "ID persistente ainda indisponivel. Retirada cancelada; registro preservado.");
+            Notify(player, "The motorbike has no persistent ID yet. Retrieval cancelled; your Garage entry is kept.");
             return false;
         }
         string directory = GM_DB_DIR_SERVER + "TPMBOwners\\";
         if (!FileExist(directory) && !MakeDirectory(directory))
             return false;
-        // A newly created persistent ID must not replace another live registration.
+        // The bike was just created, so a record already on disk for its ID is stale
+        // (left by a deleted bike or a storage wipe that reused the ID).
         if (FileExist(path))
-            return false;
+        {
+            Print("[TPMB] Replacing stale owner record " + path);
+            DeleteFile(path);
+        }
+        bike.m_TPMBRegistered = true;
         TPMBOwnerRecord record = new TPMBOwnerRecord;
         record.Owner = player.GetIdentity().GetPlainId();
         record.Type = bike.GetType();
@@ -116,6 +121,7 @@ class TPMB
             return false;
         if (!CopyFile(path + ".stage", path))
             return false;
+        DeleteFile(path + ".stage");
         TPMBOwnerRecord check = new TPMBOwnerRecord;
         if (!(JsonFileLoader<TPMBOwnerRecord>.LoadFile(path, check, error) && check.Owner == record.Owner && check.Type == record.Type && check.Token == record.Token)) return false;
         return RegisterLockOwner(bike,player);
@@ -141,6 +147,26 @@ class TPMB
         DeleteFile(path);
         if (FileExist(path + ".stage"))
             DeleteFile(path + ".stage");
+        #ifndef CARLOCKDISABLE
+        // The per-ID lock record dies with the bike; a stored bike keeps its lock in the Garage vault.
+        string lockPath = TPCM.Path(bike);
+        if (lockPath != "")
+        {
+            DeleteFile(lockPath);
+            if (FileExist(lockPath + ".backup"))
+                DeleteFile(lockPath + ".backup");
+        }
+        #endif
+    }
+
+    static void ForgetStaleOwner(MotorbikeScript bike)
+    {
+        string path = OwnerPath(bike);
+        if (path != "" && FileExist(path))
+        {
+            Print("[TPMB] Removing stale owner record for a new bike: " + path);
+            DeleteFile(path);
+        }
     }
 
     // Two-phase file replacement with readback and backup. This is not an OS-atomic rename.
@@ -349,8 +375,6 @@ class TPMB
         {
             bike.LeakAll(MotorbikeFluid.FUEL);
             bike.Fill(MotorbikeFluid.FUEL, entry.FuelAmmount);
-            float restoredFuel=bike.GetFluidFraction(MotorbikeFluid.FUEL)*bike.GetFluidCapacity(MotorbikeFluid.FUEL);
-            Print("[TPMB s01] Restore fuel: "+bike.GetType()+" / expected="+entry.FuelAmmount.ToString()+" / actual="+restoredFuel.ToString());
             // Final fuel verification runs on subsequent server ticks before payment.
         }
         return RestoreLockSnapshot(bike,entry);
@@ -369,10 +393,7 @@ class TPMB
             if (capacity<=0) return null;
             fuel = bike.GetFluidFraction(MotorbikeFluid.FUEL) * capacity;
             if (state=="Buying")
-            {
                 fuel=capacity;
-                Print("[TPMB s01] Purchase fuel target: "+bike.GetType()+" / "+fuel.ToString());
-            }
         }
         int timestamp = 0;
         if (GetGarageConfig().UseGarageOnlyToTrade)
@@ -392,7 +413,7 @@ class TPMB
         GarageData garage = GarageData.Load(id.ToString(), player.GetIdentity().GetName());
         if (!garage || garage.Vehicles.Count() >= GetGarageConfig().MaxVehicleStored)
         {
-            Notify(player, "Garage cheio. Compra cancelada.");
+            Notify(player, "Your Garage is full. Purchase cancelled.");
             return false;
         }
         MotorbikeScript bike = MotorbikeScript.Cast(GetGame().CreateObject(type, vector.Zero, false, false, true));
@@ -401,7 +422,7 @@ class TPMB
         if (!Equip(bike))
         {
             GetGame().ObjectDelete(bike);
-            Notify(player, "Configuracao de pecas invalida. Compra cancelada.");
+            Notify(player, "Invalid VehiclesParts config for this motorbike. Purchase cancelled.");
             return false;
         }
         bike.SetHealth("", "", TraderPlusHelper.GetDamageStateFromLevel(condition) * bike.GetMaxHealth());
@@ -415,7 +436,7 @@ class TPMB
         garage.Vehicles.Insert(entry);
         if (!Save(id, garage))
         {
-            Notify(player, "Falha ao salvar no Garage. Compra cancelada; avise a administracao.");
+            Notify(player, "The Garage could not be saved. Purchase cancelled.");
             return false;
         }
         Print("[TPMB] Purchase staged: " + type + " / " + entry.TPMBToken);
@@ -447,27 +468,27 @@ modded class TraderPlusServer
     {
         if (product && TPMB.Supports(product.ClassName))
         {
-            Print("[TPMB] BuyRequest standalone-s01: type=" + product.ClassName + " multiplier=" + product.Multiplier.ToString() + " internalQty=" + product.Quantity.ToString() + " collateral=" + product.CollateralMoney.ToString() + " useGarage=" + GetTraderPlusConfigServer().UseGarageToTradeCar.ToString());
+            Print("[TPMB] BuyRequest: type=" + product.ClassName + " trader=" + product.TraderID.ToString() + " category=" + product.Category + " multiplier=" + product.Multiplier.ToString());
             if (!GetTraderPlusConfigServer().UseGarageToTradeCar)
             {
-                TPMB.Notify(product.Customer, "Compra recusada: a configuracao carregada nao habilita compra pelo Garage.");
+                TPMB.Notify(product.Customer, "Purchase refused: motorbikes are bought through the Garage (UseGarageToTradeCar is off).");
                 return false;
             }
             if (product.Multiplier != 1)
             {
-                TPMB.Notify(product.Customer, "Compra recusada: selecione um veiculo por transacao.");
+                TPMB.Notify(product.Customer, "Purchase refused: buy one motorbike per transaction.");
                 return false;
             }
             if (product.CollateralMoney != 0)
             {
-                TPMB.Notify(product.Customer, "Compra recusada: desative o seguro para motos.");
+                TPMB.Notify(product.Customer, "Purchase refused: insurance is not available for motorbikes.");
                 return false;
             }
             // Native CalculateTradeQty clamps configured 1 to varQuantityMax=0
             // for vehicles. Multiplier, not this internal quantity, counts vehicles.
             if (product.Quantity != 0 && product.Quantity != 1)
             {
-                TPMB.Notify(product.Customer, "Compra recusada: quantidade interna inesperada. Consulte a linha BuyRequest r04 no log.");
+                TPMB.Notify(product.Customer, "Purchase refused: unexpected quantity.");
                 return false;
             }
             return TPMBBuy(product);
@@ -475,18 +496,116 @@ modded class TraderPlusServer
         return super.BuyRequest(product);
     }
 
+    // Price line fields: ClassName,Coeff,MaxStock,TradeQty,BuyPrice,SellPrice
+    TStringArray TPMBPriceLine(TraderPlusProduct product)
+    {
+        bool sold = false;
+        foreach (TraderPlusIDs trader : GetTraderPlusIDConfig().IDs)
+        {
+            if (trader.Id == product.TraderID && trader.Categories.Find(product.Category) != -1)
+                sold = true;
+        }
+        if (!sold)
+            return null;
+        string wanted = product.ClassName;
+        wanted.ToLower();
+        foreach (TraderPlusCategory category : GetTraderPlusPriceConfig().TraderCategories)
+        {
+            if (category.CategoryName != product.Category)
+                continue;
+            foreach (string line : category.Products)
+            {
+                TStringArray fields = new TStringArray;
+                line.Split(",", fields);
+                if (fields.Count() < 6)
+                    continue;
+                string name = fields[0];
+                name.Trim();
+                name.ToLower();
+                if (name == wanted)
+                    return fields;
+            }
+        }
+        return null;
+    }
+
+    float TPMBStateCoefficient(int state)
+    {
+        TraderPlusStates states = GetTraderPlusConfigServer().AcceptedStates;
+        switch (state)
+        {
+            case TraderPlusItemState.PRISTINE: return 1.0;
+            case TraderPlusItemState.WORN: if (states.AcceptWorn) return states.CoefficientWorn; return -1;
+            case TraderPlusItemState.DAMAGED: if (states.AcceptDamaged) return states.CoefficientDamaged; return -1;
+            case TraderPlusItemState.BADLY_DAMAGED: if (states.AcceptBadlyDamaged) return states.CoefficientBadlyDamaged; return -1;
+        }
+        return -1;
+    }
+
+    bool TPMBWriteStock(TraderPlusProduct product, TraderPlusCategory category)
+    {
+        string stockPath = TRADERPLUS_DB_DIR_SERVER + "ID_" + product.TraderID.ToString() + "\\" + product.Category + ".json";
+        string error;
+        if (!JsonFileLoader<TraderPlusCategory>.SaveFile(stockPath + ".tlh-stage", category, error))
+            return false;
+        bool backed = !FileExist(stockPath) || CopyFile(stockPath, stockPath + ".tlh-backup");
+        if (!backed || !CopyFile(stockPath + ".tlh-stage", stockPath))
+            return false;
+        TraderPlusCategory readback = new TraderPlusCategory;
+        bool written = JsonFileLoader<TraderPlusCategory>.LoadFile(stockPath, readback, error) && readback.Products.Count() == category.Products.Count();
+        for (int k = 0; written && k < category.Products.Count(); k++)
+            written = readback.Products[k] == category.Products[k];
+        if (!written && FileExist(stockPath + ".tlh-backup"))
+            CopyFile(stockPath + ".tlh-backup", stockPath);
+        return written;
+    }
+
+    void TPMBReturnStock(TraderPlusProduct product)
+    {
+        TraderPlusCategory category = TraderPlusHelper.GetStockCategory(product.TraderID, product.Category, false);
+        if (!category)
+            return;
+        TStringArray tokens = new TStringArray;
+        for (int i = 0; i < category.Products.Count(); i++)
+        {
+            tokens.Clear();
+            category.Products[i].Split(" ", tokens);
+            if (tokens.Count() >= 3 && tokens[0] == product.ClassName && tokens[2].ToInt() == product.Health)
+            {
+                category.Products[i] = tokens[0] + " " + (tokens[1].ToInt() + 1).ToString() + " " + tokens[2];
+                TPMBWriteStock(product, category);
+                return;
+            }
+        }
+        category.Products.Insert(product.ClassName + " 1 " + product.Health.ToString());
+        TPMBWriteStock(product, category);
+    }
+
     bool TPMBBuy(TraderPlusProduct product)
     {
         PlayerBase player = product.Customer;
-        if (!GetGame().IsServer() || !player || !player.GetIdentity() || product.Price < 0)
+        if (!GetGame().IsServer() || !player || !player.GetIdentity())
             return false;
-        int money;
-        if (!TraderPlusHelper.CheckifPlayerHasEnoughMoney(player, product.Price, product.TraderID, money))
+        // Price, stock mode and state come from the server config, never from the client product.
+        TStringArray priceLine = TPMBPriceLine(product);
+        if (!priceLine)
+        {
+            TPMB.Notify(player, "Purchase refused: this trader does not sell this motorbike.");
+            return false;
+        }
+        float coefficient = priceLine[1].ToFloat();
+        if (coefficient <= 0)
+            coefficient = 1;
+        int maxStock = priceLine[2].ToInt();
+        int basePrice = priceLine[4].ToInt();
+        float stateCoefficient = TPMBStateCoefficient(product.Health);
+        if (basePrice < 0 || stateCoefficient < 0)
             return false;
         TraderPlusCategory category;
         int stockIndex = -1;
+        int stock = 0;
         TStringArray stockTokens = new TStringArray;
-        if (product.MaxStock != TRADEMODE_UNLIMITED)
+        if (maxStock != TRADEMODE_UNLIMITED)
         {
             category = TraderPlusHelper.GetStockCategory(product.TraderID, product.Category, false);
             if (!category)
@@ -498,12 +617,26 @@ modded class TraderPlusServer
                 if (stockTokens.Count() >= 3 && stockTokens[0] == product.ClassName && stockTokens[2].ToInt() == product.Health && stockTokens[1].ToInt() >= 1)
                 {
                     stockIndex = i;
+                    stock = stockTokens[1].ToInt();
                     break;
                 }
             }
             if (stockIndex < 0)
+            {
+                TPMB.Notify(player, "Purchase refused: out of stock.");
                 return false;
+            }
         }
+        // Same formula as TraderPlusClient.CalculatePriceForThatItem for one unit.
+        int price = basePrice * stateCoefficient;
+        if (maxStock != TRADEMODE_UNLIMITED)
+            price = Math.Pow(coefficient, stock - 1) * basePrice * stateCoefficient;
+        if (price == 0)
+            price = 1;
+        product.Price = price;
+        int money;
+        if (!TraderPlusHelper.CheckifPlayerHasEnoughMoney(player, price, product.TraderID, money))
+            return false;
         string token;
         if (!TPMB.Purchase(player, product.ClassName, product.Health, token))
             return false;
@@ -517,7 +650,7 @@ modded class TraderPlusServer
         }
         if (entryIndex < 0)
             return false;
-        if (product.Price > 0 && !TraderPlusHelper.RemoveMoneyFromPlayer(player, product.Price, product.TraderID))
+        if (!TraderPlusHelper.RemoveMoneyFromPlayer(player, price, product.TraderID))
         {
             garage.Vehicles.RemoveOrdered(entryIndex);
             TPMB.Save(id, garage);
@@ -525,50 +658,34 @@ modded class TraderPlusServer
         }
         if (category)
         {
-            int remaining = stockTokens[1].ToInt() - 1;
+            int remaining = stock - 1;
             if (remaining == 0)
                 category.Products.RemoveOrdered(stockIndex);
             else
                 category.Products[stockIndex] = stockTokens[0] + " " + remaining.ToString() + " " + stockTokens[2];
-            string folder = TRADERPLUS_DB_DIR_SERVER + "ID_" + product.TraderID.ToString() + "\\";
-            string stockPath = folder + product.Category + ".json";
-            string error;
-            bool written = JsonFileLoader<TraderPlusCategory>.SaveFile(stockPath + ".tlh-stage", category, error);
-            bool backed = false;
-            if (written)
+            if (!TPMBWriteStock(product, category))
             {
-                backed = CopyFile(stockPath, stockPath + ".tlh-backup");
-                written = backed;
-            }
-            if (written)
-                written = CopyFile(stockPath + ".tlh-stage", stockPath);
-            TraderPlusCategory readback = new TraderPlusCategory;
-            if (written)
-                written = JsonFileLoader<TraderPlusCategory>.LoadFile(stockPath, readback, error);
-            if (written)
-            {
-                written = readback.Products.Count() == category.Products.Count();
-                for (int k = 0; written && k < category.Products.Count(); k++)
-                    written = readback.Products[k] == category.Products[k];
-            }
-            if (!written)
-            {
-                if (backed)
-                    CopyFile(stockPath + ".tlh-backup", stockPath);
-                TraderPlusHelper.AddMoneyToPlayer(player, product.Price, product.TraderID);
+                TraderPlusHelper.AddMoneyToPlayer(player, price, product.TraderID);
                 garage.Vehicles.RemoveOrdered(entryIndex);
                 TPMB.Save(id, garage);
-                TPMB.Notify(player, "Falha ao confirmar estoque. Compra cancelada; confira eventual pendencia com a administracao.");
+                TPMB.Notify(player, "Purchase cancelled: the trader stock could not be saved. Your money was returned.");
                 return false;
             }
         }
         garage.Vehicles[entryIndex].TPMBState = "Stored";
         if (!TPMB.Save(id, garage))
         {
-            TPMB.Notify(player, "Compra paga, mas registro Buying pendente. Nao repita: solicite verificacao administrativa.");
+            // Undo everything: money back, stock back, staged entry removed.
+            TraderPlusHelper.AddMoneyToPlayer(player, price, product.TraderID);
+            if (category)
+                TPMBReturnStock(product);
+            garage.Vehicles.RemoveOrdered(entryIndex);
+            if (!TPMB.Save(id, garage))
+                Print("[TPMB] Purchase rollback could not save the Garage; pending token " + token + " for " + player.GetIdentity().GetPlainId());
+            TPMB.Notify(player, "Purchase cancelled: the Garage could not be saved. Your money was returned.");
             return false;
         }
-        Print("[TPMB] Purchase committed: " + product.ClassName + " / " + token);
+        Print("[TPMB] Purchase committed: " + product.ClassName + " / " + token + " / price " + price.ToString());
         return true;
     }
 
@@ -577,7 +694,7 @@ modded class TraderPlusServer
         // Original vehicle sale removes a Garage entry through an unchecked save.
         if (product && TPMB.Supports(product.ClassName))
         {
-            TPMB.Notify(product.Customer, "Revenda de duas rodas ainda indisponivel neste candidato.");
+            TPMB.Notify(product.Customer, "Motorbikes cannot be sold to traders yet.");
             return false;
         }
         return super.SellRequest(product);

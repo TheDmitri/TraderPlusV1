@@ -25,3 +25,15 @@ The original CarLock keyboard and mouse UI resources are reused. CARLOCKDISABLE 
 The server owner confirmed standalone s01 tests with the private server addon disabled: purchase/delivery and fuel, preservation of partial fuel, mouse/U locking, wrong PIN rejection on the owner's account, restart persistence, pliers removal and CarLockPick with alarm.
 
 Non-owner/second-account runtime access remains untested because no second player was available. The direct original-module overlay is proposed for maintainer review and has not been separately rebuilt/run; standalone runtime confirmation is not a claim of exhaustive regression coverage. Original car regressions and safezone/lockpick configuration combinations should be reviewed before release.
+
+## Server-side checks and recovery
+
+- The motorbike price, stock mode and accepted condition are read from the server's TraderPlusPriceConfig and stock files. Values sent by the client are ignored. The trader must list the category that contains the motorbike.
+- If a purchase cannot be committed after payment, the money and the stock are returned and the staged Garage entry is removed.
+- An interrupted motorbike entry (state Buying, Parking or Withdrawing) only blocks that motorbike. The rest of the player's Garage keeps working. The server log prints `[TPMB] Pending motorbike entry in Garage <id>` so an admin can set the entry back to `Stored` or remove it.
+- A motorbike that was not loaded from storage (a new spawn or delivery) clears any owner or lock record left on disk for its persistent ID. This keeps stale records from a storage wipe off new bikes.
+- Five wrong PINs on one motorbike, from any account, block its keypad for 10 minutes.
+
+## Rolling back
+
+Garage entries written by this version carry the extra fields TPMBVersion, TPMBState, TPMBToken, TPMBData and TPCMStateToken. A version without motorbike support ignores those fields and treats a stored motorbike as a normal vehicle entry. Before rolling back, have players take their motorbikes out of the Garage, or remove the Motorbike_* entries from TraderPlusGarageDatabase.
