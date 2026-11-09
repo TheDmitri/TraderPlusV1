@@ -1294,18 +1294,18 @@ FrameWidgetClass rootFrame {
     }
    }
   }
-  PanelWidgetClass BeansBadge {
-   ignorepointer 1
-   color 0 0 0 0
+  ButtonWidgetClass BeansBadge {
+   ignorepointer 0
+   color 1 1 1 1
    position 16 10
-   size 240 24
+   size 170 24
    halign right_ref
    valign bottom_ref
    hexactpos 1
    vexactpos 1
    hexactsize 1
    vexactsize 1
-   style blank
+   style Empty
    {
     ImageWidgetClass BeansBadgeIcon {
      ignorepointer 1

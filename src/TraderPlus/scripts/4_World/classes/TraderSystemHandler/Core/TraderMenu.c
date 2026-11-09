@@ -2,6 +2,8 @@ class TraderPlusMenu extends UIScriptedMenu
 {
   //Widget of TraderPlusUI
   private   Widget            m_Background;
+  private   Widget            m_BeansBadge;
+  private   TextWidget        m_BeansBadgeText;
             Widget            m_HighLightProduct;
   private   Widget            m_PanelStockOutline;
   private   Widget            m_LicenceWarningPanel;
@@ -275,9 +277,10 @@ class TraderPlusMenu extends UIScriptedMenu
         m_SellPriceText = TextWidget.Cast(layoutRoot.FindAnyWidget( "BttnSell_label" ));
         m_InformationText = RichTextWidget.Cast(layoutRoot.FindAnyWidget( "InformationText" ));
         // Servers with their own TraderPlusUI.layout have no badge widget.
-        Widget beansBadge = layoutRoot.FindAnyWidget( "BeansBadge" );
-        if (beansBadge)
-          beansBadge.Show(!GetTraderPlusConfigClient().HideBeansLauncherBadge);
+        m_BeansBadge = layoutRoot.FindAnyWidget( "BeansBadge" );
+        m_BeansBadgeText = TextWidget.Cast(layoutRoot.FindAnyWidget( "BeansBadgeText" ));
+        if (m_BeansBadge)
+          m_BeansBadge.Show(!GetTraderPlusConfigClient().HideBeansLauncherBadge);
         m_ItemDescription = MultilineTextWidget.Cast(layoutRoot.FindAnyWidget( "ItemDescription" ));
         m_Background = Widget.Cast(layoutRoot.FindAnyWidget("ContentPanel"));
         m_PanelInventoryOutline = Widget.Cast(layoutRoot.FindAnyWidget("PanelInventoryOutline"));
@@ -524,6 +527,11 @@ class TraderPlusMenu extends UIScriptedMenu
   override bool OnMouseEnter(Widget w, int x, int y)
   {
     super.OnMouseEnter(w, x, y);
+    if (m_BeansBadge && w == m_BeansBadge && m_BeansBadgeText)
+    {
+      m_BeansBadgeText.SetColor(ARGB(255,217,118,47));
+      return true;
+    }
     switch(w)
     {
       case m_MainItemPreview:GetItemDescription();
@@ -537,6 +545,11 @@ class TraderPlusMenu extends UIScriptedMenu
 	override bool OnMouseLeave(Widget w, Widget enterW, int x, int y)
   {
     super.OnMouseLeave(w, enterW, x, y);
+    if (m_BeansBadge && w == m_BeansBadge && m_BeansBadgeText)
+    {
+      m_BeansBadgeText.SetColor(ARGB(230,242,233,216));
+      return true;
+    }
     switch(w)
     {
       case m_MainItemPreview:
@@ -1100,6 +1113,12 @@ class TraderPlusMenu extends UIScriptedMenu
   override bool OnClick (Widget w, int x, int y, int button)
   {
     super.OnClick(w,x,y,button);
+
+    if (m_BeansBadge && w == m_BeansBadge)
+    {
+      GetGame().OpenURL("https://dayzbeanslauncher.com");
+      return true;
+    }
 
     foreach(TraderPlusCategoryMenu categoryMenu: m_CategoryMenuControllers)
     {
