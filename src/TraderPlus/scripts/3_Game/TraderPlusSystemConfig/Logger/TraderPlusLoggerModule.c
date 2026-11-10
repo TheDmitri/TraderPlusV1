@@ -10,7 +10,7 @@ static ref TraderPlusLoggerModule GetTraderPlusLogger()
 class TraderPlusLoggerModule: CF_ModuleGame
 {
     FileHandle fileHandle;
-    int networkSync_LogLevel;
+    string networkSync_LogLevel = "1";
     ref TraderPlusLoggingSettings settings;
 
     float dtime = 0;
@@ -33,7 +33,7 @@ class TraderPlusLoggerModule: CF_ModuleGame
         {
             settings = TraderPlusLoggingSettings.Load();
 
-            networkSync_LogLevel = settings.logLevel;
+            networkSync_LogLevel = settings.logLevel.ToString();
             SetSynchDirty();
         }
 	}
@@ -49,7 +49,7 @@ class TraderPlusLoggerModule: CF_ModuleGame
             dtime = 0;
             settings = TraderPlusLoggingSettings.Load();
 
-            networkSync_LogLevel = settings.logLevel;
+            networkSync_LogLevel = settings.logLevel.ToString();
             SetSynchDirty();
 		}
 	}
@@ -84,7 +84,7 @@ class TraderPlusLoggerModule: CF_ModuleGame
 
 	void Log(string content, TraderPlusLogLevel logLevel) 
 	{
-        if(logLevel >= networkSync_LogLevel)
+        if(logLevel >= networkSync_LogLevel.ToInt())
         {
             string timeStamp = GenerateShortTimeString();
             FPrintln(fileHandle, timeStamp + " | " + GetLogLevelString(logLevel) + " | " + content);
